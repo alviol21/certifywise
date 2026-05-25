@@ -582,11 +582,80 @@ DELTA: SLA (Krashen, Selinker, Vygotsky, Ellis, Lewis), methodology (CLT, TBL, P
           </div>
         )}
 
-        {/* --- MATERIALS --- */}
+
         {page === "materials" && (
           <div>
             <h2 className="st">Учебные материалы</h2>
             <p className="sb">Официальные PDF Cambridge + ваши файлы с Google Drive</p>
+
+            <div style={{display:"flex",gap:7,marginBottom:18,flexWrap:"wrap"}}>
+              {Object.keys(CERTS).map(k => (
+                <button key={k} className={`btn btn-sm${cert===k?"":" btn-o"}`} onClick={() => setCert(k)}>{CERTS[k].emoji} {k}</button>
+              ))}
+            </div>
+
+            <div className="tabs">
+              <button className={`tab${matTab==="official"?" on":""}`} onClick={() => setMatTab("official")}>📄 Официальные ({MATERIALS[cert].links.length})</button>
+              <button className={`tab${matTab==="my"?" on":""}`} onClick={() => setMatTab("my")}>📁 Мои файлы ({myFiles.filter(f=>f.cert===cert).length})</button>
+              <button className={`tab${matTab==="add"?" on":""}`} onClick={() => setMatTab("add")}>➕ Добавить</button>
+            </div>
+
+            {matTab === "official" && (
+              <div>
+                <div style={{fontSize:13.5,color:"#8a7d6d",marginBottom:16,padding:"12px 16px",background:"rgba(197,155,68,.06)",borderRadius:8,border:"1px solid rgba(197,155,68,.12)"}}>{MATERIALS[cert].desc}</div>
+                {MATERIALS[cert].links.map((m, i) => (
+                  <div key={i} className="mat">
+                    <a href={m.url} target="_blank" rel="noreferrer">📎 {m.title}</a>
+                    <span className={`badge b-${m.type.toLowerCase()}`}>{m.type}</span>
+                  </div>
+                ))}
+                <div className="tip"><b>Совет:</b> Все ссылки ведут на официальные сайты Cambridge English и IELTS.org — актуальные бесплатные материалы.</div>
+              </div>
+            )}
+
+            {matTab === "my" && (
+              <div>
+                {myFiles.filter(f => f.cert === cert).length === 0 ? (
+                  <div className="empty">
+                    Нет своих файлов для {cert}.<br/>
+                    <button className="btn btn-sm" style={{marginTop:13}} onClick={() => setMatTab("add")}>➕ Добавить</button>
+                  </div>
+                ) : myFiles.filter(f => f.cert === cert).map(f => (
+                  <div key={f.id} className="mat">
+                    <a href={f.url} target="_blank" rel="noreferrer">📁 {f.title}</a>
+                    <div style={{display:"flex",gap:8,alignItems:"center"}}>
+                      <span className="badge b-my">Мой файл</span>
+                      <button className="btn btn-red btn-sm" onClick={() => setMyFiles(p => p.filter(x => x.id !== f.id))}>✕</button>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            )}
+
+            {matTab === "add" && (
+              <div className="card">
+                <h3>Добавить файл или ссылку</h3>
+                <p style={{fontSize:13,color:"#8a7d6d",marginTop:4,marginBottom:18}}>Вставь ссылку с Google Drive, OneDrive, Dropbox или любого сайта</p>
+                <div style={{marginBottom:11}}>
+                  <label style={{fontSize:12.5,color:"#8a7d6d",display:"block",marginBottom:5}}>Сертификат</label>
+                  <select value={newF.cert} onChange={e => setNewF({...newF, cert:e.target.value})}>
+                    {Object.keys(CERTS).map(k => <option key={k} value={k}>{k} — {CERTS[k].label}</option>)}
+                  </select>
+                </div>
+                <div style={{marginBottom:11}}>
+                  <label style={{fontSize:12.5,color:"#8a7d6d",display:"block",marginBottom:5}}>Название</label>
+                  <input type="text" placeholder="Например: TKT Module 2 Mock Test.pdf" value={newF.title} onChange={e => setNewF({...newF, title:e.target.value})} />
+                </div>
+                <div style={{marginBottom:18}}>
+                  <label style={{fontSize:12.5,color:"#8a7d6d",display:"block",marginBottom:5}}>Ссылка (URL)</label>
+                  <input type="text" placeholder="https://drive.google.com/file/..." value={newF.url} onChange={e => setNewF({...newF, url:e.target.value})} />
+                </div>
+                <button className="btn" onClick={addFile} disabled={!newF.title.trim() || !newF.url.trim()}>Добавить материал</button>
+              </div>
+            )}
+          </div>
+        )}
+
 
         {/* --- ANALYTICS --- */}
         {page === "analytics" && (() => {
@@ -688,75 +757,6 @@ DELTA: SLA (Krashen, Selinker, Vygotsky, Ellis, Lewis), methodology (CLT, TBL, P
           );
         })()}
 
-            <p className="sb">Официальные PDF Cambridge + ваши файлы с Google Drive</p>
-
-            <div style={{display:"flex",gap:7,marginBottom:18,flexWrap:"wrap"}}>
-              {Object.keys(CERTS).map(k => (
-                <button key={k} className={`btn btn-sm${cert===k?"":" btn-o"}`} onClick={() => setCert(k)}>{CERTS[k].emoji} {k}</button>
-              ))}
-            </div>
-
-            <div className="tabs">
-              <button className={`tab${matTab==="official"?" on":""}`} onClick={() => setMatTab("official")}>📄 Официальные ({MATERIALS[cert].links.length})</button>
-              <button className={`tab${matTab==="my"?" on":""}`} onClick={() => setMatTab("my")}>📁 Мои файлы ({myFiles.filter(f=>f.cert===cert).length})</button>
-              <button className={`tab${matTab==="add"?" on":""}`} onClick={() => setMatTab("add")}>➕ Добавить</button>
-            </div>
-
-            {matTab === "official" && (
-              <div>
-                <div style={{fontSize:13.5,color:"#8a7d6d",marginBottom:16,padding:"12px 16px",background:"rgba(197,155,68,.06)",borderRadius:8,border:"1px solid rgba(197,155,68,.12)"}}>{MATERIALS[cert].desc}</div>
-                {MATERIALS[cert].links.map((m, i) => (
-                  <div key={i} className="mat">
-                    <a href={m.url} target="_blank" rel="noreferrer">📎 {m.title}</a>
-                    <span className={`badge b-${m.type.toLowerCase()}`}>{m.type}</span>
-                  </div>
-                ))}
-                <div className="tip"><b>Совет:</b> Все ссылки ведут на официальные сайты Cambridge English и IELTS.org — актуальные бесплатные материалы.</div>
-              </div>
-            )}
-
-            {matTab === "my" && (
-              <div>
-                {myFiles.filter(f => f.cert === cert).length === 0 ? (
-                  <div className="empty">
-                    Нет своих файлов для {cert}.<br/>
-                    <button className="btn btn-sm" style={{marginTop:13}} onClick={() => setMatTab("add")}>➕ Добавить</button>
-                  </div>
-                ) : myFiles.filter(f => f.cert === cert).map(f => (
-                  <div key={f.id} className="mat">
-                    <a href={f.url} target="_blank" rel="noreferrer">📁 {f.title}</a>
-                    <div style={{display:"flex",gap:8,alignItems:"center"}}>
-                      <span className="badge b-my">Мой файл</span>
-                      <button className="btn btn-red btn-sm" onClick={() => setMyFiles(p => p.filter(x => x.id !== f.id))}>✕</button>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            )}
-
-            {matTab === "add" && (
-              <div className="card">
-                <h3>Добавить файл или ссылку</h3>
-                <p style={{fontSize:13,color:"#8a7d6d",marginTop:4,marginBottom:18}}>Вставь ссылку с Google Drive, OneDrive, Dropbox или любого сайта</p>
-                <div style={{marginBottom:11}}>
-                  <label style={{fontSize:12.5,color:"#8a7d6d",display:"block",marginBottom:5}}>Сертификат</label>
-                  <select value={newF.cert} onChange={e => setNewF({...newF, cert:e.target.value})}>
-                    {Object.keys(CERTS).map(k => <option key={k} value={k}>{k} — {CERTS[k].label}</option>)}
-                  </select>
-                </div>
-                <div style={{marginBottom:11}}>
-                  <label style={{fontSize:12.5,color:"#8a7d6d",display:"block",marginBottom:5}}>Название</label>
-                  <input type="text" placeholder="Например: TKT Module 2 Mock Test.pdf" value={newF.title} onChange={e => setNewF({...newF, title:e.target.value})} />
-                </div>
-                <div style={{marginBottom:18}}>
-                  <label style={{fontSize:12.5,color:"#8a7d6d",display:"block",marginBottom:5}}>Ссылка (URL)</label>
-                  <input type="text" placeholder="https://drive.google.com/file/..." value={newF.url} onChange={e => setNewF({...newF, url:e.target.value})} />
-                </div>
-                <button className="btn" onClick={addFile} disabled={!newF.title.trim() || !newF.url.trim()}>Добавить материал</button>
-              </div>
-            )}
-          </div>
-        )}
 
         {/* --- PRACTICE --- */}
         {page === "practice" && (
@@ -927,4 +927,4 @@ DELTA: SLA (Krashen, Selinker, Vygotsky, Ellis, Lewis), methodology (CLT, TBL, P
       </div>
     </>
   );
-                                                                   }
+}
