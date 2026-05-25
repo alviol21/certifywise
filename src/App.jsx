@@ -412,6 +412,32 @@ DELTA: SLA (Krashen, Selinker, Vygotsky, Ellis, Lewis), methodology (CLT, TBL, P
     setNewF({ title: "", url: "", cert });
   };
 
+
+  // ── Test helpers ──
+  const startTest = (c, mod) => {
+    const qs = QUESTIONS[c][mod];
+    setTest({ c, mod, qs, idx: 0, ans: Array(qs.length).fill(null), showExp: false, done: false });
+    setPage("test");
+  };
+
+  const pick = (i) => {
+    if (test.ans[test.idx] !== null) return;
+    const a = [...test.ans]; a[test.idx] = i;
+    setTest({ ...test, ans: a, showExp: true });
+  };
+
+  const next = () => {
+    if (test.idx < test.qs.length - 1) {
+      setTest({ ...test, idx: test.idx + 1, showExp: false });
+    } else {
+      const score = test.ans.reduce((s, a, i) => a === test.qs[i].ans ? s + 1 : s, 0);
+      const pct   = Math.round(score / test.qs.length * 100);
+      const r = { cert: test.c, mod: test.mod, score, total: test.qs.length, pct, date: new Date().toISOString(), student: name || "Студент" };
+      setResults(p => [r, ...p].slice(0, 60));
+      setTest({ ...test, done: true, score, pct });
+    }
+  };
+
   const PAGES = [["home","🏠 Главная"],["analytics","📊 Аналитика"],["materials","📚 Материалы"],["practice","✏️ Тесты"],["listening","🎧 Listening"],["chat","🤖 AI-Репетитор"],["teacher","👩‍🏫 Учитель"]];
 
   // ===================================
@@ -901,4 +927,4 @@ DELTA: SLA (Krashen, Selinker, Vygotsky, Ellis, Lewis), methodology (CLT, TBL, P
       </div>
     </>
   );
-}
+                                                                   }
