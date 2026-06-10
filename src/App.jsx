@@ -400,8 +400,8 @@ EXPERTISE DOMAINS:
 TKT (Modules 1-3): language systems, lesson planning, assessment, error correction, teaching approaches, CCQ, ICQ, drilling, eliciting, scaffolding, differentiation, realia, staging
 CELTA: form/meaning/use, concept checking, lesson aims, anticipated problems, TTT vs STT, monitoring, delayed error correction, rapport
 IELTS: all 4 skills, band descriptors, task response, coherence & cohesion, lexical resource, T/F/NG, overview writing
-DELTA: SLA (Krashen, Selinker, Vygotsky, Ellis, Lewis), methodology (CLT, TBL, PPP, Lexical Approach), language analysis, Module 2 professional practice`;`;
-  `;
+DELTA: SLA (Krashen, Selinker, Vygotsky, Ellis, Lewis), methodology (CLT, TBL, PPP, Lexical Approach), language analysis, Module 2 professional practice`;
+  };
 
   // -- Gemini API --
   const sendAi = async () => {
