@@ -342,7 +342,7 @@ export default function App() {
         ("Всего попыток: " + an.total)
       : "Студент ещё не проходил тесты.";
 
-    return ``You are a Socratic AI mentor on the CertifyWise platform, helping pre-service EFL teachers prepare for TKT, CELTA, IELTS, and DELTA certification.
+    return `You are a Socratic AI mentor on the CertifyWise platform, helping pre-service EFL teachers prepare for TKT, CELTA, IELTS, and DELTA certification.
 
 STUDENT: ${name || "Student"}
 ${statsText}
