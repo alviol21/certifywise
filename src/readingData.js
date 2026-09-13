@@ -1563,7 +1563,7 @@ export const READING_UNITS = [
             ],
           },
         ],
-      },,
+      },
       {
         id: "text-2",
         title: "The Urban Heat Island Effect",
@@ -1704,7 +1704,7 @@ export const READING_UNITS = [
             ],
           },
         ],
-      },,
+      },
       {
         id: "text-3",
         title: "The Evolution of the Bicycle",
@@ -1845,7 +1845,7 @@ export const READING_UNITS = [
             ],
           },
         ],
-      },,
+      },
       {
         id: "text-4",
         title: "The Development of GPS Technology",
@@ -1982,7 +1982,7 @@ export const READING_UNITS = [
             ],
           },
         ],
-      },,
+      },
       {
         id: "text-5",
         title: "The Science of Colour Perception in Animals",
@@ -2120,7 +2120,7 @@ export const READING_UNITS = [
             ],
           },
         ],
-      },,
+      },
     ],
   },
 
