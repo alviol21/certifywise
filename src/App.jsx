@@ -358,15 +358,19 @@ export default function App() {
   useEffect(() => {
     if (!session || !profile) return;
     if (profile.role === "teacher") {
-      // Учитель: загружаем ВСЮ переписку всех студентов + их профили (chat_cleared_at — для отметки, где студент скрыл историю у себя)
-      supabase.from("chat_messages").select("*, profiles(full_name, chat_cleared_at)").order("created_at", { ascending: true }).limit(2000)
-        .then(({ data, error }) => {
-          if (error || !data) return;
-          setAllChats(data);
-          const pMap = {};
-          data.forEach(m => { if (m.profiles) pMap[m.user_id] = m.profiles; });
-          setChatProfiles(pMap);
-        });
+      // Учитель: загружаем ВСЮ переписку всех студентов + профили отдельным запросом
+      // (chat_messages.user_id ссылается на auth.users, поэтому вложенный select на profiles
+      //  через связь не работает — собираем вручную двумя запросами)
+      Promise.all([
+        supabase.from("chat_messages").select("*").order("created_at", { ascending: true }).limit(2000),
+        supabase.from("profiles").select("id, full_name, chat_cleared_at"),
+      ]).then(([msgsRes, profRes]) => {
+        if (msgsRes.error || !msgsRes.data) return;
+        setAllChats(msgsRes.data);
+        const pMap = {};
+        (profRes.data || []).forEach(p => { pMap[p.id] = p; });
+        setChatProfiles(pMap);
+      });
       return;
     }
     // Студент: видит только своё, и только после последней самостоятельной "очистки"
