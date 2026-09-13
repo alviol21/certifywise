@@ -45,65 +45,51 @@ export default function ReadingPage({ studentName, onSaveResult }) {
         <h2 className="st">📚 Техники чтения</h2>
         <p className="sb">Базовые навыки, которые нужны для любого типа заданий — независимо от Юнита.</p>
 
-        <div className="tabs" style={{ overflowX: "auto", flexWrap: "nowrap" }}>
-          {READING_SKILLS.map(sk => (
-            <button key={sk.id} className={`tab${sk.id === activeSkillId ? " on" : ""}`} onClick={() => setActiveSkillId(sk.id)} style={{ whiteSpace: "nowrap" }}>
-              {sk.title}
-            </button>
-          ))}
-        </div>
+        <div className="skillsWrap">
+          <div className="skillsNav">
+            {READING_SKILLS.map(sk => (
+              <button key={sk.id} className={`skillsNavBtn${sk.id === activeSkillId ? " on" : ""}`} onClick={() => setActiveSkillId(sk.id)}>
+                {sk.title}
+              </button>
+            ))}
+          </div>
 
-        {s && (
-          <div className="card" style={{ marginBottom: 16, padding: 20 }}>
-            <h3 style={{ marginBottom: 6 }}>{s.title}</h3>
-            <p style={{ fontSize: 13, color: "#8a7d6d", marginBottom: 12 }}><b style={{ color: "#c59b44" }}>Когда применять:</b> {s.whenToUse}</p>
-            <ul style={{ fontSize: 13, color: "#c0b8a8", lineHeight: 1.9, paddingLeft: 18, marginBottom: 12 }}>
-              {s.howTo.map((h, i) => <li key={i}>{h}</li>)}
-            </ul>
-            <div style={{ background: "rgba(197,155,68,.06)", border: "1px solid rgba(197,155,68,.2)", borderRadius: 8, padding: 14, marginBottom: (s.practice || s.passages) ? 16 : 0 }}>
-              <div style={{ fontSize: 13, color: "#e8dfd0", fontStyle: "italic", marginBottom: 6 }}>{s.example.text}</div>
-              <div style={{ fontSize: 12.5, color: "#8a7d6d" }}>{s.example.note}</div>
-            </div>
-            {s.practice && (
-              <div>
-                <div style={{ fontSize: 13, fontWeight: 600, color: "#c59b44", margin: "14px 0 10px" }}>✏️ Practice — {s.practice.length} questions</div>
-                {s.practice.map((p, pi) => {
-                  const sel = skillAnswers[p.id];
-                  const done = sel !== undefined;
-                  return (
-                    <div key={p.id} className="qcard" style={{ marginBottom: 10, padding: 16 }}>
-                      <div className="qnum">Question {pi + 1}</div>
-                      <div className="qtext" style={{ fontSize: 14, marginBottom: 12 }}>{p.text}</div>
-                      {p.opts.map((o, i) => {
-                        let cls = "opt";
-                        if (done) { if (i === p.answer) cls += " ok"; else if (i === sel) cls += " ng"; }
-                        return <button key={i} className={cls} disabled={done} onClick={() => setSkillAnswers(a => ({ ...a, [p.id]: i }))}>
-                          <span style={{ color: "#c59b44", marginRight: 9 }}>{String.fromCharCode(65 + i)}.</span>{o}
-                        </button>;
-                      })}
-                      {done && <div className="exp"><b>💡 Why:</b> {p.exp}</div>}
+          <div className="skillsContent">
+            {s && (
+              <div className="card" style={{ marginBottom: 16, padding: 20 }}>
+                <h3 style={{ marginBottom: 6 }}>{s.title}</h3>
+                <p style={{ fontSize: 13, color: "#8a7d6d", marginBottom: 12 }}><b style={{ color: "#c59b44" }}>Когда применять:</b> {s.whenToUse}</p>
+                <ul style={{ fontSize: 13, color: "#c0b8a8", lineHeight: 1.9, paddingLeft: 18, marginBottom: 12 }}>
+                  {s.howTo.map((h, i) => <li key={i}>{h}</li>)}
+                </ul>
+
+                {s.demo && (
+                  <div className="card" style={{ background: "rgba(76,175,136,.06)", border: "1px solid rgba(76,175,136,.25)", marginBottom: 16, padding: 16 }}>
+                    <div style={{ fontSize: 13, fontWeight: 600, color: "#4caf88", marginBottom: 10 }}>🎬 See it in action</div>
+                    <p style={{ fontSize: 12.5, color: "#8a7d6d", marginBottom: 12 }}>{s.demo.intro}</p>
+                    <div style={{ background: "#0b1622", borderRadius: 8, padding: 16, fontSize: 14, lineHeight: 1.9, marginBottom: 12 }}>
+                      {s.demo.sentences.map((sent, i) => (
+                        <span key={i} className={`demoSent ${sent.read ? "read" : "skip"}`}>{sent.text}{" "}</span>
+                      ))}
                     </div>
-                  );
-                })}
-              </div>
-            )}
-            {s.passages && (
-              <div>
-                <div style={{ fontSize: 13, fontWeight: 600, color: "#c59b44", margin: "14px 0 10px" }}>
-                  ✏️ Practice on full texts — {s.passages.reduce((n, p) => n + p.questions.length, 0)} questions
+                    <div style={{ fontSize: 12.5, color: "#c0b8a8" }}>{s.demo.caption}</div>
+                  </div>
+                )}
+
+                <div style={{ background: "rgba(197,155,68,.06)", border: "1px solid rgba(197,155,68,.2)", borderRadius: 8, padding: 14, marginBottom: (s.practice || s.passages) ? 16 : 0 }}>
+                  <div style={{ fontSize: 13, color: "#e8dfd0", fontStyle: "italic", marginBottom: 6 }}>{s.example.text}</div>
+                  <div style={{ fontSize: 12.5, color: "#8a7d6d" }}>{s.example.note}</div>
                 </div>
-                {s.passages.map((psg, psgI) => (
-                  <div key={psgI} style={{ marginBottom: 22 }}>
-                    <h4 style={{ fontFamily: "Lora,serif", fontSize: 16, color: "#e8dfd0", marginBottom: 8 }}>{psg.title}</h4>
-                    <div className="card" style={{ maxHeight: 320, overflowY: "auto", lineHeight: 1.8, fontSize: 14, color: "#c0b8a8", marginBottom: 12, whiteSpace: "pre-wrap" }}>
-                      {psg.text}
-                    </div>
-                    {psg.questions.map((p, pi) => {
+                {s.practice && (
+                  <div>
+                    <div style={{ fontSize: 13, fontWeight: 600, color: "#c59b44", margin: "14px 0 10px" }}>✏️ Practice — {s.practice.length} questions</div>
+                    {s.practice.map((p, pi) => {
                       const sel = skillAnswers[p.id];
                       const done = sel !== undefined;
                       return (
                         <div key={p.id} className="qcard" style={{ marginBottom: 10, padding: 16 }}>
-                          <div className="qtext" style={{ fontSize: 14, marginBottom: 12 }}>{p.prompt}</div>
+                          <div className="qnum">Question {pi + 1}</div>
+                          <div className="qtext" style={{ fontSize: 14, marginBottom: 12 }}>{p.text}</div>
                           {p.opts.map((o, i) => {
                             let cls = "opt";
                             if (done) { if (i === p.answer) cls += " ok"; else if (i === sel) cls += " ng"; }
@@ -116,14 +102,46 @@ export default function ReadingPage({ studentName, onSaveResult }) {
                       );
                     })}
                   </div>
-                ))}
+                )}
+                {s.passages && (
+                  <div>
+                    <div style={{ fontSize: 13, fontWeight: 600, color: "#c59b44", margin: "14px 0 10px" }}>
+                      ✏️ Practice on full texts — {s.passages.reduce((n, p) => n + p.questions.length, 0)} questions
+                    </div>
+                    {s.passages.map((psg, psgI) => (
+                      <div key={psgI} style={{ marginBottom: 22 }}>
+                        <h4 style={{ fontFamily: "Lora,serif", fontSize: 16, color: "#e8dfd0", marginBottom: 8 }}>{psg.title}</h4>
+                        <div className="card" style={{ maxHeight: 320, overflowY: "auto", lineHeight: 1.8, fontSize: 14, color: "#c0b8a8", marginBottom: 12, whiteSpace: "pre-wrap" }}>
+                          {psg.text}
+                        </div>
+                        {psg.questions.map((p, pi) => {
+                          const sel = skillAnswers[p.id];
+                          const done = sel !== undefined;
+                          return (
+                            <div key={p.id} className="qcard" style={{ marginBottom: 10, padding: 16 }}>
+                              <div className="qtext" style={{ fontSize: 14, marginBottom: 12 }}>{p.prompt}</div>
+                              {p.opts.map((o, i) => {
+                                let cls = "opt";
+                                if (done) { if (i === p.answer) cls += " ok"; else if (i === sel) cls += " ng"; }
+                                return <button key={i} className={cls} disabled={done} onClick={() => setSkillAnswers(a => ({ ...a, [p.id]: i }))}>
+                                  <span style={{ color: "#c59b44", marginRight: 9 }}>{String.fromCharCode(65 + i)}.</span>{o}
+                                </button>;
+                              })}
+                              {done && <div className="exp"><b>💡 Why:</b> {p.exp}</div>}
+                            </div>
+                          );
+                        })}
+                      </div>
+                    ))}
+                  </div>
+                )}
+                {!s.practice && !s.passages && (
+                  <div className="tip">Практика для этого навыка ещё не добавлена — скоро появится.</div>
+                )}
               </div>
             )}
-            {!s.practice && !s.passages && (
-              <div className="tip">Практика для этого навыка ещё не добавлена — скоро появится.</div>
-            )}
           </div>
-        )}
+        </div>
 
         <div className="card" style={{ marginBottom: 16, padding: 20 }}>
           <h3 style={{ marginBottom: 10 }}>📊 Перевод баллов в Band Score (справочно)</h3>
