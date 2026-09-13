@@ -114,6 +114,66 @@ Major fashion retailers have not been entirely absent from this conversation, wi
           { id: "sk-10", prompt: "What is the main idea of Paragraph 5?", opts: ["Sustainability initiatives have fully solved the fashion industry's environmental problems.", "While some brands have introduced sustainability initiatives, critics argue they are insufficient given the scale of production.", "Critics believe fashion brands are doing more than enough.", "Recycling programmes now cover most of the clothing produced."], answer: 1, exp: "The key word is 'dwarfs' — the scale of the initiatives is incomparably small next to the volume of production." },
         ],
       },
+      {
+        title: "The Science of Habit Formation",
+        text:
+`Habits account for a remarkably large proportion of daily human behaviour, with some psychologists estimating that automatic, habitual actions make up somewhere between a third and nearly half of what people do on an average day, often without any conscious deliberation at all.
+
+Neuroscientific research has identified a specific brain structure, the basal ganglia, as playing a central role in encoding habitual behaviour, effectively allowing the brain to conserve mental effort by shifting well-practised actions from a deliberate decision-making process to something closer to automatic execution.
+
+A widely referenced model describes habit formation as a three-part loop consisting of a cue that triggers the behaviour, the routine or action itself, and a reward that reinforces the association, strengthening the loop each time it is repeated until the behaviour becomes largely automatic.
+
+Breaking an established habit has proven considerably more difficult than psychologists once assumed, since the neural pathway underlying the habit does not simply disappear once a person stops performing the behaviour; instead, it appears to remain largely intact and can be reactivated relatively easily under stress or in a familiar triggering context.
+
+Given this resilience, many behaviour-change specialists now recommend focusing not on eliminating an unwanted habit loop directly, but on identifying its original cue and substituting a new, healthier routine that still delivers a comparable reward, an approach that research suggests tends to produce more durable long-term change.`,
+        questions: [
+          { id: "sk-11", prompt: "What is the main idea of Paragraph 1?", opts: ["Humans rarely act out of habit.", "A substantial portion of daily behaviour is automatic and habitual.", "Habits only affect a tiny fraction of daily actions.", "People are always consciously aware of their habits."], answer: 1, exp: "The paragraph's point is the scale of habitual behaviour (a third to nearly half of daily actions), not a specific example." },
+          { id: "sk-12", prompt: "What is the main idea of Paragraph 2?", opts: ["The basal ganglia has no role in behaviour.", "A specific brain structure helps make habitual behaviour more automatic, saving mental effort.", "The brain requires more effort for habitual actions than new ones.", "Neuroscience has found no link between the brain and habits."], answer: 1, exp: "The paragraph explains the brain mechanism (basal ganglia) that conserves effort via automatic execution." },
+          { id: "sk-13", prompt: "What is the main idea of Paragraph 3?", opts: ["Habits form through a repeating cycle of cue, routine, and reward.", "Habits form randomly with no identifiable pattern.", "Rewards play no role in habit formation.", "Habits form instantly after a single repetition."], answer: 0, exp: "The paragraph describes the specific three-part loop model — its whole point is that there IS a clear, repeating pattern." },
+          { id: "sk-14", prompt: "What is the main idea of Paragraph 4?", opts: ["Habits are very easy to eliminate permanently.", "Once formed, habit-related neural pathways tend to persist and can resurface under stress, making habits hard to break.", "Neural pathways for habits disappear the moment a behaviour stops.", "Breaking habits has become easier than psychologists once thought."], answer: 1, exp: "The paragraph's point is resilience and persistence of habit pathways — the opposite of easy elimination." },
+          { id: "sk-15", prompt: "What is the main idea of Paragraph 5?", opts: ["Directly eliminating a habit loop is the recommended approach.", "Replacing a habit's routine with a healthier one, while keeping the same cue and reward, tends to produce more lasting change.", "Behaviour-change specialists recommend ignoring cues entirely.", "There is no effective strategy for changing habits."], answer: 1, exp: "The paragraph recommends substitution (same cue/reward, new routine) rather than direct elimination." },
+        ],
+      },
+      {
+        title: "The Global Decline of Bee Populations",
+        text:
+`Over the past two decades, beekeepers and researchers across North America and Europe have documented significant declines in managed honeybee colonies, alongside broader concerns about wild pollinator populations, prompting sustained scientific attention to a phenomenon with potentially serious implications for global food production.
+
+No single cause has been identified as solely responsible for these declines; instead, researchers generally point to a combination of factors, including exposure to certain classes of pesticides, the spread of parasitic mites, habitat loss due to agricultural intensification, and the effects of pathogens that spread more easily within densely managed colonies.
+
+Among these factors, the Varroa mite has received particular attention, since it not only weakens bees directly by feeding on their tissue but also serves as a vector for several viral diseases, creating compounding health problems that can rapidly destabilise an otherwise seemingly healthy colony.
+
+The economic stakes extend well beyond honey production itself, since bees and other pollinators are estimated to contribute to the pollination of a substantial share of globally significant food crops, meaning that sustained pollinator decline could eventually affect the availability and cost of numerous fruits, vegetables, and nuts.
+
+In response, a range of mitigation efforts have been introduced, from stricter regulation of certain pesticides in some regions to the planting of pollinator-friendly wildflower habitats near agricultural land, though researchers caution that reversing the broader downward trend will likely require sustained, coordinated action across multiple fronts simultaneously.`,
+        questions: [
+          { id: "sk-16", prompt: "What is the main idea of Paragraph 1?", opts: ["Bee populations have shown no notable changes in recent decades.", "Significant declines in bee populations have been documented and have drawn serious scientific attention.", "Only honey production has been affected by bee population changes.", "Beekeepers have stopped tracking colony health."], answer: 1, exp: "The paragraph establishes the overall phenomenon (documented decline, scientific attention), not a specific narrow detail." },
+          { id: "sk-17", prompt: "What is the main idea of Paragraph 2?", opts: ["A single clear cause explains all bee population decline.", "Researchers attribute the decline to a combination of several different factors.", "Pesticides are the only factor considered relevant.", "Habitat loss has been ruled out as a contributing factor."], answer: 1, exp: "The paragraph explicitly states 'no single cause' and lists multiple contributing factors." },
+          { id: "sk-18", prompt: "What is the main idea of Paragraph 3?", opts: ["The Varroa mite has no significant impact on bee health.", "The Varroa mite both directly weakens bees and spreads disease, compounding colony health problems.", "Viral diseases in bees are unrelated to mites.", "Varroa mites only affect a tiny number of colonies worldwide."], answer: 1, exp: "The paragraph's focus is the mite's dual/compounding harm — direct weakening plus disease vector." },
+          { id: "sk-19", prompt: "What is the main idea of Paragraph 4?", opts: ["Bee decline has no economic implications beyond honey.", "Pollinator decline could affect the availability and cost of many important food crops.", "Bees contribute nothing to global food production.", "Only nuts are affected by pollinator decline."], answer: 1, exp: "The paragraph broadens the stakes to food crops generally, not just honey or a single crop type." },
+          { id: "sk-20", prompt: "What is the main idea of Paragraph 5?", opts: ["No mitigation efforts have been attempted anywhere.", "Various mitigation efforts are underway, but reversing the trend will likely require sustained, coordinated action.", "The bee decline problem has already been fully solved.", "Pesticide regulation alone has completely resolved the issue."], answer: 1, exp: "The paragraph lists efforts underway while cautioning that a full reversal needs broader, coordinated action." },
+        ],
+      },
+      {
+        title: "The Renaissance of Vinyl Records",
+        text:
+`After decades of steep decline following the rise of cassette tapes and, later, compact discs, vinyl record sales have experienced a sustained resurgence over the past fifteen years, with annual sales figures in several major markets climbing for over a decade in a row, defying earlier predictions that the format would fade into obscurity.
+
+Part of this revival has been attributed to a growing appetite among some listeners for a more tangible, deliberate listening experience, in contrast to the largely intangible, algorithm-driven nature of streaming platforms, where songs can be skipped instantly and background listening is common.
+
+Collectors and enthusiasts frequently cite the distinct qualities of album artwork, liner notes, and the physical ritual of placing a record on a turntable as meaningful parts of the appeal, elements that are typically diminished or entirely absent in digital formats regardless of audio quality.
+
+The resurgence has not been without practical difficulties, however, since the number of pressing plants capable of manufacturing vinyl records shrank dramatically during the format's decline, creating production bottlenecks and lengthy waiting times that have occasionally frustrated both major labels and independent artists alike.
+
+Industry analysts remain divided over whether the format's current popularity represents a durable long-term shift in listening habits or a more temporary nostalgia-driven trend, though the willingness of major artists to release new albums on vinyl alongside digital formats suggests that, for now at least, the format retains genuine commercial relevance.`,
+        questions: [
+          { id: "sk-21", prompt: "What is the main idea of Paragraph 1?", opts: ["Vinyl sales have continued declining without interruption for decades.", "Vinyl sales have seen a sustained revival over the past fifteen years, defying earlier predictions.", "Cassette tapes have replaced vinyl as the dominant format.", "Vinyl sales peaked only once, decades ago, and never recovered."], answer: 1, exp: "The paragraph's point is the reversal — sustained recent growth contradicting the format's earlier decline." },
+          { id: "sk-22", prompt: "What is the main idea of Paragraph 2?", opts: ["Streaming and vinyl offer an identical listening experience.", "Part of vinyl's appeal lies in offering a more tangible, deliberate experience compared to streaming.", "No listeners value a physical listening experience.", "Streaming platforms require more deliberate listening than vinyl."], answer: 1, exp: "The paragraph contrasts vinyl's tangible experience with streaming's intangible, skippable nature." },
+          { id: "sk-23", prompt: "What is the main idea of Paragraph 3?", opts: ["Album artwork and liner notes are irrelevant to vinyl's appeal.", "Physical elements like artwork and the ritual of playing a record are seen as meaningful parts of vinyl's appeal.", "Digital formats offer superior physical packaging.", "Turntables are no longer used by vinyl enthusiasts."], answer: 1, exp: "The paragraph lists these physical elements specifically as part of the appeal, contrasted with digital formats lacking them." },
+          { id: "sk-24", prompt: "What is the main idea of Paragraph 4?", opts: ["Vinyl production has faced no practical challenges during its revival.", "A shortage of pressing plants has created production bottlenecks and delays during vinyl's resurgence.", "There are now more pressing plants than ever before.", "Major labels have been unaffected by production issues."], answer: 1, exp: "The paragraph's focus is the practical difficulty (fewer plants, bottlenecks) accompanying the revival." },
+          { id: "sk-25", prompt: "What is the main idea of Paragraph 5?", opts: ["All analysts agree vinyl's popularity is purely temporary nostalgia.", "Analysts are divided on whether vinyl's revival is durable or temporary, though major artists continue releasing vinyl.", "No major artists currently release music on vinyl.", "The format has already lost all commercial relevance."], answer: 1, exp: "The paragraph explicitly states analysts 'remain divided', while noting continued vinyl releases as a sign of relevance." },
+        ],
+      },
     ],
   },
   {
@@ -179,6 +239,66 @@ Looking ahead, industry analysts predict that the next major wave of adoption wi
           { id: "sc-10", prompt: "By what year are an estimated one billion people expected to buy their first smartphone?", opts: ["2016", "2019", "2023", "2030"], answer: 3, exp: "The text says this is expected to happen 'before 2030'." },
         ],
       },
+      {
+        title: "The Discovery of Penicillin",
+        text:
+`In September 1928, the Scottish bacteriologist Alexander Fleming returned to his laboratory at St Mary's Hospital in London after a summer holiday and noticed that one of his petri dishes, left uncovered by accident, had become contaminated with a blue-green mould. Around the mould, he observed a clear ring where the surrounding bacteria appeared to have been destroyed.
+
+Fleming identified the mould as belonging to the genus Penicillium and published his initial findings in 1929, naming the antibacterial substance it produced "penicillin". Despite the significance of the discovery, Fleming struggled to isolate and stabilise the compound in sufficient quantities, and his early research attracted relatively little attention within the wider scientific community for almost a decade.
+
+The breakthrough that transformed penicillin from a laboratory curiosity into a usable medicine came a decade later, when a team led by Howard Florey and Ernst Boris Chain at the University of Oxford developed methods to purify and mass-produce the substance. Their work, published in 1940, demonstrated penicillin's remarkable effectiveness in treating bacterial infections in mice.
+
+The first human patient to receive penicillin, a police constable named Albert Alexander, was treated in February 1941 after developing a severe infection from a scratch. Although he initially showed dramatic improvement, the limited supply of the drug ran out before treatment could be completed, and he later died, a case that nonetheless demonstrated penicillin's potential when supplies were sufficient.
+
+By 1944, in the lead-up to the D-Day invasion, penicillin production in the United States had been scaled up dramatically, reaching a level sufficient to treat all Allied forces requiring it. Fleming, Florey, and Chain were jointly awarded the Nobel Prize in Physiology or Medicine in 1945 for their contributions to what has since been regarded as one of the most significant medical discoveries of the twentieth century.`,
+        questions: [
+          { id: "sc-11", prompt: "In what year did Fleming first notice the mould in his petri dish?", opts: ["1928", "1929", "1940", "1945"], answer: 0, exp: "The text states 'In September 1928... Fleming... noticed... a blue-green mould.'" },
+          { id: "sc-12", prompt: "What did Fleming name the antibacterial substance?", opts: ["Chainicillin", "Florecillin", "Penicillin", "Alexandrin"], answer: 2, exp: "The text says he named it 'penicillin'." },
+          { id: "sc-13", prompt: "Who led the Oxford team that developed methods to mass-produce penicillin?", opts: ["Alexander Fleming alone", "Howard Florey and Ernst Boris Chain", "Albert Alexander", "A team in the United States"], answer: 1, exp: "The text names 'a team led by Howard Florey and Ernst Boris Chain'." },
+          { id: "sc-14", prompt: "In what month and year was the first human patient treated with penicillin?", opts: ["September 1928", "1929", "February 1941", "1944"], answer: 2, exp: "The text says Albert Alexander 'was treated in February 1941'." },
+          { id: "sc-15", prompt: "In what year did Fleming, Florey and Chain receive the Nobel Prize?", opts: ["1928", "1940", "1941", "1945"], answer: 3, exp: "The text states they 'were jointly awarded the Nobel Prize... in 1945'." },
+        ],
+      },
+      {
+        title: "The Construction of the Panama Canal",
+        text:
+`The idea of building a canal across the narrow isthmus of Panama to connect the Atlantic and Pacific Oceans dates back centuries, but serious construction efforts did not begin until 1881, when a French company led by Ferdinand de Lesseps, fresh from his success with the Suez Canal, undertook the project.
+
+The French effort ultimately failed, hampered by tropical diseases including malaria and yellow fever, engineering challenges far greater than those encountered in Egypt, and financial mismanagement. By the time the project was abandoned in 1889, an estimated 22,000 workers had died, and the venture had cost investors enormous sums of money.
+
+The United States acquired the rights to the project in 1904, after Panama, with American support, declared independence from Colombia. Under the leadership of chief engineer John Frank Stevens and later George Washington Goethals, American engineers adopted a lock-based canal design rather than the sea-level canal the French had attempted.
+
+Construction was completed in 1914, at a total cost to the United States of roughly $375 million, and the canal officially opened to commercial traffic on 15 August of that year. Improved sanitation measures, including extensive mosquito-control programmes led by physician William Gorgas, dramatically reduced disease-related deaths compared with the French phase of construction.
+
+Control of the canal remained with the United States for the rest of the twentieth century, until a series of treaties signed in 1977 established a gradual transfer of authority, with full control passing to Panama on 31 December 1999, a date that remains a significant national holiday in the country.`,
+        questions: [
+          { id: "sc-16", prompt: "In what year did the French construction effort on the Panama Canal begin?", opts: ["1869", "1881", "1889", "1904"], answer: 1, exp: "The text says 'serious construction efforts did not begin until 1881'." },
+          { id: "sc-17", prompt: "Approximately how many workers died during the French phase of construction?", opts: ["2,200", "22,000", "220,000", "12,000"], answer: 1, exp: "The text states 'an estimated 22,000 workers had died'." },
+          { id: "sc-18", prompt: "In what year did the United States acquire the rights to the canal project?", opts: ["1899", "1904", "1914", "1977"], answer: 1, exp: "The text says 'The United States acquired the rights to the project in 1904'." },
+          { id: "sc-19", prompt: "On what date did the canal officially open to commercial traffic?", opts: ["15 August 1914", "31 December 1999", "4 July 1904", "1 January 1977"], answer: 0, exp: "The text states the canal 'officially opened to commercial traffic on 15 August' 1914." },
+          { id: "sc-20", prompt: "On what date did full control of the canal pass to Panama?", opts: ["15 August 1914", "1977", "31 December 1999", "1889"], answer: 2, exp: "The text says 'full control passing to Panama on 31 December 1999'." },
+        ],
+      },
+      {
+        title: "The Origins of the Modern Olympic Games",
+        text:
+`The modern Olympic Games trace their origin to the efforts of French educator Pierre de Coubertin, who proposed reviving the ancient Greek tradition at a conference held in Paris in 1894. His proposal led to the founding of the International Olympic Committee that same year.
+
+The first modern Olympic Games were held in Athens in 1896, featuring approximately 241 athletes from 14 nations competing across 43 events in 9 different sports. The event was considered a success, though attendance and international participation remained modest compared with later editions.
+
+Women were not permitted to compete in the first Games, and it was not until the 1900 Paris Olympics that female athletes were allowed to participate, initially only in a small number of sports such as tennis and golf. Full gender parity in the number of events took over a century longer to achieve.
+
+The Winter Olympics were introduced considerably later than the Summer Games, with the first edition held in Chamonix, France, in 1924, featuring events such as figure skating, ice hockey, and various skiing disciplines that were unsuited to a summer competition format.
+
+Today, the Summer Olympics attract several thousand athletes from over 200 nations, a dramatic expansion from the 14 nations present in 1896, reflecting both the growth of international sport and the increasing number of countries recognised for competition by the International Olympic Committee.`,
+        questions: [
+          { id: "sc-21", prompt: "In what year did Pierre de Coubertin propose reviving the Olympic Games?", opts: ["1894", "1896", "1900", "1924"], answer: 0, exp: "The text says he made the proposal 'at a conference held in Paris in 1894'." },
+          { id: "sc-22", prompt: "How many nations competed at the first modern Olympics in Athens?", opts: ["9", "14", "43", "241"], answer: 1, exp: "The text states '241 athletes from 14 nations' competed at the first Games." },
+          { id: "sc-23", prompt: "In which city and year did women first compete in the Olympics?", opts: ["Athens, 1896", "Paris, 1900", "Chamonix, 1924", "London, 1908"], answer: 1, exp: "The text says female athletes were first allowed to participate at 'the 1900 Paris Olympics'." },
+          { id: "sc-24", prompt: "Where were the first Winter Olympics held?", opts: ["Athens", "Paris", "Chamonix, France", "Los Angeles"], answer: 2, exp: "The text states the first Winter Olympics were 'held in Chamonix, France, in 1924'." },
+          { id: "sc-25", prompt: "Approximately how many nations participate in the Summer Olympics today, according to the text?", opts: ["Over 200", "Exactly 43", "14", "9"], answer: 0, exp: "The text says today's Games attract athletes 'from over 200 nations'." },
+        ],
+      },
     ],
   },
   {
@@ -234,6 +354,66 @@ Prevention has increasingly been recognised as far more cost-effective than erad
           { id: "pr-8", prompt: "Given that Paragraph 2 explained a method of introduction, what is a natural next topic?", opts: ["The consequences once a species has been introduced.", "An unrelated history of shipbuilding.", "A repeat of the same introduction method.", "The paragraph simply stopping the argument."], answer: 0, exp: "After explaining how something happens, texts typically explain what happens next — Paragraph 3 covers ecological consequences." },
           { id: "pr-9", prompt: "After discussing ecological consequences, what might you predict comes next?", opts: ["A shift to a completely unrelated topic.", "A discussion of economic consequences.", "A retraction of everything said before.", "The end of the text with no further development."], answer: 1, exp: "Texts about consequences often broaden from one type of impact to another — here, from ecological to economic costs, covered in Paragraph 4." },
           { id: "pr-10", prompt: "Given the problem has now been described from multiple angles, what would you expect the final paragraph to focus on?", opts: ["Solutions or prevention measures.", "A return to the initial definition with no new information.", "An unrelated new problem.", "Simply restating the economic figures again."], answer: 0, exp: "After presenting a problem's scope and cost, a text commonly turns to solutions — Paragraph 5 discusses prevention and biosecurity measures." },
+        ],
+      },
+      {
+        title: "The Hidden Cost of Food Waste",
+        text:
+`Across the global food supply chain, from farms to retail shelves to household kitchens, a substantial proportion of all food produced is never actually eaten, a phenomenon that has drawn increasing attention from policymakers, environmental scientists, and the food industry alike in recent years.
+
+Estimates suggest that roughly a third of all food produced globally for human consumption is lost or wasted at some stage, with the specific causes varying considerably between wealthier and poorer nations: in developing countries, losses tend to occur earlier in the supply chain due to inadequate storage and transport infrastructure, while in wealthier nations, waste is more concentrated at the retail and consumer stages.
+
+The environmental consequences of this waste extend well beyond the food itself, since producing food that is ultimately discarded also wastes the water, land, energy, and labour invested in growing, processing, and transporting it, while decomposing food waste in landfills generates methane, a greenhouse gas considerably more potent than carbon dioxide.
+
+In response, a range of initiatives have emerged to address different points along the supply chain, including apps connecting consumers with surplus food from restaurants and grocery stores, changes to labelling practices intended to reduce confusion over expiration dates, and policy measures in some countries requiring large retailers to donate unsold edible food rather than discard it.
+
+Despite these efforts, experts caution that meaningfully reducing food waste at a global scale will likely require coordinated change across multiple actors simultaneously, from consumer behaviour and retailer practices to agricultural policy and infrastructure investment, rather than any single intervention acting in isolation.`,
+        questions: [
+          { id: "pr-11", prompt: "Based on the title alone, what would you predict this text discusses?", opts: ["A recipe collection for using leftover food.", "The scale and consequences of food being wasted, and possibly what's being done about it.", "A history of farming techniques.", "An argument that food waste doesn't actually happen."], answer: 1, exp: "The title's key terms — 'hidden cost' and 'food waste' — predict a discussion of scale, consequences, and likely responses." },
+          { id: "pr-12", prompt: "Having read Paragraph 1, what would you expect Paragraph 2 to cover?", opts: ["Specific data on how much food is wasted and where.", "An unrelated discussion of restaurant menus.", "A conclusion that no food waste exists.", "The history of agriculture in general."], answer: 0, exp: "After introducing the phenomenon, a logical next step is quantifying it — which Paragraph 2 does with the 'roughly a third' estimate." },
+          { id: "pr-13", prompt: "Having read Paragraphs 1-2, what would you predict comes next?", opts: ["A repeat of the same statistics.", "The broader consequences of this waste, such as environmental impact.", "An unrelated topic switch.", "A biography of a food scientist."], answer: 1, exp: "After establishing scale, texts commonly move to consequences — Paragraph 3 covers environmental impact." },
+          { id: "pr-14", prompt: "Given that Paragraph 3 discussed consequences, what is a natural next step?", opts: ["Solutions or responses being attempted.", "A return to the initial statistics with no new information.", "An unrelated new problem.", "The text ending abruptly."], answer: 0, exp: "After consequences, a balanced text typically presents responses or solutions — Paragraph 4 covers various initiatives." },
+          { id: "pr-15", prompt: "Based on the pattern (problem → data → consequences → solutions), what would you expect the final paragraph to do?", opts: ["Introduce a completely unrelated topic.", "Offer a balanced concluding note on the challenge of solving the problem at scale.", "Simply repeat Paragraph 1.", "End with no concluding thoughts at all."], answer: 1, exp: "Texts structured this way typically end with a nuanced conclusion — Paragraph 5 notes the need for coordinated, multi-actor change." },
+        ],
+      },
+      {
+        title: "The Rise of Citizen Science",
+        text:
+`In recent decades, scientific research has increasingly come to rely not only on professional researchers but also on large numbers of volunteers, often with no formal scientific training, who contribute to data collection and analysis through what has come to be known as citizen science.
+
+This approach has proven particularly valuable in fields requiring observations across vast geographic areas or extended time periods, such as tracking bird migration patterns, monitoring water quality in local streams, or classifying distant galaxies in astronomical images, tasks that would be prohibitively expensive or time-consuming for small professional research teams alone.
+
+The growth of smartphone technology and dedicated mobile applications has significantly accelerated this trend, making it substantially easier for volunteers to record and submit observations in real time, while also allowing project organisers to verify data quality and provide immediate feedback to participants.
+
+Critics have raised concerns about the reliability of data collected by untrained volunteers, prompting many citizen science projects to implement quality-control measures such as requiring multiple independent observations to confirm a single data point, or having a subset of submissions reviewed by expert volunteers or professional scientists.
+
+Despite these concerns, numerous peer-reviewed studies have now been published using citizen-science-generated data, and many researchers argue that, when properly managed, the sheer scale of data achievable through mass public participation can outweigh the risks associated with less rigorous training, particularly for research questions requiring extensive geographic or temporal coverage.`,
+        questions: [
+          { id: "pr-16", prompt: "Based on the title alone, what would you predict this text discusses?", opts: ["A history of famous individual scientists.", "How ordinary volunteers are increasingly contributing to scientific research.", "An argument that citizen science should be banned.", "A guide to becoming a professional scientist."], answer: 1, exp: "The title's terms — 'rise' and 'citizen science' — predict a discussion of growing volunteer participation in research." },
+          { id: "pr-17", prompt: "Having read Paragraph 1, what would you expect Paragraph 2 to cover?", opts: ["Specific examples of where this approach has proven useful.", "An unrelated discussion of professional scientist salaries.", "A conclusion that citizen science never works.", "The history of the scientific method generally."], answer: 0, exp: "After introducing the concept, a logical next step is illustrating it with examples — which Paragraph 2 does." },
+          { id: "pr-18", prompt: "Having read Paragraphs 1-2, what would you predict comes next?", opts: ["A repeat of the same examples.", "A factor that has helped this trend grow, such as technology.", "An unrelated topic switch.", "The text ending immediately."], answer: 1, exp: "After examples, texts often explain what has enabled or accelerated the trend — Paragraph 3 covers smartphone technology." },
+          { id: "pr-19", prompt: "Given that Paragraph 3 discussed technology's role, what is a natural next step in a balanced text?", opts: ["Concerns or criticisms of the approach.", "A repeat of the technology discussion.", "An unrelated new topic.", "No further development."], answer: 0, exp: "A balanced text describing benefits and enablers typically follows with criticisms — Paragraph 4 raises reliability concerns." },
+          { id: "pr-20", prompt: "Based on the pattern (concept → examples → enabling factor → criticism), what would you expect the final paragraph to do?", opts: ["Introduce a completely unrelated topic.", "Offer a balanced response to the criticism and an overall assessment.", "Simply repeat Paragraph 1.", "End with no concluding thoughts at all."], answer: 1, exp: "Paragraph 5 responds to the criticism with a balanced assessment, exactly as this pattern would predict." },
+        ],
+      },
+      {
+        title: "The Debate Over Universal Basic Income",
+        text:
+`Universal basic income, a policy proposal involving regular, unconditional cash payments made to all citizens regardless of employment status or income level, has moved from a niche academic idea to a subject of serious policy debate and experimentation in numerous countries over the past decade.
+
+Proponents argue that such a policy could provide a stronger safety net than existing welfare systems, particularly as automation and artificial intelligence threaten to displace significant numbers of workers from traditional employment, while also reducing the administrative complexity associated with means-tested benefit programmes.
+
+Several pilot programmes have been conducted in various countries and cities to test these claims empirically, generally measuring outcomes such as recipients' employment status, mental health, and overall life satisfaction, with early results in some trials suggesting modest positive effects without the significant reduction in work effort that critics had predicted.
+
+Critics, however, raise concerns about the substantial cost of implementing such a policy at a national scale, questioning whether the necessary tax increases or budget reallocations would be politically feasible or economically sustainable, particularly in countries with already strained public finances.
+
+Given the limited scale and duration of pilot programmes conducted so far, most economists agree that considerably more research is needed before drawing firm conclusions about how a permanent, nationwide universal basic income might function in practice, particularly regarding its long-term effects on labour markets and government budgets.`,
+        questions: [
+          { id: "pr-21", prompt: "Based on the title alone, what would you predict this text discusses?", opts: ["A step-by-step guide to personal budgeting.", "A policy idea involving payments to all citizens, and the arguments for and against it.", "The history of taxation systems.", "An argument that all welfare programmes should be eliminated."], answer: 1, exp: "The title's terms — 'debate' and 'universal basic income' — predict a balanced discussion of a specific policy proposal." },
+          { id: "pr-22", prompt: "Having read Paragraph 1, what would you expect Paragraph 2 to cover?", opts: ["Arguments in favour of the policy.", "An unrelated history of currency.", "A conclusion that the idea has been abandoned everywhere.", "Details of a completely different policy."], answer: 0, exp: "After introducing the concept, a logical next step is presenting supporting arguments — which Paragraph 2 does." },
+          { id: "pr-23", prompt: "Having read Paragraphs 1-2, what would you predict comes next?", opts: ["A repeat of the same arguments.", "Evidence from real-world testing of the idea.", "An unrelated topic switch.", "The text ending immediately."], answer: 1, exp: "After arguments, texts often move to empirical evidence — Paragraph 3 covers pilot programme results." },
+          { id: "pr-24", prompt: "Given that Paragraph 3 presented supportive pilot evidence, what is a natural next step in a balanced text?", opts: ["Criticisms or concerns about the policy.", "A repeat of the same evidence.", "An unrelated new topic.", "No further development."], answer: 0, exp: "A balanced text presenting supportive evidence typically follows with criticism — Paragraph 4 raises cost concerns." },
+          { id: "pr-25", prompt: "Based on the pattern (concept → benefits → evidence → criticism), what would you expect the final paragraph to do?", opts: ["Introduce a completely unrelated topic.", "Offer a balanced conclusion noting the need for more research.", "Simply repeat Paragraph 1.", "End with no concluding thoughts at all."], answer: 1, exp: "Paragraph 5 concludes by noting the need for more research — a balanced, measured ending typical of this structure." },
         ],
       },
     ],
@@ -292,6 +472,66 @@ Regardless of the precise timeline, the cat's status today reflects this unusual
           { id: "dr-10", prompt: "Which statement best reflects Paragraph 5?", opts: ["Modern cats are entirely dependent on humans for survival, just like most dogs.", "Cats generally retain more independence from human control than dogs, which some link to their unique domestication history.", "No domestic cats can survive without human care.", "The cat's independence has nothing to do with its domestication history."], answer: 1, exp: "The text says cats retain 'far more independence... than dogs typically do' and links this directly to their domestication history." },
         ],
       },
+      {
+        title: "The Myth of Multitasking",
+        text:
+`Despite being widely regarded as a valuable modern skill, the ability to genuinely perform multiple cognitively demanding tasks simultaneously has been repeatedly called into question by cognitive psychology research, which suggests that what people typically experience as multitasking is, in most cases, rapid switching between tasks rather than true simultaneous processing.
+
+This rapid switching carries a measurable cost, commonly referred to as "switching cost", since the brain requires a brief period to disengage from one task and reorient itself to another, a process that, repeated frequently throughout a work session, can meaningfully reduce overall efficiency and increase the likelihood of errors.
+
+Not all forms of simultaneous activity are equally affected, however; researchers generally distinguish between tasks that compete for the same cognitive resources, such as reading and composing an email at the same time, and tasks that draw on largely separate resources, such as walking while listening to a podcast, where genuine parallel processing is more plausible.
+
+Some studies have identified a small subset of individuals, sometimes informally termed "supertaskers", who appear to show minimal performance decline when juggling multiple demanding tasks, though this group is thought to represent a small percentage of the population rather than a skill that most people can reliably develop through practice.
+
+Given this research, many productivity experts now recommend structuring work around focused, single-task periods rather than attempting simultaneous multitasking, particularly for tasks requiring sustained concentration, while reserving genuine multitasking for combinations of tasks that draw on clearly distinct cognitive resources.`,
+        questions: [
+          { id: "dr-11", prompt: "Which statement most precisely reflects Paragraph 1?", opts: ["Research has fully confirmed that multitasking is always beneficial.", "Research suggests that what feels like multitasking is usually rapid task-switching, not true simultaneous processing.", "No research has ever examined multitasking.", "Multitasking has been proven impossible for all people in all situations."], answer: 1, exp: "Option A contradicts the text's skepticism; D overstates with 'impossible for all people' when the text later describes exceptions." },
+          { id: "dr-12", prompt: "Which statement most accurately reflects Paragraph 2?", opts: ["Switching cost has no measurable effect on performance.", "Repeated task-switching carries a cost that can reduce efficiency and increase errors.", "Switching between tasks always improves accuracy.", "The brain requires no time at all to switch between tasks."], answer: 1, exp: "Options A, C and D all contradict the described 'switching cost' and its negative effects." },
+          { id: "dr-13", prompt: "Which statement most precisely reflects Paragraph 3?", opts: ["All simultaneous activities are equally affected by switching costs.", "Tasks competing for the same cognitive resources are more affected than tasks using separate resources.", "Walking and listening to a podcast cannot be done simultaneously.", "No distinction exists between different types of simultaneous activity."], answer: 1, exp: "The paragraph explicitly distinguishes ('not all... equally affected') between resource-competing and resource-separate tasks." },
+          { id: "dr-14", prompt: "Which statement most accurately reflects Paragraph 4?", opts: ["Most people can become 'supertaskers' with enough practice.", "A small subset of people show minimal performance decline when multitasking, but this is not typical or easily trainable.", "No one has ever been found to multitask well.", "Supertaskers represent the majority of the population."], answer: 1, exp: "The text says this is 'a small percentage', not a trainable skill for 'most people' — ruling out A and D." },
+          { id: "dr-15", prompt: "Which statement most precisely reflects Paragraph 5?", opts: ["Experts recommend multitasking for all types of work.", "Experts generally recommend single-task focus, reserving multitasking for tasks using distinct cognitive resources.", "Experts believe multitasking should be avoided in every possible scenario.", "Focused single-task periods are discouraged by productivity experts."], answer: 1, exp: "The text gives a nuanced recommendation (single-task focus generally, multitasking reserved for specific cases) — not an absolute rule either way." },
+        ],
+      },
+      {
+        title: "The Physics of Bridge Design",
+        text:
+`Bridge engineering has evolved considerably since ancient times, when simple beam and arch designs were the primary options available, to the present day, where a wide range of structural types, including suspension, cable-stayed, and truss bridges, allow engineers to span distances and support loads that would have been unimaginable to earlier builders.
+
+Suspension bridges, among the most visually striking designs, rely on large main cables anchored at each end and suspended between tall towers, with the roadway hung from these cables by numerous smaller vertical cables; this design distributes weight efficiently and allows suspension bridges to span exceptionally long distances without intermediate support in the water below.
+
+Not all long-span bridges use suspension designs, however; cable-stayed bridges, which connect the roadway directly to towers via diagonal cables rather than a single large curved main cable, have become increasingly popular for moderately long spans, offering many of the visual and structural benefits of suspension bridges at typically lower construction costs.
+
+Regardless of the specific design chosen, all bridges must account for a range of forces beyond simply supporting static weight, including wind loads, which can cause significant oscillation in long-span structures, and, in many regions, the possibility of seismic activity, which requires additional engineering measures to prevent structural failure during an earthquake.
+
+The catastrophic collapse of the Tacoma Narrows Bridge in 1940, caused by wind-induced oscillations that engineers at the time had not adequately anticipated, remains one of the most frequently cited case studies in engineering education, having prompted significant and lasting changes to how wind effects are modelled and accounted for in modern bridge design.`,
+        questions: [
+          { id: "dr-16", prompt: "Which statement most precisely reflects Paragraph 1?", opts: ["Bridge designs have remained unchanged since ancient times.", "Bridge engineering has advanced significantly from simple ancient designs to a wide range of modern structural types.", "Only arch bridges are used today.", "Ancient builders had access to all modern bridge designs."], answer: 1, exp: "Options A, C and D all contradict the described historical progression from simple to varied modern designs." },
+          { id: "dr-17", prompt: "Which statement most accurately reflects Paragraph 2?", opts: ["Suspension bridges require intermediate support structures in the water for every span.", "Suspension bridges distribute weight via main cables and towers, allowing long spans without intermediate water support.", "Suspension bridges cannot span long distances.", "The roadway in a suspension bridge is not connected to any cables."], answer: 1, exp: "The text explicitly says suspension bridges span 'without intermediate support in the water below' — the opposite of option A." },
+          { id: "dr-18", prompt: "Which statement most precisely reflects Paragraph 3?", opts: ["All long-span bridges use suspension designs exclusively.", "Cable-stayed bridges offer a lower-cost alternative to suspension bridges for moderately long spans.", "Cable-stayed bridges have become less popular over time.", "Cable-stayed bridges use a single large curved cable, just like suspension bridges."], answer: 1, exp: "The paragraph opens with 'Not all... use suspension designs', directly contradicting option A, and D misdescribes cable-stayed design." },
+          { id: "dr-19", prompt: "Which statement most accurately reflects Paragraph 4?", opts: ["Only suspension bridges need to account for wind loads.", "All bridges, regardless of design, must account for forces like wind and, in some regions, seismic activity.", "Static weight is the only force bridges need to consider.", "Seismic activity is irrelevant to bridge engineering everywhere."], answer: 1, exp: "The text says 'regardless of the specific design chosen, all bridges must account for' these forces — ruling out A, C and D." },
+          { id: "dr-20", prompt: "Which statement most precisely reflects Paragraph 5?", opts: ["The Tacoma Narrows collapse had no lasting impact on bridge engineering.", "The 1940 Tacoma Narrows collapse, caused by unanticipated wind effects, led to lasting changes in bridge design practices.", "Engineers fully anticipated the wind effects that caused the Tacoma Narrows collapse.", "The Tacoma Narrows Bridge collapsed due to seismic activity."], answer: 1, exp: "The text says the oscillations were something engineers 'had not adequately anticipated' — contradicting C, and the cause was wind, not seismic activity (D)." },
+        ],
+      },
+      {
+        title: "The Discovery of Antarctica's Subglacial Lakes",
+        text:
+`For much of the twentieth century, scientists generally assumed that the ice sheets covering Antarctica rested directly on solid, frozen bedrock throughout the continent, with little consideration given to the possibility of liquid water existing beneath such an extreme thickness of ice.
+
+This assumption began to change in the 1970s and 1990s, when researchers using radar and seismic surveys identified evidence of what appeared to be large bodies of liquid water trapped beneath the ice, kept unfrozen by geothermal heat from below and the immense insulating pressure of the ice sheet above.
+
+The largest and most extensively studied of these subglacial lakes, Lake Vostok, is estimated to be comparable in size to some of the larger lakes found on other continents, and is believed to have remained isolated from the Earth's atmosphere for possibly millions of years.
+
+Not all subglacial lakes are permanently isolated, however; some are now known to be connected by channels of water flowing slowly beneath the ice, occasionally draining and refilling over periods of months or years in events detectable through satellite measurements of the ice surface above them.
+
+Scientific interest in these lakes extends well beyond geology alone, since their long isolation makes them potentially valuable analogues for studying how life might survive in similarly extreme, isolated environments, including those that could exist beneath the icy surfaces of certain moons elsewhere in the solar system.`,
+        questions: [
+          { id: "dr-21", prompt: "Which statement most precisely reflects Paragraph 1?", opts: ["Scientists have always known about liquid water beneath Antarctic ice.", "For much of the twentieth century, scientists generally assumed the ice rested on solid bedrock, without considering liquid water beneath it.", "No ice sheets exist in Antarctica.", "Antarctic bedrock has never been studied by scientists."], answer: 1, exp: "Options A, C and D all contradict the described historical assumption and the extensive ice sheets covering Antarctica." },
+          { id: "dr-22", prompt: "Which statement most accurately reflects Paragraph 2?", opts: ["Radar and seismic surveys found no evidence of anything beneath the ice.", "Evidence from radar and seismic surveys suggested liquid water bodies kept unfrozen by geothermal heat and ice pressure.", "The water beneath the ice was found to be completely frozen solid.", "This discovery was made in the nineteenth century."], answer: 1, exp: "Options A and C directly contradict the described discovery of liquid water; D misstates the timeframe (1970s-1990s, not the 1800s)." },
+          { id: "dr-23", prompt: "Which statement most precisely reflects Paragraph 3?", opts: ["Lake Vostok is one of the smallest subglacial lakes known.", "Lake Vostok is comparable in size to some larger lakes elsewhere and may have been isolated for millions of years.", "Lake Vostok has been in regular contact with the atmosphere.", "Lake Vostok was discovered only very recently, within the last few years."], answer: 1, exp: "Option A contradicts 'comparable in size to some of the larger lakes'; C contradicts the described isolation from the atmosphere." },
+          { id: "dr-24", prompt: "Which statement most accurately reflects Paragraph 4?", opts: ["All subglacial lakes remain permanently and completely isolated from each other.", "Some subglacial lakes are connected by channels and occasionally drain and refill, detectable via satellite.", "No subglacial lake has ever been observed draining.", "Satellite measurements cannot detect any changes related to these lakes."], answer: 1, exp: "The paragraph opens with 'Not all... are permanently isolated', directly contradicting option A, and describes detectable draining events." },
+          { id: "dr-25", prompt: "Which statement most precisely reflects Paragraph 5?", opts: ["Scientific interest in these lakes is limited strictly to geology.", "These lakes are of interest partly because they could serve as analogues for studying life in extreme, isolated environments elsewhere.", "These lakes have no relevance to research about other planets or moons.", "No scientist has expressed interest in studying life in these lakes."], answer: 1, exp: "The text explicitly says interest 'extends well beyond geology alone' and mentions relevance to 'moons elsewhere in the solar system' — contradicting A and C." },
+        ],
+      },
     ],
   },
   {
@@ -333,243 +573,4 @@ Purists caution, however, against reducing kintsugi to a purely metaphorical or 
         text:
 `Long before coins or paper money became widespread, many societies across Africa, Asia, and the Pacific relied on cowrie shells as a medium of exchange. These small, glossy shells, harvested primarily from the Indian Ocean, were prized for their durability, uniform size, and resistance to counterfeiting, qualities that made them remarkably well suited to commerce.
 
-Their use as currency was strikingly widespread and long-lived, appearing in historical records from ancient China to West Africa, and persisting in some regions well into the nineteenth century, long after European colonial powers had begun introducing metal coinage. In parts of West Africa, cowries remained a dominant form of currency even as colonial administrations attempted to supplant them with imported coins.
-
-Economists studying this history have noted that cowrie-based monetary systems were far from primitive or haphazard; exchange rates between shells and other goods were often carefully calibrated, and large quantities were meticulously counted, strung together, and transported across considerable distances as part of extensive regional trade networks.
-
-The eventual decline of cowrie currency was gradual rather than sudden, driven by a combination of factors: the flooding of local markets with mass-imported shells that undermined their scarcity value, alongside deliberate colonial policies designed to compel populations to adopt state-issued coinage for the payment of taxes.
-
-Today, cowrie shells survive largely as ornamental or ceremonial objects rather than functional currency, retaining symbolic significance in various cultural and religious practices across the regions where they once circulated as money. Numismatists, along with historians of trade, continue to study these shells as a rare example of a durable, decentralised currency that operated successfully across multiple continents for centuries without any central minting authority.`,
-        questions: [
-          { id: "cg-6", prompt: "In Paragraph 1, what does 'medium of exchange' most likely mean?", opts: ["A large-sized shell", "Something used to facilitate trade or payment", "A type of ocean current", "A religious symbol"], answer: 1, exp: "This is the standard economic sense confirmed by the whole paragraph describing shells used as money." },
-          { id: "cg-7", prompt: "In Paragraph 2, what does 'supplant' most likely mean?", opts: ["To support and strengthen", "To replace", "To decorate", "To count carefully"], answer: 1, exp: "'Attempted to supplant them with imported coins' — colonial powers tried to replace shells with coins." },
-          { id: "cg-8", prompt: "In Paragraph 3, what does 'haphazard' most likely mean?", opts: ["Highly organised and precise", "Random or lacking clear order", "Extremely valuable", "Illegal"], answer: 1, exp: "The sentence says systems were 'far from primitive or haphazard' because rates were 'carefully calibrated' — implying haphazard is the opposite of organised." },
-          { id: "cg-9", prompt: "In Paragraph 4, what does 'compel' most likely mean?", opts: ["To politely request", "To force or pressure", "To forbid entirely", "To financially reward"], answer: 1, exp: "'Deliberate colonial policies designed to compel populations to adopt state-issued coinage' describes forced adoption, not a request or reward." },
-          { id: "cg-10", prompt: "In Paragraph 5, what does 'numismatists' most likely refer to?", opts: ["People who study or collect currency and coins", "Marine biologists studying shells", "Religious leaders", "Colonial tax collectors"], answer: 0, exp: "'Numismatists, along with historians of trade, continue to study these shells' places them alongside trade historians — scholars of currency." },
-        ],
-      },
-    ],
-  },
-  {
-    id: "paraphrase",
-    title: "Перефразирование — главный навык IELTS Reading",
-    whenToUse: "Постоянно. Вопросы почти никогда не используют те же слова, что и текст — экзамен специально проверяет, узнаёшь ли ты один и тот же смысл в разных формулировках.",
-    howTo: [
-      "Не ищи в тексте дословное совпадение с вопросом — если ищешь именно эти слова, скорее всего, пропустишь ответ.",
-      "Учись видеть синонимичные пары: increase → rise / grow; important → significant / crucial; because → due to / as a result of.",
-      "Меняется не только слово, но и структура: активный залог может превратиться в пассивный, существительное — в глагол ('the destruction of' → 'destroyed').",
-      "Если вопрос и фрагмент текста совпадают почти дословно — это часто ловушка (дистрактор), а настоящий ответ спрятан в перефразированном месте рядом.",
-    ],
-    example: {
-      text: "Текст: «...allow trees to exchange... chemical warning signals.» Вопрос: «Trees can alert each other to danger using chemicals.»",
-      note: "'exchange chemical warning signals' и 'alert each other to danger using chemicals' — это одна и та же мысль совершенно разными словами. Именно так выглядит 90% совпадений вопрос-текст.",
-    },
-  },
-  {
-    id: "time-management",
-    title: "Тайм-менеджмент на экзамене",
-    whenToUse: "На реальном тесте: 3 текста, 40 вопросов, 60 минут (включая перенос ответов).",
-    howTo: [
-      "В среднем — 20 минут на текст. Но третий текст обычно самый сложный: если чувствуешь, что застрял, лучше двигаться дальше и вернуться, чем терять время.",
-      "Не обязательно решать тексты по порядку 1→2→3. Многие сначала бегло смотрят все три и начинают с того, что кажется легче по теме.",
-      "Не залипай на одном вопросе больше 1-2 минут — поставь любой ответ (никогда не оставляй пустым, штрафа за неверный ответ нет) и иди дальше, вернёшься в конце если останется время.",
-      "В конце оставь 2-3 минуты на проверку: правильно ли перенесены ответы в бланк, нет ли лишних слов в Summary Completion.",
-    ],
-    example: {
-      text: "Стратегия: 17 минут на текст 1 → 20 минут на текст 2 → 23 минуты на текст 3.",
-      note: "Раз тексты усложняются, логично закладывать чуть меньше времени на первый (обычно самый простой) и больше на третий — но конкретное распределение подбирается под себя на практике.",
-    },
-  },
-  {
-    id: "common-traps",
-    title: "Типичные ловушки составителей теста",
-    whenToUse: "На любом типе задания — экзамен специально включает варианты, которые выглядят правильными на первый взгляд.",
-    howTo: [
-      "Подмена чисел: в тексте '15%', в неверном варианте ответа — '50%' или '1.5%'. Всегда сверяй цифры отдельно, не полагаясь на память.",
-      "Отрицание: добавление 'not', 'except', 'unless' переворачивает смысл. Читай внимательно частицы отрицания — их легко проскочить глазами.",
-      "Совпадение слов ≠ совпадение смысла: вариант ответа может содержать те же слова, что и текст, но в другом порядке или контексте, из-за чего смысл меняется.",
-      "Обобщение вместо частного: текст говорит 'some researchers believe', а неверный вариант заявляет это как общепризнанный факт ('scientists have proven').",
-    ],
-    example: {
-      text: "Текст: «Some scientists argue that this challenges the traditional view.» Ловушка: «Scientists have proven that competition does not exist in forests.»",
-      note: "'Some scientists argue' (мнение части учёных) превращено в 'have proven' (доказанный факт) — это классическая ловушка-обобщение, которую легко принять за верный ответ, если читать невнимательно.",
-    },
-  },
-  {
-    id: "yes-no-not-given",
-    title: "Yes/No/Not Given — не путать с True/False/Not Given",
-    whenToUse: "Когда в задании написано именно YES/NO/NOT GIVEN (а не TRUE/FALSE) — это отдельный тип, обычно встречается в текстах, где автор высказывает мнение или аргумент.",
-    howTo: [
-      "Главное отличие: True/False/Not Given проверяет ФАКТЫ из текста. Yes/No/Not Given проверяет МНЕНИЕ АВТОРА — согласуется ли утверждение с точкой зрения именно автора текста.",
-      "YES — автор явно согласен с утверждением. NO — автор явно не согласен (даже если факт как таковой верен, но автор оспаривает именно эту интерпретацию). NOT GIVEN — автор не высказывает мнения по этому конкретному пункту.",
-      "Ищи слова, которые выражают позицию автора: 'clearly', 'unfortunately', 'it is unlikely that', 'surprisingly' — они выдают отношение автора к теме.",
-      "Если текст просто описывает факт без оценки — и вопрос требует оценки — это обычно NOT GIVEN, а не YES или NO.",
-    ],
-    example: {
-      text: "Утверждение: 'The traditional view of forest competition is now outdated.' — в тексте, где автор пишет: 'Some scientists argue that this challenges the traditional Darwinian view...'",
-      note: "Автор не заявляет прямо от своего имени, что старый взгляд 'устарел' — он лишь сообщает, что НЕКОТОРЫЕ учёные так считают, сохраняя нейтральность. Это NOT GIVEN, а не YES — потому что это не собственная позиция автора, а пересказ чужого мнения.",
-    },
-  },
-  {
-    id: "paragraph-structure",
-    title: "Paragraph Structure & Function",
-    whenToUse: "For Matching Headings or Matching Information — you need to identify not just what a paragraph says, but what job it does within the whole text.",
-    howTo: [
-      "Most paragraphs open with a topic sentence stating the main idea; the rest of the paragraph supports it with examples, reasons, or evidence.",
-      "Ask what role the paragraph plays: does it introduce a problem, describe a process, give a counter-argument, or offer a solution?",
-      "For Matching Headings, the heading must match the paragraph's overall function, not just one detail mentioned inside it.",
-      "Watch for paragraphs that shift function partway through — for example, starting with a fact, then pivoting to a counter-argument.",
-    ],
-    example: {
-      text: "\"Not all researchers agree on how deliberate this cooperation is. Sceptics point out that fungi may simply be moving resources...\"",
-      note: "This paragraph's function is to introduce doubt and a counter-argument — not just to state another fact. Its role in the text is to complicate the earlier claim, which is exactly what a matching heading needs to capture.",
-    },
-  },
-  {
-    id: "note-taking",
-    title: "Note-taking & Word Limits",
-    whenToUse: "For Summary, Table, Flow-chart, and Notes Completion tasks, where instructions specify an exact word limit.",
-    howTo: [
-      "Always check the exact instruction first — 'NO MORE THAN TWO WORDS AND/OR A NUMBER' is different from 'ONE WORD ONLY'. Read it before you start, not after.",
-      "A number (e.g. '2010', '15%') usually counts as one word, unless it is written out in full ('fifteen').",
-      "Hyphenated words (e.g. 'well-being') are usually counted as one word — but always check the specific instructions of that task.",
-      "While scanning, jot down only the essential words — full sentences waste time and rarely fit the gap grammatically anyway.",
-      "After finishing, recount the words in every answer — going over the limit makes an otherwise correct answer wrong.",
-    ],
-    example: {
-      text: "Instruction: 'Complete the notes below. Use NO MORE THAN TWO WORDS from the passage.' Text: '...connected by a vast web of thread-like fungi known as mycorrhizae.'",
-      note: "'Thread-like fungi' is two words and fits the limit. Something like 'a vast web of thread-like fungi' would be far too long and marked wrong, even though it's also technically taken from the text.",
-    },
-  },
-  {
-    id: "grammatical-prediction",
-    title: "Grammatical Prediction",
-    whenToUse: "For Sentence Completion and Matching Sentence Endings — before searching the text, predict what kind of word or phrase must grammatically fit the gap.",
-    howTo: [
-      "Read the sentence around the gap carefully: is a noun needed? A verb? An adjective? This narrows down what you're scanning for before you even start reading the passage.",
-      "Check what comes immediately before and after the gap — a missing article ('a', 'the') or preposition often signals exactly what part of speech is required.",
-      "For Matching Sentence Endings, the ending must be grammatically compatible with the sentence beginning, not just logically plausible — eliminate any option that would create a grammar error.",
-      "Predicting the grammar first, then scanning for a matching word, is faster than reading every candidate sentence in full.",
-    ],
-    example: {
-      text: "Sentence stem: 'Trees connected through fungal networks are able to exchange...'",
-      note: "After 'exchange' we need a noun or noun phrase — something being exchanged. This immediately rules out any sentence ending that starts with a verb or a lone adjective, before you've even read its content.",
-    },
-  },
-];
-
-// ===========================================================
-//  ТАБЛИЦА ПЕРЕВОДА БАЛЛОВ В BAND SCORE (Academic Reading)
-// ===========================================================
-// Справочная — примерное соответствие (реальная шкала может немного
-// отличаться между версиями теста).
-export const BAND_SCORE_TABLE = [
-  { correct: "39–40", band: "9.0" },
-  { correct: "37–38", band: "8.5" },
-  { correct: "35–36", band: "8.0" },
-  { correct: "33–34", band: "7.5" },
-  { correct: "30–32", band: "7.0" },
-  { correct: "27–29", band: "6.5" },
-  { correct: "23–26", band: "6.0" },
-  { correct: "19–22", band: "5.5" },
-  { correct: "15–18", band: "5.0" },
-  { correct: "13–14", band: "4.5" },
-];
-
-export const READING_UNITS = [
-  {
-    id: "read-1",
-    order: 1,
-    title: "Юнит 1 — The Silent Language of Trees",
-    level: "Band 5.5–6",
-    topic: "Environmental Science",
-    passage:
-`For centuries, foresters assumed that trees competed with one another for light, water and nutrients, much like rival businesses fighting for the same customers. Recent research, however, has revealed a far more cooperative picture. Beneath the forest floor, the roots of most trees are connected by a vast web of thread-like fungi known as mycorrhizae. This underground network, sometimes nicknamed the "wood wide web", allows trees to exchange not only nutrients but also chemical warning signals.
-
-When a tree is attacked by insects, it can release chemical compounds into the network that alert neighbouring trees of the same species. Those neighbours, in turn, begin producing defensive chemicals of their own before the insects even reach them. In one well-known study, researchers found that undamaged trees connected to an infested tree produced significantly more defensive enzymes than trees growing in isolation nearby.
-
-The network also appears to support weaker or younger trees. Older, larger trees — sometimes called "mother trees" because of the central role they play — have been observed transferring carbon and nutrients through fungal connections to seedlings growing in their shade, where sunlight is scarce. Some scientists argue that this challenges the traditional Darwinian view of forests as arenas of pure competition, suggesting instead that survival often depends on cooperation between generations.
-
-Not all researchers agree on how deliberate this cooperation is. Sceptics point out that fungi may simply be moving resources to wherever is most efficient for the fungi themselves, with any benefit to the trees being an incidental side effect rather than a coordinated strategy. Testing these competing explanations is difficult, since the underground networks are hard to observe directly and experiments risk disturbing the very systems being studied.
-
-Regardless of the exact mechanism, the practical implications are significant. Foresters who once cleared away older trees to make room for new growth are increasingly reconsidering the practice, since removing a "mother tree" may cut off the support network that younger trees rely on. As understanding of these hidden connections grows, it may reshape not only forestry practices but also broader ideas about competition and cooperation in the natural world.`,
-    tasks: [
-      {
-        type: "tfng",
-        title: "True / False / Not Given — разбор и практика",
-        instructions: "Согласны ли следующие утверждения с информацией в тексте? Выберите TRUE, FALSE или NOT GIVEN.",
-        strategy: [
-          "TRUE — текст прямо подтверждает утверждение. FALSE — текст прямо противоречит. NOT GIVEN — в тексте просто нет информации об этом (тема может быть упомянута, но нужных деталей нет).",
-          "Самая частая ошибка — путать FALSE и NOT GIVEN. Прежде чем ставить FALSE, спроси себя: 'текст правда говорит обратное, или я просто не нашёл(-ла) подтверждения?' Если не нашёл(-ла) — это NOT GIVEN.",
-          "Утверждения обычно идут в том же порядке, что и информация в тексте — двигайся по тексту последовательно, не перескакивай.",
-          "Выдели в утверждении 1-2 ключевых слова и ищи их — или их синонимы — в тексте. Дословных совпадений почти никогда не бывает.",
-          "Следи за словами-усилителями и ограничителями: 'always', 'only', 'all', 'never' — часто именно они делают верное по смыслу утверждение ложным, потому что текст даёт более осторожную формулировку.",
-        ],
-        walkthrough: {
-          text: "Example: 'Trees only communicate with members of the same species.'",
-          steps: [
-            "Ключевые слова утверждения: 'only' (ограничитель) + 'same species'.",
-            "Ищем в тексте упоминание того, с кем именно трееs 'общаются'. Во втором абзаце: 'alert neighbouring trees of the same species' — да, про этот вид общения сказано именно 'того же вида'.",
-            "Но слово 'only' в утверждении добавляет условие: коммуникация ТОЛЬКО с тем же видом, никогда с другими. Текст нигде не утверждает и не отрицает, что деревья разных видов не могут обмениваться сигналами — об этом просто не сказано.",
-            "Значит, часть про 'alert neighbouring trees of the same species' — правда, но добавленное 'only' делает утверждение шире, чем то, что подтверждает текст.",
-          ],
-          answer: "NOT GIVEN",
-          whyNotOthers: "Не FALSE, потому что текст не говорит обратного ('деревья общаются и с другими видами') — он просто не затрагивает этот вопрос. Не TRUE, потому что текст не подтверждает исключительность ('only').",
-        },
-        items: [
-          { id: "r1-1", text: "Foresters have always believed that trees cooperate rather than compete.", answer: "FALSE" },
-          { id: "r1-2", text: "Mycorrhizal fungi connect the roots of different trees underground.", answer: "TRUE" },
-          { id: "r1-3", text: "Trees under insect attack can warn other trees of the same species.", answer: "TRUE" },
-          { id: "r1-4", text: "Mother trees only transfer resources to trees of a different species.", answer: "NOT GIVEN" },
-          { id: "r1-5", text: "All scientists agree that the transfer of resources between trees is a deliberate strategy.", answer: "FALSE" },
-          { id: "r1-6", text: "Researchers have found it easy to test whether fungi act deliberately or not.", answer: "FALSE" },
-          { id: "r1-7", text: "The study found that isolated trees produced more defensive enzymes than trees connected to an infested tree.", answer: "FALSE" },
-          { id: "r1-8", text: "Mother trees are typically older and larger than the seedlings they support.", answer: "TRUE" },
-          { id: "r1-9", text: "Experiments on fungal networks are simple to conduct without affecting the network itself.", answer: "FALSE" },
-          { id: "r1-10", text: "Some foresters have changed their practices as a result of this research.", answer: "TRUE" },
-        ],
-      },
-    ],
-  },
-
-  // Юниты 2–10: добавляются по этой же схеме после утверждения формата Юнита 1.
-  // 2 — Matching Headings, 3 — Matching Information, 4 — Summary Completion,
-  // 5 — Multiple Choice, 6–10 — смешанная практика по нарастанию сложности.
-];
-
-export function scoreReadingUnit(unit, userAnswers) {
-  // userAnswers: { [itemId]: <ответ пользователя> }
-  let correct = 0, total = 0;
-  const details = []; // [{ id, ok, correctAnswer, userAnswer, type, question }]
-
-  for (const task of unit.tasks) {
-    for (const item of task.items) {
-      total++;
-      let ok = false;
-      let displayCorrect = item.answer;
-      let displayUser = userAnswers[item.id];
-      let question = item.text || item.paragraph || "Summary gap";
-
-      if (task.type === "summary") {
-        const accepted = item.answer.map(a => a.trim().toLowerCase());
-        ok = accepted.includes(String(userAnswers[item.id] || "").trim().toLowerCase());
-        displayCorrect = item.answer[0];
-      } else if (task.type === "heading-match") {
-        ok = userAnswers[item.id] === item.answer;
-        displayCorrect = task.headings[item.answer];
-        displayUser = userAnswers[item.id] !== undefined ? task.headings[userAnswers[item.id]] : undefined;
-      } else if (task.type === "mcq") {
-        ok = userAnswers[item.id] === item.answer;
-        displayCorrect = item.opts[item.answer];
-        displayUser = userAnswers[item.id] !== undefined ? item.opts[userAnswers[item.id]] : undefined;
-      } else {
-        // tfng, info-match
-        ok = userAnswers[item.id] === item.answer;
-      }
-
-      if (ok) correct++;
-      details.push({ id: item.id, ok, type: task.type, question, correctAnswer: displayCorrect, userAnswer: displayUser });
-    }
-  }
-  return { correct, total, pct: total ? Math.round((correct / total) * 100) : 0, details };
-}
+Their use as currency was strikingly wides
