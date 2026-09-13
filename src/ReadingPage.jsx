@@ -1,10 +1,12 @@
 import { useState } from "react";
-import { READING_UNITS, scoreReadingUnit } from "./readingData";
+import { READING_UNITS, READING_SKILLS, BAND_SCORE_TABLE, scoreReadingUnit } from "./readingData";
 
 const LEVEL_COLOR = l => l.includes("7.5") || l.includes("8") ? "#e74c3c" : l.includes("7") || l.includes("6.5") ? "#c59b44" : "#4caf88";
 
 export default function ReadingPage({ studentName, onSaveResult }) {
   const [unitId, setUnitId] = useState(null);
+  const [showSkills, setShowSkills] = useState(false);
+  const [skillAnswers, setSkillAnswers] = useState({}); // { itemId: selectedOptionIndex }
   const [answers, setAnswers] = useState({});
   const [checked, setChecked] = useState(false);
   const [result, setResult] = useState(null);
@@ -33,12 +35,110 @@ export default function ReadingPage({ studentName, onSaveResult }) {
     });
   };
 
+  // ============ ЭКРАН "ТЕХНИКИ ЧТЕНИЯ" ============
+  if (showSkills) {
+    return (
+      <div>
+        <button className="btn btn-o btn-sm" onClick={() => setShowSkills(false)} style={{ marginBottom: 14 }}>← Все юниты</button>
+        <h2 className="st">📚 Техники чтения</h2>
+        <p className="sb">Базовые навыки, которые нужны для любого типа заданий — независимо от Юнита.</p>
+        {READING_SKILLS.map(s => (
+          <div key={s.id} className="card" style={{ marginBottom: 16, padding: 20 }}>
+            <h3 style={{ marginBottom: 6 }}>{s.title}</h3>
+            <p style={{ fontSize: 13, color: "#8a7d6d", marginBottom: 12 }}><b style={{ color: "#c59b44" }}>Когда применять:</b> {s.whenToUse}</p>
+            <ul style={{ fontSize: 13, color: "#c0b8a8", lineHeight: 1.9, paddingLeft: 18, marginBottom: 12 }}>
+              {s.howTo.map((h, i) => <li key={i}>{h}</li>)}
+            </ul>
+            <div style={{ background: "rgba(197,155,68,.06)", border: "1px solid rgba(197,155,68,.2)", borderRadius: 8, padding: 14, marginBottom: (s.practice || s.passages) ? 16 : 0 }}>
+              <div style={{ fontSize: 13, color: "#e8dfd0", fontStyle: "italic", marginBottom: 6 }}>{s.example.text}</div>
+              <div style={{ fontSize: 12.5, color: "#8a7d6d" }}>{s.example.note}</div>
+            </div>
+            {s.practice && (
+              <div>
+                <div style={{ fontSize: 13, fontWeight: 600, color: "#c59b44", margin: "14px 0 10px" }}>✏️ Практика — {s.practice.length} заданий</div>
+                {s.practice.map((p, pi) => {
+                  const sel = skillAnswers[p.id];
+                  const done = sel !== undefined;
+                  return (
+                    <div key={p.id} className="qcard" style={{ marginBottom: 10, padding: 16 }}>
+                      <div className="qnum">Задание {pi + 1}</div>
+                      <div className="qtext" style={{ fontSize: 14, marginBottom: 12 }}>{p.text}</div>
+                      {p.opts.map((o, i) => {
+                        let cls = "opt";
+                        if (done) { if (i === p.answer) cls += " ok"; else if (i === sel) cls += " ng"; }
+                        return <button key={i} className={cls} disabled={done} onClick={() => setSkillAnswers(a => ({ ...a, [p.id]: i }))}>
+                          <span style={{ color: "#c59b44", marginRight: 9 }}>{String.fromCharCode(65 + i)}.</span>{o}
+                        </button>;
+                      })}
+                      {done && <div className="exp"><b>💡 Почему:</b> {p.exp}</div>}
+                    </div>
+                  );
+                })}
+              </div>
+            )}
+            {s.passages && (
+              <div>
+                <div style={{ fontSize: 13, fontWeight: 600, color: "#c59b44", margin: "14px 0 10px" }}>
+                  ✏️ Практика на полных текстах — {s.passages.reduce((n, p) => n + p.questions.length, 0)} заданий
+                </div>
+                {s.passages.map((psg, psgI) => (
+                  <div key={psgI} style={{ marginBottom: 22 }}>
+                    <h4 style={{ fontFamily: "Lora,serif", fontSize: 16, color: "#e8dfd0", marginBottom: 8 }}>{psg.title}</h4>
+                    <div className="card" style={{ maxHeight: 320, overflowY: "auto", lineHeight: 1.8, fontSize: 14, color: "#c0b8a8", marginBottom: 12, whiteSpace: "pre-wrap" }}>
+                      {psg.text}
+                    </div>
+                    {psg.questions.map((p, pi) => {
+                      const sel = skillAnswers[p.id];
+                      const done = sel !== undefined;
+                      return (
+                        <div key={p.id} className="qcard" style={{ marginBottom: 10, padding: 16 }}>
+                          <div className="qtext" style={{ fontSize: 14, marginBottom: 12 }}>{p.prompt}</div>
+                          {p.opts.map((o, i) => {
+                            let cls = "opt";
+                            if (done) { if (i === p.answer) cls += " ok"; else if (i === sel) cls += " ng"; }
+                            return <button key={i} className={cls} disabled={done} onClick={() => setSkillAnswers(a => ({ ...a, [p.id]: i }))}>
+                              <span style={{ color: "#c59b44", marginRight: 9 }}>{String.fromCharCode(65 + i)}.</span>{o}
+                            </button>;
+                          })}
+                          {done && <div className="exp"><b>💡 Почему:</b> {p.exp}</div>}
+                        </div>
+                      );
+                    })}
+                  </div>
+                ))}
+              </div>
+            )}
+          </div>
+        ))}
+        <div className="card" style={{ marginBottom: 16, padding: 20 }}>
+          <h3 style={{ marginBottom: 10 }}>📊 Перевод баллов в Band Score (справочно)</h3>
+          <p style={{ fontSize: 12.5, color: "#8a7d6d", marginBottom: 14 }}>Academic Reading, из 40 вопросов. Примерное соответствие — точная шкала может немного отличаться между версиями теста.</p>
+          <table>
+            <thead><tr><th>Правильных ответов</th><th>Band Score</th></tr></thead>
+            <tbody>
+              {BAND_SCORE_TABLE.map((row, i) => (
+                <tr key={i}><td>{row.correct}</td><td><b style={{ color: "#c59b44" }}>{row.band}</b></td></tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    );
+  }
+
   // ============ СПИСОК ЮНИТОВ ============
   if (!unit) {
     return (
       <div>
         <h2 className="st">📖 IELTS Reading — обучающие юниты</h2>
         <p className="sb">Текст → разбор стратегии → задания → проверка ответов. Без таймера — фокус на технике.</p>
+        <div className="card" style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 18, background: "rgba(76,175,136,.06)", border: "1px solid rgba(76,175,136,.25)", flexWrap: "wrap", gap: 10 }}>
+          <div>
+            <h3 style={{ marginBottom: 3, color: "#4caf88" }}>📚 Начни отсюда: техники чтения</h3>
+            <p style={{ fontSize: 13, color: "#8a7d6d" }}>Skimming, scanning, прогнозирование, догадка по контексту — до того как решать задания</p>
+          </div>
+          <button className="btn" onClick={() => setShowSkills(true)}>Открыть →</button>
+        </div>
         {READING_UNITS.map(u => (
           <div key={u.id} className="card" style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 12, flexWrap: "wrap", gap: 10 }}>
             <div>
@@ -81,23 +181,42 @@ export default function ReadingPage({ studentName, onSaveResult }) {
             </ul>
           </div>
 
+          {task.walkthrough && (
+            <div className="card" style={{ background: "rgba(76,175,136,.06)", border: "1px solid rgba(76,175,136,.25)", marginBottom: 16, padding: 16 }}>
+              <div style={{ fontSize: 13, fontWeight: 600, color: "#4caf88", marginBottom: 8 }}>📝 Разбор примера — прежде чем решать самому</div>
+              <div style={{ fontSize: 14, color: "#e8dfd0", marginBottom: 10, fontStyle: "italic" }}>{task.walkthrough.text}</div>
+              <ol style={{ fontSize: 13, color: "#c0b8a8", lineHeight: 1.9, paddingLeft: 20, marginBottom: 10 }}>
+                {task.walkthrough.steps.map((s, i) => <li key={i}>{s}</li>)}
+              </ol>
+              <div style={{ fontSize: 13.5, color: "#4caf88", fontWeight: 600, marginBottom: task.walkthrough.whyNotOthers ? 6 : 0 }}>
+                Ответ: {task.walkthrough.answer}
+              </div>
+              {task.walkthrough.whyNotOthers && (
+                <div style={{ fontSize: 12.5, color: "#8a7d6d" }}>{task.walkthrough.whyNotOthers}</div>
+              )}
+            </div>
+          )}
+
           <p style={{ fontSize: 13.5, color: "#8a7d6d", fontStyle: "italic", marginBottom: 14 }}>{task.instructions}</p>
 
-          {/* --- TFNG --- */}
-          {task.type === "tfng" && task.items.map(it => (
-            <div key={it.id} className="qcard" style={{ marginBottom: 10, padding: 18 }}>
-              <div className="qtext" style={{ fontSize: 14.5, marginBottom: 12 }}>{it.text}</div>
-              <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
-                {["TRUE", "FALSE", "NOT GIVEN"].map(v => {
-                  let cls = "opt"; const sel = answers[it.id] === v;
-                  if (checked) { if (v === it.answer) cls += " ok"; else if (sel) cls += " ng"; }
-                  return <button key={v} className={cls} style={{ width: "auto", padding: "8px 16px" }} disabled={checked} onClick={() => setAns(it.id, v)}>
-                    {sel && !checked ? "● " : ""}{v}
-                  </button>;
-                })}
+          {/* --- TFNG / YNNG --- */}
+          {(task.type === "tfng" || task.type === "ynng") && task.items.map(it => {
+            const opts = task.type === "ynng" ? ["YES", "NO", "NOT GIVEN"] : ["TRUE", "FALSE", "NOT GIVEN"];
+            return (
+              <div key={it.id} className="qcard" style={{ marginBottom: 10, padding: 18 }}>
+                <div className="qtext" style={{ fontSize: 14.5, marginBottom: 12 }}>{it.text}</div>
+                <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
+                  {opts.map(v => {
+                    let cls = "opt"; const sel = answers[it.id] === v;
+                    if (checked) { if (v === it.answer) cls += " ok"; else if (sel) cls += " ng"; }
+                    return <button key={v} className={cls} style={{ width: "auto", padding: "8px 16px" }} disabled={checked} onClick={() => setAns(it.id, v)}>
+                      {sel && !checked ? "● " : ""}{v}
+                    </button>;
+                  })}
+                </div>
               </div>
-            </div>
-          ))}
+            );
+          })}
 
           {/* --- MCQ --- */}
           {task.type === "mcq" && task.items.map(it => (
@@ -112,6 +231,26 @@ export default function ReadingPage({ studentName, onSaveResult }) {
               })}
             </div>
           ))}
+
+          {/* --- INFO MATCH (Matching Information) --- */}
+          {task.type === "info-match" && task.items.map(it => {
+            const sel = answers[it.id];
+            const ok = checked && sel === it.answer;
+            return (
+              <div key={it.id} className="qcard" style={{ marginBottom: 10, padding: 18 }}>
+                <div className="qtext" style={{ fontSize: 14.5, marginBottom: 12 }}>{it.text}</div>
+                <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
+                  {task.paragraphLabels.map(label => {
+                    let cls = "opt"; const isSel = sel === label;
+                    if (checked) { if (label === it.answer) cls += " ok"; else if (isSel) cls += " ng"; }
+                    return <button key={label} className={cls} style={{ width: "auto", padding: "8px 16px" }} disabled={checked} onClick={() => setAns(it.id, label)}>
+                      {isSel && !checked ? "● " : ""}{label}
+                    </button>;
+                  })}
+                </div>
+              </div>
+            );
+          })}
 
           {/* --- HEADING MATCH --- */}
           {task.type === "heading-match" && (
@@ -177,4 +316,3 @@ export default function ReadingPage({ studentName, onSaveResult }) {
     </div>
   );
 }
-
