@@ -40,7 +40,10 @@
 // ===========================================================
 //  ТЕХНИКИ ЧТЕНИЯ — общий раздел, отдельно от типов заданий
 // ===========================================================
-// Каждый навык: { id, title, whenToUse, howTo: [шаги], example: {text, note}, passages: [опц.] }
+// Каждый навык: { id, title, whenToUse, howTo: [шаги], example: {text, note}, demo: [опц.], passages: [опц.] }
+// demo — визуальная демонстрация "как это делается на практике":
+// { intro, sentences: [{text, read: true/false}], caption } — read:true подсвечивается,
+// read:false показывается затемнённым (то, что пропускается при выполнении техники).
 // passages — практика на полноценных текстах (700-800 слов), а не коротких абзацах:
 // { title, text (абзацы через \n\n), questions: [{id, prompt, opts, answer, exp}] }
 // Каждый questions.prompt обычно ссылается на конкретный абзац текста ("Абзац 2") — так видно,
@@ -60,6 +63,15 @@ export const READING_SKILLS = [
     example: {
       text: "\"For centuries, foresters assumed that trees competed with one another... Recent research, however, has revealed a far more cooperative picture.\"",
       note: "Just from the first sentence, it's already clear: what used to be believed has now been challenged by new research. You don't need to read the whole paragraph to understand its role — this phrase is enough.",
+    },
+    demo: {
+      intro: "See it in action: here is a real paragraph. Highlighted sentences are what you'd actually read while skimming — everything dimmed, you'd skip on a first pass.",
+      sentences: [
+        { text: "Modern life, however, has profoundly disrupted this ancient system.", read: true },
+        { text: "Artificial lighting allows people to remain active long after sunset, while smartphone and computer screens emit blue light that is particularly effective at suppressing melatonin production.", read: false },
+        { text: "Shift workers face an even more severe disruption, since their work schedules directly contradict the light-dark cycle their bodies expect, forcing the SCN to attempt an almost impossible recalibration on a recurring basis.", read: true },
+      ],
+      caption: "Reading only the first and last sentence already tells you the paragraph's job: modern life disrupts our natural rhythm, and shift work is the most extreme case. The dimmed middle sentence adds detail (lighting, screens) — useful later for a detail question, but not needed to grasp the main idea right now.",
     },
     passages: [
       {
@@ -218,6 +230,52 @@ Major fashion retailers have not been entirely absent from this conversation, wi
     example: {
       text: "Утверждение: 'The traditional view of forest competition is now outdated.' — в тексте, где автор пишет: 'Some scientists argue that this challenges the traditional Darwinian view...'",
       note: "Автор не заявляет прямо от своего имени, что старый взгляд 'устарел' — он лишь сообщает, что НЕКОТОРЫЕ учёные так считают, сохраняя нейтральность. Это NOT GIVEN, а не YES — потому что это не собственная позиция автора, а пересказ чужого мнения.",
+    },
+  },
+  {
+    id: "paragraph-structure",
+    title: "Paragraph Structure & Function",
+    whenToUse: "For Matching Headings or Matching Information — you need to identify not just what a paragraph says, but what job it does within the whole text.",
+    howTo: [
+      "Most paragraphs open with a topic sentence stating the main idea; the rest of the paragraph supports it with examples, reasons, or evidence.",
+      "Ask what role the paragraph plays: does it introduce a problem, describe a process, give a counter-argument, or offer a solution?",
+      "For Matching Headings, the heading must match the paragraph's overall function, not just one detail mentioned inside it.",
+      "Watch for paragraphs that shift function partway through — for example, starting with a fact, then pivoting to a counter-argument.",
+    ],
+    example: {
+      text: "\"Not all researchers agree on how deliberate this cooperation is. Sceptics point out that fungi may simply be moving resources...\"",
+      note: "This paragraph's function is to introduce doubt and a counter-argument — not just to state another fact. Its role in the text is to complicate the earlier claim, which is exactly what a matching heading needs to capture.",
+    },
+  },
+  {
+    id: "note-taking",
+    title: "Note-taking & Word Limits",
+    whenToUse: "For Summary, Table, Flow-chart, and Notes Completion tasks, where instructions specify an exact word limit.",
+    howTo: [
+      "Always check the exact instruction first — 'NO MORE THAN TWO WORDS AND/OR A NUMBER' is different from 'ONE WORD ONLY'. Read it before you start, not after.",
+      "A number (e.g. '2010', '15%') usually counts as one word, unless it is written out in full ('fifteen').",
+      "Hyphenated words (e.g. 'well-being') are usually counted as one word — but always check the specific instructions of that task.",
+      "While scanning, jot down only the essential words — full sentences waste time and rarely fit the gap grammatically anyway.",
+      "After finishing, recount the words in every answer — going over the limit makes an otherwise correct answer wrong.",
+    ],
+    example: {
+      text: "Instruction: 'Complete the notes below. Use NO MORE THAN TWO WORDS from the passage.' Text: '...connected by a vast web of thread-like fungi known as mycorrhizae.'",
+      note: "'Thread-like fungi' is two words and fits the limit. Something like 'a vast web of thread-like fungi' would be far too long and marked wrong, even though it's also technically taken from the text.",
+    },
+  },
+  {
+    id: "grammatical-prediction",
+    title: "Grammatical Prediction",
+    whenToUse: "For Sentence Completion and Matching Sentence Endings — before searching the text, predict what kind of word or phrase must grammatically fit the gap.",
+    howTo: [
+      "Read the sentence around the gap carefully: is a noun needed? A verb? An adjective? This narrows down what you're scanning for before you even start reading the passage.",
+      "Check what comes immediately before and after the gap — a missing article ('a', 'the') or preposition often signals exactly what part of speech is required.",
+      "For Matching Sentence Endings, the ending must be grammatically compatible with the sentence beginning, not just logically plausible — eliminate any option that would create a grammar error.",
+      "Predicting the grammar first, then scanning for a matching word, is faster than reading every candidate sentence in full.",
+    ],
+    example: {
+      text: "Sentence stem: 'Trees connected through fungal networks are able to exchange...'",
+      note: "After 'exchange' we need a noun or noun phrase — something being exchanged. This immediately rules out any sentence ending that starts with a verb or a lone adjective, before you've even read its content.",
     },
   },
 ];
