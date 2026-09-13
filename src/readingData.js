@@ -573,4 +573,942 @@ Purists caution, however, against reducing kintsugi to a purely metaphorical or 
         text:
 `Long before coins or paper money became widespread, many societies across Africa, Asia, and the Pacific relied on cowrie shells as a medium of exchange. These small, glossy shells, harvested primarily from the Indian Ocean, were prized for their durability, uniform size, and resistance to counterfeiting, qualities that made them remarkably well suited to commerce.
 
-Their use as currency was strikingly wides
+Their use as currency was strikingly widespread and long-lived, appearing in historical records from ancient China to West Africa, and persisting in some regions well into the nineteenth century, long after European colonial powers had begun introducing metal coinage. In parts of West Africa, cowries remained a dominant form of currency even as colonial administrations attempted to supplant them with imported coins.
+
+Economists studying this history have noted that cowrie-based monetary systems were far from primitive or haphazard; exchange rates between shells and other goods were often carefully calibrated, and large quantities were meticulously counted, strung together, and transported across considerable distances as part of extensive regional trade networks.
+
+The eventual decline of cowrie currency was gradual rather than sudden, driven by a combination of factors: the flooding of local markets with mass-imported shells that undermined their scarcity value, alongside deliberate colonial policies designed to compel populations to adopt state-issued coinage for the payment of taxes.
+
+Today, cowrie shells survive largely as ornamental or ceremonial objects rather than functional currency, retaining symbolic significance in various cultural and religious practices across the regions where they once circulated as money. Numismatists, along with historians of trade, continue to study these shells as a rare example of a durable, decentralised currency that operated successfully across multiple continents for centuries without any central minting authority.`,
+        questions: [
+          { id: "cg-6", prompt: "In Paragraph 1, what does 'medium of exchange' most likely mean?", opts: ["A large-sized shell", "Something used to facilitate trade or payment", "A type of ocean current", "A religious symbol"], answer: 1, exp: "This is the standard economic sense confirmed by the whole paragraph describing shells used as money." },
+          { id: "cg-7", prompt: "In Paragraph 2, what does 'supplant' most likely mean?", opts: ["To support and strengthen", "To replace", "To decorate", "To count carefully"], answer: 1, exp: "'Attempted to supplant them with imported coins' — colonial powers tried to replace shells with coins." },
+          { id: "cg-8", prompt: "In Paragraph 3, what does 'haphazard' most likely mean?", opts: ["Highly organised and precise", "Random or lacking clear order", "Extremely valuable", "Illegal"], answer: 1, exp: "The sentence says systems were 'far from primitive or haphazard' because rates were 'carefully calibrated' — implying haphazard is the opposite of organised." },
+          { id: "cg-9", prompt: "In Paragraph 4, what does 'compel' most likely mean?", opts: ["To politely request", "To force or pressure", "To forbid entirely", "To financially reward"], answer: 1, exp: "'Deliberate colonial policies designed to compel populations to adopt state-issued coinage' describes forced adoption, not a request or reward." },
+          { id: "cg-10", prompt: "In Paragraph 5, what does 'numismatists' most likely refer to?", opts: ["People who study or collect currency and coins", "Marine biologists studying shells", "Religious leaders", "Colonial tax collectors"], answer: 0, exp: "'Numismatists, along with historians of trade, continue to study these shells' places them alongside trade historians — scholars of currency." },
+        ],
+      },
+      {
+        title: "The Secret Life of Deep-Sea Vents",
+        text:
+`Far below the ocean's surface, where sunlight never penetrates, hydrothermal vents release mineral-rich water heated by underlying volcanic activity, creating conditions that support surprisingly abundant and diverse ecosystems entirely independent of photosynthesis, the process that sustains nearly all other life on Earth.
+
+At the base of these ecosystems lie chemosynthetic bacteria, microorganisms capable of deriving energy from chemical reactions involving compounds such as hydrogen sulphide, rather than from sunlight, effectively performing a role analogous to that of plants in more familiar surface ecosystems.
+
+Larger organisms found near these vents, including giant tube worms lacking mouths or digestive systems, have evolved to house these bacteria internally in a symbiotic relationship, receiving nutrients produced by their bacterial residents in exchange for providing a stable, chemical-rich habitat.
+
+The extreme conditions surrounding hydrothermal vents, including scalding temperatures, crushing pressure, and highly acidic or toxic chemical compositions, would prove instantly lethal to the vast majority of surface-dwelling organisms, yet vent ecosystems display a remarkable degree of biodiversity found nowhere else on the planet.
+
+Scientists studying these environments have drawn comparisons to conditions that may have existed on early Earth, and some researchers speculate that similar chemosynthetic ecosystems could theoretically exist elsewhere in the solar system, on moons such as Europa or Enceladus, where subsurface oceans are thought to lie beneath thick layers of ice.`,
+        questions: [
+          { id: "cg-11", prompt: "In Paragraph 1, what does 'penetrates' most likely mean?", opts: ["Damages", "Passes through or into", "Reflects away", "Freezes solid"], answer: 1, exp: "'Sunlight never penetrates' at that depth — meaning light cannot pass through the water to reach it." },
+          { id: "cg-12", prompt: "In Paragraph 2, what does 'chemosynthetic' most likely mean, based on context?", opts: ["Related to producing energy from chemical reactions rather than sunlight", "Related to underwater volcanoes specifically", "A type of large sea creature", "A term for deep-sea temperature"], answer: 0, exp: "The sentence directly defines it: 'deriving energy from chemical reactions... rather than from sunlight'." },
+          { id: "cg-13", prompt: "In Paragraph 3, what does 'symbiotic' most likely mean?", opts: ["Competitive and harmful to both parties", "A mutually beneficial relationship between two different organisms", "A relationship where one organism destroys another", "Unrelated organisms living far apart"], answer: 1, exp: "The worms and bacteria exchange nutrients for habitat — a clear description of mutual benefit." },
+          { id: "cg-14", prompt: "In Paragraph 4, what does 'lethal' most likely mean?", opts: ["Harmless", "Deadly", "Beneficial", "Temporary"], answer: 1, exp: "'Instantly lethal to the vast majority of surface-dwelling organisms', contrasted with vent life thriving there, clearly means deadly." },
+          { id: "cg-15", prompt: "In Paragraph 5, what does 'subsurface' most likely mean?", opts: ["Located above the surface", "Located beneath the surface", "Located far away in space", "Related to volcanic activity only"], answer: 1, exp: "'Subsurface oceans... thought to lie beneath thick layers of ice' directly explains the term as 'beneath the surface'." },
+        ],
+      },
+      {
+        title: "The Language of Bird Song",
+        text:
+`Ornithologists have long been fascinated by the complexity of bird song, a behaviour that, in many species, serves functions far more sophisticated than simple noise-making, encompassing territory defence, mate attraction, and, in some species, remarkably intricate vocal learning processes.
+
+Unlike many animal calls, which tend to be innate and largely fixed from birth, the songs of certain bird species, including many songbirds, must be learned during a specific developmental period by listening to and mimicking adult members of their species, a process that bears intriguing similarities to human language acquisition.
+
+Young birds deprived of exposure to adult song during this critical window often develop abnormal or simplified songs as adults, a finding that has made certain songbird species a valuable model organism for researchers studying the neurological basis of vocal learning more broadly, including implications for human speech development.
+
+Some species exhibit remarkable vocal mimicry abilities extending well beyond their own species' repertoire, incorporating sounds from other birds, mechanical noises, or even fragments of human speech into their own vocalisations, a phenomenon whose evolutionary purpose remains a subject of ongoing scientific debate.
+
+Researchers studying regional variation in bird song have identified distinct "dialects" among geographically separated populations of the same species, differences that can become pronounced enough that individuals from distant populations sometimes fail to respond appropriately to each other's songs during territorial or courtship encounters.`,
+        questions: [
+          { id: "cg-16", prompt: "In Paragraph 1, what does 'ornithologists' most likely mean?", opts: ["Scientists who study birds", "Scientists who study music", "People who train pets", "People who study rocks"], answer: 0, exp: "Their fascination with 'the complexity of bird song' identifies them as bird researchers." },
+          { id: "cg-17", prompt: "In Paragraph 2, what does 'innate' most likely mean?", opts: ["Learned through careful practice", "Present from birth, not learned", "Extremely rare", "Related to territory defence only"], answer: 1, exp: "It's contrasted directly with songs that 'must be learned' — innate means the opposite, inborn." },
+          { id: "cg-18", prompt: "In Paragraph 3, what does 'deprived' most likely mean?", opts: ["Given extra amounts of something", "Prevented from having or experiencing something", "Rewarded for good behaviour", "Trained more intensively"], answer: 1, exp: "'Deprived of exposure to adult song' leading to abnormal songs means they were prevented from having that exposure." },
+          { id: "cg-19", prompt: "In Paragraph 4, what does 'mimicry' most likely mean?", opts: ["The ability to imitate or copy sounds", "A type of bird nest", "A method of catching insects", "A form of aggressive display"], answer: 0, exp: "'Incorporating sounds from other birds, mechanical noises... into their own vocalisations' describes imitation." },
+          { id: "cg-20", prompt: "In Paragraph 5, what does 'dialects' most likely refer to, in this context?", opts: ["Different bird species entirely", "Regional variations in song among the same species", "A type of bird disease", "A method scientists use to track birds"], answer: 1, exp: "The text explicitly defines it as differences 'among geographically separated populations of the same species'." },
+        ],
+      },
+      {
+        title: "The Craft of Traditional Boatbuilding",
+        text:
+`Long before modern shipyards relied on computer-aided design and industrial machinery, traditional boatbuilders across many coastal cultures developed sophisticated techniques passed down through generations, often relying entirely on accumulated experiential knowledge rather than formal engineering calculations.
+
+One such technique, known as "plank-on-frame" construction, involves first erecting a skeletal wooden frame that defines the vessel's shape, before attaching individual wooden planks to the exterior of this frame, a sequence that offers greater structural flexibility than alternative methods where the outer hull is built first.
+
+Achieving a watertight seal between adjoining planks traditionally required caulking, a process involving forcing fibrous material, often derived from plant fibres, into the narrow seams between planks before sealing them with tar or a similar waterproof substance, a labour-intensive task requiring considerable skill.
+
+Many traditional boatbuilding techniques have proven remarkably durable, with vessels constructed using centuries-old methods still functioning effectively in various fishing and cultural contexts today, even as industrial fibreglass and metal-hulled vessels have come to dominate large-scale commercial shipping.
+
+Recognising the cultural and historical value of these disappearing skills, various maritime museums and cultural preservation organisations have established apprenticeship programmes intended to ensure that specialised traditional boatbuilding knowledge is not lost entirely as the number of practitioners with direct experiential knowledge continues to dwindle.`,
+        questions: [
+          { id: "cg-21", prompt: "In Paragraph 1, what does 'experiential' most likely mean?", opts: ["Based on direct practice and experience", "Based on computer calculations", "Based on random guessing", "Based on scientific formulas"], answer: 0, exp: "It's contrasted with 'formal engineering calculations' — experiential knowledge comes from direct practice." },
+          { id: "cg-22", prompt: "In Paragraph 2, what does 'erecting' most likely mean?", opts: ["Demolishing or removing", "Building or putting up", "Painting or decorating", "Selling or trading"], answer: 1, exp: "'Erecting a skeletal wooden frame' describes constructing/putting up the frame." },
+          { id: "cg-23", prompt: "In Paragraph 3, what does 'caulking' most likely refer to?", opts: ["A type of boat engine", "Sealing gaps between planks to make them watertight", "A method of painting boats", "A type of sail material"], answer: 1, exp: "The sentence explicitly describes the process: forcing fibre into seams and sealing with tar for a watertight result." },
+          { id: "cg-24", prompt: "In Paragraph 4, what does 'durable' most likely mean?", opts: ["Fragile and short-lived", "Long-lasting and able to withstand wear", "Extremely expensive", "Difficult to construct"], answer: 1, exp: "Vessels 'still functioning effectively' after centuries directly illustrates durability." },
+          { id: "cg-25", prompt: "In Paragraph 5, what does 'dwindle' most likely mean?", opts: ["Increase steadily", "Decrease gradually", "Remain exactly the same", "Multiply rapidly"], answer: 1, exp: "The number of practitioners 'continues to dwindle' as skills are described as 'disappearing' — meaning a gradual decrease." },
+        ],
+      },
+    ],
+  },
+  {
+    id: "paraphrase",
+    title: "Paraphrase Recognition",
+    whenToUse: "Constantly. Questions almost never use the same words as the text — the exam specifically tests whether you recognise the same idea in different wording.",
+    howTo: [
+      "Don't search the text for an exact word match to the question — if you're looking for those exact words, you'll likely miss the answer.",
+      "Learn to spot synonym pairs: increase → rise / grow; important → significant / crucial; because → due to / as a result of.",
+      "It's not just single words that change — structure changes too: active voice can become passive, a noun can become a verb ('the destruction of' → 'destroyed').",
+      "If a question and a piece of text match almost word for word, that's often a trap (distractor) — the real answer is usually hidden in a paraphrased spot nearby.",
+    ],
+    example: {
+      text: "Text: \"...allow trees to exchange... chemical warning signals.\" Question: \"Trees can alert each other to danger using chemicals.\"",
+      note: "'exchange chemical warning signals' and 'alert each other to danger using chemicals' express the same idea in completely different words. This is what about 90% of question-text matches actually look like.",
+    },
+    passages: [
+      {
+        title: "The Rise of Remote Work",
+        text:
+`The proportion of employees working remotely at least part of the time increased dramatically following 2020, and many organisations that initially viewed the shift as a temporary emergency measure have since made it a permanent feature of their operations.
+
+Proponents argue that remote work arrangements can improve employee wellbeing by eliminating lengthy commutes and offering greater flexibility over daily schedules, while also allowing companies to recruit talent from a much wider geographic pool than a single office location would normally permit.
+
+Critics, however, contend that extended periods away from a shared physical workspace can gradually erode the informal social bonds and spontaneous collaboration that often drive innovation within a team, particularly for employees who joined an organisation after remote arrangements were already in place.
+
+In response to these competing concerns, a growing number of companies have adopted hybrid models, requiring staff to be present in the office for a specified number of days each week while permitting remote work for the remainder, in an attempt to balance flexibility against the perceived benefits of in-person interaction.
+
+Long-term research into the productivity effects of these various arrangements remains limited, and existing studies often produce conflicting results depending on the industry, role type, and specific work arrangement being examined, making broad generalisations about which approach performs best difficult to support with confidence.`,
+        questions: [
+          { id: "pp-1", prompt: "Which is the best paraphrase of: 'The proportion of employees working remotely at least part of the time increased dramatically following 2020'?", opts: ["After 2020, far more employees began working from home at least some of the time.", "Before 2020, most employees already worked remotely part-time.", "After 2020, all employees were required to work remotely full-time.", "The number of remote employees decreased sharply after 2020."], answer: 0, exp: "Option B reverses the timing, C overstates with 'all/full-time', and D reverses the direction of change." },
+          { id: "pp-2", prompt: "Which is the best paraphrase of: 'remote work arrangements can improve employee wellbeing by eliminating lengthy commutes'?", opts: ["Remote work may boost employee wellbeing partly because it removes long journeys to work.", "Remote work always harms employee wellbeing due to isolation.", "Commuting has no effect on employee wellbeing at all.", "Employees are required to commute even when working remotely."], answer: 0, exp: "Option B reverses the claim's direction; C and D contradict the idea that commuting affects wellbeing." },
+          { id: "pp-3", prompt: "Which is the best paraphrase of: 'extended periods away from a shared physical workspace can gradually erode... informal social bonds and spontaneous collaboration'?", opts: ["Working away from a shared office for a long time can slowly weaken casual relationships and unplanned teamwork among colleagues.", "Physical offices have no impact on team collaboration.", "Remote work instantly destroys all workplace relationships.", "Social bonds only form in remote work settings."], answer: 0, exp: "Option C overstates with 'instantly' and 'all', when the original says 'gradually'; B and D contradict the original claim." },
+          { id: "pp-4", prompt: "Which is the best paraphrase of: 'a growing number of companies have adopted hybrid models, requiring staff to be present in the office for a specified number of days each week'?", opts: ["More and more companies now use hybrid arrangements, where employees must come to the office for a set number of days weekly.", "All companies have abandoned hybrid models in favour of fully remote work.", "Hybrid models require employees to work from home every day.", "No companies currently use hybrid work arrangements."], answer: 0, exp: "Option B is the opposite claim; C misdescribes 'hybrid' as fully remote; D directly contradicts 'a growing number'." },
+          { id: "pp-5", prompt: "Which is the best paraphrase of: 'Long-term research... remains limited, and existing studies often produce conflicting results'?", opts: ["There isn't much long-term research yet, and the studies that do exist don't always agree with each other.", "Extensive long-term research has conclusively proven which work arrangement is most productive.", "All studies on this topic agree completely with one another.", "No research has ever been conducted on this topic."], answer: 0, exp: "Option B overstates certainty; C contradicts 'conflicting results'; D overstates 'remains limited' as 'none'." },
+        ],
+      },
+      {
+        title: "Coral Reefs and Ocean Acidification",
+        text:
+`As atmospheric carbon dioxide levels continue to rise, oceans absorb a substantial portion of this excess gas, triggering a chemical reaction that gradually lowers the pH of seawater, a process commonly referred to as ocean acidification.
+
+This shift in ocean chemistry poses a particular threat to coral reefs, since the calcium carbonate structures that corals rely on to build their skeletons become more difficult to form and more prone to dissolving as surrounding waters become increasingly acidic.
+
+Beyond corals themselves, a wide range of other marine organisms that construct shells or skeletons from calcium carbonate, including certain plankton species at the base of the marine food web, face similar structural challenges under acidifying conditions.
+
+Some researchers have identified certain coral species and populations that appear more resilient to these chemical changes than others, raising cautious hope that selective conservation efforts focused on naturally hardier populations might help preserve at least some reef ecosystems into the future.
+
+Nonetheless, most scientists studying the issue emphasise that reducing global carbon emissions remains the only measure capable of addressing ocean acidification at the scale required, since localised conservation efforts alone cannot offset a chemical process occurring across the entire planet's oceans.`,
+        questions: [
+          { id: "pp-6", prompt: "Which is the best paraphrase of: 'oceans absorb a substantial portion of this excess gas, triggering a chemical reaction that gradually lowers the pH of seawater'?", opts: ["The ocean takes in a large amount of the extra carbon dioxide, which slowly makes seawater more acidic.", "The ocean releases carbon dioxide into the atmosphere, raising its pH.", "Seawater pH has remained completely stable despite rising carbon dioxide.", "This process happens instantly rather than gradually."], answer: 0, exp: "Option B reverses the direction of the process; C contradicts the claim entirely; D contradicts 'gradually'." },
+          { id: "pp-7", prompt: "Which is the best paraphrase of: 'the calcium carbonate structures... become more difficult to form and more prone to dissolving'?", opts: ["It becomes harder for corals to build their skeletal structures, and these structures are more likely to dissolve.", "Coral skeletons become stronger and more resistant to dissolving.", "Corals no longer need calcium carbonate to survive.", "Only fully grown corals are affected by this issue."], answer: 0, exp: "Option B is the opposite claim; C and D introduce unsupported claims not present in the original." },
+          { id: "pp-8", prompt: "Which is the best paraphrase of: 'a wide range of other marine organisms that construct shells or skeletons from calcium carbonate... face similar structural challenges'?", opts: ["Many other sea creatures that build shells from calcium carbonate encounter comparable problems.", "Only coral is affected by ocean acidification; no other species are at risk.", "Marine plankton are entirely immune to acidification.", "Calcium carbonate structures are unaffected by ocean chemistry."], answer: 0, exp: "Option B directly contradicts 'a wide range of other... organisms'; C contradicts the specific mention of plankton being affected." },
+          { id: "pp-9", prompt: "Which is the best paraphrase of: 'certain coral species... appear more resilient to these chemical changes than others, raising cautious hope'?", opts: ["Some coral types seem to handle these chemical changes better than others, offering a degree of hope.", "All coral species are equally vulnerable, with no exceptions.", "Scientists have proven conclusively that all reefs will survive.", "No coral populations show any resistance to acidification."], answer: 0, exp: "Option B contradicts 'more resilient than others'; C overstates 'cautious hope' as proof; D directly contradicts the claim." },
+          { id: "pp-10", prompt: "Which is the best paraphrase of: 'most scientists... emphasise that reducing global carbon emissions remains the only measure capable of addressing ocean acidification at the scale required'?", opts: ["The majority of scientists believe that cutting global carbon emissions is the only way to tackle this problem on a large enough scale.", "Scientists agree that local conservation alone can fully solve ocean acidification.", "No solution to ocean acidification currently exists, according to scientists.", "All scientists disagree about how to address this issue."], answer: 0, exp: "Option B contradicts the text's claim that local efforts 'alone cannot offset' the problem; D contradicts 'most scientists emphasise' (implying general agreement)." },
+        ],
+      },
+      {
+        title: "The Growth of Electric Vehicles",
+        text:
+`Global sales of electric vehicles have grown at a remarkable pace over the past decade, driven by a combination of falling battery costs, expanding charging infrastructure, and increasingly stringent government emissions regulations in many major automotive markets.
+
+Despite this rapid growth, electric vehicles still represent a relatively small fraction of the total global vehicle fleet, meaning that even continued high growth rates in new sales will take considerable time to meaningfully reduce the overall environmental footprint of road transportation as a whole.
+
+Battery technology remains a central constraint on further adoption, since current lithium-ion batteries are relatively expensive to manufacture, require specific rare minerals whose extraction raises its own environmental and ethical concerns, and gradually lose capacity over repeated charging cycles.
+
+Charging infrastructure availability varies dramatically between regions, with some countries investing heavily in extensive public charging networks while others lag considerably behind, a disparity that continues to influence consumer confidence in purchasing an electric vehicle for long-distance travel.
+
+Industry analysts generally expect continued growth in electric vehicle adoption over the coming decade, though most acknowledge that achieving full replacement of internal combustion vehicles will likely require sustained advances in battery technology alongside substantial, continued infrastructure investment.`,
+        questions: [
+          { id: "pp-11", prompt: "Which is the best paraphrase of: 'Global sales of electric vehicles have grown at a remarkable pace over the past decade'?", opts: ["Electric vehicle sales worldwide have increased very quickly over the last ten years.", "Electric vehicle sales have declined steadily over the past decade.", "Electric vehicles were invented exactly ten years ago.", "Sales of electric vehicles have remained completely flat for a decade."], answer: 0, exp: "Option B reverses the direction; C and D are unsupported or contradicted by 'grown at a remarkable pace'." },
+          { id: "pp-12", prompt: "Which is the best paraphrase of: 'electric vehicles still represent a relatively small fraction of the total global vehicle fleet'?", opts: ["Electric vehicles make up only a small portion of all vehicles worldwide right now.", "Electric vehicles now make up the majority of the world's vehicles.", "All vehicles worldwide are now electric.", "The total global vehicle fleet has stopped growing."], answer: 0, exp: "Options B and C directly contradict 'small fraction'; D introduces an unrelated claim." },
+          { id: "pp-13", prompt: "Which is the best paraphrase of: 'current lithium-ion batteries are relatively expensive to manufacture... and gradually lose capacity over repeated charging cycles'?", opts: ["Today's batteries cost a lot to make and slowly hold less charge the more they're used.", "Batteries are extremely cheap and never lose any capacity.", "Batteries improve in capacity the more they are charged.", "Battery manufacturing has no environmental concerns at all."], answer: 0, exp: "Options B and C are the opposite of the claim; D contradicts the mention of environmental/ethical concerns." },
+          { id: "pp-14", prompt: "Which is the best paraphrase of: 'Charging infrastructure availability varies dramatically between regions'?", opts: ["How much charging infrastructure exists is very different depending on the region.", "Charging infrastructure is identical in every country.", "No country has any charging infrastructure yet.", "Charging infrastructure has no effect on consumer decisions."], answer: 0, exp: "Option B is the opposite claim; D contradicts the paragraph's final clause about consumer confidence." },
+          { id: "pp-15", prompt: "Which is the best paraphrase of: 'achieving full replacement of internal combustion vehicles will likely require sustained advances in battery technology alongside... infrastructure investment'?", opts: ["Fully replacing petrol/diesel cars will probably need ongoing battery improvements and continued investment in infrastructure.", "Internal combustion vehicles have already been completely replaced.", "No further battery technology improvements are needed.", "Infrastructure investment is irrelevant to electric vehicle adoption."], answer: 0, exp: "Option B overstates as already complete; C and D contradict the stated requirements." },
+        ],
+      },
+      {
+        title: "The Psychology of Nostalgia",
+        text:
+`For much of the twentieth century, nostalgia was regarded by psychologists primarily as a negative emotional state, often associated with homesickness or an inability to adjust to present circumstances, a view that has shifted considerably following more recent research into its psychological functions.
+
+Contemporary research suggests that nostalgic reflection, rather than being purely maladaptive, can serve several beneficial psychological functions, including strengthening a sense of personal identity, increasing feelings of social connectedness, and providing comfort during periods of stress or uncertainty.
+
+Experimental studies have found that inducing nostalgic feelings in participants, often through recalling a cherished memory or listening to music from an earlier period of their life, can measurably increase reported feelings of optimism about the future, an effect that initially struck researchers as counterintuitive.
+
+Not all instances of nostalgic reflection produce equally positive effects, however; researchers have found that the benefits appear strongest when nostalgic memories are recalled voluntarily and reflected upon positively, rather than being triggered involuntarily in contexts associated with loss or distress.
+
+This shift in scientific understanding has had practical applications beyond academic psychology, with some therapeutic approaches now incorporating structured nostalgic reflection as a tool for supporting emotional wellbeing, particularly among older adults or individuals experiencing significant life transitions.`,
+        questions: [
+          { id: "pp-16", prompt: "Which is the best paraphrase of: 'nostalgia was regarded... as a negative emotional state... a view that has shifted considerably following more recent research'?", opts: ["Psychologists used to see nostalgia mainly negatively, but this view has changed a lot due to newer research.", "Psychologists have always viewed nostalgia as entirely positive.", "No research has ever been done on nostalgia.", "The view of nostalgia has remained completely unchanged for a century."], answer: 0, exp: "Option D directly contradicts 'shifted considerably'; B and C misrepresent the described history." },
+          { id: "pp-17", prompt: "Which is the best paraphrase of: 'nostalgic reflection... can serve several beneficial psychological functions, including strengthening... personal identity, increasing... social connectedness'?", opts: ["Thinking nostalgically can help people in several positive ways, such as feeling more connected to others and having a stronger sense of who they are.", "Nostalgia has been proven to have no psychological benefits whatsoever.", "Nostalgia only affects a person's diet.", "Social connectedness is completely unrelated to nostalgia."], answer: 0, exp: "Options B and D directly contradict the listed benefits; C introduces an unrelated, unsupported claim." },
+          { id: "pp-18", prompt: "Which is the best paraphrase of: 'inducing nostalgic feelings in participants... can measurably increase reported feelings of optimism about the future'?", opts: ["Making people feel nostalgic can actually make them feel more hopeful about what's ahead.", "Nostalgic feelings always make people feel worse about the future.", "Optimism has no connection to memory recall.", "This effect was expected by all researchers from the start."], answer: 0, exp: "Option B is the opposite effect; D contradicts 'counterintuitive', which implies researchers didn't expect it." },
+          { id: "pp-19", prompt: "Which is the best paraphrase of: 'the benefits appear strongest when nostalgic memories are recalled voluntarily... rather than being triggered involuntarily in contexts associated with loss or distress'?", opts: ["Nostalgia tends to help most when people choose to remember positively, not when it's triggered by upsetting situations.", "All nostalgic memories produce identical benefits regardless of context.", "Nostalgia only has negative effects in every circumstance.", "Involuntary nostalgic memories always produce the strongest benefits."], answer: 0, exp: "Option D is the reverse of the claim; B and C ignore the described distinction between voluntary and involuntary recall." },
+          { id: "pp-20", prompt: "Which is the best paraphrase of: 'some therapeutic approaches now incorporating structured nostalgic reflection as a tool for supporting emotional wellbeing'?", opts: ["Certain therapy methods now use organised nostalgic reflection to help support people's emotional health.", "No therapeutic approaches have ever used nostalgia.", "Nostalgia is banned from all forms of therapy.", "This shift has had no practical applications beyond theory."], answer: 0, exp: "Options B and C directly contradict the claim; D contradicts the paragraph's opening about practical applications." },
+        ],
+      },
+      {
+        title: "The Evolution of Video Game Storytelling",
+        text:
+`Video games have evolved considerably as a storytelling medium since their early decades, when narrative elements were typically minimal or entirely absent, serving mainly as a thin justification for gameplay mechanics rather than a meaningful component of the overall experience.
+
+Advances in technology, including improved graphics, voice acting, and expanded memory capacity, have progressively allowed developers to construct more elaborate narratives, complex character development, and branching storylines that respond meaningfully to player choices throughout a game.
+
+Some contemporary games have been praised by critics for achieving a level of emotional depth and narrative complexity comparable to acclaimed works in film or literature, prompting ongoing academic debate about whether video games should be considered a legitimate artistic medium in their own right.
+
+Not all developers prioritise narrative complexity, however; many successful games continue to focus primarily on gameplay mechanics, competitive multiplayer systems, or open-ended sandbox experiences, where storytelling plays a secondary or even negligible role in overall player engagement.
+
+Industry analysts note that the diversity of approaches within the medium, ranging from narrative-driven experiences to purely mechanics-focused titles, reflects the breadth of what players seek from games, suggesting that narrative-rich and narrative-light approaches are likely to continue coexisting rather than one displacing the other.`,
+        questions: [
+          { id: "pp-21", prompt: "Which is the best paraphrase of: 'narrative elements were typically minimal or entirely absent, serving mainly as a thin justification for gameplay mechanics'?", opts: ["Early games usually had very little or no story, which mostly just gave a basic reason for the gameplay to exist.", "Early video games always had complex, detailed storylines.", "Gameplay mechanics were unimportant in early video games.", "Narrative was the most important part of early games."], answer: 0, exp: "Options B and D are the opposite of the claim; C contradicts the described focus on mechanics over story." },
+          { id: "pp-22", prompt: "Which is the best paraphrase of: 'Advances in technology... have progressively allowed developers to construct more elaborate narratives, complex character development, and branching storylines'?", opts: ["As technology improved, game creators were gradually able to build richer stories, deeper characters, and plots that could change based on choices.", "Technology has made storytelling in games simpler over time.", "Character development has become impossible with modern technology.", "Branching storylines were common before any technological advances."], answer: 0, exp: "Option B reverses the claim's direction; C and D contradict the described progression enabled by technology." },
+          { id: "pp-23", prompt: "Which is the best paraphrase of: 'Some contemporary games have been praised... for achieving a level of emotional depth and narrative complexity comparable to acclaimed works in film or literature'?", opts: ["Certain modern games have received praise for having stories as emotionally rich and complex as celebrated films or books.", "No video game has ever been compared favourably to film or literature.", "All video games are considered inferior to films in every respect.", "Critics have universally condemned narrative in video games."], answer: 0, exp: "Options B, C and D all contradict the described praise and comparison to acclaimed film/literature." },
+          { id: "pp-24", prompt: "Which is the best paraphrase of: 'many successful games continue to focus primarily on gameplay mechanics... where storytelling plays a secondary or even negligible role'?", opts: ["A lot of popular games still focus mainly on how they play, with story being a minor or almost unimportant element.", "All successful games prioritise storytelling above everything else.", "Gameplay mechanics have disappeared from modern games entirely.", "Storytelling is always the most important element in successful games."], answer: 0, exp: "Options B and D directly contradict this paragraph's point that many games treat story as secondary." },
+          { id: "pp-25", prompt: "Which is the best paraphrase of: 'narrative-rich and narrative-light approaches are likely to continue coexisting rather than one displacing the other'?", opts: ["Games with lots of story and games with little story will probably both keep existing side by side, rather than one type disappearing.", "Narrative-rich games will completely replace all other types of games.", "Narrative-light games have already disappeared from the market.", "Only one storytelling approach can succeed in the future."], answer: 0, exp: "Options B, C and D all contradict 'coexisting rather than one displacing the other'." },
+        ],
+      },
+    ],
+  },
+  {
+    id: "time-management",
+    title: "Time Management",
+    whenToUse: "On the real exam: 3 passages, 40 questions, 60 minutes (including transferring answers).",
+    howTo: [
+      "On average, aim for about 20 minutes per passage. But Passage 3 is usually the hardest — if you feel stuck, it's often better to move on and come back than to lose time there.",
+      "You don't have to tackle passages in order 1→2→3. Many test-takers skim all three first and start with whichever looks easiest.",
+      "Don't get stuck on one question for more than 1-2 minutes — put down any answer (never leave a blank; there's no penalty for a wrong answer) and move on, returning later if time allows.",
+      "Save 2-3 minutes at the end to check: have you transferred all answers correctly, and does every Summary Completion answer respect the word limit?",
+    ],
+    example: {
+      text: "A sample time plan: 17 minutes for Passage 1 → 20 minutes for Passage 2 → 23 minutes for Passage 3.",
+      note: "Since passages tend to get harder, it makes sense to budget slightly less time for the first (usually easiest) and more for the third — but the exact split is something you calibrate through practice.",
+    },
+    practice: [
+      { id: "tm-1", text: "You've just started the Reading test. What's a sensible first move before diving into Passage 1?", opts: ["Immediately start reading Passage 1 word for word from the beginning.", "Quickly skim all three passages first to judge which looks easiest.", "Read all 40 questions in detail before looking at any passage.", "Start with Passage 3, since it's always the hardest and needs the most time."], answer: 1, exp: "A quick skim across all three helps you decide a sensible order and calibrate expectations, without wasting the limited 60 minutes." },
+      { id: "tm-2", text: "You're 22 minutes into the test and still on Question 8 of Passage 1 (out of about 13-14 questions). What should you do?", opts: ["Keep going at the same pace no matter what — Passage 1 must be finished perfectly.", "Recognise you're behind schedule, answer as best you can, and move toward wrapping up this passage soon.", "Abandon Passage 1 entirely and skip straight to Passage 3.", "Go back and re-read the whole passage from the start to check for mistakes."], answer: 1, exp: "Time-boxing means adjusting your pace when you notice you're behind, not rigidly pushing on or panicking and abandoning a passage entirely." },
+      { id: "tm-3", text: "You've spent nearly 3 minutes on a single Matching Headings question and still aren't sure. What's the best approach?", opts: ["Keep analysing until you're 100% certain, however long it takes.", "Make your best guess now, mark it to revisit if time allows, and move on.", "Leave it blank and come back only if you finish everything else with time to spare.", "Skip the entire task type for the rest of the test."], answer: 1, exp: "Leaving answers blank risks losing marks for no reason (there's no penalty for wrong answers) — always put something down before moving on." },
+      { id: "tm-4", text: "With 5 minutes left in the test and 3 questions still unanswered, what should you prioritise?", opts: ["Carefully re-reading the passage one more time for accuracy.", "Filling in an answer for every remaining question, even a guess.", "Reviewing questions you've already answered correctly.", "Skipping the last few questions since they don't matter much."], answer: 1, exp: "With no penalty for incorrect answers, guessing on every remaining question maximises your possible score — leaving them blank guarantees zero marks for those." },
+      { id: "tm-5", text: "Which order of tackling the three passages is most defensible?", opts: ["Always strictly in the order given (1, 2, 3), regardless of content.", "Whichever order feels most efficient after a quick skim — often, but not always, easier passages first.", "Always start with Passage 3, since it's traditionally the hardest.", "Random order, since order doesn't affect performance."], answer: 1, exp: "There's no rule requiring passages to be done in order — many test-takers benefit from starting with whichever seems most approachable after a quick skim." },
+      { id: "tm-6", text: "You finish Passage 2 with 4 minutes to spare compared to your plan. What's the best use of this extra time?", opts: ["Immediately move on and try to bank the extra minutes for later.", "Take a short break before continuing.", "Use it to double-check your Passage 2 answers, then move to Passage 3.", "Go back and completely redo Passage 1 from scratch."], answer: 2, exp: "A quick check of what you've just completed, before its details fade from memory, is more useful than banking time vaguely or restarting earlier work." },
+      { id: "tm-7", text: "For Summary Completion, you're unsure between two possible words for a gap. What's a reasonable time-management approach?", opts: ["Spend as long as needed until you're fully certain, even if it takes 5+ minutes.", "Pick the more grammatically fitting option quickly, mark it for review, and continue.", "Leave the gap blank permanently rather than risk a wrong guess.", "Restart the entire Summary Completion task from the beginning."], answer: 1, exp: "A quick, grammatically-informed choice keeps you moving; you can revisit it later if time allows, but stalling indefinitely on one gap costs you elsewhere." },
+      { id: "tm-8", text: "Roughly how long should transferring and checking answers take at the very end, if you're managing time well?", opts: ["0 minutes — there's no time for this.", "2-3 minutes, reserved deliberately in your overall time plan.", "15-20 minutes, checking every single answer in depth.", "It doesn't matter, since answers are graded electronically regardless."], answer: 1, exp: "Reserving a small, deliberate buffer (2-3 minutes) for final checks is realistic and catches careless errors without eating into passage-solving time." },
+      { id: "tm-9", text: "You notice Passage 3 has an unusually dense, technical topic you find difficult. What's a reasonable strategy?", opts: ["Panic and give up on the passage entirely.", "Allocate slightly more time to it than the others, since difficulty was anticipated, but keep a firm cap.", "Spend unlimited time on it since it's 'the important one'.", "Skip straight to guessing on every question without reading anything."], answer: 1, exp: "Anticipating a harder passage and budgeting slightly more time for it, within a firm limit, beats both giving up and having no plan at all." },
+      { id: "tm-10", text: "What's the main risk of not practising with a timer before the real exam?", opts: ["There is no risk — timing only matters on exam day.", "You may misjudge your natural pace and run out of time unexpectedly during the real test.", "Timed practice makes you slower overall.", "Untimed practice is always more effective for learning content."], answer: 1, exp: "Practising under real time constraints is the only way to accurately calibrate your pace — without it, exam-day time pressure often comes as an unpleasant surprise." },
+      { id: "tm-11", text: "You realise with 10 minutes remaining that you haven't started Passage 3 at all. What's the most sensible approach?", opts: ["Give up on Passage 3 entirely and leave it blank.", "Skim the questions quickly, answer any you can based on obvious keyword matches, and guess on the rest.", "Spend all 10 minutes reading Passage 3 carefully from start to finish.", "Go back and redo Passage 1 instead."], answer: 1, exp: "With very little time left, quickly targeting easy wins and guessing the rest maximises your score far better than a slow full read or giving up entirely." },
+      { id: "tm-12", text: "Which is a better use of the first 30 seconds after starting a new passage?", opts: ["Reading every question in full detail before looking at the passage.", "Quickly skimming the passage's title and structure to build a general sense of its topic.", "Immediately guessing on all questions without reading anything.", "Memorising the passage word for word."], answer: 1, exp: "A brief skim orients you to the topic and structure, making the detailed reading that follows faster and more targeted." },
+      { id: "tm-13", text: "You've completed Passage 1 in 15 minutes, faster than planned. What should you do with the saved time?", opts: ["Waste it by doing nothing.", "Carry it forward mentally as extra buffer for a potentially harder passage later.", "Redo Passage 1 twice for no reason.", "Immediately end the test early."], answer: 1, exp: "Banking saved time as flexible buffer for a harder passage is more useful than any of the alternatives." },
+      { id: "tm-14", text: "For a Matching Features question with many options, what's an efficient approach?", opts: ["Read every single option in full detail multiple times before starting.", "Scan for names or key terms in the question first, then locate them efficiently in the text.", "Randomly guess without reading anything.", "Skip all Matching Features questions on principle."], answer: 1, exp: "Targeted scanning for specific names or terms is far faster than repeatedly reading every option in full." },
+      { id: "tm-15", text: "True or false: it's generally a good idea to write very long, detailed notes in the margin for every question.", opts: ["True — detailed notes are always worth the time.", "False — brief keyword notes are usually more time-efficient than long notes.", "True, but only for Passage 3.", "False — no notes should ever be taken."], answer: 1, exp: "Short keyword notes capture what's needed without eating into your limited time, unlike lengthy notes." },
+      { id: "tm-16", text: "You're unsure whether to double-check your Passage 1 answers now or wait until the very end. What's generally best?", opts: ["Check immediately after each passage while it's fresh, if time allows, rather than saving all checking for the very end.", "Never check any answers at all.", "Only check answers for Passage 3.", "Wait until after the test has ended to check."], answer: 0, exp: "Checking while the passage is still fresh in memory is more effective than trying to recall details much later." },
+      { id: "tm-17", text: "Which is the more realistic time-management goal for someone practising at home?", opts: ["Always finishing 20 minutes early on every practice test.", "Gradually improving pace through repeated timed practice, tracking where time is lost.", "Never practising under time pressure at all.", "Memorising all possible passage topics in advance."], answer: 1, exp: "Steady, tracked improvement through timed practice is a realistic and effective goal, unlike the other options." },
+      { id: "tm-18", text: "If you find yourself re-reading the same sentence three or four times without understanding it, what's a reasonable response?", opts: ["Keep re-reading it as many times as needed, however long that takes.", "Move on temporarily, answer other questions, and return to it with fresh eyes if time allows.", "Immediately give up on the entire passage.", "Skip the rest of the test entirely."], answer: 1, exp: "Stepping away and returning later, rather than getting stuck, protects your overall time budget." },
+      { id: "tm-19", text: "Which statement about guessing is accurate for the IELTS Reading test?", opts: ["Wrong answers are penalised, so guessing is risky.", "There's no penalty for wrong answers, so guessing is always better than leaving a blank.", "Guessing is against the exam rules.", "Guessing only works for Multiple Choice questions."], answer: 1, exp: "IELTS Reading has no penalty for incorrect answers, so an educated (or even random) guess is always better than a blank." },
+      { id: "tm-20", text: "What's a practical way to build better exam-day time awareness before the real test?", opts: ["Avoid checking the clock during practice tests entirely.", "Practice with a visible timer and periodically check progress against a rough per-passage schedule.", "Only ever practice without any time limit.", "Rely on the exam invigilator to manage your time for you."], answer: 1, exp: "Practising with a timer and checkpoints builds the pacing instincts needed for the real, timed exam." },
+      { id: "tm-21", text: "You have exactly 1 minute left and one Summary Completion gap unanswered. What should you do?", opts: ["Leave it blank since there's no time to think it through properly.", "Write your best guess based on grammar and any recalled context, even under time pressure.", "Spend the last minute reviewing already-correct answers instead.", "Skip straight to submitting without attempting it."], answer: 1, exp: "A quick, informed guess still has a chance of being correct — a blank guarantees zero marks." },
+      { id: "tm-22", text: "Which is a more efficient way to handle question types you find personally difficult, like Matching Headings?", opts: ["Practice them extensively beforehand so they take less time on test day.", "Avoid ever practising them and hope they don't appear.", "Skip them entirely on the real test regardless of the time available.", "Assume they'll magically become easy without practice."], answer: 0, exp: "Targeted practice on your weaker question types is the only reliable way to speed them up before the real exam." },
+      { id: "tm-23", text: "Why is it useful to know the typical structure of the IELTS Reading test (3 passages, increasing difficulty) in advance?", opts: ["It has no practical use for time management.", "It allows you to set realistic per-passage time expectations rather than being surprised mid-test.", "It guarantees a perfect score regardless of preparation.", "It means you don't need to read the passages at all."], answer: 1, exp: "Knowing the structure lets you plan your time budget realistically instead of reacting to surprises mid-test." },
+      { id: "tm-24", text: "If a Matching Information question asks you to find where in the text a statistic is mentioned, what's the time-efficient approach?", opts: ["Read the entire passage in full detail from start to finish for every single question.", "Scan specifically for numbers or statistical language relevant to the question, rather than reading everything.", "Guess randomly without scanning at all.", "Skip the passage entirely."], answer: 1, exp: "Targeted scanning for the specific type of information needed (a statistic) is far faster than full, detailed reading." },
+      { id: "tm-25", text: "Overall, which mindset best supports good time management on test day?", opts: ["Perfectionism — refusing to move on until every answer feels 100% certain.", "Flexibility — adjusting pace in response to how the test is actually going, rather than rigidly following a fixed plan no matter what.", "Panic — abandoning your plan entirely at the first sign of difficulty.", "Indifference — not tracking time at all."], answer: 1, exp: "Flexibility — adjusting based on real progress — outperforms both rigid perfectionism and panic or indifference." },
+    ],
+  },
+  {
+    id: "common-traps",
+    title: "Common Examiner Traps",
+    whenToUse: "On any task type — the exam deliberately includes options that look correct at first glance.",
+    howTo: [
+      "Number substitution: the text says '15%', a wrong option says '50%' or '1.5%'. Always double-check figures directly rather than relying on memory.",
+      "Negation: adding 'not', 'except', 'unless' reverses meaning. Read negating words carefully — they're easy for the eye to skip over.",
+      "Matching words ≠ matching meaning: a wrong option can reuse the text's exact words, but in a different order or context, changing what they mean.",
+      "Overgeneralisation: the text says 'some researchers believe', but a wrong option states it as universally accepted fact ('scientists have proven').",
+    ],
+    example: {
+      text: "Text: \"Some scientists argue that this challenges the traditional view.\" Trap: \"Scientists have proven that competition does not exist in forests.\"",
+      note: "'Some scientists argue' (the opinion of a subset) has been turned into 'have proven' (an established fact) — a classic overgeneralisation trap that's easy to mistake for a correct answer if you're not reading carefully.",
+    },
+    passages: [
+      {
+        title: "The Economics of Urban Beekeeping",
+        text:
+`Over the past fifteen years, urban beekeeping has grown into a widespread hobby and, for some, a modest commercial enterprise, with an estimated 35% increase in registered hives in major cities across Europe and North America since 2010.
+
+Proponents argue that city environments, somewhat counterintuitively, can offer bees a more diverse and less pesticide-exposed foraging landscape than many industrial agricultural areas, where large monoculture fields limit flower variety and chemical use is often heavier.
+
+Not everyone views the trend favourably, however. Some ecologists caution that a rapid rise in managed honeybee colonies within a limited urban area can create excessive competition for available flowers, potentially disadvantaging wild native bee species that already face pressure from habitat loss.
+
+A small number of cities have responded to these concerns by introducing hive-density regulations, capping the number of colonies permitted per unit of land area in a given district, though such policies currently remain the exception rather than the rule.
+
+Researchers generally agree that further long-term monitoring is needed before firm conclusions can be drawn about the net ecological impact of urban beekeeping, particularly regarding its effects on wild pollinator populations in densely hived areas.`,
+        questions: [
+          { id: "ct-1", prompt: "According to the text, by what percentage did registered urban hives increase since 2010?", opts: ["15%", "35%", "50%", "10%"], answer: 1, exp: "The text says '35% increase... since 2010'. The '15' trap comes from confusing it with 'fifteen years' mentioned in the same sentence." },
+          { id: "ct-2", prompt: "Which statement accurately reflects Paragraph 3?", opts: ["All ecologists agree urban beekeeping is entirely harmless to wild bees.", "Some ecologists are concerned that urban beekeeping could disadvantage wild native bee species.", "No wild bee species face any pressure from habitat loss.", "Ecologists have proven urban beekeeping causes no competition for flowers."], answer: 1, exp: "Options A, C and D each insert an absolute claim ('all', 'no', 'proven... no') the text doesn't support — classic traps versus the actual 'some ecologists caution' wording." },
+          { id: "ct-3", prompt: "Which best reflects what Paragraph 2 says about city environments for bees?", opts: ["City environments are always better for bees than any farmland.", "City environments may sometimes offer more diverse, less pesticide-exposed foraging than some industrial agricultural areas.", "All industrial farms use excessive pesticides.", "Bees cannot survive in agricultural areas at all."], answer: 1, exp: "The original uses softened language ('somewhat counterintuitively... can offer', 'many industrial agricultural areas') — the other options convert this into absolute, universal claims." },
+          { id: "ct-4", prompt: "According to Paragraph 4, how many cities have introduced hive-density regulations?", opts: ["Most cities", "All cities", "A small number of cities", "No cities"], answer: 2, exp: "The text specifically says 'a small number of cities' and that such policies 'remain the exception rather than the rule' — 'most' or 'all' would misrepresent this scope." },
+          { id: "ct-5", prompt: "Which best reflects Paragraph 5?", opts: ["Researchers have already reached firm, final conclusions about urban beekeeping's ecological impact.", "Researchers generally believe more long-term monitoring is still needed before firm conclusions can be drawn.", "No research has ever been conducted on this topic.", "All researchers completely disagree with each other about this topic."], answer: 1, exp: "The text explicitly says further monitoring 'is needed before firm conclusions can be drawn' — the opposite of already having reached firm conclusions." },
+        ],
+      },
+      {
+        title: "The Debate Over Standardised Testing",
+        text:
+`Standardised testing has long served as a central tool for evaluating student performance in education systems worldwide, with proponents arguing that it provides an objective, consistent measure that allows fair comparison across different schools and regions.
+
+Critics, however, argue that such tests often measure a narrow set of skills, primarily the ability to recall facts and apply routine procedures under time pressure, potentially at the expense of creativity, critical thinking, and other abilities that are harder to quantify.
+
+A number of studies have found correlations between standardised test scores and factors such as household income, leading some researchers to argue that the tests may inadvertently reflect socioeconomic advantage as much as individual academic ability.
+
+In response to such criticisms, several education systems have experimented with alternative or supplementary assessment methods, including project-based evaluations and portfolio assessments, though these approaches are often more time-consuming and costly to administer consistently at scale.
+
+Despite ongoing debate, standardised tests remain deeply embedded in most national education systems, and few policymakers have proposed eliminating them entirely, focusing instead on incremental reforms intended to address some of the concerns raised by critics.`,
+        questions: [
+          { id: "ct-6", prompt: "Which best reflects what Paragraph 1 says about standardised testing?", opts: ["All educators agree standardised tests are the best possible measure of ability.", "Proponents argue it offers an objective, consistent way to compare performance across schools.", "Standardised testing has only existed for the past few years.", "No one has ever criticised standardised testing."], answer: 1, exp: "Option A overstates ('all educators agree'); C misstates its long history ('long served'); D contradicts the extensive criticism described later in the text." },
+          { id: "ct-7", prompt: "According to Paragraph 2, what do critics say standardised tests primarily measure?", opts: ["Creativity and critical thinking above all else.", "Mainly factual recall and routine procedure application under time pressure.", "Only artistic ability.", "Nothing measurable at all."], answer: 1, exp: "The text states tests measure 'primarily... facts and... routine procedures' — the opposite of what critics say is being neglected (creativity, critical thinking)." },
+          { id: "ct-8", prompt: "Which best reflects Paragraph 3?", opts: ["Studies have proven that household income directly causes low intelligence.", "Some researchers note a correlation between test scores and household income, suggesting scores may partly reflect socioeconomic factors.", "There is no relationship at all between income and test scores.", "All test scores are determined solely by family wealth."], answer: 1, exp: "The text describes a 'correlation' noted by 'some researchers' — not a proven causal claim ('directly causes') or an absolute claim ('solely')." },
+          { id: "ct-9", prompt: "According to Paragraph 4, what is a noted drawback of alternative assessment methods?", opts: ["They are illegal in most countries.", "They are often more time-consuming and costly to administer at scale.", "They have completely replaced standardised testing everywhere.", "They require no teacher involvement at all."], answer: 1, exp: "The text specifically names cost and time as the drawback — not legality or complete replacement, which are unsupported additions." },
+          { id: "ct-10", prompt: "Which best reflects Paragraph 5?", opts: ["Most policymakers want to eliminate standardised testing completely.", "Standardised tests remain widely used, with most reform efforts being incremental rather than aiming for elimination.", "Standardised testing has already been abolished in most countries.", "There is no ongoing debate about standardised testing."], answer: 1, exp: "The text explicitly says 'few policymakers have proposed eliminating them entirely' — directly contradicting option A, and reform is described as 'incremental', not abolition." },
+        ],
+      },
+      {
+        title: "The Debate Over School Start Times",
+        text:
+`A growing body of sleep research has prompted school districts in various countries to reconsider the traditional early morning start times common in secondary education, with some studies suggesting that adolescent circadian rhythms naturally shift later during puberty, making very early starts biologically mismatched with teenage sleep patterns.
+
+Proponents of later start times point to studies showing improvements in student attendance, mood, and even academic performance following delayed start times in some pilot districts, though researchers caution that results have varied depending on how much start times were shifted and how other aspects of the school schedule were adjusted.
+
+Not everyone supports changing start times, however; critics raise practical concerns about the knock-on effects on after-school activities, parents' work schedules, and public transportation systems that would need to be reorganised around a shifted school day.
+
+A small number of school districts that implemented later start times have reported measurable, though modest, improvements in certain outcomes, while others have found less conclusive results, leading most researchers to caution against assuming uniformly large benefits across all contexts.
+
+Given these mixed findings, policymakers in most regions have moved cautiously, often piloting changes in a small number of schools before considering wider implementation, rather than mandating immediate, system-wide changes to start times.`,
+        questions: [
+          { id: "ct-11", prompt: "Which best reflects Paragraph 1?", opts: ["All schools worldwide have already shifted to later start times.", "Some research suggests adolescent circadian rhythms shift later, prompting some districts to reconsider early start times.", "Sleep research has found no connection between start times and teenage biology.", "Early start times have been proven completely harmless to all students."], answer: 1, exp: "Option A overstates ('all schools... already'); C and D directly contradict the described research findings." },
+          { id: "ct-12", prompt: "Which best reflects Paragraph 2?", opts: ["All studies agree that later start times improve every measured outcome equally.", "Some studies show improvements after delayed start times, but results vary by context.", "Later start times have been proven to harm student attendance.", "No research has ever studied school start times."], answer: 1, exp: "Option A overstates uniformity; the text explicitly says 'results have varied' — a classic overgeneralisation trap." },
+          { id: "ct-13", prompt: "Which best reflects Paragraph 3?", opts: ["Everyone agrees that changing start times is a good idea with no drawbacks.", "Critics raise practical concerns about effects on activities, work schedules, and transportation.", "No one has ever raised concerns about changing school start times.", "Public transportation is completely unaffected by school start times."], answer: 1, exp: "Options A, C and D all contradict the paragraph's description of critics' concerns." },
+          { id: "ct-14", prompt: "Which best reflects Paragraph 4?", opts: ["Every district that changed start times reported dramatic, uniform improvements.", "Some districts reported modest improvements while others found less conclusive results, prompting caution about generalising.", "No district has ever tried changing start times.", "Results have been completely consistent across all districts studied."], answer: 1, exp: "Option A overstates with 'dramatic, uniform'; D directly contradicts the described variation in findings." },
+          { id: "ct-15", prompt: "Which best reflects Paragraph 5?", opts: ["Most regions have already mandated system-wide changes immediately.", "Policymakers in most regions have moved cautiously, often piloting changes first.", "No policymakers have considered this issue at all.", "All pilot programmes have been abandoned."], answer: 1, exp: "Option A directly contradicts 'moved cautiously... piloting changes' rather than mandating immediate system-wide change." },
+        ],
+      },
+      {
+        title: "The Debate Over Genetically Modified Crops",
+        text:
+`Since their commercial introduction in the 1990s, genetically modified (GM) crops have become widely used in several major agricultural economies, particularly for crops such as soybeans, maize, and cotton, engineered primarily for traits including pest resistance and herbicide tolerance.
+
+Proponents argue that GM crops have contributed to increased yields and reduced pesticide use in some contexts, potentially offering environmental and economic benefits compared with certain conventional farming practices, though the magnitude of these benefits varies considerably depending on the specific crop, region, and farming practices involved.
+
+Critics raise a range of concerns, including the potential for reduced genetic diversity in agricultural systems, the development of herbicide-resistant weeds in some regions, and broader questions about corporate control over seed markets, rather than concerns about direct human health effects, which the scientific consensus generally does not support as a significant risk.
+
+Regulatory approaches to GM crops vary considerably between countries, with some nations adopting relatively permissive regulatory frameworks while others impose strict restrictions or outright bans, reflecting differing public attitudes, political considerations, and interpretations of the available scientific evidence.
+
+Despite decades of use and extensive scientific study, public opinion regarding GM crops remains divided in many countries, with surveys suggesting that consumer attitudes are often influenced by factors beyond scientific evidence alone, including trust in regulatory institutions and broader attitudes toward large agricultural corporations.`,
+        questions: [
+          { id: "ct-16", prompt: "Which best reflects Paragraph 1?", opts: ["GM crops have never been used commercially anywhere.", "GM crops have been widely used since the 1990s in several major agricultural economies for specific traits.", "GM crops are used exclusively for one single crop type worldwide.", "GM crops were banned immediately after their introduction."], answer: 1, exp: "Options A, C and D all contradict the described widespread commercial use since the 1990s across multiple crops." },
+          { id: "ct-17", prompt: "Which best reflects Paragraph 2?", opts: ["GM crops have been proven to provide identical benefits in every region and context.", "GM crops may offer benefits like increased yields in some contexts, though the extent varies.", "GM crops have no environmental or economic effects whatsoever.", "All conventional farming practices are worse than GM farming in every respect."], answer: 1, exp: "Option A overstates uniformity ('identical... every region'); the text explicitly says the magnitude 'varies considerably'." },
+          { id: "ct-18", prompt: "Which best reflects Paragraph 3?", opts: ["The primary scientific concern about GM crops is direct harm to human health.", "Critics' main concerns include genetic diversity, herbicide-resistant weeds, and seed market control — not proven human health risks.", "There are no criticisms of GM crops whatsoever.", "Scientific consensus strongly supports human health risks from GM crops."], answer: 1, exp: "The text explicitly says human health effects are 'not support[ed] as a significant risk' by scientific consensus — options A and D claim the opposite." },
+          { id: "ct-19", prompt: "Which best reflects Paragraph 4?", opts: ["All countries regulate GM crops in exactly the same way.", "Regulatory approaches vary considerably between countries, from permissive to strict or banned.", "No country has ever regulated GM crops.", "GM crops are banned in every country worldwide."], answer: 1, exp: "Options A and D both overstate uniformity where the text explicitly describes considerable variation between countries." },
+          { id: "ct-20", prompt: "Which best reflects Paragraph 5?", opts: ["Public opinion on GM crops is completely unified worldwide.", "Public opinion remains divided, influenced by factors beyond scientific evidence alone.", "Scientific study has fully resolved all public disagreement on this topic.", "No surveys have ever examined public attitudes toward GM crops."], answer: 1, exp: "Options A and C both contradict 'remains divided... despite decades of... scientific study'." },
+        ],
+      },
+      {
+        title: "The History of Public Libraries",
+        text:
+`While informal book-lending arrangements existed in various forms throughout history, the modern concept of a free, publicly funded lending library accessible to the general public without membership fees emerged largely during the nineteenth century, closely tied to broader social movements promoting universal literacy and public education.
+
+Early public library advocates, including notable philanthropist Andrew Carnegie, funded the construction of thousands of library buildings across multiple countries, though Carnegie's funding model typically required local communities to commit to ongoing operational funding rather than covering the library's complete costs indefinitely.
+
+Public libraries have continually adapted their services over time, expanding well beyond simple book lending to include, in many contemporary libraries, internet access, digital media collections, community meeting spaces, and various educational programming aimed at serving diverse community needs beyond traditional reading.
+
+Funding for public libraries has faced periodic pressure in various countries, particularly during periods of broader economic downturn or government budget constraints, leading some libraries to reduce operating hours or consolidate branches, though closures have generally been the exception rather than a universal trend.
+
+Despite predictions in past decades that the rise of digital technology and the internet would render physical libraries largely obsolete, many public libraries have instead successfully repositioned themselves as important community hubs, with usage patterns shifting toward different services rather than declining uniformly across the board.`,
+        questions: [
+          { id: "ct-21", prompt: "Which best reflects Paragraph 1?", opts: ["No book-lending arrangements of any kind existed before the nineteenth century.", "The modern free public library concept emerged mainly in the nineteenth century, tied to literacy movements.", "Public libraries have always required membership fees.", "Universal literacy movements had no connection to library development."], answer: 1, exp: "Option A overstates — the text says 'informal' lending existed earlier, just not the modern free public model; C and D directly contradict the text." },
+          { id: "ct-22", prompt: "Which best reflects Paragraph 2?", opts: ["Andrew Carnegie personally covered all library costs forever, with no community contribution required.", "Carnegie funded many library buildings, but typically required communities to commit to ongoing operational funding.", "Carnegie had no involvement in library history.", "No library buildings were funded during this period."], answer: 1, exp: "The text specifically notes the funding model 'required local communities to commit to ongoing... funding' — not indefinite full coverage by Carnegie, ruling out option A." },
+          { id: "ct-23", prompt: "Which best reflects Paragraph 3?", opts: ["Libraries today offer only book lending, unchanged since the 1800s.", "Many contemporary libraries have expanded services well beyond book lending, including internet access and community spaces.", "No library has ever offered internet access.", "Educational programming is banned in public libraries."], answer: 1, exp: "Options A, C and D all contradict the described expansion of services in many contemporary libraries." },
+          { id: "ct-24", prompt: "Which best reflects Paragraph 4?", opts: ["All public libraries worldwide have permanently closed due to funding issues.", "Some libraries have faced funding pressure and reduced hours, but closures have generally been the exception.", "No library has ever faced any funding pressure.", "Government budget constraints have never affected libraries."], answer: 1, exp: "Option A overstates dramatically ('all... permanently closed'), directly contradicting 'closures have generally been the exception'." },
+          { id: "ct-25", prompt: "Which best reflects Paragraph 5?", opts: ["Digital technology has made all physical libraries completely obsolete, exactly as predicted.", "Despite predictions of obsolescence, many libraries have repositioned themselves successfully as community hubs.", "Library usage has declined uniformly and dramatically everywhere.", "No predictions were ever made about libraries and digital technology."], answer: 1, exp: "Option A directly contradicts the paragraph's point that the predictions of obsolescence did not come true as expected." },
+        ],
+      },
+    ],
+  },
+  {
+    id: "yes-no-not-given",
+    title: "Yes/No/Not Given (vs True/False/Not Given)",
+    whenToUse: "When the task specifically says YES/NO/NOT GIVEN (not TRUE/FALSE) — this is a separate task type, usually found in texts where the author expresses an opinion or argument.",
+    howTo: [
+      "The key difference: True/False/Not Given checks FACTS in the text. Yes/No/Not Given checks the AUTHOR'S OPINION — does the statement match the author's own point of view?",
+      "YES — the author clearly agrees with the statement. NO — the author clearly disagrees (even if the underlying fact is true, the author disputes this particular interpretation). NOT GIVEN — the author doesn't express an opinion on this specific point.",
+      "Look for words that reveal the author's stance: 'clearly', 'unfortunately', 'it is unlikely that', 'surprisingly' — these signal the author's attitude toward the topic.",
+      "If the text simply reports a fact with no evaluation — and the question asks about an evaluation — it's usually NOT GIVEN, not YES or NO.",
+    ],
+    example: {
+      text: "Statement: 'The traditional view of forest competition is now outdated.' — in a text where the author writes: 'Some scientists argue that this challenges the traditional Darwinian view...'",
+      note: "The author never claims, in their own voice, that the old view is 'outdated' — they only report that SOME scientists believe this, staying neutral themselves. This is NOT GIVEN, not YES — because it's not the author's own position, just a report of someone else's opinion.",
+    },
+    passages: [
+      {
+        title: "Why Cities Should Ban Cars from Their Centres",
+        text:
+`It is time for major cities to seriously reconsider the assumption that private cars deserve unrestricted access to urban centres. For decades, planners have designed cities around vehicles rather than people, and the result has been polluted air, dangerous streets, and public spaces dominated by parked cars rather than pedestrians.
+
+Some critics argue that banning cars would harm local businesses that depend on customers arriving by vehicle. This concern, while understandable, is not well supported by the evidence from cities that have already pedestrianised central districts; retail revenues in many such areas have in fact increased, not decreased, following the removal of car traffic.
+
+Public transport, cycling infrastructure, and pedestrian zones can absolutely replace the private car for most urban journeys, provided cities invest properly in these alternatives before restricting car access, rather than treating restriction and investment as separate, sequential steps.
+
+Admittedly, residents with mobility impairments and those living far from public transport routes face legitimate challenges under such policies, and any serious car-restriction plan must include exemptions and alternative transport solutions for these groups specifically.
+
+Ultimately, the environmental and public health benefits of reduced urban car use are substantial enough that cities should pursue this path decisively, rather than continuing to delay meaningful action out of excessive caution about temporary inconvenience.`,
+        questions: [
+          { id: "yn-1", prompt: "The author believes cities have historically prioritised vehicles over people in their design.", opts: ["YES", "NO", "NOT GIVEN"], answer: 0, exp: "The author explicitly states 'planners have designed cities around vehicles rather than people' — this is the author's own claim." },
+          { id: "yn-2", prompt: "The author believes banning cars definitely harms local business revenue.", opts: ["YES", "NO", "NOT GIVEN"], answer: 1, exp: "The author explicitly disputes this, citing evidence that revenues 'have in fact increased, not decreased'." },
+          { id: "yn-3", prompt: "The author believes public transport investment should happen only after car restrictions are already in place.", opts: ["YES", "NO", "NOT GIVEN"], answer: 1, exp: "The author says cities should 'invest properly in these alternatives before restricting car access' — the reverse order to the statement." },
+          { id: "yn-4", prompt: "The author believes people with disabilities need special consideration in car-restriction policies.", opts: ["YES", "NO", "NOT GIVEN"], answer: 0, exp: "The author explicitly states such plans 'must include exemptions and alternative transport solutions for these groups specifically'." },
+          { id: "yn-5", prompt: "The author has personally been in a car accident in a European city.", opts: ["YES", "NO", "NOT GIVEN"], answer: 2, exp: "The author's personal experiences are never mentioned anywhere in the text." },
+        ],
+      },
+      {
+        title: "The Case for a Four-Day Work Week",
+        text:
+`The traditional five-day, forty-hour work week is a relic of early twentieth-century industrial practice, not a scientifically optimal arrangement for modern knowledge work, and it is well past time that more employers seriously experiment with a four-day alternative.
+
+Sceptics often assume that reducing working days would proportionally reduce output, but pilot programmes conducted across several countries have generally found that overall productivity remains largely stable, suggesting that many employees are simply more efficient when given a stronger incentive to focus during working hours.
+
+Critics who argue that a shorter week is only feasible for office-based knowledge work have a point worth taking seriously; extending this model to sectors such as healthcare or manufacturing, where continuous coverage is essential, will require considerably more creative scheduling solutions than simply cutting one day from everyone's calendar.
+
+Some commentators worry that four-day weeks might simply compress the same workload into fewer, more stressful days, defeating the purpose of the reform entirely; this is a legitimate risk that employers must actively guard against through genuine workload reduction, not merely schedule compression.
+
+Despite these legitimate implementation challenges, the overall case for exploring a four-day week remains compelling, and businesses that dismiss it outright, without at least piloting the idea, are likely underestimating both the wellbeing benefits for staff and the potential recruitment advantages in a competitive labour market.`,
+        questions: [
+          { id: "yn-6", prompt: "The author believes the traditional five-day work week is based on solid scientific evidence for modern jobs.", opts: ["YES", "NO", "NOT GIVEN"], answer: 1, exp: "The author calls it 'a relic... not a scientifically optimal arrangement' — a clear rejection." },
+          { id: "yn-7", prompt: "The author believes productivity necessarily drops when working days are reduced.", opts: ["YES", "NO", "NOT GIVEN"], answer: 1, exp: "The author cites pilot programmes finding 'overall productivity remains largely stable' — directly contradicting the statement." },
+          { id: "yn-8", prompt: "The author believes extending a four-day week to healthcare and manufacturing will be simple and require no extra planning.", opts: ["YES", "NO", "NOT GIVEN"], answer: 1, exp: "The author says this 'will require considerably more creative scheduling solutions' — the opposite of simple." },
+          { id: "yn-9", prompt: "The author believes workload compression without actual reduction defeats the purpose of a four-day week.", opts: ["YES", "NO", "NOT GIVEN"], answer: 0, exp: "The author explicitly agrees this is a 'legitimate risk' that 'defeat[s] the purpose of the reform entirely'." },
+          { id: "yn-10", prompt: "The author has personally implemented a four-day week at their own company.", opts: ["YES", "NO", "NOT GIVEN"], answer: 2, exp: "The author's own workplace practices are never mentioned." },
+        ],
+      },
+      {
+        title: "Should Homework Be Abolished in Primary Schools?",
+        text:
+`The practice of assigning homework to primary school children, particularly those under the age of ten, deserves far more scrutiny than it typically receives from parents and educators who simply assume it is a necessary and beneficial part of schooling.
+
+Research on the academic benefits of homework at the primary level is, at best, mixed, with several studies finding negligible or even negative correlations between homework volume and academic achievement for younger children specifically, in contrast to somewhat stronger evidence for older secondary students.
+
+Proponents often argue that homework teaches valuable time-management and responsibility skills from an early age; this claim, while intuitively appealing, is rarely tested rigorously, and alternative activities such as reading for pleasure or unstructured play may cultivate similar skills just as effectively, if not more so.
+
+It would be an overstatement to claim that all homework for young children is entirely without value; certain forms, such as brief daily reading with a parent, appear to offer modest genuine benefit and should probably be preserved even under a substantially reduced homework model.
+
+On balance, primary schools should move toward drastically reducing formal homework assignments for younger students, reserving the bulk of structured, graded homework for secondary education, where the evidence for its benefit is considerably more robust.`,
+        questions: [
+          { id: "yn-11", prompt: "The author believes homework's value is already widely questioned by parents and educators today.", opts: ["YES", "NO", "NOT GIVEN"], answer: 1, exp: "The author says it 'deserves far more scrutiny than it typically receives', implying most people do NOT question it enough currently." },
+          { id: "yn-12", prompt: "The author believes research clearly proves homework significantly boosts young children's academic performance.", opts: ["YES", "NO", "NOT GIVEN"], answer: 1, exp: "The author describes the evidence as 'mixed' with 'negligible or even negative correlations' for younger children." },
+          { id: "yn-13", prompt: "The author believes reading for pleasure could develop skills similar to those claimed for homework.", opts: ["YES", "NO", "NOT GIVEN"], answer: 0, exp: "The author explicitly states alternatives 'may cultivate similar skills just as effectively, if not more so'." },
+          { id: "yn-14", prompt: "The author believes all homework for young children should be eliminated completely with no exceptions.", opts: ["YES", "NO", "NOT GIVEN"], answer: 1, exp: "The author says brief daily reading with a parent 'should probably be preserved' — not a complete elimination." },
+          { id: "yn-15", prompt: "The author has taught primary school for over twenty years.", opts: ["YES", "NO", "NOT GIVEN"], answer: 2, exp: "The author's professional background is never mentioned in the text." },
+        ],
+      },
+      {
+        title: "In Defence of Reading Physical Books",
+        text:
+`Despite the undeniable convenience of e-readers and audiobooks, something valuable is lost when physical books disappear entirely from our reading habits, and readers who have abandoned print entirely may be sacrificing more than they realise for the sake of convenience.
+
+Some argue that the format of a book, whether digital or physical, makes no meaningful difference to comprehension or enjoyment, but a growing body of research on reading comprehension suggests that readers of print books often retain narrative details and sequence of events somewhat better than readers of the identical text in digital form.
+
+It would be unfair, however, to dismiss digital reading as universally inferior; e-readers offer genuine, substantial benefits for readers with visual impairments, frequent travellers managing luggage weight, and anyone seeking near-instant access to an enormous catalogue of titles unavailable through physical bookstores or libraries.
+
+The physical book's tactile and visual permanence, including the ability to flip back easily to a previous chapter or visually recall a passage's position on the page, may partly explain the comprehension advantages some studies have identified, though this mechanism remains an active area of ongoing research.
+
+Rather than insisting on the superiority of one single format for every reader, the most sensible position is that both physical and digital books have legitimate places in a well-rounded reading life, with the specific choice depending on the individual reader's circumstances and the type of content involved.`,
+        questions: [
+          { id: "yn-16", prompt: "The author believes physical books offer no advantages over digital formats.", opts: ["YES", "NO", "NOT GIVEN"], answer: 1, exp: "The author argues print may offer comprehension advantages — the opposite of 'no advantages'." },
+          { id: "yn-17", prompt: "The author believes digital reading formats have no genuine benefits at all.", opts: ["YES", "NO", "NOT GIVEN"], answer: 1, exp: "The author explicitly lists genuine benefits of e-readers: visual impairments, travel, catalogue access." },
+          { id: "yn-18", prompt: "The author believes readers of print books may retain narrative details somewhat better than digital readers.", opts: ["YES", "NO", "NOT GIVEN"], answer: 0, exp: "This matches the author's own claim directly, citing research on retention." },
+          { id: "yn-19", prompt: "The author believes one single format is objectively superior for every reader in every situation.", opts: ["YES", "NO", "NOT GIVEN"], answer: 1, exp: "The author explicitly rejects this, arguing 'both physical and digital books have legitimate places'." },
+          { id: "yn-20", prompt: "The author owns an e-reader personally.", opts: ["YES", "NO", "NOT GIVEN"], answer: 2, exp: "The author's personal possessions are never mentioned in the text." },
+        ],
+      },
+      {
+        title: "The Ethics of Zoos in the Modern Era",
+        text:
+`Modern zoos present themselves as institutions dedicated primarily to conservation and education, yet it is worth questioning honestly whether this self-presentation always matches the reality of how many zoo animals actually live, particularly larger species with complex behavioural and spatial needs.
+
+Defenders of zoos point to legitimate successes in captive breeding programmes that have helped prevent the extinction of several endangered species, a genuine achievement that critics of zoos in general terms sometimes fail to adequately acknowledge.
+
+Nonetheless, evidence of abnormal, repetitive behaviours in certain captive animals, particularly large carnivores and highly intelligent species such as elephants, suggests that even well-funded, well-intentioned facilities frequently struggle to provide adequate space and stimulation for these particular species specifically.
+
+A reasonable middle position, rather than calling for the wholesale abolition of all zoos, would involve phasing out captivity specifically for species demonstrably unsuited to typical enclosure conditions, while continuing conservation-focused breeding and habitat programmes for species that adapt reasonably well to managed care.
+
+This more selective, evidence-based approach would allow the genuine conservation benefits zoos provide to continue, while directly addressing the most serious ethical concerns, rather than forcing a simplistic choice between defending zoos entirely or condemning them wholesale.`,
+        questions: [
+          { id: "yn-21", prompt: "The author believes zoos' claims about their conservation and education mission always accurately reflect reality.", opts: ["YES", "NO", "NOT GIVEN"], answer: 1, exp: "The author explicitly questions 'whether this self-presentation always matches the reality' — expressing doubt, not agreement." },
+          { id: "yn-22", prompt: "The author believes captive breeding programmes have achieved real conservation successes.", opts: ["YES", "NO", "NOT GIVEN"], answer: 0, exp: "The author calls this 'a genuine achievement' — a clear, direct agreement." },
+          { id: "yn-23", prompt: "The author believes all species suffer equally from being kept in captivity.", opts: ["YES", "NO", "NOT GIVEN"], answer: 1, exp: "The author specifically points to 'large carnivores and highly intelligent species such as elephants', implying not all species are equally affected." },
+          { id: "yn-24", prompt: "The author believes all zoos everywhere should be immediately abolished.", opts: ["YES", "NO", "NOT GIVEN"], answer: 1, exp: "The author explicitly proposes 'a reasonable middle position... rather than... wholesale abolition'." },
+          { id: "yn-25", prompt: "The author has visited more than fifty zoos in different countries.", opts: ["YES", "NO", "NOT GIVEN"], answer: 2, exp: "The author's personal history of zoo visits is never mentioned." },
+        ],
+      },
+    ],
+  },
+  {
+    id: "paragraph-structure",
+    title: "Paragraph Structure & Function",
+    whenToUse: "For Matching Headings or Matching Information — you need to identify not just what a paragraph says, but what job it does within the whole text.",
+    howTo: [
+      "Most paragraphs open with a topic sentence stating the main idea; the rest of the paragraph supports it with examples, reasons, or evidence.",
+      "Ask what role the paragraph plays: does it introduce a problem, describe a process, give a counter-argument, or offer a solution?",
+      "For Matching Headings, the heading must match the paragraph's overall function, not just one detail mentioned inside it.",
+      "Watch for paragraphs that shift function partway through — for example, starting with a fact, then pivoting to a counter-argument.",
+    ],
+    example: {
+      text: "\"Not all researchers agree on how deliberate this cooperation is. Sceptics point out that fungi may simply be moving resources...\"",
+      note: "This paragraph's function is to introduce doubt and a counter-argument — not just to state another fact. Its role in the text is to complicate the earlier claim, which is exactly what a matching heading needs to capture.",
+    },
+    passages: [
+      {
+        title: "The Placebo Effect in Modern Medicine",
+        text:
+`The placebo effect, in which patients experience genuine physiological or psychological improvement after receiving a treatment with no active therapeutic ingredient, has puzzled and fascinated medical researchers for decades, raising fundamental questions about the relationship between belief and biology.
+
+Neuroscientific studies using brain imaging have identified measurable changes in pain-processing regions of the brain following placebo administration, suggesting that the effect involves genuine neurological changes rather than simply patients imagining improvement or misreporting their symptoms.
+
+Not all conditions respond equally to placebo treatment, however; while pain, depression, and certain gastrointestinal symptoms often show meaningful placebo responses, conditions with more objectively measurable biological markers, such as bacterial infections, generally do not improve through placebo administration alone.
+
+A particularly striking demonstration of this phenomenon came from a study in which patients were explicitly told they were receiving a placebo pill with no active ingredient, yet still reported measurable symptom improvement compared with patients receiving no treatment at all.
+
+These findings have prompted some researchers to explore whether carefully designed placebo-based interventions might be ethically incorporated into mainstream treatment approaches for certain conditions, though significant ethical and practical questions about transparency and informed consent remain unresolved.`,
+        questions: [
+          { id: "ps-1", prompt: "What is the function of Paragraph 1?", opts: ["To introduce the topic and pose an intriguing question about it", "To present a counter-argument", "To provide a concluding recommendation", "To give a specific numerical example"], answer: 0, exp: "It opens the topic and frames the puzzle ('raising fundamental questions'), typical of an introduction." },
+          { id: "ps-2", prompt: "What is the function of Paragraph 2?", opts: ["To introduce an entirely new, unrelated topic", "To explain a possible mechanism behind the phenomenon introduced in Paragraph 1", "To argue against the existence of the placebo effect", "To conclude the discussion"], answer: 1, exp: "It elaborates with a neuroscientific mechanism, building directly on Paragraph 1's topic." },
+          { id: "ps-3", prompt: "What is the function of Paragraph 3?", opts: ["To restate Paragraph 2's point in different words", "To introduce a limitation or qualification to the earlier claims", "To provide the article's final conclusion", "To describe an unrelated medical condition"], answer: 1, exp: "'Not all conditions respond equally... however' signals a qualifying counterpoint, not a restatement or conclusion." },
+          { id: "ps-4", prompt: "What is the function of Paragraph 4?", opts: ["To provide a specific supporting example or piece of evidence", "To contradict everything stated earlier in the text", "To introduce the topic for the first time", "To offer a policy recommendation"], answer: 0, exp: "It describes one specific study — a concrete illustrative example, not a new topic or contradiction." },
+          { id: "ps-5", prompt: "What is the function of Paragraph 5?", opts: ["To introduce the main topic for the first time", "To discuss implications and remaining open questions, functioning as a conclusion", "To provide a counter-example disproving Paragraph 4", "To repeat Paragraph 1 word for word"], answer: 1, exp: "It looks forward to implications and unresolved questions — a typical concluding function." },
+        ],
+      },
+      {
+        title: "The Debate Over Autonomous Vehicles",
+        text:
+`Self-driving vehicle technology, once confined to science fiction, has advanced to the point where limited autonomous driving features are now commercially available in some markets, prompting urgent debate about safety, regulation, and the pace of wider adoption.
+
+Proponents point to data suggesting that human error contributes to the vast majority of traffic accidents, arguing that sufficiently advanced autonomous systems could substantially reduce road fatalities once the technology matures and achieves widespread adoption.
+
+Sceptics counter that current autonomous systems still struggle with unusual or unpredictable scenarios that human drivers navigate intuitively, and that a small number of high-profile accidents involving autonomous vehicles have significantly undermined public trust in the technology's current readiness.
+
+One frequently cited incident involved an autonomous vehicle failing to correctly identify a pedestrian crossing outside a designated crosswalk at night, an edge case that highlighted persistent limitations in current object-detection systems under specific lighting and behavioural conditions.
+
+Given these competing considerations, most regulators have adopted a cautious, incremental approach to approving autonomous vehicle deployment, favouring extensive real-world testing and gradual expansion over rapid, wide-scale rollout.`,
+        questions: [
+          { id: "ps-6", prompt: "What is the function of Paragraph 1?", opts: ["To introduce the topic and its current relevance", "To provide a concluding recommendation", "To give a specific counter-example", "To restate the article's title"], answer: 0, exp: "It establishes the topic and why it matters now — a classic introduction." },
+          { id: "ps-7", prompt: "What is the function of Paragraph 2?", opts: ["To present an argument in favour of the technology", "To contradict Paragraph 1 entirely", "To conclude the discussion", "To introduce an unrelated topic"], answer: 0, exp: "It presents proponents' supporting argument, directly following from the debate introduced in Paragraph 1." },
+          { id: "ps-8", prompt: "What is the function of Paragraph 3?", opts: ["To repeat Paragraph 2's argument in different words", "To present a counter-argument or opposing view", "To provide the article's final conclusion", "To introduce the topic for the first time"], answer: 1, exp: "'Sceptics counter that...' directly signals an opposing viewpoint to Paragraph 2." },
+          { id: "ps-9", prompt: "What is the function of Paragraph 4?", opts: ["To provide a specific example supporting the concerns raised in Paragraph 3", "To introduce a completely new topic", "To argue in favour of autonomous vehicles", "To conclude the article"], answer: 0, exp: "It gives one concrete incident illustrating the scepticism raised in Paragraph 3." },
+          { id: "ps-10", prompt: "What is the function of Paragraph 5?", opts: ["To introduce the topic for the first time", "To summarise the regulatory response as a conclusion, given the competing considerations", "To provide another counter-example", "To repeat Paragraph 3 exactly"], answer: 1, exp: "'Given these competing considerations' signals a synthesising conclusion drawing on both sides." },
+        ],
+      },
+      {
+        title: "The Rediscovery of Fermented Foods",
+        text:
+`Fermented foods, once primarily associated with specific regional cuisines and traditional preservation methods, have experienced a significant resurgence in popularity across many countries over the past fifteen years, driven partly by growing interest in gut health.
+
+This renewed interest is grounded in emerging scientific research on the gut microbiome, which has identified plausible mechanisms by which the live bacterial cultures present in properly fermented foods might influence digestion, immune function, and even aspects of mental health.
+
+Nonetheless, many health claims associated with fermented foods have outpaced the current scientific evidence, with researchers cautioning that much of the existing research relies on small sample sizes or laboratory conditions that may not directly translate to typical dietary patterns.
+
+A notable exception involves certain well-studied probiotic strains used in specific yoghurt products, where larger clinical trials have demonstrated modest but measurable benefits for particular digestive conditions in some patient populations.
+
+Overall, while fermented foods appear to offer genuine potential benefits worth further investigation, nutrition experts generally advise against treating them as a cure-all, recommending instead that they be incorporated as one part of a broadly varied and balanced diet.`,
+        questions: [
+          { id: "ps-11", prompt: "What is the function of Paragraph 1?", opts: ["To introduce the topic and its recent popularity", "To provide a specific counter-example", "To conclude the discussion", "To describe an unrelated food safety issue"], answer: 0, exp: "It introduces the trend and its timeframe — a standard opening function." },
+          { id: "ps-12", prompt: "What is the function of Paragraph 2?", opts: ["To explain the scientific reasoning behind the trend introduced in Paragraph 1", "To contradict Paragraph 1 entirely", "To provide the article's conclusion", "To introduce a completely unrelated topic"], answer: 0, exp: "It elaborates with the scientific basis (gut microbiome research) for the trend just introduced." },
+          { id: "ps-13", prompt: "What is the function of Paragraph 3?", opts: ["To repeat Paragraph 2's claims without adding anything", "To introduce a cautionary counter-argument about the evidence", "To provide the article's final conclusion", "To describe a specific successful case"], answer: 1, exp: "'Nonetheless... have outpaced the current scientific evidence' signals a cautionary counterpoint." },
+          { id: "ps-14", prompt: "What is the function of Paragraph 4?", opts: ["To provide a specific supporting example that partially qualifies the caution in Paragraph 3", "To contradict everything stated earlier", "To introduce the main topic for the first time", "To offer an unrelated recommendation"], answer: 0, exp: "'A notable exception' signals a specific example that nuances, rather than contradicts, the caution above." },
+          { id: "ps-15", prompt: "What is the function of Paragraph 5?", opts: ["To introduce the topic for the first time", "To provide a balanced concluding recommendation", "To provide another specific counter-example", "To repeat Paragraph 1 exactly"], answer: 1, exp: "'Overall...' signals a summarising, balanced conclusion typical of a final paragraph." },
+        ],
+      },
+      {
+        title: "The Spread of Misinformation Online",
+        text:
+`The rapid spread of misinformation across social media platforms has become a significant concern for researchers, policymakers, and technology companies alike, prompting extensive study into how false information travels and why it often outpaces accurate corrections.
+
+Research analysing large datasets of social media activity has found that false stories are often shared more quickly and more widely than accurate ones, a pattern researchers attribute partly to the tendency of novel or emotionally striking claims to attract more attention regardless of accuracy.
+
+It would be an oversimplification, however, to attribute the problem solely to platform algorithms; human psychological tendencies, including confirmation bias and a preference for information confirming existing beliefs, play an equally significant role in the spread and persistence of false claims.
+
+A widely studied case involved a false health claim that spread rapidly across multiple platforms during a public health emergency, reaching millions of users before fact-checking organisations could issue corrections, by which point the original claim had already been shared far more widely than any subsequent correction.
+
+Addressing this challenge effectively will likely require a combination of platform-level interventions, improved public media literacy, and faster fact-checking mechanisms, rather than relying on any single solution to fully resolve such a multifaceted problem.`,
+        questions: [
+          { id: "ps-16", prompt: "What is the function of Paragraph 1?", opts: ["To introduce the topic and its significance", "To provide a specific example", "To offer a concluding recommendation", "To present a counter-argument"], answer: 0, exp: "It frames the general concern and sets up the topic for the rest of the article." },
+          { id: "ps-17", prompt: "What is the function of Paragraph 2?", opts: ["To explain research findings that elaborate on the problem introduced in Paragraph 1", "To contradict Paragraph 1", "To conclude the article", "To introduce a completely unrelated topic"], answer: 0, exp: "It provides research detail (sharing speed/patterns) elaborating on the problem just introduced." },
+          { id: "ps-18", prompt: "What is the function of Paragraph 3?", opts: ["To repeat Paragraph 2 exactly", "To complicate or qualify the explanation given in Paragraph 2", "To provide the final conclusion", "To introduce the topic for the first time"], answer: 1, exp: "'It would be an oversimplification, however...' clearly signals a qualifying complication to the prior explanation." },
+          { id: "ps-19", prompt: "What is the function of Paragraph 4?", opts: ["To provide a specific real-world example illustrating the points made earlier", "To contradict everything stated earlier in the text", "To introduce a brand new, unrelated topic", "To conclude the discussion"], answer: 0, exp: "It gives one concrete case illustrating the dynamics described in the previous two paragraphs." },
+          { id: "ps-20", prompt: "What is the function of Paragraph 5?", opts: ["To introduce the topic for the first time", "To offer a concluding recommendation synthesising the discussion", "To provide another specific example", "To repeat Paragraph 3 word for word"], answer: 1, exp: "It proposes solutions synthesising the whole discussion — a typical concluding role." },
+        ],
+      },
+      {
+        title: "The Comeback of Analogue Photography",
+        text:
+`Despite the near-total dominance of digital photography for most everyday purposes, film photography has experienced a modest but persistent resurgence over the past decade, particularly among younger photographers who did not grow up using film as their primary medium.
+
+Enthusiasts often cite the deliberate, unhurried process of shooting film, including the limited number of exposures per roll and the delayed gratification of waiting for development, as offering a meaningfully different creative experience compared with the instant feedback of digital cameras.
+
+This revival has not been without practical obstacles, however, since the number of companies still manufacturing film stock and processing chemicals has declined considerably since digital photography became dominant, occasionally leading to higher prices and reduced availability of certain film types.
+
+Some manufacturers have responded to renewed demand by reintroducing previously discontinued film stocks, with at least one major company reporting that a specific reintroduced black-and-white film sold out its initial production run within weeks of release.
+
+While film photography is highly unlikely to challenge digital photography's overall market dominance, industry observers generally agree that a stable, if niche, market for analogue photography appears likely to persist for the foreseeable future, rather than disappearing entirely as some once predicted.`,
+        questions: [
+          { id: "ps-21", prompt: "What is the function of Paragraph 1?", opts: ["To introduce the topic and its recent trend", "To provide a specific counter-example", "To conclude the discussion", "To describe an unrelated technology"], answer: 0, exp: "It introduces the resurgence trend and its context — a standard opening." },
+          { id: "ps-22", prompt: "What is the function of Paragraph 2?", opts: ["To explain the reasons behind the trend introduced in Paragraph 1", "To contradict Paragraph 1", "To provide the article's conclusion", "To introduce an unrelated topic"], answer: 0, exp: "It elaborates on WHY enthusiasts value film — direct support for Paragraph 1's claim." },
+          { id: "ps-23", prompt: "What is the function of Paragraph 3?", opts: ["To repeat Paragraph 2 without adding new information", "To introduce a practical challenge or complication to the trend", "To provide the final conclusion", "To describe an unrelated case"], answer: 1, exp: "'This revival has not been without practical obstacles, however' clearly signals a complicating factor." },
+          { id: "ps-24", prompt: "What is the function of Paragraph 4?", opts: ["To provide a specific example of an industry response to demand", "To contradict everything stated earlier", "To introduce the topic for the first time", "To offer an unrelated recommendation"], answer: 0, exp: "It gives a concrete example (a specific sold-out film) of how manufacturers responded to the trend." },
+          { id: "ps-25", prompt: "What is the function of Paragraph 5?", opts: ["To introduce the topic for the first time", "To provide a balanced concluding assessment of the trend's future", "To provide another counter-example", "To repeat Paragraph 1 exactly"], answer: 1, exp: "It offers a forward-looking, balanced assessment — a typical concluding function." },
+        ],
+      },
+    ],
+  },
+  {
+    id: "note-taking",
+    title: "Note-taking & Word Limits",
+    whenToUse: "For Summary, Table, Flow-chart, and Notes Completion tasks, where instructions specify an exact word limit.",
+    howTo: [
+      "Always check the exact instruction first — 'NO MORE THAN TWO WORDS AND/OR A NUMBER' is different from 'ONE WORD ONLY'. Read it before you start, not after.",
+      "A number (e.g. '2010', '15%') usually counts as one word, unless it is written out in full ('fifteen').",
+      "Hyphenated words (e.g. 'well-being') are usually counted as one word — but always check the specific instructions of that task.",
+      "While scanning, jot down only the essential words — full sentences waste time and rarely fit the gap grammatically anyway.",
+      "After finishing, recount the words in every answer — going over the limit makes an otherwise correct answer wrong.",
+    ],
+    example: {
+      text: "Instruction: 'Complete the notes below. Use NO MORE THAN TWO WORDS from the passage.' Text: '...connected by a vast web of thread-like fungi known as mycorrhizae.'",
+      note: "'Thread-like fungi' is two words and fits the limit. Something like 'a vast web of thread-like fungi' would be far too long and marked wrong, even though it's also technically taken from the text.",
+    },
+    passages: [
+      {
+        title: "The Development of Refrigeration Technology",
+        text:
+`Before mechanical refrigeration became widespread, households and businesses relied on natural ice, harvested from frozen lakes and rivers during winter and stored in insulated buildings known as icehouses for use throughout the warmer months, a practice that supported a substantial commercial ice trade throughout the nineteenth century.
+
+The first practical mechanical refrigeration systems emerged in the mid-nineteenth century, relying on the physical principle that a gas expanding rapidly absorbs heat from its surroundings, a mechanism still fundamental to virtually all refrigeration and air conditioning systems used today.
+
+Early mechanical refrigerators were large, expensive, and primarily used in commercial settings such as breweries and meatpacking facilities, since the compressors of the period were too bulky, costly, and often too dangerous, given the toxic refrigerant gases used, for practical household installation.
+
+The introduction of safer synthetic refrigerants during the 1920s and 1930s made compact, affordable household refrigerators commercially viable for the first time, leading to rapid adoption across many households in wealthier nations over the following decades.
+
+In more recent decades, environmental concerns about the ozone-depleting and greenhouse-warming properties of certain refrigerant chemicals have prompted international agreements phasing out the most harmful substances, driving ongoing research into more environmentally sustainable refrigeration technologies.`,
+        questions: [
+          { id: "nt-1", prompt: "Complete using NO MORE THAN TWO WORDS: Before mechanical refrigeration, people used ___ harvested from frozen lakes.", opts: ["natural ice", "natural ice harvested from frozen lakes", "mechanical refrigeration", "insulated buildings"], answer: 0, exp: "'Natural ice' is exactly two words and matches the text; option B is far over the limit despite also appearing in the text." },
+          { id: "nt-2", prompt: "Complete using NO MORE THAN THREE WORDS: Early refrigeration relies on the principle that expanding gas ___.", opts: ["absorbs heat from its surroundings", "absorbs heat", "releases cold air", "increases in volume"], answer: 1, exp: "'Absorbs heat' is two words and captures the key mechanism; option A repeats the exact text but exceeds the three-word limit." },
+          { id: "nt-3", prompt: "Complete using NO MORE THAN TWO WORDS: Early refrigerators were used in facilities such as breweries and ___.", opts: ["meatpacking facilities", "meatpacking facilities primarily", "household kitchens", "ice houses"], answer: 0, exp: "'Meatpacking facilities' fits the two-word limit; option C contradicts the text, which says these were NOT used in households yet." },
+          { id: "nt-4", prompt: "Complete using NO MORE THAN TWO WORDS: Household refrigerators became viable after safer ___ were introduced in the 1920s-30s.", opts: ["synthetic refrigerants", "synthetic refrigerants safer", "toxic refrigerant gases", "natural ice methods"], answer: 0, exp: "'Synthetic refrigerants' matches the text and the word limit; option C describes the earlier, more dangerous refrigerants, the opposite of the answer needed." },
+          { id: "nt-5", prompt: "Complete using ONE WORD ONLY: Certain refrigerant chemicals are both ozone-depleting and ___.", opts: ["greenhouse-warming", "extremely explosive", "completely harmless", "highly flammable"], answer: 0, exp: "'Greenhouse-warming' (hyphenated, counted as one word) is the exact term used in the text; the other options are not mentioned or contradict it." },
+        ],
+      },
+      {
+        title: "The Physiology of Marathon Running",
+        text:
+`Long-distance runners preparing for marathon events undergo months of progressive training designed to improve cardiovascular efficiency, increase the muscles' capacity to store and utilise glycogen, and build the structural resilience of tendons and connective tissue against repetitive impact.
+
+A well-known phenomenon among marathon runners, often referred to informally as "hitting the wall", typically occurs around the 30-kilometre mark, when the body's stored glycogen reserves become substantially depleted, forcing a shift toward the less efficient metabolism of fat for energy.
+
+To delay this depletion, many runners adopt a strategy known as carbohydrate loading in the days before a race, deliberately increasing carbohydrate intake to maximise glycogen storage in muscle tissue ahead of the anticipated demands of the event.
+
+During the race itself, many runners consume carbohydrate gels or sports drinks at regular intervals, a practice intended to supplement dwindling glycogen stores and delay the onset of fatigue for as long as possible during the later stages of the race.
+
+Beyond nutrition, psychological factors including pacing strategy, mental resilience, and prior race experience have also been shown to meaningfully influence a runner's ability to maintain performance during the physically demanding final kilometres of a marathon.`,
+        questions: [
+          { id: "nt-6", prompt: "Complete using NO MORE THAN TWO WORDS: 'Hitting the wall' typically occurs around the ___ mark.", opts: ["30-kilometre", "30 kilometres approximately", "10-kilometre", "finish line"], answer: 0, exp: "'30-kilometre' (hyphenated, one word) fits the limit and matches the text exactly." },
+          { id: "nt-7", prompt: "Complete using NO MORE THAN TWO WORDS: Before a race, many runners increase carbohydrate intake through a strategy called ___.", opts: ["carbohydrate loading", "carbohydrate loading strategy", "glycogen depletion", "protein loading"], answer: 0, exp: "'Carbohydrate loading' is exactly two words; 'glycogen depletion' is the opposite concept — what loading tries to prevent." },
+          { id: "nt-8", prompt: "Complete using NO MORE THAN TWO WORDS: During the race, runners consume gels or ___ to delay fatigue.", opts: ["sports drinks", "sports drinks regularly", "plain water only", "protein shakes"], answer: 0, exp: "'Sports drinks' matches the text and the limit; the other options are not what the text names." },
+          { id: "nt-9", prompt: "Complete using ONE WORD ONLY: Training improves cardiovascular efficiency and the muscles' capacity to store ___.", opts: ["glycogen", "glycogen and fat", "tendons", "oxygen"], answer: 0, exp: "'Glycogen' is the single word named as what muscles store; 'tendons' relates to a different point (structural resilience), not storage capacity." },
+          { id: "nt-10", prompt: "Complete using ONE WORD ONLY: Besides nutrition, ___ strategy and mental resilience influence marathon performance.", opts: ["pacing", "pacing carefully planned", "hydration", "nutrition"], answer: 0, exp: "'Pacing' is named alongside mental resilience; 'nutrition' is explicitly contrasted ('beyond nutrition'), so it can't be the answer." },
+        ],
+      },
+      {
+        title: "The Discovery of Insulin",
+        text:
+`Prior to the 1920s, a diagnosis of type 1 diabetes was almost universally fatal, typically within a year or two, as the body's inability to produce insulin left blood sugar levels dangerously and progressively unregulated with no effective medical treatment available.
+
+In 1921, researchers Frederick Banting and Charles Best, working in a laboratory at the University of Toronto, successfully extracted a substance from the pancreas of dogs that, when injected into diabetic animals, dramatically lowered their blood sugar levels.
+
+The first human patient treated with this extracted substance, a fourteen-year-old boy named Leonard Thompson, received his initial injection in January 1922, marking a pivotal moment in the treatment of diabetes, though his first dose was later refined due to impurities causing an allergic reaction.
+
+Recognising the urgent global need for this treatment, the researchers controversially sold the patent rights for a symbolic sum of just one dollar, a decision intended to ensure that insulin production would remain affordable and widely accessible rather than restricted by expensive licensing.
+
+Banting and his colleague John Macleod were awarded the Nobel Prize in Physiology or Medicine in 1923 for this discovery, though the decision proved controversial within the small research team, given differing views on how credit for the breakthrough should be properly distributed.`,
+        questions: [
+          { id: "nt-11", prompt: "Complete using ONE WORD ONLY: Before the 1920s, type 1 diabetes was almost always ___.", opts: ["fatal", "fatal within decades", "curable", "rare"], answer: 0, exp: "'Fatal' is the single word matching the text; the others contradict it or add unnecessary length." },
+          { id: "nt-12", prompt: "Complete using ONE WORD ONLY: In 1921, Banting and Best extracted a substance from the ___ of dogs.", opts: ["pancreas", "pancreas of dogs specifically", "liver", "bloodstream"], answer: 0, exp: "'Pancreas' is the single-word organ named in the text; the others are incorrect organs." },
+          { id: "nt-13", prompt: "Complete using NO MORE THAN TWO WORDS: The first human patient was a fourteen-year-old boy named ___.", opts: ["Leonard Thompson", "Leonard Thompson, aged fourteen", "Frederick Banting", "Charles Best"], answer: 0, exp: "'Leonard Thompson' is the patient's name and exactly two words; Banting and Best were the researchers, not the patient." },
+          { id: "nt-14", prompt: "Complete using NO MORE THAN TWO WORDS: The researchers sold the patent rights for just ___.", opts: ["one dollar", "one dollar symbolically", "one million dollars", "no payment"], answer: 0, exp: "'One dollar' matches the text exactly within the limit; it was a symbolic $1 sale, not free or a large sum." },
+          { id: "nt-15", prompt: "Complete using ONE WORD ONLY: Banting and ___ received the Nobel Prize in 1923.", opts: ["Macleod", "John Macleod together", "Best", "Thompson"], answer: 0, exp: "'Macleod' fits a one-word limit; notably, Best (despite his role in the discovery) did not receive the prize, a real historical controversy the text alludes to." },
+        ],
+      },
+      {
+        title: "The Architecture of Termite Mounds",
+        text:
+`Termite mounds, some reaching heights of several metres, represent one of the most sophisticated examples of structural engineering found in the natural world, constructed collaboratively by colonies containing millions of individual termites working without centralised direction or blueprints.
+
+A central function of the mound's complex internal structure is thermoregulation, maintaining a remarkably stable internal temperature for the colony despite significant fluctuations in external conditions, achieved through an intricate network of internal tunnels that facilitate passive air circulation.
+
+Some termite species construct mounds oriented with their narrow edge facing the midday sun, a design researchers believe minimises direct solar heating during the hottest part of the day while maximising exposure during cooler morning and evening hours.
+
+The construction material itself, a mixture of soil, saliva, and faecal matter, hardens over time into a material of remarkable structural durability, with abandoned mounds sometimes remaining structurally intact for many decades after the colony itself has died out.
+
+Engineers and architects have drawn direct inspiration from termite mound ventilation systems when designing energy-efficient buildings, incorporating passive cooling principles observed in termite architecture to reduce reliance on mechanical air conditioning in some notable modern construction projects.`,
+        questions: [
+          { id: "nt-16", prompt: "Complete using ONE WORD ONLY: Termite mounds are built by colonies containing millions of ___.", opts: ["termites", "individual termites working", "worker ants", "queen termites"], answer: 0, exp: "'Termites' is the single word needed; 'worker ants' and 'queen termites' are incorrect substitutions not supported by the text." },
+          { id: "nt-17", prompt: "Complete using ONE WORD ONLY: The mound's internal structure helps maintain a stable ___ for the colony.", opts: ["temperature", "internal temperature always", "humidity", "food supply"], answer: 0, exp: "'Temperature' is the specific word the text names (thermoregulation); humidity and food supply are not what's described." },
+          { id: "nt-18", prompt: "Complete using ONE WORD ONLY: Some mounds are oriented with their narrow edge facing the ___ sun.", opts: ["midday", "midday and evening", "morning", "setting"], answer: 0, exp: "'Midday' is the exact single word from the text; the mound is oriented to minimise midday heat specifically." },
+          { id: "nt-19", prompt: "Complete using NO MORE THAN TWO WORDS: Mound material is a mixture of soil, saliva, and ___.", opts: ["faecal matter", "faecal matter mixed in", "plant fibres", "tree resin"], answer: 0, exp: "'Faecal matter' is exactly two words and matches the text's list of materials." },
+          { id: "nt-20", prompt: "Complete using ONE WORD ONLY: Engineers have drawn inspiration from termite ___ systems for energy-efficient buildings.", opts: ["ventilation", "ventilation and cooling systems", "construction materials", "defence systems"], answer: 0, exp: "'Ventilation' is the single word the text specifically names as the source of inspiration, not construction materials generally." },
+        ],
+      },
+      {
+        title: "The Development of Braille",
+        text:
+`Louis Braille, who lost his sight in early childhood following an accident, developed the tactile reading and writing system that today bears his name while still a teenage student at a school for blind children in Paris during the 1820s.
+
+Braille's system was significantly inspired by an earlier military communication method known as "night writing", originally devised for silent communication among soldiers, which Braille adapted and considerably simplified into a more practical and compact form suited to everyday reading.
+
+Each Braille character is composed of a specific arrangement of raised dots within a fixed six-dot cell, a compact and consistent design that allows a trained reader's fingertip to distinguish characters efficiently through touch alone, without requiring excessive space.
+
+Despite its evident advantages, Braille's system faced considerable institutional resistance for several decades following its initial development, with some educators at the time preferring alternative, less efficient tactile systems already established within existing curricula.
+
+Braille's system eventually achieved widespread international adoption, and today it has been adapted for use in numerous languages and specialised contexts, including mathematical and musical notation, extending well beyond its original application to standard alphabetic text.`,
+        questions: [
+          { id: "nt-21", prompt: "Complete using ONE WORD ONLY: Louis Braille developed his system while a student at a school in ___.", opts: ["Paris", "Paris, France specifically", "London", "a military academy"], answer: 0, exp: "'Paris' is the single-word location named in the text." },
+          { id: "nt-22", prompt: "Complete using NO MORE THAN TWO WORDS: Braille's system was inspired by a military method called ___.", opts: ["night writing", "night writing method", "Morse code", "sign language"], answer: 0, exp: "'Night writing' is exactly two words and the exact term used in the text; Morse code and sign language are not mentioned." },
+          { id: "nt-23", prompt: "Complete using ONE WORD ONLY: Each Braille character uses a fixed ___ cell.", opts: ["six-dot", "six-dot raised", "eight-dot", "four-dot"], answer: 0, exp: "'Six-dot' (hyphenated, one word) matches the text exactly; the other numbers are incorrect." },
+          { id: "nt-24", prompt: "Complete using ONE WORD ONLY: Braille's system faced considerable ___ resistance for decades.", opts: ["institutional", "institutional and political", "public", "government"], answer: 0, exp: "'Institutional' is the exact word used (referring to educators/institutions), not public or government resistance generally." },
+          { id: "nt-25", prompt: "Complete using ONE WORD ONLY: Braille has since been adapted for mathematical and ___ notation.", opts: ["musical", "musical and artistic", "scientific", "legal"], answer: 0, exp: "'Musical' is the exact word paired with 'mathematical' in the text; scientific and legal notation are not mentioned." },
+        ],
+      },
+    ],
+  },
+  {
+    id: "grammatical-prediction",
+    title: "Grammatical Prediction",
+    whenToUse: "For Sentence Completion and Matching Sentence Endings — before searching the text, predict what kind of word or phrase must grammatically fit the gap.",
+    howTo: [
+      "Read the sentence around the gap carefully: is a noun needed? A verb? An adjective? This narrows down what you're scanning for before you even start reading the passage.",
+      "Check what comes immediately before and after the gap — a missing article ('a', 'the') or preposition often signals exactly what part of speech is required.",
+      "For Matching Sentence Endings, the ending must be grammatically compatible with the sentence beginning, not just logically plausible — eliminate any option that would create a grammar error.",
+      "Predicting the grammar first, then scanning for a matching word, is faster than reading every candidate sentence in full.",
+    ],
+    example: {
+      text: "Sentence stem: 'Trees connected through fungal networks are able to exchange...'",
+      note: "After 'exchange' we need a noun or noun phrase — something being exchanged. This immediately rules out any sentence ending that starts with a verb or a lone adjective, before you've even read its content.",
+    },
+    passages: [
+      {
+        title: "The Physics of Rainbows",
+        text:
+`Rainbows form when sunlight passes through countless tiny water droplets suspended in the air after rainfall, with each droplet acting as a miniature prism that splits white light into its constituent colours through a combination of refraction and internal reflection.
+
+The specific angle at which light exits a raindrop, roughly 42 degrees relative to the original direction of sunlight, determines which colour reaches an observer's eye from any given droplet, explaining why a rainbow appears as a continuous band rather than from a single point.
+
+Because this optical effect depends entirely on the relative positions of the sun, the water droplets, and the observer, no two people ever technically see exactly the same rainbow, since each observer's eye receives light from a slightly different set of droplets.
+
+Double rainbows occur when light reflects twice inside water droplets rather than once, producing a fainter secondary arc with its colour order reversed relative to the brighter primary rainbow that appears beneath it.
+
+Under exceptionally rare atmospheric conditions, additional faint rainbows, sometimes called supernumerary bows, can appear as narrow bands just inside the primary arc, caused by a more complex wave interference effect that classical geometric explanations alone cannot fully account for.`,
+        questions: [
+          { id: "gp-1", prompt: "Sentence stem: 'Rainbows form when sunlight passes through countless tiny water droplets suspended in the ___.' Grammatically, what is needed here?", opts: ["A noun (a place or thing)", "A verb", "An adverb", "A conjunction"], answer: 0, exp: "After 'the', a noun is needed — here, 'air'. Articles like 'the' almost always signal a following noun." },
+          { id: "gp-2", prompt: "Sentence stem: '...determines which colour reaches an observer's eye from any given ___.' Grammatically, what is needed?", opts: ["A verb in the past tense", "A noun (a thing or object)", "An adjective describing colour", "A preposition"], answer: 1, exp: "After 'any given', a noun is needed — here, 'droplet'. 'Given' functions as an adjective modifying the coming noun." },
+          { id: "gp-3", prompt: "Sentence stem: '...no two people ever technically ___ exactly the same rainbow.' Grammatically, what is needed?", opts: ["A noun", "A verb (an action)", "An adjective", "A preposition"], answer: 1, exp: "The subject 'no two people' needs a main verb — here, 'see'. 'Ever technically' are adverbs modifying the coming verb." },
+          { id: "gp-4", prompt: "Sentence stem: '...producing a fainter secondary arc with its colour order ___ relative to the brighter primary rainbow.' Grammatically, what is needed?", opts: ["A verb in the present tense", "A past participle/adjective describing a state", "A plural noun", "An adverb of time"], answer: 1, exp: "'Colour order [___]' needs a word describing its state — here, 'reversed', a past participle acting as an adjective." },
+          { id: "gp-5", prompt: "Sentence stem: '...caused by a more complex wave interference effect that classical geometric explanations alone cannot fully ___.' Grammatically, what is needed?", opts: ["A noun", "A verb (an action)", "An adjective", "A conjunction"], answer: 1, exp: "'Explanations... cannot fully [___]' needs a main verb — here, 'account for'." },
+        ],
+      },
+      {
+        title: "The Economics of Airline Pricing",
+        text:
+`Airline ticket prices for the same flight can vary dramatically depending on when a passenger books, a practice known as dynamic pricing that relies on sophisticated algorithms analysing demand patterns, booking history, and remaining seat availability in real time.
+
+Contrary to popular belief, booking a flight far in advance does not always guarantee the lowest possible fare, since airlines frequently adjust prices upward or downward multiple times per day in response to shifting demand signals and competitor pricing.
+
+Business travellers, who often book closer to their travel date and have less flexibility regarding specific flight times, are frequently charged substantially more than leisure travellers who can adjust their schedules to take advantage of cheaper fares.
+
+Airlines also segment pricing by cabin class and fare type, offering multiple price points for functionally similar seats that differ mainly in terms of refundability, baggage allowances, and other ancillary conditions attached to the ticket.
+
+Some economists argue that this pricing complexity ultimately benefits price-sensitive consumers willing to remain flexible, while effectively charging a premium to those who value certainty and convenience over cost savings.`,
+        questions: [
+          { id: "gp-6", prompt: "Sentence stem: 'Airline ticket prices... can vary dramatically depending on when a passenger ___.' Grammatically, what is needed?", opts: ["A noun", "A verb (an action)", "An adjective", "A preposition"], answer: 1, exp: "After 'a passenger', the subject needs a verb — here, 'books'." },
+          { id: "gp-7", prompt: "Sentence stem: '...booking a flight far in advance does not always guarantee the lowest possible ___.' Grammatically, what is needed?", opts: ["A verb", "A noun (a thing)", "An adverb", "A conjunction"], answer: 1, exp: "After the adjective 'lowest possible', a noun is needed — here, 'fare'." },
+          { id: "gp-8", prompt: "Sentence stem: '...leisure travellers who can adjust their schedules to take advantage of ___.' Grammatically, what is needed?", opts: ["A noun phrase", "A verb in the past tense", "An adjective alone", "A subject pronoun"], answer: 0, exp: "'Take advantage of' must be followed by a noun phrase — here, 'cheaper fares'." },
+          { id: "gp-9", prompt: "Sentence stem: '...functionally similar seats that differ mainly in terms of ___.' Grammatically, what is needed?", opts: ["A verb", "A noun or list of nouns", "An adverb", "A conjunction alone"], answer: 1, exp: "'In terms of' is followed by a noun or list of nouns — here, 'refundability, baggage allowances...'." },
+          { id: "gp-10", prompt: "Sentence stem: '...price-sensitive consumers willing to remain ___.' Grammatically, what is needed?", opts: ["A noun", "An adjective", "A verb in past tense", "A preposition"], answer: 1, exp: "'Remain' is a linking verb here, requiring an adjective to follow — 'flexible'." },
+        ],
+      },
+      {
+        title: "The Migration Patterns of Monarch Butterflies",
+        text:
+`Monarch butterflies undertake one of the most remarkable migratory journeys in the insect world, travelling thousands of kilometres between breeding grounds in North America and overwintering sites in central Mexico, a journey no single individual butterfly completes in its entirety.
+
+Because a monarch's lifespan is typically only a few weeks, the full migratory cycle spans multiple generations, with a special longer-lived generation, sometimes called the "super generation", undertaking the lengthy southward journey to Mexico each autumn.
+
+Remarkably, monarchs that have never previously visited Mexico are somehow able to navigate accurately to the same specific forest locations their ancestors used the previous year, a phenomenon that continues to intrigue researchers studying insect navigation mechanisms.
+
+Scientists have proposed that monarchs rely on a combination of the sun's position and an internal magnetic compass sense to maintain their bearings during the journey, though the precise mechanism remains only partially understood despite decades of dedicated research.
+
+In recent decades, monarch populations have declined significantly, a trend researchers largely attribute to habitat loss along the migratory route, particularly the reduction of milkweed plants that monarch caterpillars depend on exclusively for food.`,
+        questions: [
+          { id: "gp-11", prompt: "Sentence stem: '...overwintering sites in ___.' Grammatically, what is needed?", opts: ["A verb", "A place name or noun", "An adjective", "A conjunction"], answer: 1, exp: "After 'in', a place noun is needed — here, 'central Mexico'." },
+          { id: "gp-12", prompt: "Sentence stem: '...the full migratory cycle ___ multiple generations.' Grammatically, what is needed?", opts: ["A noun", "A verb (an action)", "An adjective", "A preposition"], answer: 1, exp: "The subject 'the full migratory cycle' needs a main verb — here, 'spans'." },
+          { id: "gp-13", prompt: "Sentence stem: '...forest locations their ancestors used the ___ year.' Grammatically, what is needed?", opts: ["A verb", "An adjective describing time", "A plural noun", "A conjunction"], answer: 1, exp: "'The [___] year' needs an adjective modifying 'year' — here, 'previous'." },
+          { id: "gp-14", prompt: "Sentence stem: '...an internal magnetic compass sense to maintain their ___ during the journey.' Grammatically, what is needed?", opts: ["A verb", "A noun (a thing)", "An adverb", "A preposition"], answer: 1, exp: "'Maintain their [___]' needs a noun — here, 'bearings'." },
+          { id: "gp-15", prompt: "Sentence stem: '...monarch caterpillars depend on exclusively for ___.' Grammatically, what is needed?", opts: ["A noun", "A verb", "An adjective", "A conjunction"], answer: 0, exp: "'For [___]' needs a noun — here, 'food'." },
+        ],
+      },
+      {
+        title: "The Invention of the Printing Press",
+        text:
+`Johannes Gutenberg's development of a movable-type printing press in the German city of Mainz around 1440 is widely regarded as one of the most transformative technological innovations in human history, dramatically accelerating the spread of written knowledge across Europe.
+
+Prior to Gutenberg's innovation, books were typically copied by hand, a slow and labour-intensive process that made written material scarce, expensive, and largely inaccessible to anyone outside wealthy institutions such as monasteries, universities, or royal courts.
+
+Gutenberg's key innovation involved casting individual metal letters that could be arranged, reused, and rearranged for each new page, a significant improvement over earlier printing methods that had relied on carving an entire page's text into a single, non-reusable wooden block.
+
+Within just fifty years of Gutenberg's press, printing had spread to hundreds of cities across Europe, and it is estimated that millions of books had been printed, a scale of production entirely unimaginable under the earlier hand-copying system.
+
+Historians frequently credit the printing press with accelerating the Protestant Reformation, the Scientific Revolution, and rising literacy rates more broadly, since it allowed ideas to circulate far more rapidly and widely than manuscript copying alone had ever permitted.`,
+        questions: [
+          { id: "gp-16", prompt: "Sentence stem: '...one of the most transformative technological ___ in human history.' Grammatically, what is needed?", opts: ["A verb", "A plural noun", "An adverb", "A preposition"], answer: 1, exp: "After 'technological', a plural noun is needed — here, 'innovations'." },
+          { id: "gp-17", prompt: "Sentence stem: 'Prior to Gutenberg's innovation, books were typically ___ by hand.' Grammatically, what is needed?", opts: ["A noun", "A past participle/verb form", "An adjective alone", "A conjunction"], answer: 1, exp: "'Were typically [___] by hand' is a passive construction needing a past participle — here, 'copied'." },
+          { id: "gp-18", prompt: "Sentence stem: '...could be arranged, reused, and rearranged for each new ___.' Grammatically, what is needed?", opts: ["A verb", "A noun", "An adverb", "A preposition"], answer: 1, exp: "After 'each new', a noun is needed — here, 'page'." },
+          { id: "gp-19", prompt: "Sentence stem: '...it is estimated that millions of books had been ___.' Grammatically, what is needed?", opts: ["A noun", "A past participle (passive verb form)", "An adjective", "A conjunction"], answer: 1, exp: "'Had been [___]' is a passive perfect construction needing a past participle — here, 'printed'." },
+          { id: "gp-20", prompt: "Sentence stem: '...far more rapidly and widely than manuscript copying alone had ever ___.' Grammatically, what is needed?", opts: ["A noun", "A verb (past participle)", "An adjective", "A preposition"], answer: 1, exp: "'Had ever [___]' needs a past participle to complete the perfect tense — here, 'permitted'." },
+        ],
+      },
+      {
+        title: "The Science of Volcanic Eruptions",
+        text:
+`Volcanic eruptions occur when molten rock, gases, and ash trapped beneath the Earth's surface find a pathway to escape, driven by immense pressure that builds up within magma chambers located several kilometres underground.
+
+The explosiveness of a given eruption depends significantly on the viscosity of the magma involved, with thick, viscous magma trapping gases more effectively and therefore producing far more violent eruptions than thinner, more fluid magma types.
+
+Volcanologists monitor a range of warning signs before a potential eruption, including small earthquakes caused by moving magma, ground deformation detectable via satellite measurements, and changes in the volume or composition of gases released from a volcano's surface.
+
+Despite considerable scientific progress in monitoring techniques, predicting the precise timing of a volcanic eruption remains extremely difficult, since the underlying processes driving an eruption can accelerate or stall unpredictably over periods ranging from days to years.
+
+Historically, some of the deadliest volcanic disasters have resulted not directly from lava flows but from associated hazards such as pyroclastic flows, fast-moving currents of superheated gas and volcanic debris capable of destroying everything in their path within minutes.`,
+        questions: [
+          { id: "gp-21", prompt: "Sentence stem: '...trapped beneath the Earth's surface find a pathway to ___.' Grammatically, what is needed?", opts: ["A noun", "A verb (an action)", "An adjective", "A conjunction"], answer: 1, exp: "'A pathway to [___]' needs a base-form verb — here, 'escape'." },
+          { id: "gp-22", prompt: "Sentence stem: 'The explosiveness of a given eruption depends significantly on the ___ of the magma involved.' Grammatically, what is needed?", opts: ["A verb", "A noun", "An adverb", "A preposition"], answer: 1, exp: "After 'the' and before 'of', a noun is needed — here, 'viscosity'." },
+          { id: "gp-23", prompt: "Sentence stem: '...changes in the volume or composition of gases released from a volcano's ___.' Grammatically, what is needed?", opts: ["A verb", "A noun", "An adjective", "A conjunction"], answer: 1, exp: "After the possessive \"volcano's\", a noun is needed — here, 'surface'." },
+          { id: "gp-24", prompt: "Sentence stem: '...predicting the precise timing of a volcanic eruption remains extremely ___.' Grammatically, what is needed?", opts: ["A noun", "An adjective", "A verb", "A preposition"], answer: 1, exp: "'Remains extremely [___]' needs an adjective after the linking verb 'remains' — here, 'difficult'." },
+          { id: "gp-25", prompt: "Sentence stem: '...capable of destroying everything in their path within ___.' Grammatically, what is needed?", opts: ["A noun (a time expression)", "A verb", "An adjective alone", "A conjunction"], answer: 0, exp: "'Within [___]' needs a time-expressing noun — here, 'minutes'." },
+        ],
+      },
+    ],
+  },
+];
+
+// ===========================================================
+//  ТАБЛИЦА ПЕРЕВОДА БАЛЛОВ В BAND SCORE (Academic Reading)
+// ===========================================================
+// Справочная — примерное соответствие (реальная шкала может немного
+// отличаться между версиями теста).
+export const BAND_SCORE_TABLE = [
+  { correct: "39–40", band: "9.0" },
+  { correct: "37–38", band: "8.5" },
+  { correct: "35–36", band: "8.0" },
+  { correct: "33–34", band: "7.5" },
+  { correct: "30–32", band: "7.0" },
+  { correct: "27–29", band: "6.5" },
+  { correct: "23–26", band: "6.0" },
+  { correct: "19–22", band: "5.5" },
+  { correct: "15–18", band: "5.0" },
+  { correct: "13–14", band: "4.5" },
+];
+
+export const READING_UNITS = [
+  {
+    id: "read-1",
+    order: 1,
+    title: "Юнит 1 — The Silent Language of Trees",
+    level: "Band 5.5–6",
+    topic: "Environmental Science",
+    passage:
+`For centuries, foresters assumed that trees competed with one another for light, water and nutrients, much like rival businesses fighting for the same customers. Recent research, however, has revealed a far more cooperative picture. Beneath the forest floor, the roots of most trees are connected by a vast web of thread-like fungi known as mycorrhizae. This underground network, sometimes nicknamed the "wood wide web", allows trees to exchange not only nutrients but also chemical warning signals.
+
+When a tree is attacked by insects, it can release chemical compounds into the network that alert neighbouring trees of the same species. Those neighbours, in turn, begin producing defensive chemicals of their own before the insects even reach them. In one well-known study, researchers found that undamaged trees connected to an infested tree produced significantly more defensive enzymes than trees growing in isolation nearby.
+
+The network also appears to support weaker or younger trees. Older, larger trees — sometimes called "mother trees" because of the central role they play — have been observed transferring carbon and nutrients through fungal connections to seedlings growing in their shade, where sunlight is scarce. Some scientists argue that this challenges the traditional Darwinian view of forests as arenas of pure competition, suggesting instead that survival often depends on cooperation between generations.
+
+Not all researchers agree on how deliberate this cooperation is. Sceptics point out that fungi may simply be moving resources to wherever is most efficient for the fungi themselves, with any benefit to the trees being an incidental side effect rather than a coordinated strategy. Testing these competing explanations is difficult, since the underground networks are hard to observe directly and experiments risk disturbing the very systems being studied.
+
+Regardless of the exact mechanism, the practical implications are significant. Foresters who once cleared away older trees to make room for new growth are increasingly reconsidering the practice, since removing a "mother tree" may cut off the support network that younger trees rely on. As understanding of these hidden connections grows, it may reshape not only forestry practices but also broader ideas about competition and cooperation in the natural world.`,
+    tasks: [
+      {
+        type: "tfng",
+        title: "True / False / Not Given — разбор и практика",
+        instructions: "Согласны ли следующие утверждения с информацией в тексте? Выберите TRUE, FALSE или NOT GIVEN.",
+        strategy: [
+          "TRUE — текст прямо подтверждает утверждение. FALSE — текст прямо противоречит. NOT GIVEN — в тексте просто нет информации об этом (тема может быть упомянута, но нужных деталей нет).",
+          "Самая частая ошибка — путать FALSE и NOT GIVEN. Прежде чем ставить FALSE, спроси себя: 'текст правда говорит обратное, или я просто не нашёл(-ла) подтверждения?' Если не нашёл(-ла) — это NOT GIVEN.",
+          "Утверждения обычно идут в том же порядке, что и информация в тексте — двигайся по тексту последовательно, не перескакивай.",
+          "Выдели в утверждении 1-2 ключевых слова и ищи их — или их синонимы — в тексте. Дословных совпадений почти никогда не бывает.",
+          "Следи за словами-усилителями и ограничителями: 'always', 'only', 'all', 'never' — часто именно они делают верное по смыслу утверждение ложным, потому что текст даёт более осторожную формулировку.",
+        ],
+        walkthrough: {
+          text: "Example: 'Trees only communicate with members of the same species.'",
+          steps: [
+            "Ключевые слова утверждения: 'only' (ограничитель) + 'same species'.",
+            "Ищем в тексте упоминание того, с кем именно трееs 'общаются'. Во втором абзаце: 'alert neighbouring trees of the same species' — да, про этот вид общения сказано именно 'того же вида'.",
+            "Но слово 'only' в утверждении добавляет условие: коммуникация ТОЛЬКО с тем же видом, никогда с другими. Текст нигде не утверждает и не отрицает, что деревья разных видов не могут обмениваться сигналами — об этом просто не сказано.",
+            "Значит, часть про 'alert neighbouring trees of the same species' — правда, но добавленное 'only' делает утверждение шире, чем то, что подтверждает текст.",
+          ],
+          answer: "NOT GIVEN",
+          whyNotOthers: "Не FALSE, потому что текст не говорит обратного ('деревья общаются и с другими видами') — он просто не затрагивает этот вопрос. Не TRUE, потому что текст не подтверждает исключительность ('only').",
+        },
+        items: [
+          { id: "r1-1", text: "Foresters have always believed that trees cooperate rather than compete.", answer: "FALSE" },
+          { id: "r1-2", text: "Mycorrhizal fungi connect the roots of different trees underground.", answer: "TRUE" },
+          { id: "r1-3", text: "Trees under insect attack can warn other trees of the same species.", answer: "TRUE" },
+          { id: "r1-4", text: "Mother trees only transfer resources to trees of a different species.", answer: "NOT GIVEN" },
+          { id: "r1-5", text: "All scientists agree that the transfer of resources between trees is a deliberate strategy.", answer: "FALSE" },
+          { id: "r1-6", text: "Researchers have found it easy to test whether fungi act deliberately or not.", answer: "FALSE" },
+          { id: "r1-7", text: "The study found that isolated trees produced more defensive enzymes than trees connected to an infested tree.", answer: "FALSE" },
+          { id: "r1-8", text: "Mother trees are typically older and larger than the seedlings they support.", answer: "TRUE" },
+          { id: "r1-9", text: "Experiments on fungal networks are simple to conduct without affecting the network itself.", answer: "FALSE" },
+          { id: "r1-10", text: "Some foresters have changed their practices as a result of this research.", answer: "TRUE" },
+        ],
+      },
+    ],
+  },
+
+  // Юниты 2–10: добавляются по этой же схеме после утверждения формата Юнита 1.
+  // 2 — Matching Headings, 3 — Matching Information, 4 — Summary Completion,
+  // 5 — Multiple Choice, 6–10 — смешанная практика по нарастанию сложности.
+];
+
+export function scoreReadingUnit(unit, userAnswers) {
+  // userAnswers: { [itemId]: <ответ пользователя> }
+  let correct = 0, total = 0;
+  const details = []; // [{ id, ok, correctAnswer, userAnswer, type, question }]
+
+  for (const task of unit.tasks) {
+    for (const item of task.items) {
+      total++;
+      let ok = false;
+      let displayCorrect = item.answer;
+      let displayUser = userAnswers[item.id];
+      let question = item.text || item.paragraph || "Summary gap";
+
+      if (task.type === "summary") {
+        const accepted = item.answer.map(a => a.trim().toLowerCase());
+        ok = accepted.includes(String(userAnswers[item.id] || "").trim().toLowerCase());
+        displayCorrect = item.answer[0];
+      } else if (task.type === "heading-match") {
+        ok = userAnswers[item.id] === item.answer;
+        displayCorrect = task.headings[item.answer];
+        displayUser = userAnswers[item.id] !== undefined ? task.headings[userAnswers[item.id]] : undefined;
+      } else if (task.type === "mcq") {
+        ok = userAnswers[item.id] === item.answer;
+        displayCorrect = item.opts[item.answer];
+        displayUser = userAnswers[item.id] !== undefined ? item.opts[userAnswers[item.id]] : undefined;
+      } else {
+        // tfng, info-match
+        ok = userAnswers[item.id] === item.answer;
+      }
+
+      if (ok) correct++;
+      details.push({ id: item.id, ok, type: task.type, question, correctAnswer: displayCorrect, userAnswer: displayUser });
+    }
+  }
+  return { correct, total, pct: total ? Math.round((correct / total) * 100) : 0, details };
+}
