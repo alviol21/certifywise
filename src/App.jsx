@@ -202,13 +202,14 @@ const CERTS = {
 const CSS = `
 @import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap');
 *{box-sizing:border-box;margin:0;padding:0}
-body{background:#0b1622;color:#e8dfd0;font-family:'Plus Jakarta Sans',sans-serif;min-height:100vh}
-.wrap{max-width:880px;margin:0 auto;padding:0 18px 60px}
+html{overflow-x:hidden}
+body{background:#0b1622;color:#e8dfd0;font-family:'Plus Jakarta Sans',sans-serif;min-height:100vh;overflow-x:hidden}
+.wrap{max-width:880px;margin:0 auto;padding:0 18px 60px;overflow-x:hidden;width:100%}
 h1,h2,h3,h4{font-family:'Lora',serif}
 .hdr{display:flex;align-items:center;justify-content:space-between;padding:18px 0 14px;border-bottom:1px solid rgba(197,155,68,.2);margin-bottom:22px}
 .logo{font-family:'Lora',serif;font-size:26px;font-weight:600;color:#c59b44;letter-spacing:.3px}
 .logo span{color:#e8dfd0}
-.nav{display:flex;gap:4px;margin-bottom:26px;overflow-x:auto;scrollbar-width:none;padding-bottom:2px}
+.nav{display:flex;gap:4px;margin-bottom:26px;overflow-x:auto;scrollbar-width:none;padding-bottom:2px;-webkit-mask-image:linear-gradient(to right,transparent 0,#000 16px,#000 calc(100% - 16px),transparent 100%);mask-image:linear-gradient(to right,transparent 0,#000 16px,#000 calc(100% - 16px),transparent 100%)}
 .nb{padding:8px 14px;border:1px solid rgba(197,155,68,.2);background:transparent;color:#8a7d6d;border-radius:7px;cursor:pointer;font-size:13px;font-family:'Plus Jakarta Sans',sans-serif;white-space:nowrap;transition:.15s}
 .nb:hover{border-color:#c59b44;color:#c59b44}
 .nb.on{background:#c59b44;color:#0b1622;border-color:#c59b44;font-weight:600}
@@ -247,7 +248,7 @@ h1,h2,h3,h4{font-family:'Lora',serif}
 .b-pdf{background:rgba(231,76,60,.18);color:#e74c3c}
 .b-web{background:rgba(52,152,219,.18);color:#5dade2}
 .b-my{background:rgba(197,155,68,.18);color:#c59b44}
-.tabs{display:flex;gap:2px;margin-bottom:18px;border-bottom:1px solid rgba(255,255,255,.07);padding-bottom:0}
+.tabs{display:flex;gap:2px;margin-bottom:18px;border-bottom:1px solid rgba(255,255,255,.07);padding-bottom:0;-webkit-mask-image:linear-gradient(to right,transparent 0,#000 14px,#000 calc(100% - 14px),transparent 100%);mask-image:linear-gradient(to right,transparent 0,#000 14px,#000 calc(100% - 14px),transparent 100%)}
 .tab{padding:9px 18px;background:transparent;border:none;color:#8a7d6d;cursor:pointer;font-size:13.5px;font-family:'Plus Jakarta Sans',sans-serif;border-bottom:2px solid transparent;transition:.15s}
 .tab:hover{color:#e8dfd0}
 .tab.on{color:#c59b44;border-bottom-color:#c59b44}
@@ -292,7 +293,7 @@ tr:hover td{background:rgba(197,155,68,.04)}
 .skillsNavBtn:hover{border-color:#c59b44;color:#c59b44}
 .skillsNavBtn.on{background:#c59b44;color:#0b1622;border-color:#c59b44;font-weight:600}
 .skillsContent{flex:1;min-width:0}
-@media(max-width:700px){.skillsWrap{flex-direction:column}.skillsNav{width:100%;flex-direction:row;overflow-x:auto;padding-bottom:4px}.skillsNavBtn{white-space:nowrap;width:auto}}
+@media(max-width:700px){.skillsWrap{flex-direction:column}.skillsContent{width:100%}.skillsNav{width:100%;flex-direction:row;overflow-x:auto;padding-bottom:4px;-webkit-mask-image:linear-gradient(to right,transparent 0,#000 14px,#000 calc(100% - 14px),transparent 100%);mask-image:linear-gradient(to right,transparent 0,#000 14px,#000 calc(100% - 14px),transparent 100%)}.skillsNavBtn{white-space:nowrap;width:auto}}
 .demoSent{transition:.15s}
 .demoSent.read{background:rgba(197,155,68,.16);color:#e8dfd0;padding:2px 3px;border-radius:3px}
 .demoSent.skip{color:#4a5560;opacity:.55}
