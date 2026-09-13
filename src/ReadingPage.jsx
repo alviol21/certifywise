@@ -6,6 +6,7 @@ const LEVEL_COLOR = l => l.includes("7.5") || l.includes("8") ? "#e74c3c" : l.in
 export default function ReadingPage({ studentName, onSaveResult }) {
   const [unitId, setUnitId] = useState(null);
   const [showSkills, setShowSkills] = useState(false);
+  const [activeSkillId, setActiveSkillId] = useState(READING_SKILLS[0]?.id);
   const [skillAnswers, setSkillAnswers] = useState({}); // { itemId: selectedOptionIndex }
   const [answers, setAnswers] = useState({});
   const [checked, setChecked] = useState(false);
@@ -37,13 +38,23 @@ export default function ReadingPage({ studentName, onSaveResult }) {
 
   // ============ ЭКРАН "ТЕХНИКИ ЧТЕНИЯ" ============
   if (showSkills) {
+    const s = READING_SKILLS.find(sk => sk.id === activeSkillId) || READING_SKILLS[0];
     return (
       <div>
         <button className="btn btn-o btn-sm" onClick={() => setShowSkills(false)} style={{ marginBottom: 14 }}>← Все юниты</button>
         <h2 className="st">📚 Техники чтения</h2>
         <p className="sb">Базовые навыки, которые нужны для любого типа заданий — независимо от Юнита.</p>
-        {READING_SKILLS.map(s => (
-          <div key={s.id} className="card" style={{ marginBottom: 16, padding: 20 }}>
+
+        <div className="tabs" style={{ overflowX: "auto", flexWrap: "nowrap" }}>
+          {READING_SKILLS.map(sk => (
+            <button key={sk.id} className={`tab${sk.id === activeSkillId ? " on" : ""}`} onClick={() => setActiveSkillId(sk.id)} style={{ whiteSpace: "nowrap" }}>
+              {sk.title}
+            </button>
+          ))}
+        </div>
+
+        {s && (
+          <div className="card" style={{ marginBottom: 16, padding: 20 }}>
             <h3 style={{ marginBottom: 6 }}>{s.title}</h3>
             <p style={{ fontSize: 13, color: "#8a7d6d", marginBottom: 12 }}><b style={{ color: "#c59b44" }}>Когда применять:</b> {s.whenToUse}</p>
             <ul style={{ fontSize: 13, color: "#c0b8a8", lineHeight: 1.9, paddingLeft: 18, marginBottom: 12 }}>
@@ -55,13 +66,13 @@ export default function ReadingPage({ studentName, onSaveResult }) {
             </div>
             {s.practice && (
               <div>
-                <div style={{ fontSize: 13, fontWeight: 600, color: "#c59b44", margin: "14px 0 10px" }}>✏️ Практика — {s.practice.length} заданий</div>
+                <div style={{ fontSize: 13, fontWeight: 600, color: "#c59b44", margin: "14px 0 10px" }}>✏️ Practice — {s.practice.length} questions</div>
                 {s.practice.map((p, pi) => {
                   const sel = skillAnswers[p.id];
                   const done = sel !== undefined;
                   return (
                     <div key={p.id} className="qcard" style={{ marginBottom: 10, padding: 16 }}>
-                      <div className="qnum">Задание {pi + 1}</div>
+                      <div className="qnum">Question {pi + 1}</div>
                       <div className="qtext" style={{ fontSize: 14, marginBottom: 12 }}>{p.text}</div>
                       {p.opts.map((o, i) => {
                         let cls = "opt";
@@ -70,7 +81,7 @@ export default function ReadingPage({ studentName, onSaveResult }) {
                           <span style={{ color: "#c59b44", marginRight: 9 }}>{String.fromCharCode(65 + i)}.</span>{o}
                         </button>;
                       })}
-                      {done && <div className="exp"><b>💡 Почему:</b> {p.exp}</div>}
+                      {done && <div className="exp"><b>💡 Why:</b> {p.exp}</div>}
                     </div>
                   );
                 })}
@@ -79,7 +90,7 @@ export default function ReadingPage({ studentName, onSaveResult }) {
             {s.passages && (
               <div>
                 <div style={{ fontSize: 13, fontWeight: 600, color: "#c59b44", margin: "14px 0 10px" }}>
-                  ✏️ Практика на полных текстах — {s.passages.reduce((n, p) => n + p.questions.length, 0)} заданий
+                  ✏️ Practice on full texts — {s.passages.reduce((n, p) => n + p.questions.length, 0)} questions
                 </div>
                 {s.passages.map((psg, psgI) => (
                   <div key={psgI} style={{ marginBottom: 22 }}>
@@ -100,7 +111,7 @@ export default function ReadingPage({ studentName, onSaveResult }) {
                               <span style={{ color: "#c59b44", marginRight: 9 }}>{String.fromCharCode(65 + i)}.</span>{o}
                             </button>;
                           })}
-                          {done && <div className="exp"><b>💡 Почему:</b> {p.exp}</div>}
+                          {done && <div className="exp"><b>💡 Why:</b> {p.exp}</div>}
                         </div>
                       );
                     })}
@@ -108,8 +119,12 @@ export default function ReadingPage({ studentName, onSaveResult }) {
                 ))}
               </div>
             )}
+            {!s.practice && !s.passages && (
+              <div className="tip">Практика для этого навыка ещё не добавлена — скоро появится.</div>
+            )}
           </div>
-        ))}
+        )}
+
         <div className="card" style={{ marginBottom: 16, padding: 20 }}>
           <h3 style={{ marginBottom: 10 }}>📊 Перевод баллов в Band Score (справочно)</h3>
           <p style={{ fontSize: 12.5, color: "#8a7d6d", marginBottom: 14 }}>Academic Reading, из 40 вопросов. Примерное соответствие — точная шкала может немного отличаться между версиями теста.</p>
