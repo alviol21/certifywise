@@ -240,31 +240,115 @@ Prevention has increasingly been recognised as far more cost-effective than erad
   },
   {
     id: "detail-reading",
-    title: "Чтение на детали (close reading)",
-    whenToUse: "Когда ты уже нашёл(-нашла) через scanning нужный участок текста и теперь нужно понять его точно — для ответа на конкретный вопрос.",
+    title: "Detail Reading (Close Reading)",
+    whenToUse: "Once scanning has led you to the right part of the text, and you now need to understand it precisely in order to answer a specific question.",
     howTo: [
-      "Читай медленно, предложение за предложением, обращая внимание на связки: 'however', 'although', 'in contrast' — они часто меняют смысл на противоположный.",
-      "Отдельно отмечай слова-ограничители: 'only', 'always', 'some', 'most' — именно они часто решают, TRUE это или NOT GIVEN.",
-      "Не додумывай то, чего текст не говорит явно — IELTS Reading проверяет то, что написано, а не общие знания по теме.",
+      "Read slowly, sentence by sentence, paying attention to connectors like 'however', 'although', 'in contrast' — they often reverse the meaning of what follows.",
+      "Watch for qualifying words separately: 'only', 'always', 'some', 'most' — these are often exactly what decides whether a statement is TRUE or NOT GIVEN.",
+      "Don't fill in gaps with outside knowledge — IELTS Reading tests what is written, not general knowledge about the topic.",
     ],
     example: {
-      text: "«Sceptics point out that fungi may simply be moving resources to wherever is most efficient for the fungi themselves...»",
-      note: "Слово 'may' — это предположение, не факт. Утверждение вида 'Fungi definitely act for their own benefit' было бы TRUE лишь частично и требует внимательного чтения именно этого нюанса.",
+      text: "\"Sceptics point out that fungi may simply be moving resources to wherever is most efficient for the fungi themselves...\"",
+      note: "The word 'may' signals a possibility, not a fact. A statement like 'Fungi definitely act for their own benefit' would only be partly supported — catching this nuance requires careful reading.",
     },
+    passages: [
+      {
+        title: "The Paradox of Choice",
+        text:
+`Conventional economic theory has long assumed that more choice is inherently beneficial to consumers: given a wider array of options, individuals will find something closer to fulfilling their exact preferences, and can only benefit from expanded selection. In recent decades, however, a body of psychological research has begun to challenge this assumption, suggesting that beyond a certain point, additional choice can actually reduce satisfaction rather than increase it.
+
+One of the most frequently cited studies in this area involved a supermarket display of jam. Researchers set up two tasting booths: one offering six varieties, the other offering twenty-four. While the larger display attracted more initial interest from shoppers, only about 3% of those who sampled from it went on to make a purchase, compared with roughly 30% of those who sampled from the smaller display.
+
+Several explanations have been proposed for this apparent paradox. One is that an overwhelming number of options increases the cognitive effort required to compare them, leading some consumers to postpone or abandon the decision altogether rather than face the difficulty of choosing. Another is that having many alternatives raises expectations about finding a perfect option, which in turn makes any eventual choice more likely to feel like a compromise, regardless of its objective quality.
+
+This does not mean that choice itself is undesirable; a complete absence of options is rarely preferable to consumers, and some degree of variety remains genuinely valued. Researchers generally describe an inverted U-shaped relationship: satisfaction typically rises as choice increases from very limited to moderate, before beginning to decline once the number of options exceeds what a person can comfortably evaluate.
+
+The practical implications of this research have been embraced by some retailers, who have deliberately reduced the number of product variants on offer, reporting increased sales as a result in certain cases. Critics, however, caution that the effect is not universal, noting that its strength can depend heavily on factors such as how meaningful the choice is to the individual and how much prior knowledge they bring to the decision.`,
+        questions: [
+          { id: "dr-1", prompt: "Which statement most accurately reflects Paragraph 1?", opts: ["More choice is always beneficial to consumers, according to all researchers.", "Traditional economic theory assumed more choice benefits consumers, but recent research questions this beyond a certain point.", "Recent research has completely disproved traditional economic theory about choice.", "Consumers have always preferred fewer choices, according to economists."], answer: 1, exp: "Option A and C overstate with 'always'/'completely disproved'; the text only says research 'has begun to challenge' the assumption 'beyond a certain point'." },
+          { id: "dr-2", prompt: "Which is the most accurate description of the jam study's outcome?", opts: ["The larger display sold more jam overall than the smaller display.", "A smaller proportion of shoppers who sampled from the larger display made a purchase, compared to the smaller display.", "The smaller display attracted more initial shopper interest.", "Both displays led to identical purchase rates."], answer: 1, exp: "The text gives percentages of buyers among samplers (3% vs 30%), not total sales figures — a common misreading trap." },
+          { id: "dr-3", prompt: "Which statement most accurately reflects Paragraph 3's explanation?", opts: ["The only explanation given is that comparing many options is mentally exhausting.", "Having more options can raise expectations, making even a good final choice feel like a compromise, among other explanations.", "Researchers agree that expectations are irrelevant to consumer satisfaction.", "Most consumers abandon purchases entirely due to too many options."], answer: 1, exp: "The paragraph gives 'several explanations', not just one, and says 'some' consumers postpone decisions — not 'most'." },
+          { id: "dr-4", prompt: "Which of the following best reflects what Paragraph 4 says about the relationship between choice and satisfaction?", opts: ["There is no upper limit to how much choice improves satisfaction.", "Satisfaction rises with choice up to a point, then tends to decline beyond it.", "Having no options at all is generally preferred by most consumers.", "The relationship has not been studied enough to draw conclusions."], answer: 1, exp: "The text explicitly describes an 'inverted U-shaped relationship' — rising, then declining — not an unlimited rise or a preference for no choice." },
+          { id: "dr-5", prompt: "Which of the following most precisely reflects Paragraph 5?", opts: ["All retailers have reduced their product variety following this research.", "Some retailers have reduced variety and reported increased sales in certain cases, though critics say the effect isn't universal.", "Critics have completely dismissed this research as invalid.", "The effect has been proven to apply equally in all situations."], answer: 1, exp: "The text says 'some retailers' (not all) and that critics call the effect 'not universal' (not entirely invalid)." },
+        ],
+      },
+      {
+        title: "The Domestication of the Cat",
+        text:
+`Unlike dogs, whose domestication is generally dated to at least 15,000 years ago and closely tied to active human breeding, the relationship between humans and cats appears to have developed far more gradually and with considerably less deliberate human intervention. Genetic and archaeological evidence suggests that the process began in the Near East roughly 10,000 years ago, coinciding with the rise of early agricultural settlements.
+
+The prevailing explanation for this shift centres on rodents. As humans began storing surplus grain, these stores inevitably attracted mice and rats, which in turn attracted wildcats drawn by an abundant and easily accessible food source. Rather than being deliberately tamed by humans, cats are thought to have essentially domesticated themselves, gradually adapting to life alongside human settlements because doing so offered a clear survival advantage.
+
+This history helps explain a notable difference between cats and most other domesticated animals: while selective breeding has produced dramatic physical variation in dogs, horses, and cattle, the skeletal structure of the modern domestic cat remains remarkably similar to that of its wild ancestor, Felis silvestris lybica. Some researchers argue that cats have therefore undergone a comparatively mild form of domestication, retaining much of their ancestral independence and hunting behaviour.
+
+Not all scientists fully agree on the extent or timeline of this process, however. A 2017 genetic study proposed that meaningful physical differentiation between wild and domestic cat populations may not have become clearly established until several thousand years after the initial association with humans began, suggesting a much slower and more uneven domestication timeline than previously assumed for at least some regions.
+
+Regardless of the precise timeline, the cat's status today reflects this unusual history. Modern domestic cats retain far more independence from human control than dogs typically do, and many can survive successfully without direct human care if necessary. This capacity, some argue, is a direct legacy of a domestication process driven as much by the cat's own adaptability as by any deliberate human effort.`,
+        questions: [
+          { id: "dr-6", prompt: "Which statement most precisely reflects Paragraph 1?", opts: ["Cats and dogs were domesticated at exactly the same time, through identical processes.", "Cat domestication is believed to have begun later than dog domestication and involved less deliberate human breeding.", "Dogs were domesticated entirely by accident, similar to cats.", "There is no evidence at all about when cat domestication began."], answer: 1, exp: "The paragraph explicitly contrasts the two ('Unlike dogs...'), and dog domestication is tied to 'active human breeding' — the opposite of cats." },
+          { id: "dr-7", prompt: "According to Paragraph 2, which best describes how the relationship between cats and humans began?", opts: ["Humans actively captured and bred wildcats to control rodent populations.", "Wildcats were drawn to human settlements by rodents attracted to grain stores, and adapted accordingly.", "Cats had no interest in human settlements until much later in history.", "Rodents were deliberately introduced by humans to attract cats."], answer: 1, exp: "The text says cats were 'not deliberately tamed' and essentially 'domesticated themselves' — ruling out active human breeding." },
+          { id: "dr-8", prompt: "Which statement most accurately reflects what Paragraph 3 says?", opts: ["Domestic cats look completely different from their wild ancestors due to extensive breeding.", "Unlike dogs and horses, domestic cats have changed relatively little in skeletal structure from their wild ancestor.", "All researchers agree that cats have been just as thoroughly domesticated as dogs.", "Cats show more physical variation than any other domesticated animal."], answer: 1, exp: "The text says cats remain 'remarkably similar' to their wild ancestor, and only 'some researchers' make the claim about mild domestication — not all." },
+          { id: "dr-9", prompt: "Which statement most precisely reflects what Paragraph 4 says?", opts: ["All scientists agree on exactly when cat domestication occurred.", "A 2017 study suggested physical differences between wild and domestic cats may have emerged later than previously thought.", "The 2017 study proved that cats were never truly domesticated.", "No genetic studies have examined cat domestication timelines."], answer: 1, exp: "The paragraph opens with 'Not all scientists fully agree', directly contradicting option A, and accurately summarises the 2017 study's proposal." },
+          { id: "dr-10", prompt: "Which statement best reflects Paragraph 5?", opts: ["Modern cats are entirely dependent on humans for survival, just like most dogs.", "Cats generally retain more independence from human control than dogs, which some link to their unique domestication history.", "No domestic cats can survive without human care.", "The cat's independence has nothing to do with its domestication history."], answer: 1, exp: "The text says cats retain 'far more independence... than dogs typically do' and links this directly to their domestication history." },
+        ],
+      },
+    ],
   },
   {
     id: "context-guessing",
-    title: "Догадка о значении слова по контексту",
-    whenToUse: "Когда встречается незнакомое слово, а останавливаться и искать перевод — не вариант (тест на время).",
+    title: "Guessing Meaning from Context",
+    whenToUse: "When you come across an unfamiliar word and stopping to look up a translation isn't an option — this is a timed test.",
     howTo: [
-      "Посмотри на слова вокруг: часто рядом есть синоним, пример или объяснение через запятую или тире.",
-      "Определи хотя бы часть речи (существительное? глагол? прилагательное?) — этого иногда достаточно, чтобы понять структуру предложения и ответить на вопрос, не зная точного перевода.",
-      "Спроси себя: меняется ли смысл всего предложения в позитивную или негативную сторону из-за этого слова? Для многих вопросов этого достаточно.",
+      "Look at the surrounding words: there is often a synonym, example, or explanation nearby, sometimes set off by a comma or dash.",
+      "Work out at least the part of speech (noun? verb? adjective?) — this alone can be enough to understand the sentence structure and answer the question without knowing an exact translation.",
+      "Ask yourself: does this word make the sentence's overall meaning more positive or more negative? For many questions, that's all you need.",
     ],
     example: {
-      text: "«...mycorrhizae. This underground network, sometimes nicknamed the 'wood wide web'...»",
-      note: "Даже не зная термина 'mycorrhizae' дословно, из контекста ('underground network') понятно: это какая-то подземная система связи между растениями — этого достаточно для большинства вопросов.",
+      text: "\"...mycorrhizae. This underground network, sometimes nicknamed the 'wood wide web'...\"",
+      note: "Even without knowing the exact term 'mycorrhizae', the context ('underground network') makes clear it's some kind of below-ground connection system between plants — enough for most questions.",
     },
+    passages: [
+      {
+        title: "The Art of Kintsugi",
+        text:
+`In traditional Japanese ceramics, a shattered bowl or teacup is not necessarily destined for the rubbish bin. Practitioners of kintsugi, an art form dating back several centuries, instead repair the broken fragments using a lacquer mixed with powdered gold, deliberately highlighting rather than concealing the fissures left by the damage.
+
+The philosophy underpinning this practice diverges sharply from the Western instinct to disguise flaws or discard damaged objects altogether. Kintsugi treats breakage and repair as part of an object's history rather than something to be hidden, and a piece repaired in this way is often considered more beautiful, and occasionally more valuable, than it was in its original, unblemished state.
+
+The technique itself is painstaking. Fragments are first cleaned and carefully realigned, then bonded using a resin derived from the sap of the urushi tree, a substance that must cure slowly over several weeks in a humid environment before the surface can be sanded and finished with the gold or silver powder that gives the repair its distinctive, gleaming appearance.
+
+Beyond ceramics, the underlying idea behind kintsugi has increasingly been invoked as a metaphor in fields far removed from pottery, including psychology and design, where it is sometimes used to describe processes of recovery or renewal that make no attempt to erase visible evidence of past hardship.
+
+Purists caution, however, against reducing kintsugi to a purely metaphorical or decorative trend disconnected from its material and historical roots. The craft demands years of training to execute properly, and practitioners often note that its meaning is most fully understood not through the finished object alone, but through the deliberate, unhurried process by which it is restored.`,
+        questions: [
+          { id: "cg-1", prompt: "In Paragraph 1, what does 'fissures' most likely mean?", opts: ["Decorative patterns", "Cracks or breaks", "Colours", "Handles"], answer: 1, exp: "The phrase 'highlighting rather than concealing the fissures left by the damage' makes clear these are the cracks caused by breaking the object." },
+          { id: "cg-2", prompt: "In Paragraph 2, what does 'unblemished' most likely mean?", opts: ["Without flaws or damage", "Extremely expensive", "Recently made", "Poorly designed"], answer: 0, exp: "Contrasted with a repaired, flaw-highlighting object, 'original, unblemished state' clearly means the pristine, undamaged condition." },
+          { id: "cg-3", prompt: "In Paragraph 3, what does 'cure' most likely mean here?", opts: ["To heal an illness", "To harden or set through a slow chemical process", "To remove completely", "To paint a surface"], answer: 1, exp: "'Must cure slowly over several weeks in a humid environment before the surface can be sanded' clearly describes a resin setting/hardening, not a medical meaning." },
+          { id: "cg-4", prompt: "In Paragraph 4, what does 'invoked' most likely mean?", opts: ["Forbidden", "Referred to or drawn upon", "Destroyed", "Sold"], answer: 1, exp: "'Invoked as a metaphor' means the idea is referred to or used as a metaphor in other fields." },
+          { id: "cg-5", prompt: "In Paragraph 5, who are 'purists' most likely referring to?", opts: ["People who dislike Japanese culture", "People who insist on preserving the traditional, authentic form of something", "People who only repair ceramics professionally", "People who have never seen kintsugi"], answer: 1, exp: "The sentence contrasts them with reducing kintsugi to a 'purely metaphorical or decorative trend disconnected from its material and historical roots' — purists defend the authentic, traditional form." },
+        ],
+      },
+      {
+        title: "The Silk Road's Forgotten Currency: Cowrie Shells",
+        text:
+`Long before coins or paper money became widespread, many societies across Africa, Asia, and the Pacific relied on cowrie shells as a medium of exchange. These small, glossy shells, harvested primarily from the Indian Ocean, were prized for their durability, uniform size, and resistance to counterfeiting, qualities that made them remarkably well suited to commerce.
+
+Their use as currency was strikingly widespread and long-lived, appearing in historical records from ancient China to West Africa, and persisting in some regions well into the nineteenth century, long after European colonial powers had begun introducing metal coinage. In parts of West Africa, cowries remained a dominant form of currency even as colonial administrations attempted to supplant them with imported coins.
+
+Economists studying this history have noted that cowrie-based monetary systems were far from primitive or haphazard; exchange rates between shells and other goods were often carefully calibrated, and large quantities were meticulously counted, strung together, and transported across considerable distances as part of extensive regional trade networks.
+
+The eventual decline of cowrie currency was gradual rather than sudden, driven by a combination of factors: the flooding of local markets with mass-imported shells that undermined their scarcity value, alongside deliberate colonial policies designed to compel populations to adopt state-issued coinage for the payment of taxes.
+
+Today, cowrie shells survive largely as ornamental or ceremonial objects rather than functional currency, retaining symbolic significance in various cultural and religious practices across the regions where they once circulated as money. Numismatists, along with historians of trade, continue to study these shells as a rare example of a durable, decentralised currency that operated successfully across multiple continents for centuries without any central minting authority.`,
+        questions: [
+          { id: "cg-6", prompt: "In Paragraph 1, what does 'medium of exchange' most likely mean?", opts: ["A large-sized shell", "Something used to facilitate trade or payment", "A type of ocean current", "A religious symbol"], answer: 1, exp: "This is the standard economic sense confirmed by the whole paragraph describing shells used as money." },
+          { id: "cg-7", prompt: "In Paragraph 2, what does 'supplant' most likely mean?", opts: ["To support and strengthen", "To replace", "To decorate", "To count carefully"], answer: 1, exp: "'Attempted to supplant them with imported coins' — colonial powers tried to replace shells with coins." },
+          { id: "cg-8", prompt: "In Paragraph 3, what does 'haphazard' most likely mean?", opts: ["Highly organised and precise", "Random or lacking clear order", "Extremely valuable", "Illegal"], answer: 1, exp: "The sentence says systems were 'far from primitive or haphazard' because rates were 'carefully calibrated' — implying haphazard is the opposite of organised." },
+          { id: "cg-9", prompt: "In Paragraph 4, what does 'compel' most likely mean?", opts: ["To politely request", "To force or pressure", "To forbid entirely", "To financially reward"], answer: 1, exp: "'Deliberate colonial policies designed to compel populations to adopt state-issued coinage' describes forced adoption, not a request or reward." },
+          { id: "cg-10", prompt: "In Paragraph 5, what does 'numismatists' most likely refer to?", opts: ["People who study or collect currency and coins", "Marine biologists studying shells", "Religious leaders", "Colonial tax collectors"], answer: 0, exp: "'Numismatists, along with historians of trade, continue to study these shells' places them alongside trade historians — scholars of currency." },
+        ],
+      },
+    ],
   },
   {
     id: "paraphrase",
