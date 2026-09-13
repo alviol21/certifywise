@@ -285,6 +285,16 @@ tr:hover td{background:rgba(197,155,68,.04)}
 .tip b{color:#c59b44}
 .row{display:flex;gap:10px;align-items:center}
 .ml6{margin-left:6px}
+.skillsWrap{display:flex;gap:20px;align-items:flex-start}
+.skillsNav{width:190px;flex-shrink:0;display:flex;flex-direction:column;gap:4px}
+.skillsNavBtn{display:block;width:100%;text-align:left;padding:10px 14px;border:1px solid rgba(197,155,68,.15);background:#12253b;color:#8a7d6d;border-radius:8px;cursor:pointer;font-size:13px;font-family:'Plus Jakarta Sans',sans-serif;transition:.15s}
+.skillsNavBtn:hover{border-color:#c59b44;color:#c59b44}
+.skillsNavBtn.on{background:#c59b44;color:#0b1622;border-color:#c59b44;font-weight:600}
+.skillsContent{flex:1;min-width:0}
+@media(max-width:700px){.skillsWrap{flex-direction:column}.skillsNav{width:100%;flex-direction:row;overflow-x:auto;padding-bottom:4px}.skillsNavBtn{white-space:nowrap;width:auto}}
+.demoSent{transition:.15s}
+.demoSent.read{background:rgba(197,155,68,.16);color:#e8dfd0;padding:2px 3px;border-radius:3px}
+.demoSent.skip{color:#4a5560;opacity:.55}
 `;
 
 // ===========================================================
