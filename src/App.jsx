@@ -1,4 +1,7 @@
 import { useState, useRef, useEffect } from "react";
+import ReadingPage from "./ReadingPage";
+import AuthPage from "./AuthPage";
+import { supabase } from "./supabaseClient";
 
 // ===========================================================
 //  ВОПРОСЫ — встроены прямо в код
@@ -190,7 +193,8 @@ const CERTS = {
   DELTA: { emoji: "📙", color: "#c084fc", label: "Diploma in English Language Teaching", tagline: "Advanced diploma for experienced EFL teachers" },
 };
 
-const TEACHER_PASSWORD = "aidana212121"; // ← СМЕНИТЬ ПЕРЕД ДЕПЛОЕМ!
+// TEACHER_PASSWORD убран — роль теперь хранится в Supabase (profiles.role),
+// а не в виде открытого пароля в коде.
 
 // ===========================================================
 //  STYLES
@@ -290,8 +294,9 @@ export default function App() {
   const [page, setPage]           = useState("home");
   const [cert, setCert]           = useState("TKT");
   const [test, setTest]           = useState(null);
-  const [name, setName]           = useState(() => { try { return localStorage.getItem("cw_name") || ""; } catch { return ""; } });
-  const [tempName, setTempName]   = useState("");
+  const [session, setSession]     = useState(null);
+  const [profile, setProfile]     = useState(null);
+  const [authLoading, setAuthLoading] = useState(true);
   const [myFiles, setMyFiles]     = useState(() => { try { return JSON.parse(localStorage.getItem("cw_files") || "[]"); } catch { return []; } });
   const [newF, setNewF]           = useState({ title: "", url: "", cert: "TKT" });
   const [aiMsgs, setAiMsgs]       = useState([{ r: "a", t: "Привет! 👋 Я твой персональный AI-тьютор по TKT, CELTA, IELTS и DELTA.\n\nЯ знаю твои результаты тестов и подстроюсь под тебя. Напиши «анализ» — и я разберу твои слабые места и составлю план подготовки. Или просто задай любой вопрос — пиши как тебе удобно!" }]);
@@ -300,14 +305,48 @@ export default function App() {
   const [geminiKey, setGeminiKey] = useState(() => { try { return localStorage.getItem("cw_gkey") || ""; } catch { return ""; } });
   const [keyInput, setKeyInput]   = useState("");
   const [matTab, setMatTab]       = useState("official");
-  const [results, setResults]     = useState(() => { try { return JSON.parse(localStorage.getItem("cw_results") || "[]"); } catch { return []; } });
-  const [tMode, setTMode]         = useState(false);
-  const [tIn, setTIn]             = useState("");
+  const [results, setResults]     = useState([]);
   const chatRef = useRef(null);
+  const name = profile?.full_name || "";
 
-  useEffect(() => { try { localStorage.setItem("cw_name", name); } catch {} }, [name]);
+  // -- Авторизация --
+  useEffect(() => {
+    supabase.auth.getSession().then(({ data }) => { setSession(data.session); setAuthLoading(false); });
+    const { data: sub } = supabase.auth.onAuthStateChange((_event, s) => setSession(s));
+    return () => sub.subscription.unsubscribe();
+  }, []);
+
+  // -- Профиль после входа --
+  useEffect(() => {
+    if (!session) { setProfile(null); return; }
+    supabase.from("profiles").select("*").eq("id", session.user.id).single()
+      .then(({ data, error }) => { if (!error) setProfile(data); });
+  }, [session]);
+
+  // -- Прогресс из БД: свой (student) или всех (teacher) --
+  useEffect(() => {
+    if (!profile) return;
+    const q = profile.role === "teacher"
+      ? supabase.from("progress").select("*, profiles(full_name, email)").order("created_at", { ascending: false }).limit(200)
+      : supabase.from("progress").select("*").eq("user_id", profile.id).order("created_at", { ascending: false }).limit(60);
+    q.then(({ data, error }) => {
+      if (error) return;
+      setResults(data.map(r => ({
+        cert: r.cert, mod: r.module, score: r.score, total: r.total, pct: r.pct,
+        date: r.created_at, student: r.profiles?.full_name || name || "Студент",
+      })));
+    });
+  }, [profile]);
+
+  const saveProgress = async (r) => {
+    setResults(p => [r, ...p].slice(0, 200)); // мгновенный отклик в UI
+    if (!session) return;
+    await supabase.from("progress").insert({
+      user_id: session.user.id, cert: r.cert, module: r.mod, score: r.score, total: r.total, pct: r.pct,
+    });
+  };
+
   useEffect(() => { try { localStorage.setItem("cw_files", JSON.stringify(myFiles)); } catch {} }, [myFiles]);
-  useEffect(() => { try { localStorage.setItem("cw_results", JSON.stringify(results)); } catch {} }, [results]);
   useEffect(() => { try { localStorage.setItem("cw_gkey", geminiKey); } catch {} }, [geminiKey]);
   useEffect(() => { if (chatRef.current) chatRef.current.scrollTop = chatRef.current.scrollHeight; }, [aiMsgs]);
 
@@ -470,12 +509,19 @@ DELTA: SLA (Krashen, Selinker, Vygotsky, Ellis, Lewis), methodology (CLT, TBL, P
       const score = test.ans.reduce((s, a, i) => a === test.qs[i].ans ? s + 1 : s, 0);
       const pct   = Math.round(score / test.qs.length * 100);
       const r = { cert: test.c, mod: test.mod, score, total: test.qs.length, pct, date: new Date().toISOString(), student: name || "Студент" };
-      setResults(p => [r, ...p].slice(0, 60));
+      saveProgress(r);
       setTest({ ...test, done: true, score, pct });
     }
   };
 
-  const PAGES = [["home","🏠 Главная"],["analytics","📊 Аналитика"],["materials","📚 Материалы"],["practice","✏️ Тесты"],["listening","🎧 Listening"],["chat","🤖 AI-Репетитор"],["teacher","👩‍🏫 Учитель"]];
+  const PAGES = [["home","🏠 Главная"],["analytics","📊 Аналитика"],["materials","📚 Материалы"],["practice","✏️ Тесты"],["reading","📖 Reading"],["listening","🎧 Listening"],["chat","🤖 AI-Репетитор"],["teacher","👩‍🏫 Учитель"]];
+
+  if (authLoading) {
+    return <><style>{CSS}</style><div className="wrap" style={{textAlign:"center",paddingTop:100,color:"#8a7d6d"}}>Загрузка...</div></>;
+  }
+  if (!session) {
+    return <><style>{CSS}</style><AuthPage /></>;
+  }
 
   // ===================================
   //  TEST PAGE
@@ -564,8 +610,9 @@ DELTA: SLA (Krashen, Selinker, Vygotsky, Ellis, Lewis), methodology (CLT, TBL, P
         {/* HEADER */}
         <div className="hdr">
           <div className="logo">Certify<span>Wise</span></div>
-          <div style={{fontSize:13,color:"#8a7d6d"}}>
-            {name ? `👤 ${name}` : ""}
+          <div style={{display:"flex",alignItems:"center",gap:12}}>
+            <span style={{fontSize:13,color:"#8a7d6d"}}>{name ? `👤 ${name}` : ""}</span>
+            <button className="btn btn-o btn-sm" onClick={() => supabase.auth.signOut()}>Выйти</button>
           </div>
         </div>
 
@@ -581,13 +628,7 @@ DELTA: SLA (Krashen, Selinker, Vygotsky, Ellis, Lewis), methodology (CLT, TBL, P
             <p className="sb">Платформа подготовки к международным сертификациям для педагогов иностранного языка</p>
 
             {!name && (
-              <div className="card" style={{marginBottom:22}}>
-                <h3>Как тебя зовут?</h3>
-                <div className="row" style={{marginTop:13}}>
-                  <input type="text" placeholder="Введи своё имя..." value={tempName} onChange={e => setTempName(e.target.value)} onKeyDown={e => e.key === "Enter" && tempName.trim() && setName(tempName.trim())} style={{flex:1}} autoFocus />
-                  <button className="btn" onClick={() => tempName.trim() && setName(tempName.trim())} disabled={!tempName.trim()}>OK</button>
-                </div>
-              </div>
+              <div className="tip" style={{marginBottom:22}}>Заполните имя при регистрации, чтобы оно отображалось в результатах.</div>
             )}
 
             <div className="g2">
@@ -818,6 +859,11 @@ DELTA: SLA (Krashen, Selinker, Vygotsky, Ellis, Lewis), methodology (CLT, TBL, P
           </div>
         )}
 
+        {/* --- READING --- */}
+        {page === "reading" && (
+          <ReadingPage studentName={name} onSaveResult={saveProgress} />
+        )}
+
         {/* --- LISTENING --- */}
         {page === "listening" && (
           <div>
@@ -909,20 +955,12 @@ DELTA: SLA (Krashen, Selinker, Vygotsky, Ellis, Lewis), methodology (CLT, TBL, P
         {page === "teacher" && (
           <div>
             <h2 className="st">Панель учителя</h2>
-            {!tMode ? (
-              <div className="card">
-                <h3>Войти как учитель</h3>
-                <div className="row" style={{marginTop:14}}>
-                  <input type="password" placeholder="Пароль учителя..." value={tIn} onChange={e => setTIn(e.target.value)} onKeyDown={e => { if(e.key==="Enter") { if(tIn===TEACHER_PASSWORD){setTMode(true);setTIn("");}else alert("Неверный пароль"); }}} style={{flex:1}} />
-                  <button className="btn" onClick={() => { if(tIn===TEACHER_PASSWORD){setTMode(true);setTIn("");}else alert("Неверный пароль"); }}>Войти</button>
-                </div>
-                
-              </div>
+            {profile?.role !== "teacher" ? (
+              <div className="empty">Эта страница доступна только аккаунтам с ролью «учитель».</div>
             ) : (
               <div>
                 <div style={{display:"flex",justifyContent:"space-between",alignItems:"center",marginBottom:20}}>
-                  <span style={{fontSize:13.5,color:"#4caf88"}}>✓ Режим учителя активен</span>
-                  <button className="btn btn-o btn-sm" onClick={() => setTMode(false)}>Выйти</button>
+                  <span style={{fontSize:13.5,color:"#4caf88"}}>✓ Данные всех студентов</span>
                 </div>
                 <div className="g3" style={{marginBottom:22}}>
                   {[["Попыток",results.length],["Средний балл",results.length?Math.round(results.reduce((a,r)=>a+r.pct,0)/results.length)+"%":"—"],["Студентов",[...new Set(results.map(r=>r.student))].length]].map(([l,v],i) => (
@@ -951,9 +989,6 @@ DELTA: SLA (Krashen, Selinker, Vygotsky, Ellis, Lewis), methodology (CLT, TBL, P
                         ))}
                       </tbody>
                     </table>
-                    <div style={{textAlign:"right",marginTop:11}}>
-                      <button className="btn btn-red btn-sm" onClick={() => { if(window.confirm("Удалить все результаты?")) setResults([]); }}>Очистить</button>
-                    </div>
                   </div>
                 )}
               </div>
