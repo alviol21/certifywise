@@ -5,29 +5,32 @@ const LEVEL_COLOR = l => l.includes("7.5") || l.includes("8") ? "#e74c3c" : l.in
 
 export default function ReadingPage({ studentName, onSaveResult }) {
   const [unitId, setUnitId] = useState(null);
+  const [activeTextIdx, setActiveTextIdx] = useState(0);
   const [showSkills, setShowSkills] = useState(false);
   const [activeSkillId, setActiveSkillId] = useState(READING_SKILLS[0]?.id);
+  const [activePassageIdx, setActivePassageIdx] = useState(0);
   const [skillAnswers, setSkillAnswers] = useState({}); // { itemId: selectedOptionIndex }
   const [answers, setAnswers] = useState({});
-  const [checked, setChecked] = useState(false);
-  const [result, setResult] = useState(null);
+  const [textResults, setTextResults] = useState({}); // { [textIdx]: resultObj }
 
   const unit = READING_UNITS.find(u => u.id === unitId);
+  const currentText = unit ? unit.texts[activeTextIdx] : null;
+  const checked = !!textResults[activeTextIdx];
+  const result = textResults[activeTextIdx] || null;
 
-  const openUnit = (id) => { setUnitId(id); setAnswers({}); setChecked(false); setResult(null); };
-  const closeUnit = () => { setUnitId(null); setAnswers({}); setChecked(false); setResult(null); };
+  const openUnit = (id) => { setUnitId(id); setAnswers({}); setTextResults({}); setActiveTextIdx(0); };
+  const closeUnit = () => { setUnitId(null); setAnswers({}); setTextResults({}); };
   const setAns = (id, val) => { if (checked) return; setAnswers(a => ({ ...a, [id]: val })); };
 
-  const allItems = unit ? unit.tasks.flatMap(t => t.items) : [];
-  const allAnswered = unit && allItems.every(it => answers[it.id] !== undefined && answers[it.id] !== "");
+  const allItems = currentText ? currentText.tasks.flatMap(t => t.items) : [];
+  const allAnswered = currentText && allItems.every(it => answers[it.id] !== undefined && answers[it.id] !== "");
 
   const check = () => {
-    const r = scoreReadingUnit(unit, answers);
-    setResult(r);
-    setChecked(true);
+    const r = scoreReadingUnit(currentText, answers);
+    setTextResults(p => ({ ...p, [activeTextIdx]: r }));
     onSaveResult({
       cert: "IELTS",
-      mod: `Reading: ${unit.title}`,
+      mod: `Reading: ${currentText.title}`,
       score: r.correct,
       total: r.total,
       pct: r.pct,
@@ -35,6 +38,12 @@ export default function ReadingPage({ studentName, onSaveResult }) {
       student: studentName || "Студент",
       details: r.details,
     });
+  };
+
+  const retryText = () => {
+    const ids = currentText.tasks.flatMap(t => t.items).map(it => it.id);
+    setAnswers(a => { const copy = { ...a }; ids.forEach(id => delete copy[id]); return copy; });
+    setTextResults(p => { const copy = { ...p }; delete copy[activeTextIdx]; return copy; });
   };
 
   // ============ ЭКРАН "ТЕХНИКИ ЧТЕНИЯ" ============
@@ -49,7 +58,7 @@ export default function ReadingPage({ studentName, onSaveResult }) {
         <div className="skillsWrap">
           <div className="skillsNav">
             {READING_SKILLS.map(sk => (
-              <button key={sk.id} className={`skillsNavBtn${sk.id === activeSkillId ? " on" : ""}`} onClick={() => setActiveSkillId(sk.id)}>
+              <button key={sk.id} className={`skillsNavBtn${sk.id === activeSkillId ? " on" : ""}`} onClick={() => { setActiveSkillId(sk.id); setActivePassageIdx(0); }}>
                 {sk.title}
               </button>
             ))}
@@ -109,31 +118,44 @@ export default function ReadingPage({ studentName, onSaveResult }) {
                     <div style={{ fontSize: 13, fontWeight: 600, color: "#c59b44", margin: "14px 0 10px" }}>
                       ✏️ Practice on full texts — {s.passages.reduce((n, p) => n + p.questions.length, 0)} questions
                     </div>
-                    {s.passages.map((psg, psgI) => (
-                      <div key={psgI} style={{ marginBottom: 22 }}>
-                        <h4 style={{ fontFamily: "Lora,serif", fontSize: 16, color: "#e8dfd0", marginBottom: 8 }}>{psg.title}</h4>
-                        <div className="card" style={{ maxHeight: 320, overflowY: "auto", lineHeight: 1.8, fontSize: 14, color: "#c0b8a8", marginBottom: 12, whiteSpace: "pre-wrap" }}>
-                          {psg.text}
+                    <div className="tabs" style={{ overflowX: "auto", flexWrap: "nowrap" }}>
+                      {s.passages.map((psg, psgI) => {
+                        const psgDone = psg.questions.every(p => skillAnswers[p.id] !== undefined);
+                        return (
+                          <button key={psgI} className={`tab${psgI === activePassageIdx ? " on" : ""}`} style={{ whiteSpace: "nowrap" }} onClick={() => setActivePassageIdx(psgI)}>
+                            {psg.title}{psgDone ? " ✓" : ""}
+                          </button>
+                        );
+                      })}
+                    </div>
+                    {(() => {
+                      const psg = s.passages[activePassageIdx] || s.passages[0];
+                      return (
+                        <div style={{ marginBottom: 22 }}>
+                          <h4 style={{ fontFamily: "Lora,serif", fontSize: 16, color: "#e8dfd0", marginBottom: 8 }}>{psg.title}</h4>
+                          <div className="card" style={{ maxHeight: 320, overflowY: "auto", lineHeight: 1.8, fontSize: 14, color: "#c0b8a8", marginBottom: 12, whiteSpace: "pre-wrap" }}>
+                            {psg.text}
+                          </div>
+                          {psg.questions.map((p, pi) => {
+                            const sel = skillAnswers[p.id];
+                            const done = sel !== undefined;
+                            return (
+                              <div key={p.id} className="qcard" style={{ marginBottom: 10, padding: 16 }}>
+                                <div className="qtext" style={{ fontSize: 14, marginBottom: 12 }}>{p.prompt}</div>
+                                {p.opts.map((o, i) => {
+                                  let cls = "opt";
+                                  if (done) { if (i === p.answer) cls += " ok"; else if (i === sel) cls += " ng"; }
+                                  return <button key={i} className={cls} disabled={done} onClick={() => setSkillAnswers(a => ({ ...a, [p.id]: i }))}>
+                                    <span style={{ color: "#c59b44", marginRight: 9 }}>{String.fromCharCode(65 + i)}.</span>{o}
+                                  </button>;
+                                })}
+                                {done && <div className="exp"><b>💡 Why:</b> {p.exp}</div>}
+                              </div>
+                            );
+                          })}
                         </div>
-                        {psg.questions.map((p, pi) => {
-                          const sel = skillAnswers[p.id];
-                          const done = sel !== undefined;
-                          return (
-                            <div key={p.id} className="qcard" style={{ marginBottom: 10, padding: 16 }}>
-                              <div className="qtext" style={{ fontSize: 14, marginBottom: 12 }}>{p.prompt}</div>
-                              {p.opts.map((o, i) => {
-                                let cls = "opt";
-                                if (done) { if (i === p.answer) cls += " ok"; else if (i === sel) cls += " ng"; }
-                                return <button key={i} className={cls} disabled={done} onClick={() => setSkillAnswers(a => ({ ...a, [p.id]: i }))}>
-                                  <span style={{ color: "#c59b44", marginRight: 9 }}>{String.fromCharCode(65 + i)}.</span>{o}
-                                </button>;
-                              })}
-                              {done && <div className="exp"><b>💡 Why:</b> {p.exp}</div>}
-                            </div>
-                          );
-                        })}
-                      </div>
-                    ))}
+                      );
+                    })()}
                   </div>
                 )}
                 {!s.practice && !s.passages && (
@@ -178,8 +200,8 @@ export default function ReadingPage({ studentName, onSaveResult }) {
             <div>
               <h3 style={{ marginBottom: 3 }}>{u.title}</h3>
               <p style={{ fontSize: 13, color: "#8a7d6d" }}>
-                {u.topic} · {u.tasks.reduce((s, t) => s + t.items.length, 0)} вопросов ·{" "}
-                <span style={{ color: LEVEL_COLOR(u.level) }}>{u.level}</span>
+                {u.texts.length} текстов · {u.texts.reduce((s, t) => s + t.tasks.reduce((s2, task) => s2 + task.items.length, 0), 0)} вопросов ·{" "}
+                <span>{u.texts[0].level} → {u.texts[u.texts.length - 1].level}</span>
               </p>
             </div>
             <button className="btn" onClick={() => openUnit(u.id)}>Открыть →</button>
@@ -195,16 +217,25 @@ export default function ReadingPage({ studentName, onSaveResult }) {
     <div>
       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 14 }}>
         <button className="btn btn-o btn-sm" onClick={closeUnit}>← Все юниты</button>
-        <span className="badge" style={{ background: "rgba(197,155,68,.15)", color: LEVEL_COLOR(unit.level) }}>{unit.level}</span>
+        <span className="badge" style={{ background: "rgba(197,155,68,.15)", color: LEVEL_COLOR(currentText.level) }}>{currentText.level}</span>
       </div>
       <h2 className="st">{unit.title}</h2>
-      <p className="sb">{unit.topic}</p>
+      <p className="sb">{currentText.topic}</p>
 
-      <div className="card" style={{ maxHeight: 380, overflowY: "auto", lineHeight: 1.8, fontSize: 14.5, color: "#c0b8a8", marginBottom: 24, whiteSpace: "pre-wrap" }}>
-        {unit.passage}
+      <div className="tabs" style={{ overflowX: "auto", flexWrap: "nowrap" }}>
+        {unit.texts.map((t, ti) => (
+          <button key={t.id} className={`tab${ti === activeTextIdx ? " on" : ""}`} style={{ whiteSpace: "nowrap" }} onClick={() => setActiveTextIdx(ti)}>
+            {ti + 1}. {t.title}{textResults[ti] ? " ✓" : ""}
+          </button>
+        ))}
       </div>
 
-      {unit.tasks.map((task, ti) => (
+      <h3 style={{ fontFamily: "Lora,serif", fontSize: 17, color: "#e8dfd0", marginBottom: 8 }}>{currentText.title}</h3>
+      <div className="card" style={{ maxHeight: 380, overflowY: "auto", lineHeight: 1.8, fontSize: 14.5, color: "#c0b8a8", marginBottom: 24, whiteSpace: "pre-wrap" }}>
+        {currentText.passage}
+      </div>
+
+      {currentText.tasks.map((task, ti) => (
         <div key={ti} style={{ marginBottom: 26 }}>
           <h3 style={{ color: "#c59b44", fontFamily: "Lora,serif", fontSize: 18, marginBottom: 8 }}>{task.title}</h3>
 
@@ -334,7 +365,7 @@ export default function ReadingPage({ studentName, onSaveResult }) {
       {!checked ? (
         <div style={{ textAlign: "center", marginTop: 10 }}>
           <button className="btn" disabled={!allAnswered} onClick={check}>
-            {allAnswered ? "Проверить ответы ✓" : `Осталось ответить: ${allItems.length - Object.keys(answers).filter(k=>answers[k]!=="" && answers[k]!==undefined).length}`}
+            {allAnswered ? "Проверить ответы ✓" : `Осталось ответить: ${allItems.length - allItems.filter(it => answers[it.id] !== undefined && answers[it.id] !== "").length}`}
           </button>
         </div>
       ) : (
@@ -342,7 +373,10 @@ export default function ReadingPage({ studentName, onSaveResult }) {
           <div className="sbig">{result.pct}%</div>
           <div style={{ fontSize: 17, color: "#e8dfd0", marginTop: 8, fontFamily: "Lora,serif" }}>{result.correct} / {result.total} верных ответов</div>
           <div style={{ display: "flex", gap: 10, justifyContent: "center", flexWrap: "wrap", marginTop: 16 }}>
-            <button className="btn" onClick={() => openUnit(unit.id)}>Пройти ещё раз</button>
+            <button className="btn" onClick={retryText}>Пройти ещё раз</button>
+            {activeTextIdx < unit.texts.length - 1 && (
+              <button className="btn" onClick={() => setActiveTextIdx(activeTextIdx + 1)}>Следующий текст →</button>
+            )}
             <button className="btn btn-o" onClick={closeUnit}>← Все юниты</button>
           </div>
         </div>
