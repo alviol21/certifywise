@@ -236,6 +236,7 @@ h1,h2,h3,h4{font-family:'Lora',serif}
 .opt:hover:not(:disabled){border-color:#c59b44;background:#12253b}
 .opt.ok{background:rgba(76,175,136,.14);border-color:#4caf88;color:#4caf88}
 .opt.ng{background:rgba(192,57,43,.14);border-color:#c0392b}
+.opt.sel{background:rgba(197,155,68,.14);border-color:#c59b44;color:#c59b44}
 .exp{background:rgba(197,155,68,.08);border:1px solid rgba(197,155,68,.28);border-radius:8px;padding:13px 17px;margin-top:14px;font-size:13.5px;line-height:1.7;color:#c59b44}
 .pbar{height:4px;background:rgba(255,255,255,.08);border-radius:2px;margin-bottom:22px}
 .pfill{height:100%;background:#c59b44;border-radius:2px;transition:width .3s}
