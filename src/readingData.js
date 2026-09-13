@@ -1417,63 +1417,714 @@ export const BAND_SCORE_TABLE = [
 
 export const READING_UNITS = [
   {
-    id: "read-1",
+    id: "unit-1",
     order: 1,
-    title: "Юнит 1 — The Silent Language of Trees",
-    level: "Band 5.5–6",
-    topic: "Environmental Science",
-    passage:
-`For centuries, foresters assumed that trees competed with one another for light, water and nutrients, much like rival businesses fighting for the same customers. Recent research, however, has revealed a far more cooperative picture. Beneath the forest floor, the roots of most trees are connected by a vast web of thread-like fungi known as mycorrhizae. This underground network, sometimes nicknamed the "wood wide web", allows trees to exchange not only nutrients but also chemical warning signals.
-
-When a tree is attacked by insects, it can release chemical compounds into the network that alert neighbouring trees of the same species. Those neighbours, in turn, begin producing defensive chemicals of their own before the insects even reach them. In one well-known study, researchers found that undamaged trees connected to an infested tree produced significantly more defensive enzymes than trees growing in isolation nearby.
-
-The network also appears to support weaker or younger trees. Older, larger trees — sometimes called "mother trees" because of the central role they play — have been observed transferring carbon and nutrients through fungal connections to seedlings growing in their shade, where sunlight is scarce. Some scientists argue that this challenges the traditional Darwinian view of forests as arenas of pure competition, suggesting instead that survival often depends on cooperation between generations.
-
-Not all researchers agree on how deliberate this cooperation is. Sceptics point out that fungi may simply be moving resources to wherever is most efficient for the fungi themselves, with any benefit to the trees being an incidental side effect rather than a coordinated strategy. Testing these competing explanations is difficult, since the underground networks are hard to observe directly and experiments risk disturbing the very systems being studied.
-
-Regardless of the exact mechanism, the practical implications are significant. Foresters who once cleared away older trees to make room for new growth are increasingly reconsidering the practice, since removing a "mother tree" may cut off the support network that younger trees rely on. As understanding of these hidden connections grows, it may reshape not only forestry practices but also broader ideas about competition and cooperation in the natural world.`,
-    tasks: [
+    title: "IELTS Reading Practice",
+    texts: [
       {
-        type: "tfng",
-        title: "True / False / Not Given — разбор и практика",
-        instructions: "Согласны ли следующие утверждения с информацией в тексте? Выберите TRUE, FALSE или NOT GIVEN.",
-        strategy: [
-          "TRUE — текст прямо подтверждает утверждение. FALSE — текст прямо противоречит. NOT GIVEN — в тексте просто нет информации об этом (тема может быть упомянута, но нужных деталей нет).",
-          "Самая частая ошибка — путать FALSE и NOT GIVEN. Прежде чем ставить FALSE, спроси себя: 'текст правда говорит обратное, или я просто не нашёл(-ла) подтверждения?' Если не нашёл(-ла) — это NOT GIVEN.",
-          "Утверждения обычно идут в том же порядке, что и информация в тексте — двигайся по тексту последовательно, не перескакивай.",
-          "Выдели в утверждении 1-2 ключевых слова и ищи их — или их синонимы — в тексте. Дословных совпадений почти никогда не бывает.",
-          "Следи за словами-усилителями и ограничителями: 'always', 'only', 'all', 'never' — часто именно они делают верное по смыслу утверждение ложным, потому что текст даёт более осторожную формулировку.",
+        id: "text-1",
+        title: "The Silent Language of Trees",
+        level: "Band 5.5–6",
+        topic: "Environmental Science",
+        passage:
+    `For centuries, foresters assumed that trees competed with one another for light, water and nutrients, much like rival businesses fighting for the same customers. Recent research, however, has revealed a far more cooperative picture. Beneath the forest floor, the roots of most trees are connected by a vast web of thread-like fungi known as mycorrhizae. This underground network, sometimes nicknamed the "wood wide web", allows trees to exchange not only nutrients but also chemical warning signals.
+    
+    When a tree is attacked by insects, it can release chemical compounds into the network that alert neighbouring trees of the same species. Those neighbours, in turn, begin producing defensive chemicals of their own before the insects even reach them. In one well-known study, researchers found that undamaged trees connected to an infested tree produced significantly more defensive enzymes than trees growing in isolation nearby.
+    
+    The network also appears to support weaker or younger trees. Older, larger trees — sometimes called "mother trees" because of the central role they play — have been observed transferring carbon and nutrients through fungal connections to seedlings growing in their shade, where sunlight is scarce. Some scientists argue that this challenges the traditional Darwinian view of forests as arenas of pure competition, suggesting instead that survival often depends on cooperation between generations.
+    
+    Not all researchers agree on how deliberate this cooperation is. Sceptics point out that fungi may simply be moving resources to wherever is most efficient for the fungi themselves, with any benefit to the trees being an incidental side effect rather than a coordinated strategy. Testing these competing explanations is difficult, since the underground networks are hard to observe directly and experiments risk disturbing the very systems being studied.
+    
+    Regardless of the exact mechanism, the practical implications are significant. Foresters who once cleared away older trees to make room for new growth are increasingly reconsidering the practice, since removing a "mother tree" may cut off the support network that younger trees rely on. As understanding of these hidden connections grows, it may reshape not only forestry practices but also broader ideas about competition and cooperation in the natural world.`,
+        tasks: [
+          {
+            type: "tfng",
+            title: "True / False / Not Given — разбор и практика",
+            instructions: "Согласны ли следующие утверждения с информацией в тексте? Выберите TRUE, FALSE или NOT GIVEN.",
+            strategy: [
+              "TRUE — текст прямо подтверждает утверждение. FALSE — текст прямо противоречит. NOT GIVEN — в тексте просто нет информации об этом (тема может быть упомянута, но нужных деталей нет).",
+              "Самая частая ошибка — путать FALSE и NOT GIVEN. Прежде чем ставить FALSE, спроси себя: 'текст правда говорит обратное, или я просто не нашёл(-ла) подтверждения?' Если не нашёл(-ла) — это NOT GIVEN.",
+              "Утверждения обычно идут в том же порядке, что и информация в тексте — двигайся по тексту последовательно, не перескакивай.",
+              "Выдели в утверждении 1-2 ключевых слова и ищи их — или их синонимы — в тексте. Дословных совпадений почти никогда не бывает.",
+              "Следи за словами-усилителями и ограничителями: 'always', 'only', 'all', 'never' — часто именно они делают верное по смыслу утверждение ложным, потому что текст даёт более осторожную формулировку.",
+            ],
+            walkthrough: {
+              text: "Example: 'Trees only communicate with members of the same species.'",
+              steps: [
+                "Ключевые слова утверждения: 'only' (ограничитель) + 'same species'.",
+                "Ищем в тексте упоминание того, с кем именно трееs 'общаются'. Во втором абзаце: 'alert neighbouring trees of the same species' — да, про этот вид общения сказано именно 'того же вида'.",
+                "Но слово 'only' в утверждении добавляет условие: коммуникация ТОЛЬКО с тем же видом, никогда с другими. Текст нигде не утверждает и не отрицает, что деревья разных видов не могут обмениваться сигналами — об этом просто не сказано.",
+                "Значит, часть про 'alert neighbouring trees of the same species' — правда, но добавленное 'only' делает утверждение шире, чем то, что подтверждает текст.",
+              ],
+              answer: "NOT GIVEN",
+              whyNotOthers: "Не FALSE, потому что текст не говорит обратного ('деревья общаются и с другими видами') — он просто не затрагивает этот вопрос. Не TRUE, потому что текст не подтверждает исключительность ('only').",
+            },
+            items: [
+              { id: "r1-1", text: "Foresters have always believed that trees cooperate rather than compete.", answer: "FALSE" },
+              { id: "r1-2", text: "Mycorrhizal fungi connect the roots of different trees underground.", answer: "TRUE" },
+              { id: "r1-3", text: "Trees under insect attack can warn other trees of the same species.", answer: "TRUE" },
+              { id: "r1-4", text: "Mother trees only transfer resources to trees of a different species.", answer: "NOT GIVEN" },
+              { id: "r1-5", text: "All scientists agree that the transfer of resources between trees is a deliberate strategy.", answer: "FALSE" },
+              { id: "r1-6", text: "Researchers have found it easy to test whether fungi act deliberately or not.", answer: "FALSE" },
+              { id: "r1-7", text: "The study found that isolated trees produced more defensive enzymes than trees connected to an infested tree.", answer: "FALSE" },
+              { id: "r1-8", text: "Mother trees are typically older and larger than the seedlings they support.", answer: "TRUE" },
+              { id: "r1-9", text: "Experiments on fungal networks are simple to conduct without affecting the network itself.", answer: "FALSE" },
+              { id: "r1-10", text: "Some foresters have changed their practices as a result of this research.", answer: "TRUE" },
+            ],
+          },
+          {
+            type: "heading-match",
+            title: "Matching Headings",
+            instructions: "The passage above has five paragraphs (in order). Choose the correct heading for each from the list below. There are more headings than paragraphs.",
+            strategy: [
+              "Match the paragraph's overall function, not one detail inside it.",
+              "Watch for headings that fit the passage's topic generally but belong to a different specific paragraph.",
+            ],
+            headings: [
+              "A traditional view challenged by new evidence",
+              "Chemical alarms between neighbouring trees",
+              "Support flowing from old to young",
+              "Doubts about how intentional the process really is",
+              "A shift in forestry practice",
+              "The financial cost of maintaining forests",
+              "Where the underground network was first discovered",
+            ],
+            items: [
+              { id: "r1h-1", paragraph: "Paragraph 1", answer: 0 },
+              { id: "r1h-2", paragraph: "Paragraph 2", answer: 1 },
+              { id: "r1h-3", paragraph: "Paragraph 3", answer: 2 },
+              { id: "r1h-4", paragraph: "Paragraph 4", answer: 3 },
+              { id: "r1h-5", paragraph: "Paragraph 5", answer: 4 },
+            ],
+          },
+          {
+            type: "info-match",
+            title: "Matching Information",
+            instructions: "The passage has five paragraphs, A–E. Which paragraph contains each piece of information below?",
+            strategy: [
+              "Scan for the specific fact named in the question, not the paragraph's general topic.",
+              "The information may be one sentence within a paragraph about something else overall.",
+            ],
+            paragraphLabels: ["A", "B", "C", "D", "E"],
+            items: [
+              { id: "r1i-1", text: "the nickname given to the underground fungal network", answer: "A" },
+              { id: "r1i-2", text: "a study measuring the production of defensive enzymes", answer: "B" },
+              { id: "r1i-3", text: "the term used for older trees that support seedlings", answer: "C" },
+              { id: "r1i-4", text: "an alternative explanation proposed by sceptics", answer: "D" },
+              { id: "r1i-5", text: "a change in real-world forestry practice", answer: "E" },
+            ],
+          },
+          {
+            type: "summary",
+            title: "Summary Completion",
+            instructions: "Complete the summary below. Use NO MORE THAN TWO WORDS from the passage for each answer.",
+            strategy: [
+              "Identify the part of speech needed before searching the text.",
+              "Use a nearby word shared with the summary as your anchor point in the passage.",
+            ],
+            summaryTemplate:
+              "Trees are connected underground by {0} that allow chemical communication between neighbours under attack. Older trees, called {1}, transfer nutrients to young seedlings, challenging the traditional {2} view of competition. Sceptics argue this may simply benefit the {3} rather than reflecting a deliberate strategy. As a result, some foresters have begun reconsidering the {4} of older trees.",
+            items: [
+              { id: "r1s-1", answer: ["mycorrhizal fungi", "fungi"] },
+              { id: "r1s-2", answer: ["mother trees"] },
+              { id: "r1s-3", answer: ["Darwinian"] },
+              { id: "r1s-4", answer: ["fungi"] },
+              { id: "r1s-5", answer: ["clearing"] },
+            ],
+          },
+          {
+            type: "mcq",
+            title: "Multiple Choice",
+            instructions: "Choose the correct letter, A, B, C or D, for each question.",
+            strategy: [
+              "Predict the answer yourself before reading the options.",
+              "Eliminate options that add claims the passage never actually makes.",
+            ],
+            items: [
+              { id: "r1m-1", text: "According to the passage, what happens when a tree is attacked by insects?", opts: ["It dies within days", "It releases chemicals that warn neighbouring trees of the same species", "It stops photosynthesis entirely", "It grows faster to compensate"], answer: 1 },
+              { id: "r1m-2", text: "Why do sceptics doubt that fungal resource-sharing is a deliberate strategy?", opts: ["Trees cannot communicate in any way", "Fungi might simply move resources to wherever is most efficient for themselves", "The phenomenon has never actually been observed", "Trees are known only to compete, never cooperate"], answer: 1 },
+              { id: "r1m-3", text: "Why is it difficult to test whether the cooperation between trees is deliberate?", opts: ["Underground networks are hard to observe without disturbing them", "No equipment exists to study tree roots", "Trees refuse to grow near researchers", "Fungi are too small to detect at all"], answer: 0 },
+              { id: "r1m-4", text: "What has prompted some foresters to reconsider clearing older trees?", opts: ["A new government regulation", "The realisation that mother trees may support a wider network of seedlings", "A shortage of timber", "Pressure from local tourism boards"], answer: 1 },
+            ],
+          },
+          {
+            type: "ynng",
+            title: "Yes / No / Not Given",
+            instructions: "Do the following statements agree with the views of the writer? Choose YES if the statement agrees, NO if it contradicts, or NOT GIVEN if it's impossible to say.",
+            strategy: [
+              "This checks the WRITER'S opinion, not just facts — look for the writer's own framing, not just what other researchers are quoted as saying.",
+              "If the writer only reports that opinions differ, without taking a side, that's usually NOT GIVEN.",
+            ],
+            items: [
+              { id: "r1y-1", text: "The writer believes understanding tree networks could change how people think about cooperation in nature more broadly.", opts: ["YES", "NO", "NOT GIVEN"], answer: 0 },
+              { id: "r1y-2", text: "The writer believes scientists have reached full agreement on why trees share resources.", opts: ["YES", "NO", "NOT GIVEN"], answer: 1 },
+              { id: "r1y-3", text: "The writer believes fungi definitely act out of altruism toward trees.", opts: ["YES", "NO", "NOT GIVEN"], answer: 2 },
+              { id: "r1y-4", text: "The writer has personally studied mycorrhizal networks in a laboratory.", opts: ["YES", "NO", "NOT GIVEN"], answer: 2 },
+            ],
+          },
         ],
-        walkthrough: {
-          text: "Example: 'Trees only communicate with members of the same species.'",
-          steps: [
-            "Ключевые слова утверждения: 'only' (ограничитель) + 'same species'.",
-            "Ищем в тексте упоминание того, с кем именно трееs 'общаются'. Во втором абзаце: 'alert neighbouring trees of the same species' — да, про этот вид общения сказано именно 'того же вида'.",
-            "Но слово 'only' в утверждении добавляет условие: коммуникация ТОЛЬКО с тем же видом, никогда с другими. Текст нигде не утверждает и не отрицает, что деревья разных видов не могут обмениваться сигналами — об этом просто не сказано.",
-            "Значит, часть про 'alert neighbouring trees of the same species' — правда, но добавленное 'only' делает утверждение шире, чем то, что подтверждает текст.",
-          ],
-          answer: "NOT GIVEN",
-          whyNotOthers: "Не FALSE, потому что текст не говорит обратного ('деревья общаются и с другими видами') — он просто не затрагивает этот вопрос. Не TRUE, потому что текст не подтверждает исключительность ('only').",
-        },
-        items: [
-          { id: "r1-1", text: "Foresters have always believed that trees cooperate rather than compete.", answer: "FALSE" },
-          { id: "r1-2", text: "Mycorrhizal fungi connect the roots of different trees underground.", answer: "TRUE" },
-          { id: "r1-3", text: "Trees under insect attack can warn other trees of the same species.", answer: "TRUE" },
-          { id: "r1-4", text: "Mother trees only transfer resources to trees of a different species.", answer: "NOT GIVEN" },
-          { id: "r1-5", text: "All scientists agree that the transfer of resources between trees is a deliberate strategy.", answer: "FALSE" },
-          { id: "r1-6", text: "Researchers have found it easy to test whether fungi act deliberately or not.", answer: "FALSE" },
-          { id: "r1-7", text: "The study found that isolated trees produced more defensive enzymes than trees connected to an infested tree.", answer: "FALSE" },
-          { id: "r1-8", text: "Mother trees are typically older and larger than the seedlings they support.", answer: "TRUE" },
-          { id: "r1-9", text: "Experiments on fungal networks are simple to conduct without affecting the network itself.", answer: "FALSE" },
-          { id: "r1-10", text: "Some foresters have changed their practices as a result of this research.", answer: "TRUE" },
+      },,
+      {
+        id: "text-2",
+        title: "The Urban Heat Island Effect",
+        level: "Band 6–6.5",
+        topic: "Environmental Science / Urban Studies",
+        passage:
+    `Cities around the world are frequently several degrees warmer than the surrounding rural or suburban areas, a phenomenon known as the urban heat island effect. This temperature difference is most pronounced during the evening and at night, when built-up areas release heat absorbed during the day far more slowly than natural landscapes do.
+    
+    A central cause of this effect lies in the materials used in urban construction. Asphalt, concrete, and dark rooftops absorb a much greater proportion of incoming solar radiation than vegetation or soil, and these materials also have a high thermal mass, allowing them to retain heat long after sunset and release it gradually overnight.
+    
+    The reduction of vegetation in cities compounds this problem, since plants cool their surroundings through a process called evapotranspiration, in which water evaporates from leaves and draws heat away from the surrounding air. Additional contributing factors include waste heat released by vehicles, air conditioning systems, and industrial processes, all of which are far more concentrated in dense urban environments.
+    
+    The consequences of urban heat islands extend beyond simple discomfort. Elevated nighttime temperatures have been linked to increased energy consumption, as residents rely more heavily on air conditioning, as well as heightened health risks during heatwaves, particularly for elderly residents and those without access to adequate cooling.
+    
+    In response, many cities have begun experimenting with mitigation strategies, including the installation of reflective or "cool" roofing materials that absorb less solar radiation, the expansion of urban tree canopy and green roofs, and the strategic design of streets to improve airflow and reduce heat trapping between buildings.
+    
+    Despite growing awareness, implementing these measures at a citywide scale remains challenging, since retrofitting existing infrastructure is often costly, and competing priorities for limited municipal budgets can delay large-scale adoption, even where the long-term benefits for public health and energy savings are well established.`,
+        tasks: [
+          {
+            type: "heading-match",
+            title: "Matching Headings — Practice",
+            instructions: "The passage above has six paragraphs (in order, top to bottom). Choose the correct heading for each paragraph listed below from the list of headings. There are more headings than paragraphs — you will not use them all.",
+            strategy: [
+              "First skim all the headings and try to understand the general idea of each one — this saves time before you start matching.",
+              "Look for the main idea of each paragraph (usually in the first sentence), not individual details mentioned partway through.",
+              "Beware of headings that match a topic discussed SOMEWHERE in the text but not in that specific paragraph — this is the single most common trap in this task type.",
+              "A heading must cover the paragraph's overall function, not just one example or detail inside it.",
+            ],
+            walkthrough: {
+              text: "Paragraph 1: 'Cities around the world are frequently several degrees warmer... This temperature difference is most pronounced during the evening and at night...'",
+              steps: [
+                "Skim the paragraph: the main point is that cities are warmer than surrounding areas, especially at night.",
+                "Check the heading 'The financial benefits of urban parks' — completely unrelated topic (parks, money), eliminate immediately.",
+                "Check 'The role of construction materials in trapping heat' — this sounds plausible and IS discussed in the text, but not in THIS paragraph; it's actually the topic of Paragraph 2. This is the classic trap.",
+                "Check 'A phenomenon most noticeable after dark' — this matches 'most pronounced during the evening and at night' precisely, and captures the paragraph's main point.",
+              ],
+              answer: "A phenomenon most noticeable after dark",
+              whyNotOthers: "The construction-materials heading belongs to Paragraph 2, not Paragraph 1 — always check that a plausible-sounding heading actually matches the specific paragraph in front of you, not just the passage as a whole.",
+            },
+            headings: [
+              "A costly and slow path to change",
+              "The role of construction materials in trapping heat",
+              "Effects on residents' health and expenses",
+              "A phenomenon most noticeable after dark",
+              "The financial benefits of urban parks",
+              "Losing nature's natural cooling system",
+              "Attempts to reduce the problem",
+              "A history of city planning failures",
+            ],
+            items: [
+              { id: "r2-1", paragraph: "Paragraph 2", answer: 1 },
+              { id: "r2-2", paragraph: "Paragraph 3", answer: 5 },
+              { id: "r2-3", paragraph: "Paragraph 4", answer: 2 },
+              { id: "r2-4", paragraph: "Paragraph 5", answer: 6 },
+              { id: "r2-5", paragraph: "Paragraph 6", answer: 0 },
+            ],
+          },
+          {
+            type: "tfng",
+            title: "True / False / Not Given",
+            instructions: "Do the statements agree with the information in the passage? Write TRUE, FALSE or NOT GIVEN.",
+            strategy: [
+              "Watch for qualifiers like 'always', 'only', 'most' — they often decide TRUE vs NOT GIVEN.",
+              "Check facts against the exact wording, not your general impression of the paragraph.",
+            ],
+            items: [
+              { id: "r2t-1", text: "The urban heat island effect is most noticeable during the daytime.", answer: "FALSE" },
+              { id: "r2t-2", text: "Asphalt and concrete have a high thermal mass, allowing them to retain heat.", answer: "TRUE" },
+              { id: "r2t-3", text: "Plants cool their surroundings through a process called evapotranspiration.", answer: "TRUE" },
+              { id: "r2t-4", text: "Elevated nighttime temperatures have been linked to increased energy consumption.", answer: "TRUE" },
+              { id: "r2t-5", text: "All cities have already fully implemented heat-reducing mitigation strategies.", answer: "FALSE" },
+              { id: "r2t-6", text: "Retrofitting existing infrastructure is generally quick and inexpensive.", answer: "FALSE" },
+            ],
+          },
+          {
+            type: "info-match",
+            title: "Matching Information",
+            instructions: "The passage has six paragraphs, A–F. Which paragraph contains each piece of information below?",
+            strategy: [
+              "Scan for the specific fact named, not the paragraph's general topic.",
+              "Questions are often scrambled — don't assume order matches the passage.",
+            ],
+            paragraphLabels: ["A", "B", "C", "D", "E", "F"],
+            items: [
+              { id: "r2i-1", text: "the specific term used to describe this temperature phenomenon", answer: "A" },
+              { id: "r2i-2", text: "materials that absorb a large proportion of solar radiation", answer: "B" },
+              { id: "r2i-3", text: "the reason vegetation loss reduces natural cooling", answer: "C" },
+              { id: "r2i-4", text: "a specific health risk mentioned for elderly residents", answer: "D" },
+              { id: "r2i-5", text: "a mitigation measure related to street design", answer: "E" },
+              { id: "r2i-6", text: "a mention of limited municipal budgets", answer: "F" },
+            ],
+          },
+          {
+            type: "summary",
+            title: "Summary Completion",
+            instructions: "Complete the summary below. Use NO MORE THAN TWO WORDS from the passage for each answer.",
+            strategy: [
+              "Identify the required part of speech before scanning the text.",
+              "Recount your words against the limit before finalising each answer.",
+            ],
+            summaryTemplate:
+              "The urban heat island effect occurs partly because materials like asphalt and concrete have a high {0}, causing them to retain heat overnight. The loss of {1} in cities also reduces natural cooling through evapotranspiration. Consequences include higher {2} consumption and health risks during heatwaves. Cities have begun expanding tree canopy and green roofs, though limited {3} budgets often slow adoption.",
+            items: [
+              { id: "r2s-1", answer: ["thermal mass"] },
+              { id: "r2s-2", answer: ["vegetation"] },
+              { id: "r2s-3", answer: ["energy"] },
+              { id: "r2s-4", answer: ["municipal"] },
+            ],
+          },
+          {
+            type: "mcq",
+            title: "Multiple Choice",
+            instructions: "Choose the correct letter, A, B, C or D, for each question.",
+            strategy: [
+              "Predict an answer before reading the options.",
+              "Eliminate options that add claims the passage never makes.",
+            ],
+            items: [
+              { id: "r2m-1", text: "According to the passage, why do cities retain heat longer than rural areas?", opts: ["Because they have more trees", "Because construction materials like asphalt have high thermal mass", "Because they receive more sunlight overall", "Because they are located near the equator"], answer: 1 },
+              { id: "r2m-2", text: "What is evapotranspiration, according to the passage?", opts: ["A process where water evaporates from leaves and cools the surrounding air", "A type of urban construction material", "A method for measuring city temperatures", "A government policy for reducing emissions"], answer: 0 },
+              { id: "r2m-3", text: "Which of the following is mentioned as a mitigation strategy?", opts: ["Banning all vehicles from city centres", "Reflective or 'cool' roofing materials", "Relocating residents to rural areas", "Increasing industrial production"], answer: 1 },
+              { id: "r2m-4", text: "According to the passage, why is implementing mitigation measures citywide challenging?", opts: ["There is no scientific support for these measures", "Retrofitting is often costly and competes with other budget priorities", "Residents oppose all environmental policies", "The technology does not yet exist"], answer: 1 },
+            ],
+          },
+          {
+            type: "ynng",
+            title: "Yes / No / Not Given",
+            instructions: "Do the statements agree with the views of the writer? Choose YES, NO, or NOT GIVEN.",
+            strategy: [
+              "This checks the writer's own opinion, not just facts reported.",
+              "If the writer only reports what's happening without judging it, that's often NOT GIVEN.",
+            ],
+            items: [
+              { id: "r2y-1", text: "The writer believes the long-term benefits of heat-reduction measures are well established.", opts: ["YES", "NO", "NOT GIVEN"], answer: 0 },
+              { id: "r2y-2", text: "The writer believes cost is the only barrier to implementing these measures.", opts: ["YES", "NO", "NOT GIVEN"], answer: 1 },
+              { id: "r2y-3", text: "The writer believes all cities have equal financial resources to address this issue.", opts: ["YES", "NO", "NOT GIVEN"], answer: 2 },
+              { id: "r2y-4", text: "The writer has personally visited multiple cities to study this phenomenon.", opts: ["YES", "NO", "NOT GIVEN"], answer: 2 },
+            ],
+          },
         ],
-      },
+      },,
+      {
+        id: "text-3",
+        title: "The Evolution of the Bicycle",
+        level: "Band 6.5–7",
+        topic: "History of Technology",
+        passage:
+    `The earliest documented ancestor of the modern bicycle, a wooden vehicle without pedals known as the "draisine" or "running machine", was patented by German inventor Karl von Drais in 1817, allowing riders to propel themselves forward by pushing off the ground with their feet while balancing on two wheels. Contemporary observers were reportedly divided over whether the contraption represented a genuine advance in personal transport or merely an eccentric curiosity destined for obscurity.
+    
+    Pedals were not added directly to the front wheel until the 1860s, in a design commonly called the "boneshaker" due to its rigid iron frame and wooden wheels, which transmitted every bump in the road directly to the rider with little cushioning. Contemporaries nonetheless regarded the innovation as a meaningful improvement, however uncomfortable, since it eliminated the need for the rider's feet to touch the ground at all while in motion.
+    
+    The 1870s saw the emergence of the high-wheel bicycle, popularly known as the "penny-farthing", featuring an oversized front wheel that allowed greater speed per pedal rotation but made the machine notoriously unstable and prone to throwing riders over the handlebars during sudden stops. Manufacturers persisted with the design for over a decade regardless, evidently judging the appeal of increased speed to outweigh the considerable risks involved.
+    
+    A major design breakthrough arrived in 1885 with the "safety bicycle", which introduced a chain-driven rear wheel and two similarly sized wheels, dramatically improving stability and making cycling accessible to a far wider range of riders, including women, for whom earlier designs had been particularly impractical. Sales figures from the period suggest that this broadened appeal translated into a substantial and lasting expansion of the cycling market as a whole.
+    
+    The invention of pneumatic (air-filled) rubber tyres by John Boyd Dunlop in 1888 further transformed the riding experience, significantly improving comfort and traction compared with the solid rubber tyres used previously, and the technology was rapidly adopted across the industry within just a few years. Within a remarkably short span, manufacturers who had initially dismissed the innovation as an unnecessary refinement found themselves compelled to adopt it merely to remain competitive.
+    
+    Beyond its technical evolution, the bicycle had a profound social impact, particularly in the late nineteenth century, when it offered many women unprecedented personal mobility and independence, a change some historians have directly linked to broader shifts in women's fashion and social expectations during the period. Whether this shift in personal freedom should be attributed primarily to the bicycle itself, or to broader social currents already underway, remains a matter of some scholarly disagreement.`,
+        tasks: [
+          {
+            type: "info-match",
+            title: "Matching Information — Practice",
+            instructions: "The passage above has six paragraphs, A–F (in order, top to bottom). Which paragraph contains each piece of information below? NB: the questions are not necessarily in the same order as the paragraphs.",
+            strategy: [
+              "Unlike Matching Headings, this task asks about a specific detail or fact — scan for keywords related to the question, not the paragraph's general topic.",
+              "The information you need might be just one sentence within a longer paragraph — don't rule a paragraph out just because its overall topic seems different.",
+              "The order of the questions is often deliberately scrambled — don't assume Question 1 is in Paragraph A.",
+              "Paraphrase matters here too — the question will rarely use the exact same words as the passage.",
+            ],
+            walkthrough: {
+              text: "Question: 'Which paragraph mentions a design that made cycling more accessible to women?'",
+              steps: [
+                "Key concept: accessibility for women — scan for related words like 'women', 'accessible', 'wider range of riders'.",
+                "Paragraph F also mentions women, but its focus is fashion and social expectations — a broader social impact, not a specific design feature.",
+                "Paragraph D explicitly says the safety bicycle design made cycling 'accessible to a far wider range of riders, including women, for whom earlier designs had been particularly impractical' — this directly answers the question.",
+              ],
+              answer: "Paragraph D",
+              whyNotOthers: "Paragraph F is a tempting trap because it also mentions women, but it discusses social and cultural impact, not the specific design feature the question asks about.",
+            },
+            paragraphLabels: ["A", "B", "C", "D", "E", "F"],
+            items: [
+              { id: "r3-1", text: "a bicycle design known for being particularly unstable", answer: "C" },
+              { id: "r3-2", text: "the invention of air-filled tyres", answer: "E" },
+              { id: "r3-3", text: "a vehicle that had no pedals at all", answer: "A" },
+              { id: "r3-4", text: "a link between cycling and changes in women's fashion", answer: "F" },
+              { id: "r3-5", text: "a rigid frame that transmitted every bump to the rider", answer: "B" },
+            ],
+          },
+          {
+            type: "tfng",
+            title: "True / False / Not Given",
+            instructions: "Do the statements agree with the information in the passage? Write TRUE, FALSE or NOT GIVEN.",
+            strategy: [
+              "Check exact wording, not your general impression.",
+              "Watch for qualifiers like 'only' or 'all' that can flip TRUE into FALSE.",
+            ],
+            items: [
+              { id: "r3t-1", text: "The draisine had pedals.", answer: "FALSE" },
+              { id: "r3t-2", text: "The boneshaker had a rigid iron frame.", answer: "TRUE" },
+              { id: "r3t-3", text: "The penny-farthing was known for being very stable.", answer: "FALSE" },
+              { id: "r3t-4", text: "The safety bicycle used a chain-driven rear wheel.", answer: "TRUE" },
+              { id: "r3t-5", text: "Pneumatic tyres were less comfortable than solid rubber tyres.", answer: "FALSE" },
+              { id: "r3t-6", text: "The bicycle had an impact on women's social independence.", answer: "TRUE" },
+            ],
+          },
+          {
+            type: "heading-match",
+            title: "Matching Headings",
+            instructions: "The passage above has six paragraphs (in order). Choose the correct heading for each from the list below. There are more headings than paragraphs.",
+            strategy: [
+              "Match the paragraph's overall function, not one detail inside it.",
+              "Eliminate headings that fit a different paragraph in the passage.",
+            ],
+            headings: [
+              "An early vehicle without pedals",
+              "A rough ride on a rigid frame",
+              "An exciting but hazardous design",
+              "Widening access through better balance",
+              "A change in tyre technology",
+              "New freedoms beyond the machine itself",
+              "Bicycle racing gains in popularity",
+              "The decline of bicycle manufacturing",
+            ],
+            items: [
+              { id: "r3h-1", paragraph: "Paragraph A", answer: 0 },
+              { id: "r3h-2", paragraph: "Paragraph B", answer: 1 },
+              { id: "r3h-3", paragraph: "Paragraph C", answer: 2 },
+              { id: "r3h-4", paragraph: "Paragraph D", answer: 3 },
+              { id: "r3h-5", paragraph: "Paragraph E", answer: 4 },
+              { id: "r3h-6", paragraph: "Paragraph F", answer: 5 },
+            ],
+          },
+          {
+            type: "summary",
+            title: "Summary Completion",
+            instructions: "Complete the summary below. Use NO MORE THAN TWO WORDS from the passage for each answer.",
+            strategy: [
+              "Identify the required part of speech before scanning the text.",
+              "Recount your words against the limit before finalising each answer.",
+            ],
+            summaryTemplate:
+              "The earliest bicycle ancestor, the {0}, had no pedals and required riders to push off the ground. Pedals were added in the 1860s in a design called the {1}, known for its uncomfortable ride. The high-wheel 'penny-farthing' of the 1870s offered speed but was notoriously {2}. The 1885 safety bicycle introduced a {3}-driven rear wheel, making cycling accessible to more riders. Later, {4} tyres improved comfort significantly.",
+            items: [
+              { id: "r3s-1", answer: ["draisine"] },
+              { id: "r3s-2", answer: ["boneshaker"] },
+              { id: "r3s-3", answer: ["unstable"] },
+              { id: "r3s-4", answer: ["chain"] },
+              { id: "r3s-5", answer: ["pneumatic"] },
+            ],
+          },
+          {
+            type: "mcq",
+            title: "Multiple Choice",
+            instructions: "Choose the correct letter, A, B, C or D, for each question.",
+            strategy: [
+              "Predict an answer before reading the options.",
+              "Eliminate options that add claims the passage never makes.",
+            ],
+            items: [
+              { id: "r3m-1", text: "According to the passage, how did the draisine allow riders to move?", opts: ["By pedalling continuously", "By pushing off the ground with their feet", "By using a hand crank", "By a small motor"], answer: 1 },
+              { id: "r3m-2", text: "Why was the penny-farthing considered dangerous?", opts: ["It had no brakes at all", "Its oversized front wheel made it unstable and prone to throwing riders over the handlebars", "It was made entirely of glass", "It could only be ridden downhill"], answer: 1 },
+              { id: "r3m-3", text: "What made the safety bicycle a major breakthrough?", opts: ["It was the first bicycle with wheels", "It introduced chain drive and similarly sized wheels, improving stability and accessibility", "It was the fastest bicycle ever built", "It eliminated the need for tyres"], answer: 1 },
+              { id: "r3m-4", text: "According to the passage, what effect did pneumatic tyres have?", opts: ["They made bicycles heavier and slower", "They significantly improved comfort and traction compared to solid rubber tyres", "They were rejected by the industry for decades", "They had no noticeable effect on riding"], answer: 1 },
+            ],
+          },
+          {
+            type: "ynng",
+            title: "Yes / No / Not Given",
+            instructions: "Do the statements agree with the views of the writer? Choose YES, NO, or NOT GIVEN.",
+            strategy: [
+              "This checks the writer's own opinion, not just facts reported.",
+              "If a claim is attributed to 'some historians' rather than stated by the writer directly, it's often NOT GIVEN.",
+            ],
+            items: [
+              { id: "r3y-1", text: "The writer believes the bicycle contributed to greater independence for women in the late nineteenth century.", opts: ["YES", "NO", "NOT GIVEN"], answer: 0 },
+              { id: "r3y-2", text: "The writer believes the connection between cycling and women's fashion changes is proven beyond any doubt.", opts: ["YES", "NO", "NOT GIVEN"], answer: 2 },
+              { id: "r3y-3", text: "The writer believes the penny-farthing was the safest bicycle design of its time.", opts: ["YES", "NO", "NOT GIVEN"], answer: 1 },
+              { id: "r3y-4", text: "The writer has personally ridden a penny-farthing.", opts: ["YES", "NO", "NOT GIVEN"], answer: 2 },
+            ],
+          },
+        ],
+      },,
+      {
+        id: "text-4",
+        title: "The Development of GPS Technology",
+        level: "Band 7–7.5",
+        topic: "Technology",
+        passage:
+    `The Global Positioning System, commonly known as GPS, originated from a United States military project in the 1970s, designed to provide precise location and timing information anywhere on Earth using a network of orbiting satellites. That such a system should ultimately become indispensable to civilian life would likely have struck its original architects, who conceived of it in exclusively strategic terms, as scarcely conceivable.
+    
+    The system relies on a constellation of at least 24 satellites, each transmitting continuous radio signals containing the exact time and the satellite's precise orbital position; a GPS receiver calculates its own location by measuring the time delay of signals received from at least four different satellites simultaneously. This technique, known as trilateration, depends critically on the exceptional precision of the atomic clocks each satellite carries, since even a minuscule timing discrepancy can translate into a substantial positional error on the ground.
+    
+    Although designed primarily for military applications, the U.S. government made a degraded, less accurate version of the signal available for civilian use starting in the 1980s, before removing this intentional signal degradation entirely in 2000, dramatically improving the accuracy available to ordinary consumers overnight. The rationale underpinning this policy, subsequently referred to as Selective Availability, was rooted in concerns that adversarial actors might otherwise exploit the system's precision for hostile purposes.
+    
+    Modern GPS receivers, now embedded in smartphones, vehicles, and countless other devices, can typically determine a location to within a few metres, a level of precision that has enabled applications ranging from everyday navigation to precision agriculture and disaster response coordination. This proliferation of applications has, in turn, generated an economic dependency so pervasive that any significant disruption to the system would carry consequences extending well beyond mere inconvenience.
+    
+    Despite its ubiquity, GPS signals are relatively weak by the time they reach Earth's surface and can be disrupted by physical obstructions such as tall buildings or dense forest canopy, as well as by deliberate interference, prompting ongoing research into backup and complementary positioning technologies. Consequently, engineers have increasingly turned to hybrid positioning approaches that combine GPS with inertial sensors and, in certain contexts, terrestrial radio signals, in order to preserve positional accuracy during the brief intervals when satellite reception is degraded or lost altogether.`,
+        tasks: [
+          {
+            type: "summary",
+            title: "Summary Completion — Practice",
+            instructions: "Complete the summary below. Use NO MORE THAN TWO WORDS from the passage for each answer.",
+            strategy: [
+              "Read the whole summary once before filling any gaps — it usually follows the same order as the passage, which helps you locate each answer faster.",
+              "Identify the part of speech needed for each gap (noun, adjective, etc.) before searching the text — this narrows down what you're looking for.",
+              "The answer is almost always the word or phrase immediately next to a 'landmark' word that also appears in the summary — use that shared word as your anchor point in the text.",
+              "Always recount your words against the limit before finalising an answer — a technically-correct answer that's too long is still marked wrong.",
+            ],
+            walkthrough: {
+              text: "Summary: 'GPS began as a ___ project in the 1970s.'",
+              steps: [
+                "Identify what's needed: an adjective or noun modifying 'project'.",
+                "Scan the passage for '1970s' as the anchor — Paragraph 1 says 'originated from a United States military project in the 1970s'.",
+                "The word immediately before 'project' in the text is 'military' — that's the answer.",
+              ],
+              answer: "military",
+              whyNotOthers: "Summary Completion answers are almost always positioned right next to a word that also appears in the summary itself (here, 'project' and '1970s') — use those shared words as anchors rather than re-reading the whole passage.",
+            },
+            summaryTemplate:
+              "GPS began as a {0} project in the 1970s, using a network of satellites to provide location and timing data. A receiver determines its position by measuring the {1} of signals from at least four satellites. Until 2000, civilian signals were deliberately {2}, limiting their accuracy; since then, consumer devices can typically pinpoint a location to within a few {3}. However, GPS signals can be blocked by physical obstacles or {4} interference.",
+            items: [
+              { id: "r4-1", answer: ["military"] },
+              { id: "r4-2", answer: ["time delay"] },
+              { id: "r4-3", answer: ["degraded"] },
+              { id: "r4-4", answer: ["metres"] },
+              { id: "r4-5", answer: ["deliberate"] },
+            ],
+          },
+          {
+            type: "tfng",
+            title: "True / False / Not Given",
+            instructions: "Do the statements agree with the information in the passage? Write TRUE, FALSE or NOT GIVEN.",
+            strategy: [
+              "Check exact wording against the passage.",
+              "Watch for numbers — a common trap is a slightly wrong figure.",
+            ],
+            items: [
+              { id: "r4t-1", text: "GPS originated as a US military project in the 1970s.", answer: "TRUE" },
+              { id: "r4t-2", text: "A GPS receiver needs signals from only two satellites to calculate its location.", answer: "FALSE" },
+              { id: "r4t-3", text: "Civilian GPS signals were deliberately made less accurate before 2000.", answer: "TRUE" },
+              { id: "r4t-4", text: "Modern GPS receivers cannot be embedded in smartphones.", answer: "FALSE" },
+              { id: "r4t-5", text: "GPS signals can be disrupted by tall buildings or dense forest.", answer: "TRUE" },
+              { id: "r4t-6", text: "GPS signals are extremely strong by the time they reach Earth's surface.", answer: "FALSE" },
+            ],
+          },
+          {
+            type: "heading-match",
+            title: "Matching Headings",
+            instructions: "The passage above has five paragraphs (in order). Choose the correct heading for each from the list below. There are more headings than paragraphs.",
+            strategy: [
+              "Match the paragraph's overall function, not one detail inside it.",
+              "Eliminate headings that fit a different paragraph in the passage.",
+            ],
+            headings: [
+              "A military origin",
+              "How location is calculated",
+              "Opening the system to everyday users",
+              "From military tool to everyday device",
+              "Limits of an invisible signal",
+              "The cost of satellite launches",
+              "A brief history of space exploration",
+            ],
+            items: [
+              { id: "r4h-1", paragraph: "Paragraph 1", answer: 0 },
+              { id: "r4h-2", paragraph: "Paragraph 2", answer: 1 },
+              { id: "r4h-3", paragraph: "Paragraph 3", answer: 2 },
+              { id: "r4h-4", paragraph: "Paragraph 4", answer: 3 },
+              { id: "r4h-5", paragraph: "Paragraph 5", answer: 4 },
+            ],
+          },
+          {
+            type: "info-match",
+            title: "Matching Information",
+            instructions: "The passage has five paragraphs, A–E. Which paragraph contains each piece of information below?",
+            strategy: [
+              "Scan for the specific fact named, not the paragraph's general topic.",
+              "Questions are often scrambled — don't assume order matches the passage.",
+            ],
+            paragraphLabels: ["A", "B", "C", "D", "E"],
+            items: [
+              { id: "r4i-1", text: "the minimum number of satellites a receiver needs", answer: "B" },
+              { id: "r4i-2", text: "the year intentional signal degradation was removed", answer: "C" },
+              { id: "r4i-3", text: "an example of an application enabled by modern GPS precision", answer: "D" },
+              { id: "r4i-4", text: "a type of obstacle that can block GPS signals", answer: "E" },
+              { id: "r4i-5", text: "the original purpose GPS was designed for", answer: "A" },
+            ],
+          },
+          {
+            type: "mcq",
+            title: "Multiple Choice",
+            instructions: "Choose the correct letter, A, B, C or D, for each question.",
+            strategy: [
+              "Predict an answer before reading the options.",
+              "Eliminate options that add claims the passage never makes.",
+            ],
+            items: [
+              { id: "r4m-1", text: "How many satellites does a GPS receiver need to calculate its location, according to the passage?", opts: ["At least two", "At least three", "At least four", "Exactly one"], answer: 2 },
+              { id: "r4m-2", text: "What happened to civilian GPS accuracy in the year 2000?", opts: ["It was degraded intentionally for the first time", "Intentional signal degradation was removed, improving accuracy", "GPS was shut down entirely", "It became available for the first time"], answer: 1 },
+              { id: "r4m-3", text: "According to the passage, what can disrupt GPS signals?", opts: ["Only extreme cold temperatures", "Physical obstructions like tall buildings and dense forest canopy", "Nothing can disrupt GPS signals", "Only nighttime conditions"], answer: 1 },
+              { id: "r4m-4", text: "What is one application of modern GPS mentioned in the passage?", opts: ["Precision agriculture", "Weather forecasting", "Underwater exploration", "Space travel"], answer: 0 },
+            ],
+          },
+          {
+            type: "ynng",
+            title: "Yes / No / Not Given",
+            instructions: "Do the statements agree with the views of the writer? Choose YES, NO, or NOT GIVEN.",
+            strategy: [
+              "This checks the writer's own opinion, not just facts reported.",
+              "Personal-experience claims not mentioned anywhere are always NOT GIVEN.",
+            ],
+            items: [
+              { id: "r4y-1", text: "The writer believes removing intentional signal degradation had a major positive impact on ordinary consumers.", opts: ["YES", "NO", "NOT GIVEN"], answer: 0 },
+              { id: "r4y-2", text: "The writer believes GPS is completely immune to interference.", opts: ["YES", "NO", "NOT GIVEN"], answer: 1 },
+              { id: "r4y-3", text: "The writer believes GPS technology will soon be replaced entirely by a different system.", opts: ["YES", "NO", "NOT GIVEN"], answer: 2 },
+              { id: "r4y-4", text: "The writer worked directly on the original GPS military project.", opts: ["YES", "NO", "NOT GIVEN"], answer: 2 },
+            ],
+          },
+        ],
+      },,
+      {
+        id: "text-5",
+        title: "The Science of Colour Perception in Animals",
+        level: "Band 7.5–8",
+        topic: "Biology",
+        passage:
+    `Human vision relies on three types of colour-sensitive cells, known as cones, allowing people to perceive a broad spectrum of colour through combinations of red, green, and blue light sensitivity. However, this three-cone system, while effective, represents only one of many colour perception strategies found throughout the animal kingdom. This apparent diversity invites a reconsideration of the tacit assumption, common outside specialist circles, that human vision constitutes some kind of perceptual benchmark against which other species' capacities might meaningfully be measured.
+    
+    Many bird species possess four types of cones rather than three, extending their colour perception into the ultraviolet range, a part of the spectrum entirely invisible to humans. This additional sensitivity plays a significant role in mate selection for some species, since certain plumage patterns visible under ultraviolet light are imperceptible to human observers entirely. That such visually encoded information should remain wholly inaccessible to an outside observer lacking the requisite photoreceptors underscores the extent to which perceptual experience is contingent upon the particular sensory apparatus an organism happens to possess.
+    
+    At the other end of the spectrum, most mammals other than primates possess only two types of cones, limiting their colour discrimination considerably compared with humans. This is generally attributed to an evolutionary history in which many early mammals were primarily active at night, when colour vision offers less practical advantage than sensitivity to low light levels. This trade-off illustrates a broader evolutionary principle whereby sensory capacities are seldom optimised in isolation, but rather calibrated against the specific ecological pressures an organism's ancestors confronted.
+    
+    Mantis shrimp represent an extreme case, possessing up to sixteen types of photoreceptors, far exceeding the three or four found in most other animals. Curiously, however, research suggests that mantis shrimp may not necessarily process colour information more effectively than animals with fewer receptor types, since having more receptor types does not automatically translate into more sophisticated colour discrimination in the brain's processing centres. This counterintuitive finding has prompted some researchers to speculate that the apparent redundancy may instead serve a distinct function, such as enabling extraordinarily rapid, if comparatively coarse, colour categorisation rather than the fine-grained discrimination a mammalian visual system achieves.
+    
+    These considerable variations across species illustrate an important broader principle in evolutionary biology: sensory systems tend to evolve in response to an organism's specific ecological needs, rather than progressing toward some universal standard of sensory sophistication, meaning that no single species' perceptual system can accurately be described as objectively "better" than another's in any absolute sense. Any temptation to impose a hierarchical ranking upon these divergent systems, however intuitively appealing, therefore risks conflating the parochial standards of human perception with an objective, species-independent measure that the available evidence simply does not support.`,
+        tasks: [
+          {
+            type: "mcq",
+            title: "Multiple Choice — Practice",
+            instructions: "Choose the correct letter, A, B, C or D, for each question.",
+            strategy: [
+              "Read the question stem carefully and try to predict the answer yourself before looking at the options.",
+              "Eliminate options that are only partially true or that add extra information the text doesn't actually support.",
+              "Watch for options that reuse exact words from the passage but subtly change the meaning through a small addition or omission.",
+              "For 'why' or inference questions, the correct answer must be directly supported by a specific sentence — not just plausible general knowledge about the topic.",
+            ],
+            walkthrough: {
+              text: "Question: 'What can be inferred about the mantis shrimp's sixteen photoreceptor types?' A) They guarantee superior colour vision. B) They do not necessarily result in more sophisticated colour processing. C) They are used only for detecting predators. D) They evolved specifically for underwater navigation.",
+              steps: [
+                "Locate the relevant part of the text: Paragraph 4 discusses mantis shrimp specifically.",
+                "The text says more receptor types 'does not automatically translate into more sophisticated colour discrimination' — this directly matches option B, and directly contradicts option A.",
+                "Options C and D introduce claims (predator detection, underwater navigation) that are never mentioned in the text at all — eliminate them as unsupported additions.",
+              ],
+              answer: "B) They do not necessarily result in more sophisticated colour processing.",
+              whyNotOthers: "Option A is the tempting 'obvious' assumption — more receptors must mean better vision — which the text specifically warns against. C and D sound plausible but are entirely unsupported by the passage.",
+            },
+            items: [
+              { id: "r5-1", text: "According to the passage, human colour vision is based on how many types of cones?", opts: ["Two", "Three", "Four", "Sixteen"], answer: 1 },
+              { id: "r5-2", text: "Why is ultraviolet colour perception significant for some bird species?", opts: ["It helps them see better at night", "It plays a role in mate selection through plumage patterns invisible to humans", "It allows them to detect predators more easily", "It has no known biological function"], answer: 1 },
+              { id: "r5-3", text: "According to the passage, why do most non-primate mammals have limited colour vision?", opts: ["They evolved primarily to be active at night, when colour vision is less useful", "They lack the necessary eye structures entirely", "Colour vision was never present in early animal ancestors", "They rely entirely on smell instead of sight"], answer: 0 },
+              { id: "r5-4", text: "What does the passage suggest about mantis shrimp's colour perception?", opts: ["Having more photoreceptor types definitely makes their colour perception more sophisticated", "More receptor types do not necessarily mean more sophisticated colour processing in the brain", "They cannot perceive colour at all", "Their visual system is identical to that of birds"], answer: 1 },
+              { id: "r5-5", text: "What broader conclusion does the passage draw about sensory systems across species?", opts: ["All species are evolving toward the same ideal sensory system", "Human sensory systems are objectively the most advanced", "Sensory systems evolve according to each species' specific ecological needs, not a universal standard", "Sensory sophistication can be ranked objectively across all species"], answer: 2 },
+            ],
+          },
+          {
+            type: "tfng",
+            title: "True / False / Not Given",
+            instructions: "Do the statements agree with the information in the passage? Write TRUE, FALSE or NOT GIVEN.",
+            strategy: [
+              "Check exact wording against the passage.",
+              "Watch for absolute words like 'all' or 'exactly' that can flip TRUE into FALSE.",
+            ],
+            items: [
+              { id: "r5t-1", text: "Humans have three types of colour-sensitive cones.", answer: "TRUE" },
+              { id: "r5t-2", text: "All animals perceive colour using exactly three types of cones.", answer: "FALSE" },
+              { id: "r5t-3", text: "Some birds can see into the ultraviolet range.", answer: "TRUE" },
+              { id: "r5t-4", text: "Most non-primate mammals have more cone types than humans.", answer: "FALSE" },
+              { id: "r5t-5", text: "Mantis shrimp definitely process colour information more effectively than all other animals.", answer: "FALSE" },
+              { id: "r5t-6", text: "Sensory systems evolve to suit each species' specific ecological needs.", answer: "TRUE" },
+            ],
+          },
+          {
+            type: "heading-match",
+            title: "Matching Headings",
+            instructions: "The passage above has five paragraphs (in order). Choose the correct heading for each from the list below. There are more headings than paragraphs.",
+            strategy: [
+              "Match the paragraph's overall function, not one detail inside it.",
+              "Eliminate headings that fit a different paragraph in the passage.",
+            ],
+            headings: [
+              "The building blocks of human colour vision",
+              "Seeing beyond human limits for mating success",
+              "A vision system shaped by nocturnal habits",
+              "More receptors, not necessarily better vision",
+              "No single 'best' way to see the world",
+              "The discovery of the first colour-blind species",
+              "How colour vision aids camouflage",
+            ],
+            items: [
+              { id: "r5h-1", paragraph: "Paragraph 1", answer: 0 },
+              { id: "r5h-2", paragraph: "Paragraph 2", answer: 1 },
+              { id: "r5h-3", paragraph: "Paragraph 3", answer: 2 },
+              { id: "r5h-4", paragraph: "Paragraph 4", answer: 3 },
+              { id: "r5h-5", paragraph: "Paragraph 5", answer: 4 },
+            ],
+          },
+          {
+            type: "info-match",
+            title: "Matching Information",
+            instructions: "The passage has five paragraphs, A–E. Which paragraph contains each piece of information below?",
+            strategy: [
+              "Scan for the specific fact named, not the paragraph's general topic.",
+              "Questions are often scrambled — don't assume order matches the passage.",
+            ],
+            paragraphLabels: ["A", "B", "C", "D", "E"],
+            items: [
+              { id: "r5i-1", text: "an example of a species with far more photoreceptor types than most others", answer: "D" },
+              { id: "r5i-2", text: "a reason some birds have an advantage in choosing mates", answer: "B" },
+              { id: "r5i-3", text: "an evolutionary explanation linked to nighttime activity", answer: "C" },
+              { id: "r5i-4", text: "a general principle about how sensory systems evolve", answer: "E" },
+              { id: "r5i-5", text: "the three colours combined in human cone sensitivity", answer: "A" },
+            ],
+          },
+          {
+            type: "summary",
+            title: "Summary Completion",
+            instructions: "Complete the summary below. Use NO MORE THAN TWO WORDS from the passage for each answer.",
+            strategy: [
+              "Identify the required part of speech before scanning the text.",
+              "Recount your words against the limit before finalising each answer.",
+            ],
+            summaryTemplate:
+              "Human colour vision relies on three types of {0}, sensitive to red, green, and blue light. Some birds have a fourth cone type that extends into the {1} range, useful for {2} selection. Most non-primate mammals, by contrast, have only two cone types, likely because early mammals were mainly active at {3}. Mantis shrimp have up to sixteen photoreceptor types, but this does not necessarily mean {4} colour processing.",
+            items: [
+              { id: "r5s-1", answer: ["cones"] },
+              { id: "r5s-2", answer: ["ultraviolet"] },
+              { id: "r5s-3", answer: ["mate"] },
+              { id: "r5s-4", answer: ["night"] },
+              { id: "r5s-5", answer: ["better", "more sophisticated"] },
+            ],
+          },
+          {
+            type: "ynng",
+            title: "Yes / No / Not Given",
+            instructions: "Do the statements agree with the views of the writer? Choose YES, NO, or NOT GIVEN.",
+            strategy: [
+              "This checks the writer's own opinion, not just facts reported.",
+              "Look for the writer's own concluding argument, often signalled near the end of a passage.",
+            ],
+            items: [
+              { id: "r5y-1", text: "The writer believes no species' visual system can be objectively ranked as better than another's.", opts: ["YES", "NO", "NOT GIVEN"], answer: 0 },
+              { id: "r5y-2", text: "The writer believes human colour vision is the most advanced in the animal kingdom.", opts: ["YES", "NO", "NOT GIVEN"], answer: 1 },
+              { id: "r5y-3", text: "The writer believes mantis shrimp definitely have superior colour perception due to their many receptors.", opts: ["YES", "NO", "NOT GIVEN"], answer: 1 },
+              { id: "r5y-4", text: "The writer has conducted original laboratory research on mantis shrimp vision.", opts: ["YES", "NO", "NOT GIVEN"], answer: 2 },
+            ],
+          },
+        ],
+      },,
     ],
   },
 
-  // Юниты 2–10: добавляются по этой же схеме после утверждения формата Юнита 1.
-  // 2 — Matching Headings, 3 — Matching Information, 4 — Summary Completion,
-  // 5 — Multiple Choice, 6–10 — смешанная практика по нарастанию сложности.
+  // Юниты 6–10: смешанная практика по нарастанию сложности — добавляются по этой же схеме.
 ];
 
 export function scoreReadingUnit(unit, userAnswers) {
