@@ -118,31 +118,125 @@ Major fashion retailers have not been entirely absent from this conversation, wi
   },
   {
     id: "scanning",
-    title: "Scanning — поиск конкретной информации",
-    whenToUse: "Когда уже знаешь, ЧТО ищешь (дату, имя, цифру, конкретный факт) — например, отвечая на вопрос Matching Information или T/F/NG.",
+    title: "Scanning",
+    whenToUse: "When you already know WHAT you're looking for — a date, a name, a number, a specific fact — for example, answering a Matching Information or T/F/NG question.",
     howTo: [
-      "Держи в голове 1-2 ключевых слова из вопроса — цифры, имена собственные, редкие термины (их проще всего найти взглядом).",
-      "Веди глазами по тексту быстро, не читая каждое слово — как будто ищешь имя в телефонной книге.",
-      "Когда встретил ключевое слово (или его синоним) — вот тогда переходи к внимательному чтению этого места.",
+      "Hold 1-2 keywords from the question in mind — numbers, proper nouns, and rare terms are the easiest to spot visually.",
+      "Move your eyes quickly across the text without reading every word — as if looking up a name in a phone book.",
+      "Once you spot the keyword (or a synonym of it), that's your signal to switch to careful, detailed reading of that spot.",
     ],
     example: {
-      text: "Вопрос: 'What percentage of trees are affected?' — ищи глазами не смысл, а знак % или слова вроде 'percent', 'proportion', цифры.",
-      note: "Scanning — это не чтение, а визуальный поиск. Смысл фразы разбираешь только после того, как нашёл нужное место.",
+      text: "Question: 'What percentage of trees are affected?' — scan visually for a % sign or words like 'percent', 'proportion', or any number.",
+      note: "Scanning is visual search, not reading. You only work out the meaning of the sentence after you've located the right spot.",
     },
+    demo: {
+      intro: "See it in action: imagine you're scanning this paragraph only to find the exact date a famous stamp was released. Here's what your eyes would actually lock onto.",
+      sentences: [
+        { text: "On 6 May 1840, Hill's idea became reality with the release of the Penny Black, widely regarded as the world's first adhesive postage stamp.", read: true },
+        { text: "It featured a profile portrait of the young Queen Victoria and cost one penny, allowing any letter weighing up to half an ounce to be sent anywhere in the United Kingdom for that single flat fee.", read: false },
+        { text: "Within the first year, more than 68 million stamps had been sold, a figure that far exceeded even Hill's own expectations.", read: false },
+      ],
+      caption: "Scanning for one specific fact (the release date) means you don't need to read or understand the other sentences at all until you've found what you're looking for — understanding comes later, during detailed reading.",
+    },
+    passages: [
+      {
+        title: "The Birth of the Postage Stamp",
+        text:
+`Before 1840, sending a letter in Britain was a complicated and often expensive affair. The cost of postage was usually paid not by the sender but by the recipient, and the price was calculated according to the distance travelled and the number of sheets of paper used. This system frequently discouraged correspondence altogether, particularly among poorer families, since a single letter from a relative working far from home could cost several days' wages to collect.
+
+The reform that changed this system is closely associated with a British teacher and social reformer named Rowland Hill. In 1837, Hill published a pamphlet arguing for a radical simplification: postage should be paid in advance by the sender, calculated by weight rather than distance, and charged at a flat rate regardless of how far the letter travelled within the country. His proposal also introduced an entirely new object to make prepayment simple — a small adhesive label that could be purchased and stuck onto an envelope.
+
+On 6 May 1840, Hill's idea became reality with the release of the Penny Black, widely regarded as the world's first adhesive postage stamp. It featured a profile portrait of the young Queen Victoria and cost one penny, allowing any letter weighing up to half an ounce to be sent anywhere in the United Kingdom for that single flat fee. Within the first year, more than 68 million stamps had been sold, a figure that far exceeded even Hill's own expectations.
+
+The success of the Penny Black quickly attracted international attention. Switzerland and Brazil both issued their own postage stamps in 1843, and by the 1860s dozens of countries around the world had adopted similar systems. Postal reform of this kind is often credited with contributing to a broader expansion in literacy and long-distance communication throughout the nineteenth century, since cheaper postage made writing letters newly affordable for millions of ordinary people.
+
+Today, an original Penny Black in good condition can sell at auction for several hundred pounds, while rare printing errors from the stamp's early production runs have occasionally fetched hundreds of thousands. Beyond their value to collectors, historians continue to view the stamp as a small but significant example of how a simple administrative reform, driven by one persistent individual, was able to reshape communication across an entire society.`,
+        questions: [
+          { id: "sc-1", prompt: "In what year was the Penny Black released?", opts: ["1837", "1840", "1843", "1860"], answer: 1, exp: "The text states 'On 6 May 1840, Hill's idea became reality with the release of the Penny Black.'" },
+          { id: "sc-2", prompt: "How much did a Penny Black stamp cost?", opts: ["One penny", "One shilling", "Two pence", "One pound"], answer: 0, exp: "The text says it 'cost one penny'." },
+          { id: "sc-3", prompt: "Approximately how many stamps were sold in the first year?", opts: ["6.8 million", "68 million", "680,000", "168 million"], answer: 1, exp: "The text states 'more than 68 million stamps had been sold' in the first year." },
+          { id: "sc-4", prompt: "Which two countries issued their own postage stamps in 1843?", opts: ["Switzerland and Brazil", "France and Germany", "USA and Canada", "Switzerland and the USA"], answer: 0, exp: "The text names 'Switzerland and Brazil' as issuing stamps in 1843." },
+          { id: "sc-5", prompt: "Who proposed the postal reform described in the text?", opts: ["Queen Victoria", "Rowland Hill", "A postal worker in Brazil", "An anonymous pamphlet author"], answer: 1, exp: "The reform is 'closely associated with a British teacher and social reformer named Rowland Hill.'" },
+        ],
+      },
+      {
+        title: "Smartphone Adoption Around the World",
+        text:
+`The smartphone has become one of the most rapidly adopted technologies in human history. In 2007, when the first iPhone was released, fewer than 4% of the world's population owned any kind of smartphone. By 2023, that figure had risen to more than 70% of adults globally, according to industry estimates, representing one of the fastest technological shifts ever recorded.
+
+Adoption rates, however, have varied considerably by region. South Korea consistently ranks among the countries with the highest smartphone penetration, with survey data suggesting that over 95% of adults there own one. In contrast, several countries in sub-Saharan Africa report ownership rates below 50%, though these figures have been climbing steadily each year as prices for entry-level devices continue to fall.
+
+One especially significant milestone occurred in 2016, when, for the first time, more people worldwide accessed the internet via mobile devices than via desktop computers. This shift prompted many businesses to redesign their websites and applications with a "mobile-first" approach, prioritising the smaller screen experience over the traditional desktop layout that had dominated web design for the previous two decades.
+
+The economic impact of this shift has been substantial. A 2019 report estimated that mobile technology and related services contributed over 4% to global GDP that year, supporting an estimated 32 million jobs either directly or indirectly across manufacturing, retail, software development and telecommunications infrastructure.
+
+Looking ahead, industry analysts predict that the next major wave of adoption will occur not in wealthy nations, where the market is already largely saturated, but across parts of South Asia and Africa, where an estimated one billion people are expected to purchase their first smartphone before 2030. This next phase of growth is likely to be driven primarily by increasingly affordable devices rather than by any single new technological breakthrough.`,
+        questions: [
+          { id: "sc-6", prompt: "What percentage of the world's population owned a smartphone in 2007?", opts: ["Fewer than 4%", "About 20%", "Over 50%", "Exactly 70%"], answer: 0, exp: "The text says 'fewer than 4% of the world's population owned any kind of smartphone' in 2007." },
+          { id: "sc-7", prompt: "What percentage of South Korean adults are reported to own a smartphone?", opts: ["Over 95%", "About 70%", "Below 50%", "Exactly 100%"], answer: 0, exp: "The text states 'over 95% of adults there own one', referring to South Korea." },
+          { id: "sc-8", prompt: "In what year did mobile internet access overtake desktop access worldwide?", opts: ["2007", "2016", "2019", "2023"], answer: 1, exp: "The text says this milestone 'occurred in 2016'." },
+          { id: "sc-9", prompt: "According to the 2019 report, how many jobs were supported by mobile technology?", opts: ["About 4 million", "32 million", "70 million", "1 billion"], answer: 1, exp: "The text states the sector was 'supporting an estimated 32 million jobs'." },
+          { id: "sc-10", prompt: "By what year are an estimated one billion people expected to buy their first smartphone?", opts: ["2016", "2019", "2023", "2030"], answer: 3, exp: "The text says this is expected to happen 'before 2030'." },
+        ],
+      },
+    ],
   },
   {
     id: "predicting",
-    title: "Прогнозирование по заголовкам и структуре",
-    whenToUse: "До чтения самого текста — по заголовку, подзаголовкам, первому абзацу.",
+    title: "Predicting Content",
+    whenToUse: "Before reading the text itself — using the title, subheadings, and the first paragraph.",
     howTo: [
-      "По заголовку задай себе вопрос: о чём, скорее всего, пойдёт речь и какую позицию может занимать автор?",
-      "Если в тексте есть подзаголовки или он разбит на пронумерованные части — это уже готовый план текста.",
-      "Прогноз не обязан быть точным — его цель дать мозгу 'рамку', в которую легче укладывать детали при чтении.",
+      "From the title, ask yourself what the text is likely to be about and what position the author might take.",
+      "If the text has subheadings or numbered sections, treat them as a ready-made outline of its structure.",
+      "Your prediction doesn't need to be accurate — its purpose is to give your brain a 'frame' that makes it easier to slot in details as you read.",
+      "Revise your prediction as you go — the first paragraph often confirms or adjusts what the title suggested.",
     ],
     example: {
-      text: "Заголовок: 'The Silent Language of Trees'",
-      note: "Слово 'Language' намекает на какой-то вид коммуникации у деревьев — скорее всего, текст объяснит, как именно они 'общаются'. Это подтверждается уже в первом абзаце.",
+      text: "Title: \"The Silent Language of Trees\"",
+      note: "The word 'Language' hints at some kind of communication among trees — the text will likely explain how exactly they 'communicate'. This is confirmed already in the first paragraph.",
     },
+    passages: [
+      {
+        title: "The Future of Vertical Farming",
+        text:
+`As urban populations continue to grow and arable land per person continues to shrink worldwide, agricultural engineers have increasingly turned their attention to vertical farming — the practice of growing crops in stacked layers within controlled indoor environments, often inside converted warehouses or purpose-built high-rise structures.
+
+These facilities typically replace natural sunlight with LED lighting tuned to the specific wavelengths plants use most efficiently for photosynthesis, while computer-controlled systems regulate temperature, humidity and nutrient delivery with a level of precision impossible to achieve in an open field.
+
+Proponents argue that vertical farms can produce dramatically higher yields per square metre than traditional agriculture, while using a fraction of the water, since irrigation systems recycle moisture that would otherwise evaporate or run off into the soil. Crops can also be grown year-round, independent of season or weather conditions outside.
+
+Critics, however, point to the substantial energy costs involved in powering artificial lighting and climate control systems around the clock, arguing that in regions with abundant sunlight and fertile land, vertical farming may currently consume more energy overall than it saves in water and land use.
+
+For now, most vertical farms focus on high-value, fast-growing crops such as leafy greens and herbs, rather than staple grains like wheat or rice, since the economics of the technology do not yet favour lower-value crops grown at large scale. Whether this balance shifts as energy costs fall and technology improves remains an open question for the industry's future.`,
+        questions: [
+          { id: "pr-1", prompt: "Based on the title alone, what would you predict this text is about?", opts: ["A history of traditional outdoor farming techniques.", "A modern method of growing crops indoors in stacked layers, and its prospects.", "A recipe guide using vertically grown vegetables.", "An argument against all forms of modern agriculture."], answer: 1, exp: "The title's key terms — 'vertical farming' and 'future' — predict a discussion of a specific modern growing method and where it may be heading, confirmed by Paragraph 1." },
+          { id: "pr-2", prompt: "Having read Paragraph 1, what is Paragraph 2 most likely to explain?", opts: ["The history of skyscraper architecture.", "How these indoor farms actually function on a technical level.", "Why vertical farming was abandoned decades ago.", "The price of vegetables in different countries."], answer: 1, exp: "After introducing a concept, texts typically explain how it works — Paragraph 2 describes the LED lighting and automated control systems." },
+          { id: "pr-3", prompt: "Having read Paragraphs 1-2, what would you predict comes next?", opts: ["A list of unrelated farming methods.", "The advantages this method claims to offer.", "A biography of the inventor.", "A discussion of an entirely different industry."], answer: 1, exp: "After explaining what something is and how it works, texts commonly move to its benefits — Paragraph 3 covers yields, water use, and year-round growing." },
+          { id: "pr-4", prompt: "Given that Paragraph 3 presented advantages, what is a common next step in this kind of text?", opts: ["Repeating the same advantages in different words.", "Presenting a counter-argument or limitation.", "Ending the discussion abruptly.", "Switching to a completely unrelated topic."], answer: 1, exp: "A balanced text that lists benefits typically follows with drawbacks — Paragraph 4 introduces the energy-cost counter-argument." },
+          { id: "pr-5", prompt: "Based on the pattern so far (concept → mechanism → benefits → drawbacks), what would you expect the final paragraph to do?", opts: ["Introduce a completely new topic unrelated to farming.", "Offer a nuanced conclusion about current limitations and future potential.", "Simply repeat Paragraph 1 word for word.", "End without any concluding remarks."], answer: 1, exp: "Texts structured this way typically end with a balanced conclusion — Paragraph 5 notes current limitations and leaves an open question about the future." },
+        ],
+      },
+      {
+        title: "The Silent Spread of Invasive Species",
+        text:
+`When a species is introduced, whether accidentally or deliberately, into an ecosystem where it did not evolve, it is classified as invasive if it begins to spread aggressively and cause ecological or economic harm to its new environment.
+
+Ships have historically been one of the most significant vectors for this kind of introduction, particularly through ballast water — water taken on board to stabilise a vessel and then discharged, often thousands of kilometres away, along with any small organisms it happened to contain.
+
+The ecological consequences can be severe. Invasive species frequently lack natural predators in their new habitat, allowing their populations to expand unchecked, often outcompeting native species for food and space, and in some documented cases contributing directly to local extinctions.
+
+Beyond ecological damage, the economic cost of invasive species has been estimated in the hundreds of billions of dollars annually worldwide, covering agricultural losses, infrastructure damage, and the substantial expense of control and eradication programmes attempted by governments.
+
+Prevention has increasingly been recognised as far more cost-effective than eradication once a species has become established. Many countries have consequently introduced stricter biosecurity checks at borders, along with international treaties governing the treatment of ballast water, in an effort to stop new invasions before they begin rather than fight them afterwards.`,
+        questions: [
+          { id: "pr-6", prompt: "Based on the title alone, what would you predict this text discusses?", opts: ["A story about a particular endangered animal.", "How non-native species spread and cause problems in new environments.", "A guide to gardening with native plants only.", "The history of biology as a science."], answer: 1, exp: "The title's key terms — 'spread' and 'invasive species' — predict a discussion of how such species move into new areas and what happens as a result." },
+          { id: "pr-7", prompt: "Having read Paragraph 1's definition, what would you expect Paragraph 2 to cover?", opts: ["A definition of an unrelated scientific term.", "How invasive species typically get introduced to new places.", "A recipe involving invasive fish species.", "The paragraph ending the discussion entirely."], answer: 1, exp: "After a definition, a logical next step is explaining a mechanism — Paragraph 2 focuses on ships and ballast water." },
+          { id: "pr-8", prompt: "Given that Paragraph 2 explained a method of introduction, what is a natural next topic?", opts: ["The consequences once a species has been introduced.", "An unrelated history of shipbuilding.", "A repeat of the same introduction method.", "The paragraph simply stopping the argument."], answer: 0, exp: "After explaining how something happens, texts typically explain what happens next — Paragraph 3 covers ecological consequences." },
+          { id: "pr-9", prompt: "After discussing ecological consequences, what might you predict comes next?", opts: ["A shift to a completely unrelated topic.", "A discussion of economic consequences.", "A retraction of everything said before.", "The end of the text with no further development."], answer: 1, exp: "Texts about consequences often broaden from one type of impact to another — here, from ecological to economic costs, covered in Paragraph 4." },
+          { id: "pr-10", prompt: "Given the problem has now been described from multiple angles, what would you expect the final paragraph to focus on?", opts: ["Solutions or prevention measures.", "A return to the initial definition with no new information.", "An unrelated new problem.", "Simply restating the economic figures again."], answer: 0, exp: "After presenting a problem's scope and cost, a text commonly turns to solutions — Paragraph 5 discusses prevention and biosecurity measures." },
+        ],
+      },
+    ],
   },
   {
     id: "detail-reading",
@@ -362,13 +456,15 @@ Regardless of the exact mechanism, the practical implications are significant. F
 export function scoreReadingUnit(unit, userAnswers) {
   // userAnswers: { [itemId]: <ответ пользователя> }
   let correct = 0, total = 0;
-  const details = []; // [{ id, ok, correctAnswer, userAnswer, type }]
+  const details = []; // [{ id, ok, correctAnswer, userAnswer, type, question }]
 
   for (const task of unit.tasks) {
     for (const item of task.items) {
       total++;
       let ok = false;
       let displayCorrect = item.answer;
+      let displayUser = userAnswers[item.id];
+      let question = item.text || item.paragraph || "Summary gap";
 
       if (task.type === "summary") {
         const accepted = item.answer.map(a => a.trim().toLowerCase());
@@ -377,16 +473,18 @@ export function scoreReadingUnit(unit, userAnswers) {
       } else if (task.type === "heading-match") {
         ok = userAnswers[item.id] === item.answer;
         displayCorrect = task.headings[item.answer];
+        displayUser = userAnswers[item.id] !== undefined ? task.headings[userAnswers[item.id]] : undefined;
       } else if (task.type === "mcq") {
         ok = userAnswers[item.id] === item.answer;
         displayCorrect = item.opts[item.answer];
+        displayUser = userAnswers[item.id] !== undefined ? item.opts[userAnswers[item.id]] : undefined;
       } else {
         // tfng, info-match
         ok = userAnswers[item.id] === item.answer;
       }
 
       if (ok) correct++;
-      details.push({ id: item.id, ok, type: task.type, correctAnswer: displayCorrect, userAnswer: userAnswers[item.id] });
+      details.push({ id: item.id, ok, type: task.type, question, correctAnswer: displayCorrect, userAnswer: displayUser });
     }
   }
   return { correct, total, pct: total ? Math.round((correct / total) * 100) : 0, details };
