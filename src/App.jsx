@@ -316,6 +316,7 @@ export default function App() {
   const [keyInput, setKeyInput]   = useState("");
   const [matTab, setMatTab]       = useState("official");
   const [results, setResults]     = useState([]);
+  const [openRow, setOpenRow]     = useState(null);
   const chatRef = useRef(null);
   const name = profile?.full_name || "";
 
@@ -343,7 +344,7 @@ export default function App() {
       if (error) return;
       setResults(data.map(r => ({
         cert: r.cert, mod: r.module, score: r.score, total: r.total, pct: r.pct,
-        date: r.created_at, student: r.profiles?.full_name || name || "Студент",
+        date: r.created_at, student: r.profiles?.full_name || name || "Студент", details: r.details,
       })));
     });
   }, [profile]);
@@ -353,6 +354,7 @@ export default function App() {
     if (!session) return;
     await supabase.from("progress").insert({
       user_id: session.user.id, cert: r.cert, module: r.mod, score: r.score, total: r.total, pct: r.pct,
+      details: r.details || null,
     });
   };
 
@@ -518,7 +520,12 @@ DELTA: SLA (Krashen, Selinker, Vygotsky, Ellis, Lewis), methodology (CLT, TBL, P
     } else {
       const score = test.ans.reduce((s, a, i) => a === test.qs[i].ans ? s + 1 : s, 0);
       const pct   = Math.round(score / test.qs.length * 100);
-      const r = { cert: test.c, mod: test.mod, score, total: test.qs.length, pct, date: new Date().toISOString(), student: name || "Студент" };
+      const details = test.qs.map((q, i) => ({
+        question: q.q, ok: test.ans[i] === q.ans,
+        correctAnswer: q.opts[q.ans],
+        userAnswer: test.ans[i] !== null ? q.opts[test.ans[i]] : "—",
+      }));
+      const r = { cert: test.c, mod: test.mod, score, total: test.qs.length, pct, date: new Date().toISOString(), student: name || "Студент", details };
       saveProgress(r);
       setTest({ ...test, done: true, score, pct });
     }
@@ -985,18 +992,49 @@ DELTA: SLA (Krashen, Selinker, Vygotsky, Ellis, Lewis), methodology (CLT, TBL, P
                 ) : (
                   <div style={{overflowX:"auto"}}>
                     <table>
-                      <thead><tr><th>Студент</th><th>Сертификат</th><th>Модуль</th><th>Результат</th><th>%</th><th>Дата</th></tr></thead>
+                      <thead><tr><th>Студент</th><th>Сертификат</th><th>Модуль</th><th>Результат</th><th>%</th><th>Дата</th><th></th></tr></thead>
                       <tbody>
-                        {results.map((r, i) => (
-                          <tr key={i}>
-                            <td>{r.student}</td>
-                            <td><span style={{color:"#c59b44",fontWeight:600}}>{r.cert}</span></td>
-                            <td style={{fontSize:12,color:"#8a7d6d"}}>{r.mod}</td>
-                            <td>{r.score}/{r.total}</td>
-                            <td><b style={{color:r.pct>=80?"#4caf88":r.pct>=60?"#c59b44":"#e74c3c"}}>{r.pct}%</b></td>
-                            <td style={{fontSize:12,color:"#4a5560"}}>{new Date(r.date).toLocaleDateString("ru-RU")}</td>
-                          </tr>
-                        ))}
+                        {results.flatMap((r, i) => {
+                          const rows = [
+                            <tr key={i}>
+                              <td>{r.student}</td>
+                              <td><span style={{color:"#c59b44",fontWeight:600}}>{r.cert}</span></td>
+                              <td style={{fontSize:12,color:"#8a7d6d"}}>{r.mod}</td>
+                              <td>{r.score}/{r.total}</td>
+                              <td><b style={{color:r.pct>=80?"#4caf88":r.pct>=60?"#c59b44":"#e74c3c"}}>{r.pct}%</b></td>
+                              <td style={{fontSize:12,color:"#4a5560"}}>{new Date(r.date).toLocaleDateString("ru-RU")}</td>
+                              <td>
+                                {r.details && r.details.length > 0 && (
+                                  <button className="btn btn-o btn-sm" onClick={() => setOpenRow(openRow === i ? null : i)}>
+                                    {openRow === i ? "Скрыть" : "Ошибки"}
+                                  </button>
+                                )}
+                              </td>
+                            </tr>,
+                          ];
+                          if (openRow === i && r.details) {
+                            rows.push(
+                              <tr key={`${i}-details`}>
+                                <td colSpan={7} style={{background:"#0e1d30",padding:16}}>
+                                  {r.details.filter(d => !d.ok).length === 0 ? (
+                                    <div style={{fontSize:13,color:"#4caf88"}}>✓ Все ответы верные — ошибок нет.</div>
+                                  ) : (
+                                    <div style={{display:"flex",flexDirection:"column",gap:10}}>
+                                      {r.details.filter(d => !d.ok).map((d, di) => (
+                                        <div key={di} style={{borderLeft:"3px solid #e74c3c",paddingLeft:12}}>
+                                          <div style={{fontSize:13,color:"#e8dfd0",marginBottom:4}}>{d.question}</div>
+                                          <div style={{fontSize:12.5,color:"#e74c3c"}}>Ответ студента: {d.userAnswer !== undefined && d.userAnswer !== "" ? String(d.userAnswer) : "— (не отвечено)"}</div>
+                                          <div style={{fontSize:12.5,color:"#4caf88"}}>Правильный ответ: {String(d.correctAnswer)}</div>
+                                        </div>
+                                      ))}
+                                    </div>
+                                  )}
+                                </td>
+                              </tr>
+                            );
+                          }
+                          return rows;
+                        })}
                       </tbody>
                     </table>
                   </div>
