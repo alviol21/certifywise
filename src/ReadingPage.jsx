@@ -33,6 +33,7 @@ export default function ReadingPage({ studentName, onSaveResult }) {
       pct: r.pct,
       date: new Date().toISOString(),
       student: studentName || "Студент",
+      details: r.details,
     });
   };
 
