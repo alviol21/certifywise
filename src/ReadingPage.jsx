@@ -1,3 +1,10 @@
+/**
+ * CertifyWise
+ * © 2026 Алназирова Айдана (Aidana Alnazirova). Все права защищены.
+ * Дата создания: 22 мая 2026 г.
+ * Использование без письменного разрешения автора запрещено.
+ */
+
 import { useState } from "react";
 import { READING_UNITS, READING_SKILLS, BAND_SCORE_TABLE, scoreReadingUnit } from "./readingData";
 
@@ -42,6 +49,27 @@ export default function ReadingPage({ studentName, onSaveResult }) {
       date: new Date().toISOString(),
       student: studentName || "Студент",
       details: r.details,
+    });
+  };
+
+  const saveSkillResult = (modName, items, answersSnapshot) => {
+    let correct = 0;
+    const details = items.map(it => {
+      const userA = answersSnapshot[it.id];
+      const ok = userA === it.answer;
+      if (ok) correct++;
+      return { id: it.id, ok, type: "mcq", question: it.text || it.prompt, correctAnswer: it.opts[it.answer], userAnswer: userA !== undefined ? it.opts[userA] : undefined };
+    });
+    const total = items.length;
+    onSaveResult({
+      cert: "IELTS",
+      mod: modName,
+      score: correct,
+      total,
+      pct: total ? Math.round((correct / total) * 100) : 0,
+      date: new Date().toISOString(),
+      student: studentName || "Студент",
+      details,
     });
   };
 
@@ -133,7 +161,7 @@ export default function ReadingPage({ studentName, onSaveResult }) {
                     })}
                     {!practiceChecked ? (
                       <div style={{ textAlign: "center", marginTop: 10 }}>
-                        <button className="btn" disabled={!s.practice.every(p => skillAnswers[p.id] !== undefined)} onClick={() => setPracticeChecked(true)}>
+                        <button className="btn" disabled={!s.practice.every(p => skillAnswers[p.id] !== undefined)} onClick={() => { setPracticeChecked(true); saveSkillResult(`Техники чтения: ${s.title}`, s.practice, skillAnswers); }}>
                           {s.practice.every(p => skillAnswers[p.id] !== undefined) ? "Отправить на проверку ✓" : `Осталось ответить: ${s.practice.length - s.practice.filter(p => skillAnswers[p.id] !== undefined).length}`}
                         </button>
                       </div>
@@ -185,7 +213,7 @@ export default function ReadingPage({ studentName, onSaveResult }) {
                           })}
                           {!done ? (
                             <div style={{ textAlign: "center", marginTop: 10 }}>
-                              <button className="btn" disabled={!allAnswered} onClick={() => setPassageChecked(c => ({ ...c, [activePassageIdx]: true }))}>
+                              <button className="btn" disabled={!allAnswered} onClick={() => { setPassageChecked(c => ({ ...c, [activePassageIdx]: true })); saveSkillResult(`Техники чтения: ${s.title} — ${psg.title}`, psg.questions, skillAnswers); }}>
                                 {allAnswered ? "Отправить на проверку ✓" : `Осталось ответить: ${psg.questions.length - psg.questions.filter(p => skillAnswers[p.id] !== undefined).length}`}
                               </button>
                             </div>
