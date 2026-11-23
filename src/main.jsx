@@ -1,6 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import App from './App'
+import { L } from './i18n'
 
 class ErrorBoundary extends React.Component {
   constructor(props) { super(props); this.state = { error: null }; }
@@ -10,8 +11,8 @@ class ErrorBoundary extends React.Component {
     if (this.state.error) {
       return (
         <div style={{ padding: 20, fontFamily: 'monospace', color: '#e74c3c', background: '#0b1622', minHeight: '100vh', whiteSpace: 'pre-wrap', fontSize: 13 }}>
-          <h2 style={{ color: '#c59b44' }}>Ошибка на странице</h2>
-          <p>Скриншот этого текста поможет найти причину:</p>
+          <h2 style={{ color: '#c59b44' }}>{L('Ошибка на странице', 'Something went wrong on the page')}</h2>
+          <p>{L('Скриншот этого текста поможет найти причину:', 'A screenshot of this text will help find the cause:')}</p>
           <div style={{ background: '#12253b', padding: 12, borderRadius: 8, marginTop: 10 }}>
             {String((this.state.error && this.state.error.stack) || this.state.error)}
           </div>

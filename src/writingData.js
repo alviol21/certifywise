@@ -9,25 +9,27 @@
  * они не описывают реальную статистику.
  */
 
+import { T, TT } from "./i18n";
+
 // Краткое изложение публичных критериев оценивания IELTS Writing (своими словами)
 export const WRITING_CRITERIA = {
   1: [
-    { key: "ta", name: "Task Achievement", ru: "Выполнение задания", what: "Есть ли обзор (overview) главных тенденций, выделены ли ключевые особенности, подкреплены ли они цифрами, нет ли лишних деталей и собственного мнения." },
-    { key: "cc", name: "Coherence and Cohesion", ru: "Связность", what: "Логично ли сгруппирована информация по абзацам, разнообразны ли и уместны ли связки, понятны ли отсылки (this, these, the former)." },
-    { key: "lr", name: "Lexical Resource", ru: "Лексика", what: "Есть ли лексика тенденций и сравнения (rise sharply, a slight decline, roughly a third), точность и разнообразие, орфография." },
-    { key: "gra", name: "Grammatical Range and Accuracy", ru: "Грамматика", what: "Есть ли сложные предложения (while, whereas, which), сравнительные конструкции, точность времён, доля предложений без ошибок." },
+    { key: "ta", name: "Task Achievement", ru: T("Выполнение задания"), what: T("Есть ли обзор (overview) главных тенденций, выделены ли ключевые особенности, подкреплены ли они цифрами, нет ли лишних деталей и собственного мнения.") },
+    { key: "cc", name: "Coherence and Cohesion", ru: T("Связность"), what: T("Логично ли сгруппирована информация по абзацам, разнообразны ли и уместны ли связки, понятны ли отсылки (this, these, the former).") },
+    { key: "lr", name: "Lexical Resource", ru: T("Лексика"), what: T("Есть ли лексика тенденций и сравнения (rise sharply, a slight decline, roughly a third), точность и разнообразие, орфография.") },
+    { key: "gra", name: "Grammatical Range and Accuracy", ru: T("Грамматика"), what: T("Есть ли сложные предложения (while, whereas, which), сравнительные конструкции, точность времён, доля предложений без ошибок.") },
   ],
   2: [
-    { key: "ta", name: "Task Response", ru: "Ответ на задание", what: "Отвечено ли на все части вопроса, есть ли ясная позиция на протяжении всего эссе, развиты ли идеи и подкреплены ли примерами." },
-    { key: "cc", name: "Coherence and Cohesion", ru: "Связность", what: "Одна главная идея на абзац, логичный порядок, связки без механического перебора (Firstly, Secondly…), понятные отсылки." },
-    { key: "lr", name: "Lexical Resource", ru: "Лексика", what: "Точная тематическая лексика, коллокации, естественное употребление менее частотных слов, орфография и словообразование." },
-    { key: "gra", name: "Grammatical Range and Accuracy", ru: "Грамматика", what: "Разнообразие структур (условные, придаточные, пассив), точность, пунктуация, доля предложений без ошибок." },
+    { key: "ta", name: "Task Response", ru: T("Ответ на задание"), what: T("Отвечено ли на все части вопроса, есть ли ясная позиция на протяжении всего эссе, развиты ли идеи и подкреплены ли примерами.") },
+    { key: "cc", name: "Coherence and Cohesion", ru: T("Связность"), what: T("Одна главная идея на абзац, логичный порядок, связки без механического перебора (Firstly, Secondly…), понятные отсылки.") },
+    { key: "lr", name: "Lexical Resource", ru: T("Лексика"), what: T("Точная тематическая лексика, коллокации, естественное употребление менее частотных слов, орфография и словообразование.") },
+    { key: "gra", name: "Grammatical Range and Accuracy", ru: T("Грамматика"), what: T("Разнообразие структур (условные, придаточные, пассив), точность, пунктуация, доля предложений без ошибок.") },
   ],
 };
 
 export const WRITING_FORMAT = {
-  1: { minutes: 20, minWords: 150, ru: "Описать график, таблицу, диаграмму или процесс. Не меньше 150 слов, около 20 минут. Мнение не нужно." },
-  2: { minutes: 40, minWords: 250, ru: "Эссе-рассуждение на общую тему. Не меньше 250 слов, около 40 минут. Task 2 весит вдвое больше Task 1." },
+  1: { minutes: 20, minWords: 150, ru: T("Описать график, таблицу, диаграмму или процесс. Не меньше 150 слов, около 20 минут. Мнение не нужно.") },
+  2: { minutes: 40, minWords: 250, ru: T("Эссе-рассуждение на общую тему. Не меньше 250 слов, около 40 минут. Task 2 весит вдвое больше Task 1.") },
 };
 
 // ---------------- Task 1 ----------------
@@ -47,9 +49,9 @@ export const TASK1 = [
       ],
     },
     tips: [
-      "Overview: все три страны растут; разрыв между ними сокращается.",
-      "Сгруппируйте: A (высокий старт, медленный рост) и C (низкий старт, резкий рост после 2010).",
-      "Не описывайте каждую точку — выберите начало, конец и переломные моменты.",
+      T("Overview: все три страны растут; разрыв между ними сокращается."),
+      T("Сгруппируйте: A (высокий старт, медленный рост) и C (низкий старт, резкий рост после 2010)."),
+      T("Не описывайте каждую точку — выберите начало, конец и переломные моменты."),
     ],
   },
   {
@@ -68,9 +70,9 @@ export const TASK1 = [
       ],
     },
     tips: [
-      "Overview: соцсети снижаются с возрастом, телевизор и чтение растут.",
-      "Самое яркое: 16–24 — 17 часов в соцсетях, 65+ — 18 часов у телевизора.",
-      "Сравнительные конструкции: three times as much as, by far the most, the least popular.",
+      T("Overview: соцсети снижаются с возрастом, телевизор и чтение растут."),
+      T("Самое яркое: 16–24 — 17 часов в соцсетях, 65+ — 18 часов у телевизора."),
+      T("Сравнительные конструкции: three times as much as, by far the most, the least popular."),
     ],
   },
   {
@@ -85,9 +87,9 @@ export const TASK1 = [
       ],
     },
     tips: [
-      "Overview: уголь остался крупнейшим источником, но его доля почти вдвое сократилась; ветер и солнце выросли больше всех.",
-      "Доли: more than half, just under a third, roughly a quarter.",
-      "Небольшие изменения (hydro, nuclear) можно описать одним предложением.",
+      T("Overview: уголь остался крупнейшим источником, но его доля почти вдвое сократилась; ветер и солнце выросли больше всех."),
+      T("Доли: more than half, just under a third, roughly a quarter."),
+      T("Небольшие изменения (hydro, nuclear) можно описать одним предложением."),
     ],
   },
   {
@@ -105,9 +107,9 @@ export const TASK1 = [
       ],
     },
     tips: [
-      "Overview: W выросла сильнее всех и стала лидером к 2020; X — единственная со снижением.",
-      "В таблице нет «тенденции на картинке»: сначала найдите её сами, потом пишите.",
-      "Цифры округляйте: just under 4,000, roughly doubled, more than tripled.",
+      T("Overview: W выросла сильнее всех и стала лидером к 2020; X — единственная со снижением."),
+      T("В таблице нет «тенденции на картинке»: сначала найдите её сами, потом пишите."),
+      T("Цифры округляйте: just under 4,000, roughly doubled, more than tripled."),
     ],
   },
   {
@@ -128,9 +130,9 @@ export const TASK1 = [
       ],
     },
     tips: [
-      "Overview: сколько этапов, с чего начинается и чем заканчивается процесс.",
-      "Пассив — главная грамматика процесса: paper is collected, the pulp is screened.",
-      "Последовательность: first, after that, once…, at this stage, finally.",
+      T("Overview: сколько этапов, с чего начинается и чем заканчивается процесс."),
+      T("Пассив — главная грамматика процесса: paper is collected, the pulp is screened."),
+      T("Последовательность: first, after that, once…, at this stage, finally."),
     ],
   },
 ];
@@ -142,56 +144,56 @@ export const TASK2 = [
     title: "Universities: practical skills or academic knowledge",
     type: "Opinion (agree / disagree)",
     prompt: "Some people believe that universities should focus on teaching practical skills for employment rather than academic knowledge.\n\nTo what extent do you agree or disagree?",
-    tips: ["Выберите позицию и держите её до конца — частичное согласие тоже позиция, но её нужно назвать во введении.", "Каждый абзац основной части — одна причина с примером."],
+    tips: [T("Выберите позицию и держите её до конца — частичное согласие тоже позиция, но её нужно назвать во введении."), T("Каждый абзац основной части — одна причина с примером.")],
   },
   {
     id: "w2-flang",
     title: "When should children start a foreign language",
     type: "Discuss both views + opinion",
     prompt: "Some people think that children should start learning a foreign language at primary school, while others believe it is better to begin at secondary school.\n\nDiscuss both these views and give your own opinion.",
-    tips: ["Нужны обе точки зрения и ваше мнение — без мнения Task Response не выше 5.", "Удобная структура: абзац о первой точке зрения, абзац о второй, позиция во введении и заключении."],
+    tips: [T("Нужны обе точки зрения и ваше мнение — без мнения Task Response не выше 5."), T("Удобная структура: абзац о первой точке зрения, абзац о второй, позиция во введении и заключении.")],
   },
   {
     id: "w2-online",
     title: "Online courses instead of classrooms",
     type: "Advantages / disadvantages",
     prompt: "Increasingly, students choose to study online rather than attend classes in person.\n\nDo the advantages of this development outweigh the disadvantages?",
-    tips: ["Вопрос «outweigh» требует вывода: что перевешивает.", "Не перечисляйте 6 плюсов — лучше 2 развитых с примерами."],
+    tips: [T("Вопрос «outweigh» требует вывода: что перевешивает."), T("Не перечисляйте 6 плюсов — лучше 2 развитых с примерами.")],
   },
   {
     id: "w2-teachers",
     title: "Fewer young people become teachers",
     type: "Problem / solution",
     prompt: "In many countries, fewer young people are choosing teaching as a career.\n\nWhy is this happening? What can be done to solve this problem?",
-    tips: ["Два вопроса — две части ответа; каждой нужен свой абзац.", "Решения должны отвечать названным причинам."],
+    tips: [T("Два вопроса — две части ответа; каждой нужен свой абзац."), T("Решения должны отвечать названным причинам.")],
   },
   {
     id: "w2-ai",
     title: "Using AI tools for writing",
     type: "Two-part question",
     prompt: "Many people now use artificial intelligence tools to help them write texts for study and work.\n\nWhy is this the case? Is this a positive or negative development?",
-    tips: ["Первая часть — причины, вторая — оценка; не смешивайте их в одном абзаце.", "Оценка должна быть ясной: positive, negative или positive with reservations."],
+    tips: [T("Первая часть — причины, вторая — оценка; не смешивайте их в одном абзаце."), T("Оценка должна быть ясной: positive, negative или positive with reservations.")],
   },
   {
     id: "w2-tests",
     title: "Standardised tests and student ability",
     type: "Opinion (agree / disagree)",
     prompt: "Standardised tests are the best way to measure a student's ability.\n\nTo what extent do you agree or disagree with this statement?",
-    tips: ["Ключевое слово — «the best»: с ним легче не согласиться частично.", "Пример из своего опыта (ЕНТ, IELTS) — допустимое подкрепление."],
+    tips: [T("Ключевое слово — «the best»: с ним легче не согласиться частично."), T("Пример из своего опыта (ЕНТ, IELTS) — допустимое подкрепление.")],
   },
   {
     id: "w2-transport",
     title: "Public transport or roads",
     type: "Discuss both views + opinion",
     prompt: "Some people think governments should invest more money in public transport, while others believe building better roads is more important.\n\nDiscuss both these views and give your own opinion.",
-    tips: ["Аргументы каждой стороны излагайте честно, а не как «слабую» позицию.", "Мнение в заключении не должно быть новым — оно уже было во введении."],
+    tips: [T("Аргументы каждой стороны излагайте честно, а не как «слабую» позицию."), T("Мнение в заключении не должно быть новым — оно уже было во введении.")],
   },
   {
     id: "w2-cities",
     title: "Moving from rural areas to cities",
     type: "Positive / negative development",
     prompt: "More and more people are moving from rural areas to large cities.\n\nIs this a positive or negative development?",
-    tips: ["Можно рассмотреть последствия для людей, городов и сёл.", "Позиция нужна во введении, не только в конце."],
+    tips: [T("Можно рассмотреть последствия для людей, городов и сёл."), T("Позиция нужна во введении, не только в конце.")],
   },
 ];
 
