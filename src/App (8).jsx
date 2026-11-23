@@ -1,0 +1,1207 @@
+import { T, TT, LOCALE, LangSwitch } from "./i18n";
+import { useState, useRef, useEffect } from "react";
+import ReadingPage from "./ReadingPage";
+import ListeningPage from "./ListeningPage";
+import WritingPage from "./WritingPage";
+import SpeakingPage from "./SpeakingPage";
+import ProfPage from "./ProfPage";
+import LessonsPage from "./LessonsPage";
+import RoutesPage from "./RoutesPage";
+import MdText from "./MdText";
+import { shuffle, fetchGemini } from "./aiClient";
+import TeacherProgress from "./TeacherProgress";
+import AuthPage from "./AuthPage";
+import { supabase } from "./supabaseClient";
+
+// ===========================================================
+//  ВОПРОСЫ — встроены прямо в код
+// ===========================================================
+const QUESTIONS = {
+  TKT: {
+    "Module 1 — Language": [
+      { id:"t1-1", q:"Which of the following is an example of a 'lexical chunk'?", opts:["run quickly","the old book","as a matter of fact","beautifully done"], ans:2, exp:"Lexical chunks are multi-word units used as wholes. 'As a matter of fact' is a fixed expression — a classic chunk." },
+      { id:"t1-2", q:"Which term describes the study of how words are formed?", opts:["Phonology","Morphology","Syntax","Pragmatics"], ans:1, exp:"Morphology studies word formation — prefixes, suffixes, and roots." },
+      { id:"t1-3", q:"What does 'CCQ' stand for in language teaching?", opts:["Communicative Classroom Question","Concept Checking Question","Critical Content Query","Corrective Comment"], ans:1, exp:"CCQ = Concept Checking Question. Used to verify learners have understood meaning, form, or use of a language item." },
+      { id:"t1-4", q:"Which of these is an example of a 'false friend'?", opts:["'actually' (EN) vs 'actualmente' (ES = currently)","'cat' and 'chat' — similar spelling in two languages","'big' and 'large' — two words with one meaning","'run' — one word with many meanings in context"], ans:0, exp:"False friends look/sound similar in two languages but mean different things. 'Actually' and 'actualmente' are classic examples." },
+      { id:"t1-5", q:"What is 'drilling' in language teaching?", opts:["A reading strategy for finding specific information","Repetition practice of a language item","A technique for correcting written work","A way of assessing learners' speaking"], ans:1, exp:"Drilling is controlled oral repetition used to practice pronunciation, form, and use of language items." },
+      { id:"t1-6", q:"Which describes 'primary stress'?", opts:["The weakest, unstressed syllable in a word","The most prominent syllable in a word","The rise and fall of the voice in a sentence","The reduced form of a function word"], ans:1, exp:"Primary stress = the syllable carrying most emphasis. In 'photograph' → PHO-to-graph." },
+      { id:"t1-7", q:"What is 'eliciting'?", opts:["Teacher explains new language","Teacher draws language out of learners","Students copy examples from the board","Teacher corrects every error immediately"], ans:1, exp:"Eliciting = guiding learners to produce language or ideas themselves, rather than providing it directly." },
+      { id:"t1-8", q:"What is 'collocation'?", opts:["A grammar rule about word order","Words that frequently appear together","A type of error made by learners","A feature of connected speech"], ans:1, exp:"Collocation: words that tend to appear together naturally. E.g., 'make a decision', 'heavy rain', 'fast food'." },
+      { id:"t1-9", q:"Which of the following describes 'backchaining'?", opts:["Repeating a sentence from beginning to end","Building a sentence backwards from the end","Asking students to check their work","Writing on board while speaking"], ans:1, exp:"Backchaining: practice from the end of a phrase backwards. '…the station' → 'at the station' → 'meet you at the station'." },
+      { id:"t1-10", q:"What does 'TTT' stand for?", opts:["Total Teacher Time","Test-Teach-Test","Talk-Think-Transfer","Text-Task-Test"], ans:1, exp:"TTT = Test-Teach-Test. Learners first attempt a task, receive targeted input, then do a follow-up task." },
+      { id:"t1-11", q:"What is 'scaffolding' in language teaching?", opts:["Building physical displays on the classroom walls","Temporary support to help learners do more","Testing learners without any preparation time","Translating difficult texts into the learners' L1"], ans:1, exp:"Scaffolding (from Vygotsky's ZPD) = temporary support strategies that help learners achieve more than they could alone." },
+      { id:"t1-12", q:"Which is an example of 'word stress' change affecting meaning?", opts:["REcord (noun) vs reCORD (verb)","'cat' vs 'cats' — adding a plural ending","'happy' vs 'unhappy' — adding a prefix","'big' vs 'bigger' — the comparative form"], ans:0, exp:"In English, stress shift changes word class. REcord (n.) → reCORD (v.). Other examples: PERmit / perMIT, PROtest / proTEST." },
+    ],
+    "Module 2 — Lesson Planning": [
+      { id:"t2-1", q:"Which part of a lesson plan describes what students will be able to do by the end?", opts:["Procedure and stages","Aims","Timing of each stage","Materials and aids"], ans:1, exp:"Aims/objectives describe intended learning outcomes — what learners will know or do after the lesson." },
+      { id:"t2-2", q:"What does 'staging' a lesson mean?", opts:["Using drama and role-play activities in class","Ordering activities in a logical sequence","Setting up the classroom before learners arrive","Assigning roles to students for group work"], ans:1, exp:"Staging = organizing a lesson into a coherent sequence where each step builds on the previous one." },
+      { id:"t2-3", q:"What is the main purpose of a 'warmer' activity?", opts:["To assess learners' grammar knowledge","To introduce new vocabulary for the lesson","To engage learners at the start","To practise writing skills before the main task"], ans:2, exp:"A warmer is a short motivating activity at lesson start — creates positive atmosphere and mental readiness for learning." },
+      { id:"t2-4", q:"Which resource is considered 'realia'?", opts:["A coursebook page","A real object brought into class","A picture drawn on the board by the teacher","A recorded audio file played from a phone"], ans:1, exp:"Realia = real objects from everyday life — newspapers, product packaging, coins — used to make learning authentic." },
+      { id:"t2-5", q:"What does 'differentiation' mean in lesson planning?", opts:["Using different accents in listening material","Adapting tasks to learners' needs","Teaching several different subjects in one lesson","Changing the classroom layout for every activity"], ans:1, exp:"Differentiation = planning activities and support that accommodate different learner needs, levels, and paces." },
+      { id:"t2-6", q:"What is a 'gist' task in reading/listening?", opts:["A detailed comprehension task on every paragraph","A task focusing on general understanding","A task translating the text into the L1","A task matching new words with definitions"], ans:1, exp:"Gist task = general understanding of a text — the main idea. Comes before detail tasks." },
+      { id:"t2-7", q:"In PPP, what does the first P stand for?", opts:["Practice","Presentation","Production","Planning"], ans:1, exp:"PPP = Presentation–Practice–Production. First P = Presentation, where the teacher introduces and explains new language." },
+      { id:"t2-8", q:"Which activity best describes 'controlled practice'?", opts:["Free role-play with no language constraints","Gap-fill exercises with one correct answer","An open class discussion","Writing a personal essay"], ans:1, exp:"Controlled practice limits learners to specific target language. Gap-fills, substitution drills, sentence transformation." },
+      { id:"t2-9", q:"What is 'TTT' (Teacher Talking Time) in lesson planning?", opts:["Time teachers spend testing their students","How much of the lesson the teacher speaks","The total number of teaching hours per week","Time spent on teacher training courses"], ans:1, exp:"TTT = amount of time the teacher spends talking in class. Good lesson design reduces TTT and increases STT (Student Talking Time)." },
+      { id:"t2-10", q:"What does 'boardwork' refer to in a lesson?", opts:["Homework set from the coursebook pages","How the teacher uses the board","Board games used as warmers in class","The way the desks are arranged in the room"], ans:1, exp:"Boardwork = how the teacher uses the board — for vocabulary, grammar rules, timelines, concept maps. Good boardwork supports learning." },
+    ],
+    "Module 3 — Assessment": [
+      { id:"t3-1", q:"What is 'formative assessment'?", opts:["Assessment at the end of a course or unit","Ongoing assessment that supports learning","A standardised national exam for all schools","A placement test given before the course"], ans:1, exp:"Formative assessment = ongoing, informal assessment during learning, providing feedback to guide future teaching." },
+      { id:"t3-2", q:"What does 'summative assessment' measure?", opts:["Learning while it is still in progress","Learning at the end of a course or unit","Students' motivation and attitude to learning","The quality of the teacher's performance"], ans:1, exp:"Summative assessment measures what learners have achieved at the end of a period — final exams, end-of-unit tests." },
+      { id:"t3-3", q:"Which type of feedback focuses on CONTENT, not accuracy?", opts:["Explicit correction","Recasting","Content feedback","Elicitation"], ans:2, exp:"Content feedback responds to ideas/meaning in what the learner said, not the language accuracy." },
+      { id:"t3-4", q:"What is 'peer assessment'?", opts:["The teacher assessing each student's work","Students evaluating each other's work","Students evaluating their own work alone","An external examiner assessing the class"], ans:1, exp:"Peer assessment = learners evaluating each other's work against set criteria. Develops critical thinking and collaboration." },
+      { id:"t3-5", q:"Which is an example of 'implicit' error correction?", opts:["'No, we say: He went, not He go'","Repeating the sentence correctly","Writing the correct form on the board for all","Asking the student to look at the grammar rule"], ans:1, exp:"Recasting = implicit correction — the teacher reformulates the student's utterance correctly without explicitly pointing out the error." },
+      { id:"t3-6", q:"What is a 'portfolio' in language assessment?", opts:["A file with all of the teacher's lesson plans","A collection of work showing progress","A grammar reference book for the course","A set of past exam papers for practice"], ans:1, exp:"Portfolio = a purposeful collection of student work showing learning and development over time. A form of authentic assessment." },
+      { id:"t3-7", q:"What is 'diagnostic testing'?", opts:["Testing at the end of a course to give a grade","Testing to find out what learners know","A test to put learners into level groups","A mock exam in the format of the real one"], ans:1, exp:"Diagnostic testing identifies specific strengths and weaknesses BEFORE teaching, so the teacher can target instruction accordingly." },
+      { id:"t3-8", q:"What does 'validity' mean in testing?", opts:["The results are consistent every time","It measures what it claims to measure","The test is quick and easy to mark","The test is equally fair to every student"], ans:1, exp:"Validity = a test truly measures what it intends to measure. E.g., a speaking test that asks students to write is not valid." },
+    ],
+  },
+  CELTA: {
+    "Language Awareness": [
+      { id:"c1-1", q:"A student says: 'Yesterday I have seen a good film.' What type of error is this?", opts:["Phonological error — wrong vowel sound in 'seen'","Tense error","Vocabulary error — 'film' should be 'movie'","Word order error — 'yesterday' in the wrong place"], ans:1, exp:"'Yesterday' signals a specific past time → past simple required ('saw'). Present perfect ('have seen') is used without a specific time reference." },
+      { id:"c1-2", q:"How do you analyze the form of 'She has been working'?", opts:["Subject + verb + gerund","Subject + have/has + been + verb-ing","Subject + to be + verb-ing (present continuous)","Subject + had + past participle (past perfect)"], ans:1, exp:"Present perfect continuous: Subject + have/has + been + verb-ing. Describes an action that started in the past and continues or recently stopped." },
+      { id:"c1-3", q:"What should concept checking for 'I used to play football' verify?", opts:["How to pronounce 'used' in this structure","Past habit that no longer happens","Whether the student personally likes football","How to spell 'used to' in the negative form"], ans:1, exp:"CCQs for 'used to': 'Did this happen in the past?' (yes) 'Does it happen now?' (no) — confirms past habit, no longer occurring." },
+      { id:"c1-4", q:"A student writes: 'He suggested to go to the cinema.' How do you correct this?", opts:["No correction needed — the sentence is correct","'He suggested going to the cinema'","Change it to 'He suggested going at cinema'","Change it to 'He suggested to going to cinema'"], ans:1, exp:"'Suggest' + gerund (verb-ing) OR 'suggest' + that-clause. NOT suggest + infinitive. Correct: 'He suggested going to the cinema'." },
+      { id:"c1-5", q:"The three aspects of language you must cover when teaching vocabulary:", opts:["Spelling, pronunciation and grammar rules","Meaning, form, pronunciation","Definition, a synonym and an antonym","Context, collocations and example sentences"], ans:1, exp:"CELTA requires covering: Meaning (what it means), Form (how it's built), Pronunciation (how it sounds). Use/appropriacy is a 4th dimension." },
+      { id:"c1-6", q:"Which is the correct model sentence for second conditional?", opts:["If I study hard, I will pass.","If I won the lottery, I would travel the world.","If I had known, I would have called.","I study if I have time."], ans:1, exp:"2nd conditional: If + past simple, would + infinitive. Hypothetical/unreal present or future. 'If I won..., I would...'." },
+      { id:"c1-7", q:"What is 'concept checking' for the modal 'might'?", opts:["'Is it 100% certain?' (No)","'Did this already happen?' (Yes)","Drilling the pronunciation three times","Asking students to translate the sentence"], ans:0, exp:"'Might' = possibility, not certainty. CCQs: 'Are we sure this will happen?' (No) 'Is it possible?' (Yes) 'Is it definite?' (No)." },
+      { id:"c1-8", q:"A student says 'I am agree with you.' What is the error?", opts:["Vocabulary error — 'agree' is the wrong word here","'I agree with you' — no 'am'","Pronunciation error in the word 'agree'","Missing article before the word 'agree'"], ans:1, exp:"Stative verbs (agree, know, believe, understand) are not used in continuous forms. Correct: 'I agree' (state, not action)." },
+      { id:"c1-9", q:"What does 'word stress' affect in English?", opts:["Only the spelling of words in written English","Comprehension of the word","Only grammatical accuracy in longer sentences","The writing style of formal academic texts"], ans:1, exp:"Stress placement is crucial in English. Native speakers rely heavily on stress patterns. Wrong stress can make a word completely unrecognisable." },
+      { id:"c1-10", q:"What is 'colligation'?", opts:["Words that sound similar but differ in meaning","Grammar patterns a word appears in","Two synonyms that are used in the same context","A type of error correction used in class"], ans:1, exp:"Colligation = the grammatical patterns words typically go with. E.g., 'depend ON', 'interested IN', 'good AT'. Important for teaching natural language." },
+    ],
+    "Teaching Skills": [
+      { id:"c2-1", q:"Student makes a grammar error during a fluency activity. What is the BEST approach?", opts:["Stop the activity immediately and correct them","Note it for delayed correction","Ignore it completely and never return to it","Ask other students to correct it straight away"], ans:1, exp:"During fluency activities, interruption hinders communication. CELTA recommends delayed error correction — maintaining fluency, then addressing errors after." },
+      { id:"c2-2", q:"What does 'ICQ' stand for and when do you use it?", opts:["Incorrect Content Query — asked after an error","Instruction Checking Question — before a task","Immediate Correction Question — during a task","Individual Concept Question — for one student"], ans:1, exp:"ICQ = Instruction Checking Question. Used BEFORE a task: 'Are you writing or speaking? Alone or in pairs?' — checks comprehension without repeating instructions." },
+      { id:"c2-3", q:"In CELTA grading, what does 'rapport' refer to?", opts:["The teacher's grammatical accuracy in class","A positive teacher–student relationship","Keeping to the timing of every lesson stage","Clear and well-organised use of the board"], ans:1, exp:"Rapport = the positive, respectful, supportive relationship the teacher builds with learners — essential for a safe learning environment." },
+      { id:"c2-4", q:"A lesson focuses on 'Reading for detail.' Which task best achieves this?", opts:["Read and identify the general topic in one minute","Answer questions on precise information","Put the jumbled paragraphs in the correct order","Predict the content of the text from its title"], ans:1, exp:"Reading for detail = extracting specific information from the text. Comprehension questions targeting precise facts, figures, or events." },
+      { id:"c2-5", q:"What is the purpose of 'staging' a CELTA lesson?", opts:["To impress the observer with a variety of tasks","To build a logical sequence of activities","To cover as many activities as possible in time","To divide the lesson into equal blocks of time"], ans:1, exp:"Staging creates coherent lesson flow — activities progress logically, e.g., from controlled to freer practice, or receptive to productive skills." },
+      { id:"c2-6", q:"What is 'student-centred' teaching?", opts:["The teacher talks for most of the lesson","Learners are active; tasks meet their needs","The teacher uses students' names frequently","Students always choose the topics themselves"], ans:1, exp:"Student-centred teaching = learners actively engage, interact, and communicate. Teacher facilitates rather than lectures. High STT, meaningful tasks." },
+      { id:"c2-7", q:"What is 'monitoring' during a practice activity?", opts:["Writing new language on the board while learners work","Circulating to listen, support and note errors","Testing each student individually during the task","Playing the audio again for learners who missed it"], ans:1, exp:"Monitoring = teacher moves around the room during tasks — to check comprehension, support learners, note language for delayed feedback." },
+    ],
+    "Lesson Planning": [
+      { id:"c3-1", q:"What should CELTA lesson aims clearly state?", opts:["What the teacher will do during the lesson","What learners will be able to do","The grammar point that the teacher will present","The materials and resources used in the lesson"], ans:1, exp:"CELTA aims are learner-centred: 'By the end of the lesson, students will be able to...' — focused on learning outcomes, not teacher actions." },
+      { id:"c3-2", q:"Main aim vs subsidiary aim in a CELTA plan:", opts:["There is no real difference between them","Main = central focus; subsidiary = supports it","The subsidiary aim is more important than the main one","The main aim is the warmer at the start of the lesson"], ans:1, exp:"Main aim = primary outcome (e.g., practice past simple). Subsidiary aims support this (e.g., vocabulary building, reading as context for grammar)." },
+      { id:"c3-3", q:"'Anticipated problems and solutions' in a CELTA plan refers to:", opts:["Possible technical problems with equipment","Learners' likely difficulties + solutions","Plans for managing learners' behaviour","What to do if the lesson runs over time"], ans:1, exp:"This section shows pedagogical awareness: predicting likely difficulties (confusing forms, unclear instructions) and planning how to address them." },
+      { id:"c3-4", q:"What is a 'lead-in' stage in a CELTA lesson?", opts:["The final activity that rounds off the lesson","An opening stage that activates interest","A detailed explanation of the grammar point","A homework task set before the next lesson"], ans:1, exp:"Lead-in = opening stage that creates interest, activates schema (prior knowledge), and connects learners to the lesson topic." },
+      { id:"c3-5", q:"What is 'task-based learning' (TBL)?", opts:["Teaching grammar rules first, then applying them","A real task at the core; language follows","Reading a coursebook text and answering questions","Completing a series of controlled gap-fill exercises"], ans:1, exp:"TBL: learners complete a meaningful task first, using any language available. Then focus on language that emerged. Meaning before form." },
+    ],
+  },
+  IELTS: {
+    "Academic Reading": [
+      { id:"ir-1", type:"tfng", passage:"The term 'urban heat island' refers to metropolitan areas that are significantly warmer than surrounding rural areas due to human activities. The primary cause is the modification of land surfaces, which changes how heat is absorbed and released. Buildings, roads, and other infrastructure absorb and re-emit the sun's heat more than natural landscapes such as forests and water bodies.", q:"The urban heat island effect is primarily caused by differences in vegetation between cities and rural areas.", opts:["True","False","Not Given"], ans:1, exp:"FALSE. The passage states the primary cause is 'modification of land surfaces' and absorption by 'buildings, roads, and infrastructure' — not vegetation differences." },
+      { id:"ir-2", type:"tfng", passage:"The term 'urban heat island' refers to metropolitan areas that are significantly warmer than surrounding rural areas due to human activities. The primary cause is the modification of land surfaces, which changes how heat is absorbed and released.", q:"Metropolitan areas can be considerably warmer than surrounding rural regions.", opts:["True","False","Not Given"], ans:0, exp:"TRUE. The passage directly states urban areas are 'significantly warmer than surrounding rural areas'." },
+      { id:"ir-3", type:"tfng", passage:"The term 'urban heat island' refers to metropolitan areas that are significantly warmer than surrounding rural areas due to human activities. The primary cause is the modification of land surfaces.", q:"Urban heat islands have existed since the Industrial Revolution.", opts:["True","False","Not Given"], ans:2, exp:"NOT GIVEN. No information about historical origin appears in the passage. Cannot confirm or deny this claim." },
+      { id:"ir-4", q:"In IELTS Academic Reading, how many sections and what is the time limit?", opts:["2 sections, 40 minutes","3 sections, 60 minutes","4 sections, 80 minutes","3 sections, 40 minutes"], ans:1, exp:"IELTS Academic Reading: 3 sections, 40 questions, 60 minutes (including transfer time). Texts increase in difficulty." },
+      { id:"ir-5", q:"For 'Matching Headings' questions, the most effective strategy is:", opts:["Read all the headings first, then the whole text","Find each paragraph's main idea, then match","Match the headings in alphabetical order","Read only the first sentence of each paragraph"], ans:1, exp:"Best strategy: Read each paragraph → identify its main point → find the heading that best summarises it. First and last sentences usually carry the main idea." },
+      { id:"ir-6", q:"For 'True / False / Not Given' questions, 'Not Given' means:", opts:["The statement contradicts the information in the text","The statement agrees with the information in the text","The text neither confirms nor contradicts it","The statement is partly true and partly false"], ans:2, exp:"NOT GIVEN: the text provides no information to confirm OR contradict the claim. Do not use outside knowledge — only the passage." },
+      { id:"ir-7", q:"Which skill is primarily tested in IELTS 'Matching Information' tasks?", opts:["Guessing the meaning of new words from context","Locating specific information in the text","Understanding the writer's overall argument","Identifying figurative language and metaphors"], ans:1, exp:"Matching Information = scanning — quickly locating specific information (facts, examples, reasons) in different paragraphs without reading everything." },
+    ],
+    "Academic Writing": [
+      { id:"iw-1", q:"What is the minimum word count for IELTS Writing Task 1 (Academic)?", opts:["100 words","150 words","200 words","250 words"], ans:1, exp:"Task 1 minimum: 150 words. Writing fewer results in a penalty. Recommended: 160–200 words in ~20 minutes." },
+      { id:"iw-2", q:"Which is NOT an assessment criterion for IELTS Writing?", opts:["Task Achievement/Response","Coherence and Cohesion","Lexical Resource","Reading Speed"], ans:3, exp:"IELTS Writing criteria: Task Achievement (T1) / Task Response (T2), Coherence & Cohesion, Lexical Resource, Grammatical Range & Accuracy." },
+      { id:"iw-3", q:"For Task 2 'Discuss both views + give your opinion', your structure should:", opts:["Argue only one side and ignore the other view","Discuss both views and state your own","Avoid giving a personal opinion in the essay","Write only about the advantages of the topic"], ans:1, exp:"Discussion essay: present both views fairly, then clearly state and support your opinion. Don't be vague about your position." },
+      { id:"iw-4", q:"Which phrase introduces a contrasting idea in Task 2?", opts:["Furthermore","However","In addition","Therefore"], ans:1, exp:"'However' and 'On the other hand' signal contrast/concession. 'Furthermore'/'In addition' add similar ideas. 'Therefore' shows result." },
+      { id:"iw-5", q:"In Task 1, if the graph shows data over time, you should primarily:", opts:["Compare all the data points equally","Describe the main trends and changes","List every single figure from the graph","Describe only the highest and lowest values"], ans:1, exp:"For time-series graphs: focus on TRENDS (increase, decrease, fluctuation, stability) and notable features — not every single data point." },
+      { id:"iw-6", q:"What is an 'overview' in IELTS Writing Task 1 and why is it essential?", opts:["A paraphrase of the question in the first sentence","A summary of the main features, without data","The conclusion paragraph with your own opinion","A detailed analysis of all the figures given"], ans:1, exp:"Overview = 2–3 sentence summary of the most striking features of the data, written without specific numbers. Essential for Band 6+. Often called the 'big picture'." },
+      { id:"iw-7", q:"What does 'task response' assess in IELTS Writing Task 2?", opts:["The variety of vocabulary used in the essay","How fully you answer the question","The complexity of your sentence structures","The accuracy of spelling and punctuation"], ans:1, exp:"Task Response: Have you answered ALL parts of the question? Is your position clear and consistent? Are ideas fully developed with examples?" },
+    ],
+    "Listening": [
+      { id:"il-1", q:"How many sections does IELTS Listening have?", opts:["2","3","4","5"], ans:2, exp:"4 sections, 40 questions, ~30 minutes audio + 10 min transfer time. Difficulty increases: social → academic." },
+      { id:"il-2", q:"Key strategy BEFORE each listening section:", opts:["Close your eyes and relax before it starts","Preview the questions","Write down everything you hear in the recording","Start answering before the recording begins"], ans:1, exp:"Preview questions before the audio starts. This activates schema and focuses your attention on the specific information needed." },
+      { id:"il-3", q:"In Section 3, who typically speaks?", opts:["One person speaking in an everyday social setting","Two people having a casual everyday conversation","2–4 people in an academic context","A lecturer giving a formal academic talk alone"], ans:2, exp:"Section 3 = academic discussion between 2–4 people (students, tutor). More complex vocabulary and multiple speakers." },
+      { id:"il-4", q:"If you miss an answer during the recording, you should:", opts:["Stop and ask for the recording to be rewound","Stop listening and go back to the missed question","Leave it and move on to the next one","Raise your hand and ask the examiner for help"], ans:2, exp:"Never dwell on a missed answer. Move on immediately — missing one answer may cause you to miss the next. Return if time allows at the end." },
+      { id:"il-5", q:"Word limit instructions like 'NO MORE THAN TWO WORDS' mean:", opts:["You can write 3 words if needed","You must write exactly two words","You must write two words or fewer","You can paraphrase freely"], ans:2, exp:"Strictly follow the word limit. 'No more than two words' = 1 or 2 words only. Three words = automatic wrong answer." },
+    ],
+    "Speaking": [
+      { id:"is-1", q:"How many parts does IELTS Speaking have?", opts:["2 parts","3 parts","4 parts","1 part"], ans:1, exp:"3 parts: Part 1 (interview, ~4–5 min), Part 2 (long turn with cue card, ~3–4 min), Part 3 (discussion, ~4–5 min). Total: 11–14 minutes." },
+      { id:"is-2", q:"In Part 2, you have 1 minute to prepare. Best use of this time:", opts:["Write a full essay to read out word for word","Note key points for each prompt","Memorise a speech prepared before the exam","Ask the examiner for a dictionary to check words"], ans:1, exp:"Use preparation time to jot bullet points covering each prompt. Helps you speak fluently for 1–2 minutes without long pauses." },
+      { id:"is-3", q:"Which criterion assesses how naturally and fluently you speak?", opts:["Lexical Resource","Fluency and Coherence","Grammatical Range and Accuracy","Pronunciation"], ans:1, exp:"Fluency & Coherence: how smoothly and logically you speak — avoiding long pauses, self-correction, and repetition while organizing ideas clearly." },
+      { id:"is-4", q:"To improve your Lexical Resource score, you should:", opts:["Speak very slowly so that you make no mistakes","Use a wide range of words accurately","Use only simple, safe words that you know well","Repeat the key words of the question often"], ans:1, exp:"Lexical Resource: range, accuracy, and flexibility of vocabulary use. Use topic-specific words, collocations, and paraphrase when needed." },
+      { id:"is-5", q:"In Part 3, the examiner asks abstract questions. The best response strategy:", opts:["Give short yes/no answers to save time","Answer, explain, then give an example","Repeat the question before you start answering","Always agree with the examiner's point of view"], ans:1, exp:"Part 3 responses: Answer + Explain + Example/Qualification. Show you can discuss complex ideas, express opinions, and speculate." },
+    ],
+  },
+  DELTA: {
+    "Module 1 — Background Knowledge": [
+      { id:"d1-1", q:"Which linguist is associated with 'Communicative Competence'?", opts:["Noam Chomsky","Dell Hymes","Stephen Krashen","Michael Lewis"], ans:1, exp:"Dell Hymes (1972) coined 'communicative competence' — the ability to use language appropriately in social contexts, extending Chomsky's purely linguistic competence." },
+      { id:"d1-2", q:"What is Krashen's 'Input Hypothesis'?", opts:["Acquisition happens through learning grammar rules","Comprehensible input just above current level (i+1)","Output practice is the key to acquisition","The L1 should be used widely in the classroom"], ans:1, exp:"Krashen (1982): language is acquired when learners receive comprehensible input at 'i+1' — just beyond current competence, in a low-anxiety environment." },
+      { id:"d1-3", q:"What does 'interlanguage' refer to?", opts:["A learner's native language","The learner's developing L2 system","A form of bilingual education programme","Switching between two languages in speech"], ans:1, exp:"Interlanguage (Selinker, 1972): the dynamic, rule-governed developing system of a learner — systematic but containing features of both L1 and L2, evolving over time." },
+      { id:"d1-4", q:"Which approach uses tasks as the primary unit of syllabus design?", opts:["Grammar-Translation Method","Task-Based Language Teaching","Audio-Lingual Method with drills","The Silent Way with coloured rods"], ans:1, exp:"TBLT (Ellis, 2003; Willis, 1996): meaningful tasks are the core unit. Learners focus on meaning and communication; language emerges from task completion." },
+      { id:"d1-5", q:"What is 'fossilization' in SLA?", opts:["A teaching method popular in the 1960s","Permanent non-target-like features","A test format used in proficiency exams","Very rapid progress in a second language"], ans:1, exp:"Fossilization (Selinker, 1972): certain non-native forms become permanently fixed in the interlanguage, resistant to further development even with instruction." },
+      { id:"d1-6", q:"What is the 'lexical approach' associated with?", opts:["Audiolingual drills and habit formation","Michael Lewis — teaching chunks","Communicative activities without any language focus","Silent reading of authentic texts at home"], ans:1, exp:"Michael Lewis (1993): language consists of multi-word units (chunks, collocations, fixed expressions). Teaching these is more effective than focusing on isolated grammar rules." },
+      { id:"d1-7", q:"'L1 interference' (negative transfer) means:", opts:["Using the L1 in the classroom","Applying L1 rules to the L2 wrongly","Overusing the target language in class","The L1 helping the learner acquire the L2"], ans:1, exp:"Negative transfer: L1 grammar or phonological patterns are incorrectly applied to L2. E.g., Spanish speaker: 'I am agree' (calque of 'estoy de acuerdo')." },
+      { id:"d1-8", q:"Vygotsky's 'Zone of Proximal Development' (ZPD) in language learning:", opts:["The learner's current independent level","What a learner can do with support","The teacher's own level of competence","The set of advanced grammar structures"], ans:1, exp:"ZPD: distance between current level and potential level with guidance. Effective teaching operates within this zone — scaffolding stretches learners." },
+      { id:"d1-9", q:"What is 'affective filter' (Krashen)?", opts:["A grammar filter that improves accuracy","Anxiety or low motivation blocking input","A strategy for listening comprehension","A principle of test design and validity"], ans:1, exp:"Krashen's Affective Filter Hypothesis: high anxiety, low motivation, and low self-esteem create a 'filter' that prevents comprehensible input from being acquired." },
+      { id:"d1-10", q:"What is 'overgeneralization' in L2 acquisition?", opts:["Using too much new vocabulary at once","Applying a rule too widely ('goed')","Using the patterns of the first language","Ignoring grammar rules when speaking fast"], ans:1, exp:"Overgeneralization: learner applies a rule beyond its valid scope. E.g., regular past -ed applied to irregular verbs: 'goed', 'eated', 'buyed'. A natural developmental error." },
+    ],
+    "Module 2 — Professional Practice": [
+      { id:"d2-1", q:"In DELTA Module 2, what is 'Experimental Practice' (EP)?", opts:["A written exam on teaching methodology","Trying a new approach and reflecting on it","Observing another teacher's lesson","A language analysis task in writing"], ans:1, exp:"EP in DELTA M2: plan, teach, and critically reflect on a lesson using an unfamiliar approach — demonstrating willingness to experiment and self-evaluate." },
+      { id:"d2-2", q:"What is 'critical reflection' in DELTA?", opts:["Criticising other teachers' lessons","Analysing your own teaching to improve it","Writing detailed plans for every lesson","Observing students while they work in groups"], ans:1, exp:"Critical reflection: beyond description — analysing reasons behind outcomes, challenging assumptions, and planning informed changes to practice. Core DELTA skill." },
+      { id:"d2-3", q:"What is 'needs analysis' in course design?", opts:["Analysing the coursebook used on a course","Finding out what learners need and why","Testing the learners' grammar knowledge","Organising classroom furniture for group work"], ans:1, exp:"Needs analysis: investigates target needs (what learners need to do with language in real life) and learning needs (what they need in class to get there)." },
+      { id:"d2-4", q:"What is 'lesson observation' used for in DELTA?", opts:["Testing the students in the observed class","Professional development through analysis","Entertainment and a break from teaching","Assessing the school for official inspection"], ans:1, exp:"Observation in DELTA: a structured professional development tool. You observe with a focus, take notes, and reflect critically — not just watch." },
+      { id:"d2-5", q:"What does 'syllabus design' involve?", opts:["Choosing a coursebook for the course","Selecting and sequencing course content","Writing individual lesson plans only","Testing learners at the end of the course"], ans:1, exp:"Syllabus design: principled decisions about WHAT to teach (content), in WHAT ORDER (sequencing), and WHY (rationale). Informed by needs analysis and learning theory." },
+    ],
+  },
+};
+
+// ===========================================================
+//  ОФИЦИАЛЬНЫЕ МАТЕРИАЛЫ
+// ===========================================================
+const MATERIALS = {
+  TKT: {
+    desc: "The Teaching Knowledge Test assesses knowledge of language, language use, and the background to language teaching and learning.",
+    links: [
+      { title: "TKT Handbook (Modules 1–3)", url: "https://www.cambridgeenglish.org/images/tkt-handbook-modules-1-3.pdf", type: "PDF" },
+      { title: "TKT Sample Paper — Module 1", url: "https://www.cambridgeenglish.org/images/tkt-module-1-sample-paper.pdf", type: "PDF" },
+      { title: "TKT Preparation — Official Cambridge Page", url: "https://www.cambridgeenglish.org/teaching-english/teaching-qualifications/tkt/prepare-for-tkt/", type: "WEB" },
+      { title: "TKT Glossary of English Language Teaching Terminology", url: "https://www.cambridgeenglish.org/images/tkt-glossary-english-language-teaching.pdf", type: "PDF" },
+    ]
+  },
+  CELTA: {
+    desc: "The Certificate in English Language Teaching to Adults — the world's most widely taken initial qualification for English language teachers.",
+    links: [
+      { title: "CELTA Syllabus & Assessment Guidelines", url: "https://www.cambridgeenglish.org/images/21816-celta-syllabus.pdf", type: "PDF" },
+      { title: "About the CELTA Course — Cambridge", url: "https://www.cambridgeenglish.org/teaching-english/teaching-qualifications/celta/about-the-celta-course/", type: "WEB" },
+      { title: "CELTA Input Sessions — What to Expect", url: "https://www.cambridgeenglish.org/teaching-english/teaching-qualifications/celta/about-the-celta-course/celta-course-components/", type: "WEB" },
+    ]
+  },
+  IELTS: {
+    desc: "The International English Language Testing System — measures English language proficiency for academic, professional, and immigration purposes.",
+    links: [
+      { title: "Official IELTS Sample Test Questions", url: "https://ielts.org/take-a-test/preparation-resources/sample-test-questions", type: "WEB" },
+      { title: "IELTS Writing Band Descriptors (Task 1 & 2)", url: "https://www.ielts.org/globalassets/dc/writing-band-descriptors-17-mar-2022.pdf", type: "PDF" },
+      { title: "IELTS Speaking Band Descriptors", url: "https://www.ielts.org/globalassets/dc/speaking-band-descriptors.pdf", type: "PDF" },
+      { title: "Cambridge IELTS Preparation — Official", url: "https://www.cambridgeenglish.org/exams-and-tests/ielts/preparation/", type: "WEB" },
+      { title: "IELTS Academic Reading Sample (Cambridge)", url: "https://www.cambridgeenglish.org/Images/174777-ielts-academic-reading-sample-task-identifying-information.pdf", type: "PDF" },
+    ]
+  },
+  DELTA: {
+    desc: "The Diploma in English Language Teaching to Adults — an advanced internationally recognised qualification for experienced English language teachers.",
+    links: [
+      { title: "DELTA Handbook for Tutors and Candidates", url: "https://www.cambridgeenglish.org/Images/181161-delta-handbook-for-tutors-and-candidates-document.pdf", type: "PDF" },
+      { title: "DELTA Syllabus", url: "https://www.cambridgeenglish.org/Images/22096-delta-syllabus.pdf", type: "PDF" },
+      { title: "About DELTA — Cambridge Official", url: "https://www.cambridgeenglish.org/teaching-english/teaching-qualifications/delta/", type: "WEB" },
+    ]
+  }
+};
+
+// ===========================================================
+//  LISTENING VIDEOS
+// ===========================================================
+const LISTENING = [
+  { title: "IELTS Listening — Full Practice Test with Answers", section: "Full Test (Sections 1–4)", level: "All Bands", ytId: "FGFhIqHXFIA", tip: "Pause after each section to check your answers before continuing." },
+  { title: "IELTS Listening Section 1 — Social Conversation Practice", section: "Section 1", level: "Band 5–6", ytId: "X9sq-zTMQ4o", tip: "Section 1 is usually about booking, appointments, or everyday situations. Focus on names, numbers, and dates." },
+  { title: "IELTS Listening — Academic Lecture (Section 4)", section: "Section 4", level: "Band 6–8", ytId: "O0pRvOI-KsY", tip: "Section 4 is the hardest — one speaker, academic topic, no pause. Predict topic from questions first." },
+  { title: "IELTS Listening Tips & Strategies — British Council", section: "Strategy Guide", level: "All Bands", ytId: "xnHeLlkQNUg", tip: "Watch this before taking practice tests to build effective listening habits." },
+];
+
+// ===========================================================
+//  CERT INFO
+// ===========================================================
+const CERTS = {
+  TKT:   { emoji: "📘", color: "#4a9eff", label: "Teaching Knowledge Test", tagline: "Cambridge knowledge-based certification for EFL/ESL teachers" },
+  CELTA: { emoji: "📗", color: "#4caf88", label: "Certificate in English Language Teaching", tagline: "Initial teaching qualification — practical focus" },
+  IELTS: { emoji: "📕", color: "#ff6b6b", label: "International English Language Testing System", tagline: "All four skills: Reading, Writing, Listening, Speaking" },
+  DELTA: { emoji: "📙", color: "#c084fc", label: "Diploma in English Language Teaching", tagline: "Advanced diploma for experienced EFL teachers" },
+};
+
+// TEACHER_PASSWORD убран — роль теперь хранится в Supabase (profiles.role),
+// а не в виде открытого пароля в коде.
+
+// ===========================================================
+//  STYLES
+// ===========================================================
+const CSS = `
+@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap');
+*{box-sizing:border-box;margin:0;padding:0}
+html{overflow-x:hidden}
+body{background:#0b1622;color:#e8dfd0;font-family:'Plus Jakarta Sans',sans-serif;min-height:100vh;overflow-x:hidden}
+.wrap{max-width:880px;margin:0 auto;padding:0 18px 60px;overflow-x:hidden;width:100%}
+h1,h2,h3,h4{font-family:'Lora',serif}
+.hdr{display:flex;align-items:center;justify-content:space-between;padding:18px 0 14px;border-bottom:1px solid rgba(197,155,68,.2);margin-bottom:22px}
+.logo{font-family:'Lora',serif;font-size:26px;font-weight:600;color:#c59b44;letter-spacing:.3px}
+.logo span{color:#e8dfd0}
+.nav{display:flex;gap:4px;margin-bottom:26px;overflow-x:auto;scrollbar-width:none;padding-bottom:2px;-webkit-mask-image:linear-gradient(to right,transparent 0,#000 16px,#000 calc(100% - 16px),transparent 100%);mask-image:linear-gradient(to right,transparent 0,#000 16px,#000 calc(100% - 16px),transparent 100%)}
+.nb{padding:8px 14px;border:1px solid rgba(197,155,68,.2);background:transparent;color:#8a7d6d;border-radius:7px;cursor:pointer;font-size:13px;font-family:'Plus Jakarta Sans',sans-serif;white-space:nowrap;transition:.15s}
+.nb:hover{border-color:#c59b44;color:#c59b44}
+.nb.on{background:#c59b44;color:#0b1622;border-color:#c59b44;font-weight:600}
+.card{background:#12253b;border:1px solid rgba(197,155,68,.15);border-radius:12px;padding:22px}
+.card h3{font-size:19px;color:#c59b44;margin-bottom:8px}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.g3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px}
+@media(max-width:600px){.g2,.g3{grid-template-columns:1fr}}
+.cbtn{width:100%;text-align:left;padding:18px;background:#12253b;border:2px solid rgba(197,155,68,.2);border-radius:12px;cursor:pointer;transition:.2s;color:#e8dfd0}
+.cbtn:hover{border-color:#c59b44;transform:translateY(-2px)}
+.cbtn.on{border-color:#c59b44;background:#172f4a}
+.cbtn h3{font-family:'Lora',serif;font-size:20px;color:#c59b44;margin:6px 0 4px}
+.cbtn p{font-size:12.5px;color:#8a7d6d}
+.btn{padding:10px 20px;background:#c59b44;color:#0b1622;border:none;border-radius:8px;cursor:pointer;font-weight:600;font-family:'Plus Jakarta Sans',sans-serif;font-size:13.5px;transition:opacity .15s;white-space:nowrap}
+.btn:hover{opacity:.85}
+.btn:disabled{opacity:.38;cursor:not-allowed}
+.btn-o{background:transparent;border:1px solid #c59b44;color:#c59b44}
+.btn-sm{padding:6px 13px;font-size:12.5px}
+.btn-red{background:#c0392b;color:#fff}
+.qcard{background:#12253b;border:1px solid rgba(197,155,68,.15);border-radius:12px;padding:26px}
+.qnum{font-size:11.5px;color:#8a7d6d;text-transform:uppercase;letter-spacing:.9px;margin-bottom:7px}
+.qtext{font-size:16.5px;line-height:1.65;color:#e8dfd0;margin-bottom:18px}
+.qpass{background:#0b1622;border-left:3px solid #c59b44;padding:12px 16px;border-radius:4px;font-size:13.5px;line-height:1.8;color:#c0b8a8;margin-bottom:16px;font-style:italic}
+.opt{display:block;width:100%;text-align:left;padding:12px 16px;margin-bottom:8px;background:#0b1622;border:1px solid rgba(255,255,255,.09);border-radius:8px;color:#e8dfd0;font-size:14.5px;cursor:pointer;transition:.15s;font-family:'Plus Jakarta Sans',sans-serif}
+.opt:hover:not(:disabled){border-color:#c59b44;background:#12253b}
+.opt.ok{background:rgba(76,175,136,.14);border-color:#4caf88;color:#4caf88}
+.opt.ng{background:rgba(192,57,43,.14);border-color:#c0392b}
+.opt.sel{background:rgba(197,155,68,.14);border-color:#c59b44;color:#c59b44}
+.exp{background:rgba(197,155,68,.08);border:1px solid rgba(197,155,68,.28);border-radius:8px;padding:13px 17px;margin-top:14px;font-size:13.5px;line-height:1.7;color:#c59b44}
+.pbar{height:4px;background:rgba(255,255,255,.08);border-radius:2px;margin-bottom:22px}
+.pfill{height:100%;background:#c59b44;border-radius:2px;transition:width .3s}
+.mat{display:flex;justify-content:space-between;align-items:center;padding:13px 17px;background:#0b1622;border:1px solid rgba(255,255,255,.06);border-radius:8px;margin-bottom:7px}
+.mat a{color:#c59b44;text-decoration:none;font-size:14px}
+.mat a:hover{text-decoration:underline}
+.badge{padding:3px 9px;border-radius:20px;font-size:11px;font-weight:700;text-transform:uppercase}
+.b-pdf{background:rgba(231,76,60,.18);color:#e74c3c}
+.b-web{background:rgba(52,152,219,.18);color:#5dade2}
+.b-my{background:rgba(197,155,68,.18);color:#c59b44}
+.tabs{display:flex;gap:2px;margin-bottom:18px;border-bottom:1px solid rgba(255,255,255,.07);padding-bottom:0;-webkit-mask-image:linear-gradient(to right,transparent 0,#000 14px,#000 calc(100% - 14px),transparent 100%);mask-image:linear-gradient(to right,transparent 0,#000 14px,#000 calc(100% - 14px),transparent 100%)}
+.tab{padding:9px 18px;background:transparent;border:none;color:#8a7d6d;cursor:pointer;font-size:13.5px;font-family:'Plus Jakarta Sans',sans-serif;border-bottom:2px solid transparent;transition:.15s}
+.tab:hover{color:#e8dfd0}
+.tab.on{color:#c59b44;border-bottom-color:#c59b44}
+.chbox{height:380px;overflow-y:auto;background:#0b1622;border:1px solid rgba(255,255,255,.07);border-radius:10px;padding:16px;margin-bottom:12px;scroll-behavior:smooth}
+.msg{margin-bottom:12px;display:flex;flex-direction:column}
+.msg.u{align-items:flex-end}
+.msg.a{align-items:flex-start}
+.bub{max-width:82%;padding:11px 15px;border-radius:12px;font-size:14px;line-height:1.65;white-space:pre-wrap}
+.msg.u .bub{background:#1a3a5a;color:#e8dfd0}
+.msg.a .bub{background:#172f4a;border:1px solid rgba(197,155,68,.2);color:#e8dfd0}
+.chin{display:flex;gap:10px}
+.chinput{flex:1;padding:11px 15px;background:#12253b;border:1px solid rgba(197,155,68,.22);border-radius:8px;color:#e8dfd0;font-size:13.5px;font-family:'Plus Jakarta Sans',sans-serif;outline:none}
+.chinput::placeholder{color:#4a5560}
+.chinput:focus{border-color:#c59b44}
+input[type=text],input[type=password],input[type=email],textarea,select{background:#12253b;border:1px solid rgba(197,155,68,.22);border-radius:8px;color:#e8dfd0;padding:10px 13px;font-size:13.5px;font-family:'Plus Jakarta Sans',sans-serif;outline:none;width:100%}
+input:focus,textarea:focus,select:focus{border-color:#c59b44}
+select option{background:#0b1622}
+.sdiv{text-align:center;padding:28px;background:#12253b;border:1px solid rgba(197,155,68,.2);border-radius:12px;margin-bottom:18px}
+.sbig{font-family:'Lora',serif;font-size:68px;color:#c59b44;line-height:1}
+.ytcard{background:#12253b;border:1px solid rgba(197,155,68,.14);border-radius:12px;overflow:hidden;margin-bottom:16px}
+.ytinfo{padding:15px 19px}
+.yttitle{font-family:'Lora',serif;font-size:17.5px;color:#c59b44;margin-bottom:4px}
+.ytdesc{font-size:13px;color:#8a7d6d;line-height:1.5;margin-bottom:8px}
+.ytml{display:flex;gap:10px;flex-wrap:wrap}
+.ytag{font-size:11.5px;background:rgba(197,155,68,.1);color:#c59b44;padding:3px 11px;border-radius:20px}
+iframe{display:block;width:100%;aspect-ratio:16/9;border:none}
+table{width:100%;border-collapse:collapse;font-size:13px}
+th{text-align:left;padding:10px 13px;border-bottom:2px solid rgba(197,155,68,.28);color:#c59b44;font-weight:600}
+td{padding:10px 13px;border-bottom:1px solid rgba(255,255,255,.05);color:#c0b8a8}
+tr:hover td{background:rgba(197,155,68,.04)}
+.st{font-family:'Lora',serif;font-size:25px;color:#e8dfd0;margin-bottom:6px}
+.sb{font-size:13.5px;color:#8a7d6d;margin-bottom:22px}
+.div{height:1px;background:rgba(255,255,255,.06);margin:18px 0}
+.empty{text-align:center;padding:38px;color:#4a5560;font-size:14.5px}
+.tip{padding:13px 17px;background:rgba(197,155,68,.06);border-radius:8px;border:1px solid rgba(197,155,68,.15);font-size:13px;color:#8a7d6d;margin-top:12px}
+.tip b{color:#c59b44}
+.row{display:flex;gap:10px;align-items:center}
+.ml6{margin-left:6px}
+.skillsWrap{display:flex;gap:20px;align-items:flex-start}
+.skillsNav{width:190px;flex-shrink:0;display:flex;flex-direction:column;gap:4px}
+.skillsNavBtn{display:block;width:100%;text-align:left;padding:10px 14px;border:1px solid rgba(197,155,68,.15);background:#12253b;color:#8a7d6d;border-radius:8px;cursor:pointer;font-size:13px;font-family:'Plus Jakarta Sans',sans-serif;transition:.15s}
+.skillsNavBtn:hover{border-color:#c59b44;color:#c59b44}
+.skillsNavBtn.on{background:#c59b44;color:#0b1622;border-color:#c59b44;font-weight:600}
+.skillsContent{flex:1;min-width:0}
+@media(max-width:700px){.skillsWrap{flex-direction:column}.skillsContent{width:100%}.skillsNav{width:100%;flex-direction:row;overflow-x:auto;padding-bottom:4px;-webkit-mask-image:linear-gradient(to right,transparent 0,#000 14px,#000 calc(100% - 14px),transparent 100%);mask-image:linear-gradient(to right,transparent 0,#000 14px,#000 calc(100% - 14px),transparent 100%)}.skillsNavBtn{white-space:nowrap;width:auto}}
+.demoSent{transition:.15s}
+.demoSent.read{background:rgba(197,155,68,.16);color:#e8dfd0;padding:2px 3px;border-radius:3px}
+.demoSent.skip{color:#4a5560;opacity:.55}
+`;
+
+// ===========================================================
+//  APP
+// ===========================================================
+export default function App() {
+  const [page, setPage]           = useState("home");
+  const [cert, setCert]           = useState("TKT");
+  const [routeExam, setRouteExam] = useState(null); // какой маршрут открыть сразу (с карточки на главной)
+  const [test, setTest]           = useState(null);
+  const [session, setSession]     = useState(null);
+  const [profile, setProfile]     = useState(null);
+  const [authLoading, setAuthLoading] = useState(true);
+  const [myFiles, setMyFiles]     = useState(() => { try { return JSON.parse(localStorage.getItem("cw_files") || "[]"); } catch { return []; } });
+  const [newF, setNewF]           = useState({ title: "", url: "", cert: "TKT" });
+  const [aiMsgs, setAiMsgs]       = useState([{ r: "a", t: T("Привет! 👋 Я твой персональный AI-тьютор по TKT, CELTA, IELTS и DELTA.\n\nЯ знаю твои результаты тестов и подстроюсь под тебя. Напиши «анализ» — и я разберу твои слабые места и составлю план подготовки. Или просто задай любой вопрос — пиши как тебе удобно!") }]);
+  const [aiIn, setAiIn]           = useState("");
+  const [aiLoad, setAiLoad]       = useState(false);
+  const [geminiKey, setGeminiKey] = useState(() => { try { return localStorage.getItem("cw_gkey") || ""; } catch { return ""; } });
+  const [keyInput, setKeyInput]   = useState("");
+  const [matTab, setMatTab]       = useState("official");
+  const [results, setResults]     = useState([]);
+  const [openRow, setOpenRow]     = useState(null);
+  const [teacherTab, setTeacherTab] = useState("progress");
+  const [allChats, setAllChats]   = useState([]); // все сообщения всех студентов (для учителя)
+  const [chatProfiles, setChatProfiles] = useState({}); // { user_id: { full_name, chat_cleared_at } }
+  const [selectedChatStudent, setSelectedChatStudent] = useState(null);
+  const chatRef = useRef(null);
+  const name = profile?.full_name || "";
+
+  // -- Авторизация --
+  useEffect(() => {
+    supabase.auth.getSession().then(({ data }) => { setSession(data.session); setAuthLoading(false); });
+    const { data: sub } = supabase.auth.onAuthStateChange((_event, s) => setSession(s));
+    return () => sub.subscription.unsubscribe();
+  }, []);
+
+  // -- Профиль после входа --
+  useEffect(() => {
+    if (!session) { setProfile(null); return; }
+    supabase.from("profiles").select("*").eq("id", session.user.id).single()
+      .then(({ data, error }) => { if (!error) setProfile(data); });
+  }, [session]);
+
+  // -- Прогресс из БД: свой (student) или всех (teacher) --
+  useEffect(() => {
+    if (!profile) return;
+    // Уроки показываются отдельной группой «Уроки», а не под TKT/CELTA/DELTA (в базе там хранится уровень AI-практики)
+    const mapRow = r => ({
+      cert: (r.module || "").startsWith("Урок ") ? "Уроки" : r.cert, mod: r.module, score: r.score, total: r.total, pct: r.pct,
+      date: r.created_at, uid: r.user_id, student: r.profiles?.full_name || name || T("Студент"), details: r.details,
+    });
+    if (profile.role === "teacher") {
+      // Учитель видит все попытки: грузим страницами по 1000, пока не закончатся
+      (async () => {
+        const all = []; const PAGE = 1000;
+        for (let from = 0; from < 30000; from += PAGE) {
+          const { data, error } = await supabase.from("progress").select("*, profiles(full_name, email)")
+            .order("created_at", { ascending: false }).range(from, from + PAGE - 1);
+          if (error) { if (from === 0) return; break; }
+          all.push(...data);
+          if (data.length < PAGE) break;
+        }
+        setResults(all.map(mapRow));
+      })();
+    } else {
+      supabase.from("progress").select("*").eq("user_id", profile.id).order("created_at", { ascending: false }).limit(60)
+        .then(({ data, error }) => { if (!error) setResults(data.map(mapRow)); });
+    }
+  }, [profile]);
+
+  // -- История чата с AI-тьютором --
+  useEffect(() => {
+    if (!session || !profile) return;
+    if (profile.role === "teacher") {
+      // Учитель: загружаем ВСЮ переписку всех студентов + профили отдельным запросом
+      // (chat_messages.user_id ссылается на auth.users, поэтому вложенный select на profiles
+      //  через связь не работает — собираем вручную двумя запросами)
+      // Переписка грузится страницами по 1000: раньше бралось только 2000 самых СТАРЫХ сообщений,
+      // и после этого новые диалоги студентов в панель учителя уже не попадали
+      const loadAllMsgs = async () => {
+        const all = []; const PAGE = 1000;
+        for (let from = 0; from < 50000; from += PAGE) {
+          const { data, error } = await supabase.from("chat_messages").select("*")
+            .order("created_at", { ascending: true }).range(from, from + PAGE - 1);
+          if (error) return from === 0 ? { error, data: null } : { error: null, data: all };
+          all.push(...data);
+          if (data.length < PAGE) break;
+        }
+        return { error: null, data: all };
+      };
+      Promise.all([
+        loadAllMsgs(),
+        supabase.from("profiles").select("id, full_name, chat_cleared_at"),
+      ]).then(([msgsRes, profRes]) => {
+        if (msgsRes.error || !msgsRes.data) return;
+        setAllChats(msgsRes.data);
+        const pMap = {};
+        (profRes.data || []).forEach(p => { pMap[p.id] = p; });
+        setChatProfiles(pMap);
+      });
+      return;
+    }
+    // Студент: видит только своё, и только после последней самостоятельной "очистки"
+    supabase.from("chat_messages").select("*").eq("user_id", session.user.id).order("created_at", { ascending: true }).limit(200)
+      .then(({ data, error }) => {
+        if (error || !data) return;
+        const cutoff = profile.chat_cleared_at ? new Date(profile.chat_cleared_at) : null;
+        const visible = cutoff ? data.filter(m => new Date(m.created_at) > cutoff) : data;
+        if (visible.length === 0) return; // нет истории — остаётся приветственное сообщение
+        setAiMsgs(visible.map(m => ({ r: m.role, t: m.text })));
+      });
+  }, [session, profile]);
+
+  const saveChatMsg = async (role, text) => {
+    if (!session) return;
+    await supabase.from("chat_messages").insert({ user_id: session.user.id, role, text });
+  };
+
+  const clearChatHistory = async () => {
+    if (!session) return;
+    const now = new Date().toISOString();
+    await supabase.from("profiles").update({ chat_cleared_at: now }).eq("id", session.user.id);
+    setProfile(p => ({ ...p, chat_cleared_at: now })); // данные в базе остаются — скрывается только у студента в интерфейсе
+    setAiMsgs([{ r: "a", t: T("Привет! 👋 Я твой персональный AI-тьютор по TKT, CELTA, IELTS и DELTA.\n\nЯ знаю твои результаты тестов и подстроюсь под тебя. Напиши «анализ» — и я разберу твои слабые места и составлю план подготовки. Или просто задай любой вопрос — пиши как тебе удобно!") }]);
+  };
+
+  const saveProgress = async (r) => {
+    setResults(p => [{ ...r, cert: (r.mod || "").startsWith("Урок ") ? "Уроки" : r.cert }, ...p]); // мгновенный отклик в UI
+    if (!session) return { error: null };
+    // Ошибку возвращаем, а не выбрасываем: Уроки по ней решают, хранить ли черновик на телефоне
+    const { error } = await supabase.from("progress").insert({
+      user_id: session.user.id, cert: r.cert, module: r.mod, score: r.score, total: r.total, pct: r.pct,
+      details: r.details || null,
+    });
+    return { error };
+  };
+
+  useEffect(() => { try { localStorage.setItem("cw_files", JSON.stringify(myFiles)); } catch {} }, [myFiles]);
+  useEffect(() => { try { localStorage.setItem("cw_gkey", geminiKey); } catch {} }, [geminiKey]);
+  useEffect(() => { if (chatRef.current) chatRef.current.scrollTop = chatRef.current.scrollHeight; }, [aiMsgs]);
+
+  // -- Аналитика студента --
+  const getAnalytics = () => {
+    if (results.length === 0) return null;
+    const byCert = {};
+    const byMod  = {};
+    results.forEach(r => {
+      if (!byCert[r.cert]) byCert[r.cert] = { total: 0, sum: 0 };
+      byCert[r.cert].total++;
+      byCert[r.cert].sum += r.pct;
+      const key = `${r.cert}: ${r.mod}`;
+      if (!byMod[key]) byMod[key] = { total: 0, sum: 0, cert: r.cert, mod: r.mod };
+      byMod[key].total++;
+      byMod[key].sum += r.pct;
+    });
+    const certAvg = Object.entries(byCert).map(([c, v]) => ({ cert: c, avg: Math.round(v.sum / v.total) }));
+    const modAvg  = Object.entries(byMod).map(([k, v]) => ({ key: k, cert: v.cert, mod: v.mod, avg: Math.round(v.sum / v.total), attempts: v.total }));
+    const weak    = modAvg.filter(m => m.avg < 70).sort((a, b) => a.avg - b.avg);
+    const strong  = modAvg.filter(m => m.avg >= 80).sort((a, b) => b.avg - a.avg);
+    return { certAvg, modAvg, weak, strong, total: results.length };
+  };
+
+  const buildSystemPrompt = () => {
+    const an = getAnalytics();
+    const statsText = an
+      ? "РЕЗУЛЬТАТЫ СТУДЕНТА:\n" +
+        an.certAvg.map(c => "- " + c.cert + ": средний балл " + c.avg + "%").join("\n") + "\n" +
+        (an.weak.length ? ("СЛАБЫЕ ТЕМЫ: " + an.weak.map(w => w.key + " (" + w.avg + "%)").join(", ") + "\n") : "") +
+        (an.strong.length ? ("СИЛЬНЫЕ ТЕМЫ: " + an.strong.map(s => s.key + " (" + s.avg + "%)").join(", ") + "\n") : "") +
+        ("Всего попыток: " + an.total)
+      : "Студент ещё не проходил тесты.";
+
+    return `You are a Socratic AI mentor on the CertifyWise platform, helping pre-service EFL teachers prepare for TKT, CELTA, IELTS, and DELTA certification.
+
+STUDENT: ${name || "Student"}
+${statsText}
+
+YOUR ABSOLUTE CORE RULE:
+Never give direct explanations, definitions, or ready-made answers to content questions. Always respond with a guiding question that activates the student's own thinking. The student must construct the understanding — you only guide the process.
+
+YOUR 3-LEVEL QUESTIONING ARCHITECTURE:
+
+LEVEL 1 — Initial Reflection
+Use when: student asks "what is X", gives a surface response with no theoretical grounding, or shows no prior reasoning.
+Goal: Activate prior knowledge, surface assumptions.
+Example questions:
+- "Before we explore that — what do you already know about how learners develop communicative ability in a second language?"
+- "Think about a language class you have attended or observed. What were the students actually doing — and what was the teacher's role?"
+- "What is your intuition about why some learners become fluent and others don't, even after years of study?"
+
+LEVEL 2 — Conceptual Analysis
+Use when: student gives a relevant personal observation or partial idea, but hasn't connected it to pedagogical principles or theory.
+Goal: Link personal knowledge to theory and classroom practice.
+Example questions:
+- "How would you turn that idea into a concrete classroom activity? What would learners actually be doing, step by step?"
+- "What does that tell us about the role of the teacher in this approach — and how is that different from a more traditional lesson?"
+- "How does what you described compare to a grammar-translation approach? What is the fundamental difference in learning goal?"
+
+LEVEL 3 — Pedagogical Justification
+Use when: student demonstrates conceptual understanding but hasn't justified reasoning with theory or evidence.
+Goal: Demand principled, evidence-based reasoning — the kind TKT and CELTA examiners require.
+Example questions:
+- "Why would you choose this approach over a more structural method? What does the research say about communicative tasks and language acquisition?"
+- "How would you justify this decision to a TKT examiner who wants theoretical grounding?"
+- "What are the potential limitations of this approach, and how would you address them in your lesson design?"
+
+HOW TO SELECT THE LEVEL:
+- No theory, no reflection, basic factual question → Level 1
+- Personal observation present, no theoretical link → Level 2
+- Theory referenced, understanding developing → Level 3
+- Full principled justification → Affirm briefly, then extend with a deeper challenge
+
+WHAT YOU MUST NEVER DO:
+- Never define a concept directly (never say "CLT is...", "scaffolding means...")
+- Never provide a ready-made classroom scenario before the student has reflected — this does the thinking for them
+- Never say "Great question!", "Excellent!", or use hollow praise
+- Never give the student a choice between two options you constructed — this is a disguised answer
+- Never advance to a deeper level without sufficient reasoning depth shown
+- Never write more than 3 sentences before the guiding question
+
+LANGUAGE: Write in the same language the student uses. Russian → Russian. English → English. Mixed → adapt. Do not comment on their language choice.
+
+TONE: Warm but intellectually demanding. You believe the student has the capacity to reason — your job is to prove it to them.
+
+FORMAT: One guiding question per response. Maximum 3 sentences before the question. No bullet points, no lists.
+
+EXPERTISE DOMAINS:
+TKT (Modules 1-3): language systems, lesson planning, assessment, error correction, teaching approaches, CCQ, ICQ, drilling, eliciting, scaffolding, differentiation, realia, staging
+CELTA: form/meaning/use, concept checking, lesson aims, anticipated problems, TTT vs STT, monitoring, delayed error correction, rapport
+IELTS: all 4 skills, band descriptors, task response, coherence & cohesion, lexical resource, T/F/NG, overview writing
+DELTA: SLA (Krashen, Selinker, Vygotsky, Ellis, Lewis), methodology (CLT, TBL, PPP, Lexical Approach), language analysis, Module 2 professional practice`;
+  };
+
+  // -- Gemini API --
+  // preset — готовый текст (кнопка «Разобрать с AI»); без него берётся текст из поля ввода
+  const sendAi = async (preset) => {
+    const fromPreset = typeof preset === "string";
+    const msg = (fromPreset ? preset : aiIn).trim();
+    if (!msg || aiLoad) return;
+    if (!fromPreset) setAiIn("");
+    setAiMsgs(p => [...p, { r: "u", t: msg }]);
+    saveChatMsg("u", msg);
+    setAiLoad(true);
+    const key = geminiKey || import.meta.env?.VITE_GEMINI_KEY || "";
+    if (!key) {
+      setAiMsgs(p => [...p, { r: "a", t: T("⚙️ Нужен Gemini API ключ. Нажми «Настроить API» выше.") }]);
+      setAiLoad(false);
+      return;
+    }
+    try {
+      const history = aiMsgs.filter(m => m.r === "u" || m.r === "a").map(m => ({
+        role: m.r === "a" ? "model" : "user",
+        parts: [{ text: m.t }]
+      }));
+      const res = await fetchGemini(
+        `https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash:generateContent?key=${key}`,
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            system_instruction: { parts: [{ text: buildSystemPrompt() }] },
+            contents: [...history, { role: "user", parts: [{ text: msg }] }],
+            generationConfig: { maxOutputTokens: 1200, temperature: 0.7 }
+          })
+        }
+      );
+      const data = await res.json();
+      if (data.error) throw new Error(data.error.message);
+      const reply = data.candidates?.[0]?.content?.parts?.[0]?.text || T("Не получил ответ, попробуй ещё раз.");
+      setAiMsgs(p => [...p, { r: "a", t: reply }]);
+      saveChatMsg("a", reply);
+    } catch(e) {
+      const errText = TT("Ошибка: {0}", e.message || T("проверь API ключ и интернет"));
+      setAiMsgs(p => [...p, { r: "a", t: errText }]);
+      saveChatMsg("a", errText);
+    }
+    setAiLoad(false);
+  };
+
+  // Кнопка «Разобрать с AI» под неверным ответом: открывает чат и отправляет разбор этой ошибки
+  const askAiAbout = (d) => {
+    const msg = [
+      TT("Помоги разобрать мою ошибку ({0}, запись «{1}»).", d.section, d.source),
+      TT("Вопрос: {0}", d.question),
+      TT("Мой ответ: {0}", d.userAnswer === undefined || d.userAnswer === "" ? T("не ответил(а)") : d.userAnswer),
+      TT("Правильный ответ: {0}", d.correctAnswer),
+      d.hint ? TT("Что звучит в записи: {0}", d.hint) : "",
+      T("Не объясняй сразу — задавай мне наводящие вопросы, чтобы я сам(а) нашёл(ла), в чём ловушка."),
+    ].filter(Boolean).join("\n");
+    setPage("chat");
+    window.scrollTo({ top: 0 });
+    sendAi(msg);
+  };
+
+  // Разбор письменного или устного ответа в чате (Writing, Speaking, CELTA, DELTA)
+  const askAiText = (msg) => {
+    setPage("chat");
+    window.scrollTo({ top: 0 });
+    sendAi(msg);
+  };
+
+  const addFile = () => {
+    if (!newF.title.trim() || !newF.url.trim()) return;
+    setMyFiles(p => [...p, { ...newF, id: Date.now() }]);
+    setNewF({ title: "", url: "", cert });
+  };
+
+
+  // ── Test helpers ──
+  const startTest = (c, mod) => {
+    // варианты ответа перемешиваются при каждом прохождении, чтобы ответ нельзя было угадать по позиции
+    const qs = QUESTIONS[c][mod].map(q => {
+      const order = shuffle(q.opts.map((_, i) => i));
+      return { ...q, opts: order.map(i => q.opts[i]), ans: order.indexOf(q.ans) };
+    });
+    setTest({ c, mod, qs, idx: 0, ans: Array(qs.length).fill(null), showExp: false, done: false });
+    setPage("test");
+  };
+
+  const pick = (i) => {
+    if (test.ans[test.idx] !== null) return;
+    const a = [...test.ans]; a[test.idx] = i;
+    setTest({ ...test, ans: a, showExp: true });
+  };
+
+  const next = () => {
+    if (test.idx < test.qs.length - 1) {
+      setTest({ ...test, idx: test.idx + 1, showExp: false });
+    } else {
+      const score = test.ans.reduce((s, a, i) => a === test.qs[i].ans ? s + 1 : s, 0);
+      const pct   = Math.round(score / test.qs.length * 100);
+      const details = test.qs.map((q, i) => ({
+        question: q.q, ok: test.ans[i] === q.ans,
+        correctAnswer: q.opts[q.ans],
+        userAnswer: test.ans[i] !== null ? q.opts[test.ans[i]] : "—",
+      }));
+      const r = { cert: test.c, mod: test.mod, score, total: test.qs.length, pct, date: new Date().toISOString(), student: name || T("Студент"), details };
+      saveProgress(r);
+      setTest({ ...test, done: true, score, pct });
+    }
+  };
+
+  const PAGES = [["home",T("🏠 Главная")],["lessons",T("🧭 Уроки")],["routes",T("🗺 Маршруты")],["analytics",T("📊 Аналитика")],["materials",T("📚 Материалы")],["practice",T("⚡ Разминка")],["reading","📖 Reading"],["listening","🎧 Listening"],["writing","✍️ Writing"],["speaking","🎙 Speaking"],["prof","🎓 TKT · CELTA · DELTA"],["chat",T("🤖 AI-Репетитор")],["teacher",T("👩‍🏫 Учитель")]];
+
+  if (authLoading) {
+    return <><style>{CSS}</style><div className="wrap" style={{textAlign:"center",paddingTop:100,color:"#8a7d6d"}}>{T("Загрузка...")}</div></>;
+  }
+  if (!session) {
+    return <><style>{CSS}</style><AuthPage /></>;
+  }
+
+  // ===================================
+  //  TEST PAGE
+  // ===================================
+  if (page === "test" && test) {
+    if (test.done) {
+      const c = test.pct >= 80 ? "#4caf88" : test.pct >= 60 ? "#c59b44" : "#e74c3c";
+      const msg = test.pct >= 80 ? T("Отлично! 🎉") : test.pct >= 60 ? T("Хороший результат 👍") : T("Нужно повторить 📖");
+      return (
+        <>
+          <style>{CSS}</style>
+          <div className="wrap">
+            <div className="hdr"><div className="logo">Certify<span>Wise</span></div></div>
+            <div className="sdiv">
+              <div className="sbig">{test.pct}%</div>
+              <div style={{fontSize:17,color:"#e8dfd0",marginTop:8,fontFamily:"Lora,serif"}}>{test.score} / {test.qs.length}{" "}{T("верных ответов")}</div>
+              <div style={{fontSize:13,color:"#8a7d6d",marginTop:4}}>{test.c} · {test.mod}</div>
+              <div style={{marginTop:10,color:c,fontSize:15,fontWeight:600}}>{msg}</div>
+            </div>
+            <div style={{display:"flex",gap:10,justifyContent:"center",flexWrap:"wrap"}}>
+              <button className="btn" onClick={() => startTest(test.c, test.mod)}>{T("Пройти ещё раз")}</button>
+              <button className="btn btn-o" onClick={() => { setTest(null); setPage("practice"); }}>{T("← Разминка")}</button>
+              <button className="btn btn-o" onClick={() => { setTest(null); setPage("home"); }}>{T("На главную")}</button>
+            </div>
+          </div>
+        </>
+      );
+    }
+
+    const q   = test.qs[test.idx];
+    const ans = test.ans[test.idx];
+    const done = ans !== null;
+    const pct  = (test.idx / test.qs.length) * 100;
+
+    return (
+      <>
+        <style>{CSS}</style>
+        <div className="wrap">
+          <div className="hdr">
+            <div className="logo">Certify<span>Wise</span></div>
+            <button className="btn btn-o btn-sm" onClick={() => { setTest(null); setPage("practice"); }}>{T("← Выйти")}</button>
+          </div>
+          <div style={{display:"flex",justifyContent:"space-between",marginBottom:7}}>
+            <span style={{fontSize:12.5,color:"#8a7d6d"}}>{test.c} · {test.mod}</span>
+            <span style={{fontSize:12.5,color:"#8a7d6d"}}>{test.idx + 1} / {test.qs.length}</span>
+          </div>
+          <div className="pbar"><div className="pfill" style={{width:`${pct}%`}}/></div>
+
+          <div className="qcard">
+            <div className="qnum">{T("Вопрос")}{" "}{test.idx + 1}</div>
+            {q.passage && <div className="qpass">{q.passage}</div>}
+            <div className="qtext">{q.q}</div>
+            {q.opts.map((o, i) => {
+              let cls = "opt";
+              if (done) {
+                if (i === q.ans) cls += " ok";
+                else if (i === ans) cls += " ng";
+              }
+              return <button key={i} className={cls} onClick={() => pick(i)} disabled={done}>
+                <span style={{color:"#c59b44",marginRight:9}}>{String.fromCharCode(65+i)}.</span>{o}
+              </button>;
+            })}
+            {done && <div className="exp"><b>{T("💡 Объяснение:")}</b> {q.exp}</div>}
+          </div>
+
+          {done && (
+            <div style={{textAlign:"center",marginTop:15}}>
+              <button className="btn" onClick={next}>
+                {test.idx < test.qs.length - 1 ? T("Следующий вопрос →") : T("Завершить тест ✓")}
+              </button>
+            </div>
+          )}
+        </div>
+      </>
+    );
+  }
+
+  // ===================================
+  //  MAIN LAYOUT
+  // ===================================
+  return (
+    <>
+      <style>{CSS}</style>
+      <div className="wrap">
+
+        {/* HEADER */}
+        <div className="hdr">
+          <div className="logo">Certify<span>Wise</span></div>
+          <div style={{display:"flex",alignItems:"center",gap:10,flexWrap:"wrap",justifyContent:"flex-end"}}>
+            <span style={{fontSize:13,color:"#8a7d6d"}}>{name ? `👤 ${name}` : ""}</span>
+            <LangSwitch />
+            <button className="btn btn-o btn-sm" onClick={() => supabase.auth.signOut()}>{T("Выйти")}</button>
+          </div>
+        </div>
+
+        {/* NAV */}
+        <div className="nav">
+          {PAGES.map(([k,l]) => <button key={k} className={`nb${page===k?" on":""}`} onClick={() => { if (k === "routes") setRouteExam(null); setPage(k); }}>{l}</button>)}
+        </div>
+
+        {/* --- HOME --- */}
+        {page === "home" && (
+          <div>
+            <h2 className="st">{T("Добро пожаловать в CertifyWise")}</h2>
+            <p className="sb">{T("Платформа подготовки к международным сертификациям для педагогов иностранного языка")}</p>
+
+            {!name && (
+              <div className="tip" style={{marginBottom:22}}>{T("Заполните имя при регистрации, чтобы оно отображалось в результатах.")}</div>
+            )}
+
+            <button className="cbtn" style={{width:"100%",marginBottom:16,textAlign:"left"}} onClick={() => setPage("lessons")}>
+              <div style={{fontSize:26}}>🧭</div>
+              <h3>{T("Обучение: 12 уроков")}</h3>
+              <p>{T("Общая основа для TKT, CELTA, DELTA и IELTS: теория, случаи из класса и практика с AI-тьютором. Начните с урока 1 — входной диагностики.")}</p>
+            </button>
+
+            <div className="g2">
+              {Object.entries(CERTS).map(([k, v]) => (
+                <button key={k} className={`cbtn${cert===k?" on":""}`} onClick={() => { setCert(k); setRouteExam(k); setPage("routes"); window.scrollTo({ top: 0 }); }}>
+                  <div style={{fontSize:26}}>{v.emoji}</div>
+                  <h3>{k}</h3>
+                  <p style={{color:"#5a7090",marginBottom:4}}>{v.label}</p>
+                  <p>{v.tagline}</p>
+                </button>
+              ))}
+            </div>
+
+            {results.length > 0 && (
+              <>
+                <div className="div"/>
+                <h3 style={{fontFamily:"Lora,serif",fontSize:19,color:"#e8dfd0",marginBottom:13}}>{T("📊 Последние результаты")}</h3>
+                {results.slice(0, 5).map((r, i) => (
+                  <div key={i} style={{display:"flex",justifyContent:"space-between",alignItems:"center",padding:"11px 17px",background:"#12253b",borderRadius:8,marginBottom:7,border:"1px solid rgba(255,255,255,.05)"}}>
+                    <div>
+                      <span style={{color:"#c59b44",fontWeight:600}}>{r.cert}</span>
+                      <span style={{color:"#8a7d6d",marginLeft:8,fontSize:12.5}}>{r.mod}</span>
+                    </div>
+                    <span style={{fontWeight:700,color:r.pct>=80?"#4caf88":r.pct>=60?"#c59b44":"#e74c3c"}}>{r.pct}%</span>
+                  </div>
+                ))}
+              </>
+            )}
+          </div>
+        )}
+
+
+        {/* --- МАРШРУТЫ ПОДГОТОВКИ --- */}
+        {page === "routes" && (
+          <RoutesPage userId={session.user.id} initial={routeExam} onNavigate={p => { setPage(p); window.scrollTo({ top: 0 }); }} />
+        )}
+
+        {page === "materials" && (
+          <div>
+            <h2 className="st">{T("Учебные материалы")}</h2>
+            <p className="sb">{T("Официальные PDF Cambridge + ваши файлы с Google Drive")}</p>
+
+            <div style={{display:"flex",gap:7,marginBottom:18,flexWrap:"wrap"}}>
+              {Object.keys(CERTS).map(k => (
+                <button key={k} className={`btn btn-sm${cert===k?"":" btn-o"}`} onClick={() => setCert(k)}>{CERTS[k].emoji} {k}</button>
+              ))}
+            </div>
+
+            <div className="tabs">
+              <button className={`tab${matTab==="official"?" on":""}`} onClick={() => setMatTab("official")}>{T("📄 Официальные (")}{MATERIALS[cert].links.length})</button>
+              <button className={`tab${matTab==="my"?" on":""}`} onClick={() => setMatTab("my")}>{T("📁 Мои файлы (")}{myFiles.filter(f=>f.cert===cert).length})</button>
+              <button className={`tab${matTab==="add"?" on":""}`} onClick={() => setMatTab("add")}>{T("➕ Добавить")}</button>
+            </div>
+
+            {matTab === "official" && (
+              <div>
+                <div style={{fontSize:13.5,color:"#8a7d6d",marginBottom:16,padding:"12px 16px",background:"rgba(197,155,68,.06)",borderRadius:8,border:"1px solid rgba(197,155,68,.12)"}}>{MATERIALS[cert].desc}</div>
+                {MATERIALS[cert].links.map((m, i) => (
+                  <div key={i} className="mat">
+                    <a href={m.url} target="_blank" rel="noreferrer">📎 {m.title}</a>
+                    <span className={`badge b-${m.type.toLowerCase()}`}>{m.type}</span>
+                  </div>
+                ))}
+                <div className="tip"><b>{T("Совет:")}</b>{" "}{T("Все ссылки ведут на официальные сайты Cambridge English и IELTS.org — актуальные бесплатные материалы.")}</div>
+              </div>
+            )}
+
+            {matTab === "my" && (
+              <div>
+                {myFiles.filter(f => f.cert === cert).length === 0 ? (
+                  <div className="empty">
+                    {T("Нет своих файлов для")}{" "}{cert}.<br/>
+                    <button className="btn btn-sm" style={{marginTop:13}} onClick={() => setMatTab("add")}>{T("➕ Добавить")}</button>
+                  </div>
+                ) : myFiles.filter(f => f.cert === cert).map(f => (
+                  <div key={f.id} className="mat">
+                    <a href={f.url} target="_blank" rel="noreferrer">📁 {f.title}</a>
+                    <div style={{display:"flex",gap:8,alignItems:"center"}}>
+                      <span className="badge b-my">{T("Мой файл")}</span>
+                      <button className="btn btn-red btn-sm" onClick={() => setMyFiles(p => p.filter(x => x.id !== f.id))}>✕</button>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            )}
+
+            {matTab === "add" && (
+              <div className="card">
+                <h3>{T("Добавить файл или ссылку")}</h3>
+                <p style={{fontSize:13,color:"#8a7d6d",marginTop:4,marginBottom:18}}>{T("Вставь ссылку с Google Drive, OneDrive, Dropbox или любого сайта")}</p>
+                <div style={{marginBottom:11}}>
+                  <label style={{fontSize:12.5,color:"#8a7d6d",display:"block",marginBottom:5}}>{T("Сертификат")}</label>
+                  <select value={newF.cert} onChange={e => setNewF({...newF, cert:e.target.value})}>
+                    {Object.keys(CERTS).map(k => <option key={k} value={k}>{k} — {CERTS[k].label}</option>)}
+                  </select>
+                </div>
+                <div style={{marginBottom:11}}>
+                  <label style={{fontSize:12.5,color:"#8a7d6d",display:"block",marginBottom:5}}>{T("Название")}</label>
+                  <input type="text" placeholder={T("Например: TKT Module 2 Mock Test.pdf")} value={newF.title} onChange={e => setNewF({...newF, title:e.target.value})} />
+                </div>
+                <div style={{marginBottom:18}}>
+                  <label style={{fontSize:12.5,color:"#8a7d6d",display:"block",marginBottom:5}}>{T("Ссылка (URL)")}</label>
+                  <input type="text" placeholder="https://drive.google.com/file/..." value={newF.url} onChange={e => setNewF({...newF, url:e.target.value})} />
+                </div>
+                <button className="btn" onClick={addFile} disabled={!newF.title.trim() || !newF.url.trim()}>{T("Добавить материал")}</button>
+              </div>
+            )}
+          </div>
+        )}
+
+
+        {/* --- ANALYTICS --- */}
+        {page === "analytics" && (() => {
+          const an = getAnalytics();
+          return (
+            <div>
+              <h2 className="st">{T("📊 Моя аналитика")}</h2>
+              <p className="sb">{T("Прогресс по сертификатам и персональный план")}</p>
+              {!an ? (
+                <div className="card" style={{textAlign:"center",padding:"38px 22px"}}>
+                  <div style={{fontSize:42,marginBottom:12}}>📝</div>
+                  <h3 style={{marginBottom:8}}>{T("Пока нет данных")}</h3>
+                  <p style={{fontSize:13.5,color:"#8a7d6d",marginBottom:18}}>{T("Пройди хотя бы один тест — и здесь появится твоя аналитика и план подготовки.")}</p>
+                  <button className="btn" onClick={() => setPage("practice")}>{T("Начать тест →")}</button>
+                </div>
+              ) : (
+                <>
+                  {/* Статы по сертификатам */}
+                  <div className="g2" style={{marginBottom:20}}>
+                    {an.certAvg.map(c => {
+                      const col = c.avg >= 80 ? "#4caf88" : c.avg >= 60 ? "#c59b44" : "#e74c3c";
+                      return (
+                        <div key={c.cert} className="card">
+                          <div style={{display:"flex",justifyContent:"space-between",alignItems:"center",marginBottom:10}}>
+                            <span style={{fontFamily:"Lora,serif",fontSize:18,color:"#c59b44"}}>{CERTS[c.cert]?.emoji || (c.cert === "Уроки" ? "🧭" : "")} {c.cert === "Уроки" ? T("Уроки") : c.cert}</span>
+                            <span style={{fontFamily:"Lora,serif",fontSize:26,color:col,fontWeight:700}}>{c.avg}%</span>
+                          </div>
+                          <div style={{height:6,background:"rgba(255,255,255,.07)",borderRadius:3}}>
+                            <div style={{height:"100%",width:`${c.avg}%`,background:col,borderRadius:3,transition:"width .5s"}}/>
+                          </div>
+                        </div>
+                      );
+                    })}
+                  </div>
+
+                  {/* Слабые темы */}
+                  {an.weak.length > 0 && (
+                    <div className="card" style={{marginBottom:16,border:"1px solid rgba(231,76,60,.25)"}}>
+                      <h3 style={{color:"#e74c3c",marginBottom:12}}>{T("⚠️ Нужно подтянуть")}</h3>
+                      {an.weak.map((w,i) => (
+                        <div key={i} style={{display:"flex",justifyContent:"space-between",alignItems:"center",padding:"9px 0",borderBottom:"1px solid rgba(255,255,255,.05)"}}>
+                          <span style={{fontSize:13.5,color:"#c0b8a8"}}>{w.key}</span>
+                          <div style={{display:"flex",alignItems:"center",gap:10}}>
+                            <div style={{width:80,height:5,background:"rgba(255,255,255,.07)",borderRadius:3}}>
+                              <div style={{height:"100%",width:`${w.avg}%`,background:"#e74c3c",borderRadius:3}}/>
+                            </div>
+                            <span style={{fontSize:13,color:"#e74c3c",fontWeight:700,minWidth:32}}>{w.avg}%</span>
+                            <button className="btn btn-sm btn-o" style={{fontSize:11}} onClick={() => { setCert(w.cert); setPage("practice"); }}>{T("Тест →")}</button>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  )}
+
+                  {/* Сильные темы */}
+                  {an.strong.length > 0 && (
+                    <div className="card" style={{marginBottom:16,border:"1px solid rgba(76,175,136,.2)"}}>
+                      <h3 style={{color:"#4caf88",marginBottom:12}}>{T("✅ Сильные стороны")}</h3>
+                      {an.strong.slice(0,4).map((s,i) => (
+                        <div key={i} style={{display:"flex",justifyContent:"space-between",padding:"8px 0",borderBottom:"1px solid rgba(255,255,255,.04)"}}>
+                          <span style={{fontSize:13.5,color:"#c0b8a8"}}>{s.key}</span>
+                          <span style={{fontSize:13,color:"#4caf88",fontWeight:700}}>{s.avg}%</span>
+                        </div>
+                      ))}
+                    </div>
+                  )}
+
+                  {/* Персональный план */}
+                  <div className="card" style={{border:"1px solid rgba(197,155,68,.3)"}}>
+                    <h3 style={{marginBottom:4}}>{T("🗓 Персональный план")}</h3>
+                    <p style={{fontSize:13,color:"#8a7d6d",marginBottom:16}}>{T("Основан на твоих результатах")}</p>
+                    {an.weak.length === 0 ? (
+                      <p style={{fontSize:13.5,color:"#4caf88"}}>{T("🎉 Все темы выше 70%! Продолжай поддерживать уровень регулярными тестами.")}</p>
+                    ) : (
+                      <div>
+                        {an.weak.slice(0,4).map((w,i) => (
+                          <div key={i} style={{display:"flex",gap:14,padding:"11px 0",borderBottom:"1px solid rgba(255,255,255,.05)"}}>
+                            <div style={{width:28,height:28,borderRadius:"50%",background:"rgba(197,155,68,.15)",display:"flex",alignItems:"center",justifyContent:"center",fontSize:12,color:"#c59b44",fontWeight:700,flexShrink:0}}>
+                              {i+1}
+                            </div>
+                            <div>
+                              <div style={{fontSize:14,color:"#e8dfd0",fontWeight:600,marginBottom:3}}>{w.key}</div>
+                              <div style={{fontSize:12.5,color:"#8a7d6d"}}>
+                                {T("Текущий уровень:")}{" "}<b style={{color:"#e74c3c"}}>{w.avg}%</b> →
+                                {w.avg < 50 ? T(" начни с теории, потом тест") : T(" повтори ключевые термины и пройди тест ещё раз")}
+                              </div>
+                            </div>
+                          </div>
+                        ))}
+                        <div className="tip" style={{marginTop:14}}>
+                          <b>{T("Совет:")}</b>{" "}{T("Открой AI-репетитор и напиши")}{" "}<b>{T("«составь план»")}</b>{" "}{T("— получишь подробный пошаговый план с объяснениями и примерами.")}
+                        </div>
+                      </div>
+                    )}
+                  </div>
+                </>
+              )}
+            </div>
+          );
+        })()}
+
+
+        {/* --- PRACTICE --- */}
+        {page === "practice" && (
+          <div>
+            <h2 className="st">{T("Разминка")}</h2>
+            <p className="sb">{T("Короткие вопросы для повторения терминов перед занятием или уроком. Это не формат экзамена: задания как на экзамене — во вкладке «TKT · CELTA · DELTA» и в разделах Reading, Listening, Writing, Speaking.")}</p>
+            <div style={{display:"flex",gap:7,marginBottom:22,flexWrap:"wrap"}}>
+              {Object.keys(CERTS).map(k => (
+                <button key={k} className={`btn btn-sm${cert===k?"":" btn-o"}`} onClick={() => setCert(k)}>{CERTS[k].emoji} {k}</button>
+              ))}
+            </div>
+            <div style={{fontSize:13,color:"#8a7d6d",marginBottom:16,padding:"11px 16px",background:"rgba(197,155,68,.05)",borderRadius:8}}>{CERTS[cert].label} — {CERTS[cert].tagline}</div>
+            {Object.entries(QUESTIONS[cert]).map(([mod, qs]) => (
+              <div key={mod} className="card" style={{display:"flex",justifyContent:"space-between",alignItems:"center",marginBottom:12}}>
+                <div>
+                  <h3 style={{marginBottom:3}}>{mod}</h3>
+                  <p style={{fontSize:13,color:"#8a7d6d"}}>{qs.length}{" "}{T("вопросов · с объяснениями")}</p>
+                </div>
+                <button className="btn" onClick={() => startTest(cert, mod)}>{T("Начать →")}</button>
+              </div>
+            ))}
+          </div>
+        )}
+
+        {/* --- READING --- */}
+        {page === "reading" && (
+          <ReadingPage studentName={name} onSaveResult={saveProgress} />
+        )}
+
+        {/* --- ОБУЧЕНИЕ: 12 уроков (не размонтируется: открытый урок сохраняется при переходе к практике) --- */}
+        <div style={{ display: page === "lessons" ? "block" : "none" }}>
+          <LessonsPage studentName={name} userId={session.user.id} isTeacher={profile?.role === "teacher"} onSaveResult={saveProgress}
+            onNavigate={p => { setPage(p); window.scrollTo({ top: 0 }); }} />
+        </div>
+
+        {/* --- WRITING, SPEAKING, TKT/CELTA/DELTA --- */}
+        {/* Не размонтируются при переходе в чат: после «Разобрать с AI» студент возвращается к своему ответу */}
+        <div style={{ display: page === "writing" ? "block" : "none" }}>
+          <WritingPage studentName={name} onSaveResult={saveProgress} onAskAi={askAiText} />
+        </div>
+        <div style={{ display: page === "speaking" ? "block" : "none" }}>
+          <SpeakingPage studentName={name} onSaveResult={saveProgress} onAskAi={askAiText} />
+        </div>
+        <div style={{ display: page === "prof" ? "block" : "none" }}>
+          <ProfPage studentName={name} onSaveResult={saveProgress} onAskAi={askAiText} />
+        </div>
+
+        {/* --- LISTENING --- */}
+        {/* Listening не размонтируется при переходе в чат: после «Разобрать с AI» студент возвращается к своим проверенным ответам */}
+        <div style={{ display: page === "listening" ? "block" : "none" }}>
+          <ListeningPage studentName={name} onSaveResult={saveProgress} onAskAi={askAiAbout} />
+        </div>
+        {page === "listening" && (
+          <div>
+            <h2 className="st" style={{marginTop:36}}>{T("Видеоматериалы")}</h2>
+            <p className="sb">{T("Видеоматериалы с YouTube для тренировки всех 4 секций")}</p>
+            <div className="card" style={{background:"rgba(255,107,107,.07)",border:"1px solid rgba(255,107,107,.2)",marginBottom:20}}>
+              <h3 style={{color:"#ff6b6b",marginBottom:10}}>{T("🎯 Ключевые стратегии")}</h3>
+              <ul style={{fontSize:13.5,color:"#c0b8a8",lineHeight:2.1,paddingLeft:18}}>
+                <li>{T("Перед каждой секцией читай вопросы заранее — предугадывай тему и тип информации")}</li>
+                <li>{T("Пиши ответы сразу — запись идёт один раз, перемотки нет")}</li>
+                <li>{T("Следи за сигнальными словами: \"however\", \"but\", \"actually\", \"in fact\"")}</li>
+                <li>{T("Если пропустил вопрос — сразу переходи к следующему, не останавливайся")}</li>
+                <li>{T("Числа, даты, имена — их часто произносят по буквам (C-O-H-E-N)")}</li>
+                <li>{T("Внимательно следи за словесными ограничениями: \"NO MORE THAN TWO WORDS\"")}</li>
+              </ul>
+            </div>
+            {LISTENING.map((v, i) => (
+              <div key={i} className="ytcard">
+                <div className="ytinfo">
+                  <div className="yttitle">{v.title}</div>
+                  <div className="ytdesc">💡 {v.tip}</div>
+                  <div className="ytml">
+                    <span className="ytag">📻 {v.section}</span>
+                    <span className="ytag">🎯 {v.level}</span>
+                  </div>
+                </div>
+                <iframe src={`https://www.youtube.com/embed/${v.ytId}`} title={v.title} allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen />
+              </div>
+            ))}
+            <div className="tip"><b>{T("Свои аудиофайлы:")}</b>{" "}{T("Добавь ссылки на Google Drive в разделе «Материалы → Добавить файл» — они появятся в твоей библиотеке.")}</div>
+          </div>
+        )}
+
+        {/* --- AI CHAT --- */}
+        {page === "chat" && (
+          <div>
+            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start" }}>
+              <div>
+                <h2 className="st">{T("🤖 AI-Репетитор")}</h2>
+                <p className="sb">{T("Персональный тьютор — подстраивается под тебя")}</p>
+              </div>
+              {aiMsgs.length > 1 && (
+                <button className="btn btn-o btn-sm" onClick={() => { if (window.confirm(T("Удалить всю историю переписки?"))) clearChatHistory(); }}>{T("🗑️ Очистить историю")}</button>
+              )}
+            </div>
+
+            {/* API Key setup */}
+            {!geminiKey && !(import.meta.env?.VITE_GEMINI_KEY) && (
+              <div className="card" style={{marginBottom:16,border:"1px solid rgba(197,155,68,.35)"}}>
+                <h3 style={{marginBottom:6}}>{T("⚙️ Настроить AI")}</h3>
+                <p style={{fontSize:13,color:"#8a7d6d",marginBottom:12}}>
+                  {T("Нужен бесплатный Gemini API ключ. Получи на")}{" "}<a href="https://aistudio.google.com" target="_blank" rel="noreferrer" style={{color:"#c59b44"}}>aistudio.google.com</a>{" "}{T("→ Get API key (бесплатно, ~1500 запросов/день)")}
+                </p>
+                <div style={{display:"flex",gap:9}}>
+                  <input type="text" placeholder="AIza..." value={keyInput} onChange={e => setKeyInput(e.target.value)} style={{flex:1,fontSize:13}} />
+                  <button className="btn" onClick={() => { if(keyInput.trim()){setGeminiKey(keyInput.trim());setKeyInput("");} }}>{T("Сохранить")}</button>
+                </div>
+              </div>
+            )}
+
+            {geminiKey && (
+              <div style={{display:"flex",justifyContent:"flex-end",marginBottom:10}}>
+                <span style={{fontSize:12,color:"#4caf88",marginRight:10}}>{T("✓ Gemini подключён")}</span>
+                <button className="btn btn-o btn-sm" style={{fontSize:11}} onClick={() => setGeminiKey("")}>{T("Сменить ключ")}</button>
+              </div>
+            )}
+
+            {/* Quick prompts */}
+            <div style={{display:"flex",gap:7,marginBottom:14,flexWrap:"wrap"}}>
+              {[T("Сделай анализ моих результатов"),T("Составь план подготовки"),T("Объясни через пример из класса"),T("TKT: что такое CCQ?"),T("CELTA: как исправлять ошибки?"),T("Что такое fossilization?")].map(q => (
+                <button key={q} className="btn btn-o btn-sm" style={{fontSize:12}} onClick={() => setAiIn(q)}>{q}</button>
+              ))}
+            </div>
+
+            <div className="chbox" ref={chatRef}>
+              {aiMsgs.map((m, i) => (
+                <div key={i} className={`msg ${m.r}`}>
+                  {m.r === "a" && <div style={{fontSize:11,color:"#4a5560",marginBottom:3}}>🤖 CertifyWise AI</div>}
+                  <div className="bub">{m.r === "a" ? <MdText text={m.t} /> : m.t}</div>
+                </div>
+              ))}
+              {aiLoad && (
+                <div className="msg a">
+                  <div style={{fontSize:11,color:"#4a5560",marginBottom:3}}>🤖 CertifyWise AI</div>
+                  <div className="bub" style={{color:"#8a7d6d"}}>{T("⌛ Думаю...")}</div>
+                </div>
+              )}
+            </div>
+            <div className="chin">
+              <input className="chinput" type="text" placeholder={T("Пиши как тебе удобно...")} value={aiIn} onChange={e => setAiIn(e.target.value)} onKeyDown={e => e.key === "Enter" && sendAi()} />
+              <button className="btn" onClick={sendAi} disabled={aiLoad || !aiIn.trim()}>→</button>
+            </div>
+          </div>
+        )}
+
+        {page === "teacher" && (
+          <div>
+            <h2 className="st">{T("Панель учителя")}</h2>
+            {profile?.role !== "teacher" ? (
+              <div className="empty">{T("Эта страница доступна только аккаунтам с ролью «учитель».")}</div>
+            ) : (
+              <div>
+                <div style={{display:"flex",justifyContent:"space-between",alignItems:"center",marginBottom:16}}>
+                  <span style={{fontSize:13.5,color:"#4caf88"}}>{T("✓ Данные всех студентов")}</span>
+                </div>
+                <div className="tabs">
+                  <button className={`tab${teacherTab==="progress"?" on":""}`} onClick={() => setTeacherTab("progress")}>{T("📊 Прогресс")}</button>
+                  <button className={`tab${teacherTab==="chats"?" on":""}`} onClick={() => setTeacherTab("chats")}>{T("💬 Чаты с AI")}</button>
+                </div>
+                {teacherTab === "chats" ? (
+                  <div>
+                    {allChats.length === 0 ? (
+                      <div className="empty">{T("Пока никто не писал AI-тьютору.")}</div>
+                    ) : selectedChatStudent ? (
+                      <div>
+                        <button className="btn btn-o btn-sm" style={{marginBottom:14}} onClick={() => setSelectedChatStudent(null)}>{T("← Все студенты")}</button>
+                        <h3 style={{marginBottom:10}}>{chatProfiles[selectedChatStudent]?.full_name || T("Студент")}</h3>
+                        <div style={{display:"flex",flexDirection:"column",gap:10}}>
+                          {allChats.filter(m => m.user_id === selectedChatStudent).map((m, i, arr) => {
+                            const cleared = chatProfiles[selectedChatStudent]?.chat_cleared_at;
+                            const showMarker = cleared && i > 0 && new Date(arr[i-1].created_at) <= new Date(cleared) && new Date(m.created_at) > new Date(cleared);
+                            return (
+                              <div key={m.id}>
+                                {showMarker && (
+                                  <div style={{textAlign:"center",fontSize:11.5,color:"#8a7d6d",margin:"10px 0",borderTop:"1px dashed rgba(197,155,68,.3)",paddingTop:8}}>
+                                    {T("— студент скрыл историю у себя (")}{new Date(cleared).toLocaleString(LOCALE)}{T(") — у вас видно всё —")}
+                                  </div>
+                                )}
+                                <div style={{background: m.role==="u" ? "rgba(197,155,68,.08)" : "#12253b", border:"1px solid rgba(255,255,255,.06)", borderRadius:10, padding:"10px 14px"}}>
+                                  <div style={{fontSize:11,color:"#8a7d6d",marginBottom:4}}>{m.role==="u"?T("Студент"):"AI"} · {new Date(m.created_at).toLocaleString(LOCALE)}</div>
+                                  <div style={{fontSize:13.5,color:"#e8dfd0",whiteSpace:"pre-wrap"}}><MdText text={m.text} /></div>
+                                </div>
+                              </div>
+                            );
+                          })}
+                        </div>
+                      </div>
+                    ) : (
+                      <div style={{overflowX:"auto"}}>
+                        <table>
+                          <thead><tr><th>{T("Студент")}</th><th>{T("Сообщений")}</th><th>{T("Последняя активность")}</th><th></th></tr></thead>
+                          <tbody>
+                            {[...new Set(allChats.map(m => m.user_id))].map(uid => {
+                              const msgs = allChats.filter(m => m.user_id === uid);
+                              const last = msgs[msgs.length - 1];
+                              return (
+                                <tr key={uid}>
+                                  <td>{chatProfiles[uid]?.full_name || T("Студент")}</td>
+                                  <td>{msgs.length}</td>
+                                  <td style={{fontSize:12,color:"#4a5560"}}>{new Date(last.created_at).toLocaleString(LOCALE)}</td>
+                                  <td><button className="btn btn-o btn-sm" onClick={() => setSelectedChatStudent(uid)}>{T("Открыть")}</button></td>
+                                </tr>
+                              );
+                            })}
+                          </tbody>
+                        </table>
+                      </div>
+                    )}
+                  </div>
+                ) : (
+                <TeacherProgress results={results} />
+                )}
+              </div>
+            )}
+          </div>
+        )}
+
+      </div>
+    </>
+  );
+      }
